@@ -1,8 +1,8 @@
-- name: California Instutite of Technology
-  link: https://www.caltech.edu/
-  date: 2018 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  descr: <br> (expected graduation in 2022)
+- name: University of Michigan
+  link: https://www.umich.edu/
+  date: 2020 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  descr: <br> (expected graduation in 2024)
 
 - name: Canyon Crest Academy
   link: https://cc.sduhsd.net/
-  date: 2014 - 2018
+  date: 2016 - 2020
