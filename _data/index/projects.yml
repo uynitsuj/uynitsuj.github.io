@@ -3,7 +3,12 @@
   image: 
   github: https://github.com/uynitsuj/Open6R_ARM
 
-- name: 2018-2019 FRC Season - Team 3128 Aluminum Narwhals
-  descr: " Tools: AWS, Python Flask, Jupyter, JavaScript, Docker, HTML/CSS"
+- name: 2019-2020 FRC Robot - Team 3128 Aluminum Narwhals
+  descr: "Affiliation: Head of Mechanical Design and Fabrication. Season Canceled due to COVID-19. Tools: Solidworks"
+  image:
+  github:
+
+- name: 2018-2019 FRC Robot - Team 3128 Aluminum Narwhals
+  descr: "Affiliation: Head of Mechanical Design and Fabrication. Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. Tools: Solidworks"
   image: 
-  github: https://github.com/jannieyu/caliban
+  github:
