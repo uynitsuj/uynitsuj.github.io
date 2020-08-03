@@ -1,0 +1,9 @@
+- name: Cell Lineage Tracer
+  descr: "Developed an autoencoder (similar to generative adaptive networks) to accurately construct pseudo-lineages of cells via latent space interpolation under Prof. David Van Valen. Tools: Pytorch, Python, Jupyter"
+  image: 
+  github: https://github.com/jannieyu/multidomain_autoencoder
+
+- name: Caliban Web Application Tool 
+  descr: "Designed and built a robust full-stack web application tool that predicts cell segmentation and trajectory across frames and allows for manual annotation of cell lineages with human-in-the-loop integration with crowdsourcing. Tools: AWS, Python Flask, Jupyter, JavaScript, Docker, HTML/CSS"
+  image: 
+  github: https://github.com/jannieyu/caliban

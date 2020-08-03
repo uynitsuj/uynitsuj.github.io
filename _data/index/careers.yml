@@ -1,0 +1,16 @@
+# careers section data
+# if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: Rigorous Systems Research Group (Caltech)
+  link: http://rsrg.cms.caltech.edu/
+  date: Dec 2019 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  job: Algorithmic Intern
+
+- name: Van Valen Lab (Caltech)
+  link: http://www.vanvalen.caltech.edu/
+  date: Jun 2019 - Sept 2019
+  job: Software Engineer Intern
+
+- name: Plasma Interaction and Surface Component Experimental Station (UCSD)
+  link: https://cer.ucsd.edu/
+  date: Nov 2016 - Sept 2018
+  job: Research Intern

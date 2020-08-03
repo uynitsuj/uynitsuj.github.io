@@ -1,0 +1,6 @@
+# skills section data
+
+label: Programming Skills
+id : cs
+aspects: Motivation, JavaScript, Java, HTML/CSS, C, Python
+percentage: 100, 70, 70, 60, 60, 90
