@@ -16,14 +16,6 @@
         data: [{{ site.data.index.skills.percentage }}]
         }]
     };
-    options: {
-        legend: {
-            labels: {
-                // This more specific font property overrides the global property
-                fontColor: "#fff",
-            }
-        }
-    }
     var myRadarChart = new Chart(ctx, {
     type: 'radar',
     data: data,
@@ -36,7 +28,12 @@
             angleLines: { color: 'red' },
         },
         scaleFontSize: 0,
-        legend: {display: false},
-    }
+        legend: {
+                    display: false
+                    labels: {
+                // This more specific font property overrides the global property
+                fontColor: "#fff",
+            }},
+        }
     });
 </script>
