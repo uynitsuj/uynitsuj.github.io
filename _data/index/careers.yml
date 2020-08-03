@@ -1,10 +1,10 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 
-- name: Van Valen Lab (Caltech)
-  link: http://www.vanvalen.caltech.edu/
-  date: Jun 2019 - Sept 2019
-  job: Software Engineer Intern
+- name: hibotics ERAD
+  link: https://www.hibotics.com/
+  date: Jun 2019 - Jun 2020
+  job: Mechanical Engineer Intern
 
 - name: Plasma Interaction and Surface Component Experimental Station (UCSD)
   link: https://cer.ucsd.edu/
