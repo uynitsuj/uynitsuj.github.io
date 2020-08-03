@@ -3,7 +3,7 @@
 # Site wide configuration
 ####################################
 #
-title: Jannie Yu
+title: Justin Yu
 email:
 description: Personal Blog + Website.
 url: # the base hostname & protocol for your site
@@ -33,11 +33,11 @@ kramdown:
 ####################################
 #
 owner:
-  name: Jannie Yu
+  name: Justin Yu
   avatar: leonids-logo.png
   job: "Personal Blog + Website"
   bio: "CS/Economics major at Caltech | Class of 2022"
-  email: jannie@caltech.edu
+  email: justinyu@umich.edu
   disqus-shortname:
   twitter: #username
   facebook: #username
@@ -48,10 +48,10 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: jannieyu
+  github: uynitsuj
   gitlab: #username
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: janniejyu
+  linkedin: Justin Yu
   skype: #username
   xing: #username
   instagram: #username
@@ -61,7 +61,7 @@ owner:
   foursquare: #username
   steam: #username
   dribbble: #username
-  youtube: #username
+  youtube: Justin yu
   soundcloud: #username
   weibo: #username
   flickr: #username
