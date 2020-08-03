@@ -1,20 +1,9 @@
 - name: 6DoF 3D-Printed Robotic Arm
-  descr: "Interface is built from scratch in python using TKinter module with imbedded matplotlib mplot3d so that I could teach myself forward and inverse kinematics on a 6DoF robot arm. Unfortunately, my current inverse kinematics solver produces solutions only when all 8 poses are attainable, greatly limiting the configuration space. Unfortunately not all of the 8 poses are possible on the real robot either, since the robot is open-loop and I don't have any collision simulation or detection methods.
-
-          Robot uses NEMA 17 stepper motors for every joint besides the 2nd, where a NEMA 23 and a larger controller is necessary for greater torque. Robot control is completely open-loop. There also exists uninvited flex & play and harmonic oscillations since the robot is completely 3d printed from PETG besides motors and M3 nut & bolts hardware.
-
-          Five NEMA 17s are controlled with A4988 drivers on a modified RAMPS 1.4 Shield for Arduino Mega. One NEMA 23 is controlled with a TB6600HG driver. Serial data is sent over USB in order to prepare motor movement and execution commands using my custom control protocol (MTR6-1000 prepares movement on motor 6 for -1000 steps, MTR4200 prepares movement on motor 4 for 200 steps, and EXEC executes the commands for all coordinated motor movement sequences).
-
-          The basis for my custom Arduino sketch comes from iforce2d's Coordinated Stepper Movement Arduino Sketch shown here
-          https://www.youtube.com/watch?v=fHAO7SW-SZI
-
-          And my Over-Serial command protocol integrated into my Custom Arduino sketch comes from educ8s.tv
-          https://www.youtube.com/watch?v=vHeG3Gt6STE
-          Tools: Solidworks, Python, Arduino IDE"
+  descr: "Personal Project over the 2020 CoronaVirus Quarantine. Robot Control Interface is built from scratch in python using TKinter module with imbedded matplotlib mplot3d so that I could teach myself forward and inverse kinematics on a 6DoF robot arm. Robot uses NEMA 17 stepper motors for every joint besides the 2nd, where a NEMA 23 and a larger controller is necessary for greater torque. Robot control is completely open-loop. Serial data is sent over USB in order to prepare motor movement and execution commands using my custom control protocol. The basis for my custom Arduino sketch comes from iforce2d's Coordinated Stepper Movement Arduino Sketch. And my Over-Serial command protocol integrated into my Custom Arduino sketch comes from educ8s.tv. Tools: Solidworks, Python, Arduino IDE"
   image: 
   github: https://github.com/uynitsuj/Open6R_ARM
 
 - name: 2018-2019 FRC Season - Team 3128 Aluminum Narwhals
-  descr: ". Tools: AWS, Python Flask, Jupyter, JavaScript, Docker, HTML/CSS"
+  descr: " Tools: AWS, Python Flask, Jupyter, JavaScript, Docker, HTML/CSS"
   image: 
   github: https://github.com/jannieyu/caliban
