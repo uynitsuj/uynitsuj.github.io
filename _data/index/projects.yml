@@ -3,12 +3,17 @@
   image: 
   github: https://github.com/uynitsuj/Open6R_ARM
 
-- name: 2019-2020 FRC Robot - Team 3128 Aluminum Narwhals
-  descr: "Affiliation: Head of Mechanical Design and Fabrication. Season Canceled due to COVID-19. Tools: Solidworks"
-  image:
+- name: 2020 FRC Robot - Cheems the Harvester of Souls
+  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. Season Canceled due to COVID-19. Tools: Solidworks"
+  image: 2020.png
   github:
 
-- name: 2018-2019 FRC Robot - Team 3128 Aluminum Narwhals
-  descr: "Affiliation: Head of Mechanical Design and Fabrication. Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. Tools: Solidworks"
-  image: 
+- name: 2019 FRC Robot - Gromit
+  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. Tools: Solidworks"
+  image: 2019.png
+  github:
+
+- name: 2018 FRC Robot - Guido
+  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. Tools: Solidworks"
+  image: 2018.png
   github:
