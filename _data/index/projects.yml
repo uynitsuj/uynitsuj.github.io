@@ -5,7 +5,7 @@
   website:
 
 - name: 2020 FRC Robot - Cheems the Harvester of Souls
-  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. Season Canceled due to COVID-19. Tools: Solidworks"
+  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. Dimensions: 28&#34; W x 32&#34; L x 48&#34; H Weight: 119.8 lbs Top Speed: 10.5 mph Gromit has an extremely reliable and robust two stage continuous elevator, fashioning a virtual four bar linkage as the inner carriage on which both the cargo intake and the hatch panel intake are integrated. The polycarbonate cargo intake consists of wide top and bottom rollers allowing Gromit to secure cargo upon contact. The polycarbonate hatch intake consists of a pin-and-slot swiveling finger with a pusher tab allowing for hatch pickup and dropoff at unforgiving angles and horizontal displacements. The reverse 2 CIM gearboxes situated in the rear feature integrated “heely” wheels that come into contact with the ground when the robot tips backwards, allowing for control during the climbing sequence which utilizes two large pistons in the front and a rack and pinion system in the back. Gromit ranked 1st seed alliance at Monterey Bay Regional and advanced to become, for the first time in team history, an Alliance Captain at the FRC World Championship in Houston. Tools: Solidworks"
   image: 2020.png
   github:
   website:
