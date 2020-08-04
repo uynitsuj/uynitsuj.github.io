@@ -8,7 +8,7 @@
       left: -2px;
       height: 100%;
       width: 4px;
-      background: #ffffff;
+      background: $white;
     }
     &:after {
       content: "";
@@ -31,7 +31,7 @@
         margin-top: -4px;
         width: 8px;
         height: 8px;
-        background: #42b983;
+        background: $primary;
         border-radius: 50%;
       }
     }
