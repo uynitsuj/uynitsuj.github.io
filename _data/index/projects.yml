@@ -5,7 +5,12 @@
   website:
 
 - name: 2020 FRC Robot - Cheems the Harvester of Souls
-  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals.
+  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  Dimensions: 25&#34; W x 28&#34; L x 44.7&#34; H <br>
+  Weight: 110 lbs <br>
+  Top Speed: 10.9 mph <br><br>
+  Cheems is a transforming arm bot comprising a high-speed four Falcon 500 drivetrain with a shooter at the end of the large arm driven by two Falcon 500s. This year we decided to make a bot that could drive under the control panel and also shoot over tall bots. Cheems had a hopper and Power Cell manipulator that would work at any arm angle. Cheems also fashioned a passively deployed polycarbonate intake with two bumper-wide rollers, which passed balls to Cheems' indexer, allowing for the Power Cells to be organized into a single-file line and traverse to the shooter. Finally, our climb mechanism. Our climb was able to deploy in a split second because we had constant force springs on the climber so that when the arm went past a certain angle the climber ends would hit a hard stop and rapidly deploy. Then it would winch itself up using two BAG motors. <br>
+  Though Cheems only had the opportunity to perform at Del Mar Regional, we are very proud of the work we put in and have learned greatly from this season. <br>
   Tools: Solidworks"
   image: 2020.png
   github:
@@ -15,15 +20,32 @@
   descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
   Dimensions: 28&#34; W x 32&#34; L x 48&#34; H <br>
   Weight: 119.8 lbs <br>
-  Top Speed: 10.5 mph <br>
+  Top Speed: 10.5 mph <br><br>
   Gromit has an extremely reliable and robust two stage continuous elevator, fashioning a virtual four bar linkage as the inner carriage on which both the cargo intake and the hatch panel intake are integrated. The polycarbonate cargo intake consists of wide top and bottom rollers allowing Gromit to secure cargo upon contact. The polycarbonate hatch intake consists of a pin-and-slot swiveling finger with a pusher tab allowing for hatch pickup and dropoff at unforgiving angles and horizontal displacements. The reverse 2 CIM gearboxes situated in the rear feature integrated “heely” wheels that come into contact with the ground when the robot tips backwards, allowing for control during the climbing sequence which utilizes two large pistons in the front and a rack and pinion system in the back. Gromit ranked 1st seed alliance at Monterey Bay Regional and advanced to become, for the first time in team history, an Alliance Captain at the FRC World Championship in Houston. <br>
-  Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. Tools: Solidworks"
+  Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. <br>
+  Tools: Solidworks"
   image: 2019.png
   github:
   website:
 
 - name: 2018 FRC Robot - Guido
-  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. Tools: Solidworks"
+  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  Dimensions: 33&#34; W x 28&#34; L x 54&#34; H <br>
+  Weight: 119.7 lbs <br>
+  Top Speed: 9.5 mph <br><br>
+  Coming right out of kickoff, we decided to prioritize power cube scoring performance at the Exchange Zone, Switch, and Scale. Guido has an extremely reliable and robust two stage cascade elevator on which both the power cube intake and the climbing mechanism were integrated. Guido also fashioned an active-captive roller power cube intake utilizing both dynamic and static Colson wheels to capture and secure cubes. The elevators featured pistons that could extend shoulder bolts to catch onto a plate and lock the entire elevator once we had reached a full climb. This allowed us to deploy our &#34;buddy bar&#34; at the rear of the bot on which other robots could hang from. Guido proved a formidable machine, advancing our team to become the Finalist Alliance Captain at the San Diego Regional, securing a spot at the FRC World Championship in Houston. In Houston, we proceeded to play in Finals matches with the first seed alliance in the Newton Division, marking the furthest our team has advanced as a result of robot performance. <br>
+  Tools: Solidworks"
   image: 2018.png
+  github:
+  website:
+
+- name: 2017 FRC Robot - Ferb
+  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  Dimensions: 34.5&#34; W x 31.25&#34; L x 24&#34; H <br>
+  Weight: 95 lbs <br>
+  Top Speed: 9.5 mph <br><br>
+  With our 2017 robot, we wanted to build a robot that excelled at the key elements of the game. Throughout numerous revisions and designs, we settled on Ferb. Ferb had a reliable scaling mechansim that efficently and effectively hooked on to the rope and scaled in just under 5 seconds. Ferb also sported an active gear mechanism that allowed for gear intake from both the loading zone and the ground, allowing us to ensure that all gears that ended up by the airship made it on. Ferb was sturdy and reliable and ended up allowing our team to become the Finalist Alliance Captain at the San Diego Regional, securing our spot at the FRC World Championship in Houston. <br>
+  Tools: Solidworks"
+  image: 2017.png
   github:
   website:
