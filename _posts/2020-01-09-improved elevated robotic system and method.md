@@ -4,7 +4,8 @@ title:  "Improved elevated robotic system and method"
 excerpt: "Discussion of new ceiling mounted robotic system."
 categories: [internship]
 ---
-##Mechanical Design
+##Elevated Robotic Module System Mechanical Design
+
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
 productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
 vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
@@ -69,17 +70,21 @@ the base, alleviating some of the torsional stress from the load of an additiona
 effective thickness works for the same reason that tape measures use curved profiles to allow them to
 remain extended at longer distances.
 
+![Annotation 2020-08-03 205828]({{ site.url }}/img/Post1/Annotation 2020-08-03 205828.png)
 Base + 3DP Wheel
 
+![Annotation 2020-08-03 205841]({{ site.url }}/img/Post1/Annotation 2020-08-03 205841.png)
 Base Side View
 
+![Annotation 2020-08-03 205852]({{ site.url }}/img/Post1/Annotation 2020-08-03 205852.png)
 Main Carriage Assembly Exploded View
+
 In an exemplary embodiment, shoulder bolts may be used to retain a 3d printed wheel+bearing combo
 rather than regular bolts due to its smooth surface, allowing for better fit of the bearing inside races
 compared to bolts with thread all along its body.
-Elevated Robotic Module System Control
 
-##Control Design
+##Elevated Robotic Module System Control
+
 An exemplary control mechanism is comprised of a SISO (single input single output) system--input is the
 voltage applied to the motor and the output is the linear position of the module on the track. This highly
 controlled and model-able environment allows the elevated robotics module to act as a very potent
@@ -99,19 +104,8 @@ elevated robotics module is deployed in, the high-level code only ever has to te
 position/velocity setpoint, and the position/velocity control algorithms will take care of reaching the
 setpoints.
 
-Desired position/
+![Annotation 2020-08-03 205908]({{ site.url }}/img/Post1/Annotation 2020-08-03 205908.png)
 
-State Fixed size
-
-Desired position/
-
-Position Control
-Algorithm e.g
-
-Velocity Control
-Algorithm e.g
-
-Motor
 
 However, considering the complexity of the more advanced applications an improved buffer system to
 handle the latency between the sent setpoints and the module actually reaching those setpoints is desired,
