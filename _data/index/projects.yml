@@ -19,7 +19,8 @@
           while still not alleviating the potential for a sense of obtrusiveness on the part of the users. Elevated
           robotics systems exist with varying mechanical designs and control mechanisms to traversal along an
           elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
-          provides smooth and efficient traversal along an elevated track."
+          provides smooth and efficient traversal along an elevated track. <br>
+          Tools: Solidworks, NVIDIA Jetson Nano"
   image: ERAD.JPG
   github:
   website:
