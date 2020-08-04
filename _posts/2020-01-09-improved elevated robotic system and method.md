@@ -4,6 +4,7 @@ title:  "Improved elevated robotic system and method"
 excerpt: "Discussion of new ceiling mounted robotic system."
 categories: [internship]
 ---
+##Mechanical Design
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
 productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
 vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
@@ -24,7 +25,6 @@ In an exemplary embodiment, an elevated robotic module traverses along a T-extru
 the following figure.
 
 ![Annotation 2020-08-03 205741]({{ site.url }}/img/Post1/Annotation 2020-08-03 205741.png)
-{: .pull-right}
 
 In an exemplary embodiment, the rigidity of the mounting solution of the base carriage to the track
 improves stability and efficient traversal along the track.
@@ -79,6 +79,7 @@ rather than regular bolts due to its smooth surface, allowing for better fit of 
 compared to bolts with thread all along its body.
 Elevated Robotic Module System Control
 
+##Control Design
 An exemplary control mechanism is comprised of a SISO (single input single output) system--input is the
 voltage applied to the motor and the output is the linear position of the module on the track. This highly
 controlled and model-able environment allows the elevated robotics module to act as a very potent
