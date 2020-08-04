@@ -79,6 +79,9 @@ remain extended at longer distances.
 ![Annotation 2020-08-03 205852]({{ site.url }}/img/Post1/Annotation 2020-08-03 205852.png)
 <div align="center">Main Carriage Assembly Exploded View</div>
 
+![ERAD]({{ site.url }}/img/robots/ERAD.JPG)
+<div align="center">Assembly IRL</div>
+
 In an exemplary embodiment, shoulder bolts may be used to retain a 3d printed wheel+bearing combo
 rather than regular bolts due to its smooth surface, allowing for better fit of the bearing inside races
 compared to bolts with thread all along its body.
