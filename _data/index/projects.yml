@@ -1,5 +1,5 @@
 - name: 6DoF 3D-Printed Robotic Arm
-  descr: "Personal Project over the 2020 Coronavirus Quarantine. Robot Control Interface is built from scratch in python using TKinter module with imbedded matplotlib mplot3d so that I could teach myself forward and inverse kinematics on a 6DoF robot arm. Robot uses NEMA 17 stepper motors for every joint besides the 2nd, where a NEMA 23 and a larger controller is necessary for greater torque. Robot control is completely open-loop. Serial data is sent over USB in order to prepare motor movement and execution commands using my custom control protocol. The basis for my custom Arduino sketch comes from iforce2d's Coordinated Stepper Movement Arduino Sketch. And my Over-Serial command protocol integrated into my Custom Arduino sketch comes from educ8s.tv. Tools: Solidworks, Python, Arduino IDE"
+  descr: "Personal Project over the 2020 Coronavirus Quarantine. Robot Control Interface is built from scratch in python using TKinter module with imbedded matplotlib mplot3d so that I could teach myself forward and inverse kinematics on a 6DoF robot arm. Robot uses NEMA 17 stepper motors for every joint besides the 2nd, where a NEMA 23 and a larger controller is necessary for greater torque. Robot control is completely open-loop. Serial data is sent over USB in order to prepare motor movement and execution commands using my custom control protocol. The basis for my custom Arduino sketch comes from iforce2d's Coordinated Stepper Movement Arduino Sketch. And my Over-Serial command protocol integrated into my Custom Arduino sketch comes from educ8s.tv. <br>Tools: Solidworks, Python, Arduino IDE <br>"
   image: 6DoF.jpg
   github: https://github.com/uynitsuj/Open6R_ARM
   website:
@@ -11,7 +11,7 @@
   Top Speed: 10.9 mph <br><br>
   Cheems is a transforming arm bot comprising a high-speed four Falcon 500 drivetrain with a shooter at the end of the large arm driven by two Falcon 500s. This year we decided to make a bot that could drive under the control panel and also shoot over tall bots. Cheems had a hopper and Power Cell manipulator that would work at any arm angle. Cheems also fashioned a passively deployed polycarbonate intake with two bumper-wide rollers, which passed balls to Cheems' indexer, allowing for the Power Cells to be organized into a single-file line and traverse to the shooter. Finally, our climb mechanism. Our climb was able to deploy in a split second because we had constant force springs on the climber so that when the arm went past a certain angle the climber ends would hit a hard stop and rapidly deploy. Then it would winch itself up using two BAG motors. <br>
   Though Cheems only had the opportunity to perform at Del Mar Regional, we are very proud of the work we put in and have learned greatly from this season. <br>
-  Tools: Solidworks"
+  Tools: Solidworks <br>"
   image: 2020.png
   github:
   website:
@@ -23,7 +23,7 @@
   Top Speed: 10.5 mph <br><br>
   Gromit has an extremely reliable and robust two stage continuous elevator, fashioning a virtual four bar linkage as the inner carriage on which both the cargo intake and the hatch panel intake are integrated. The polycarbonate cargo intake consists of wide top and bottom rollers allowing Gromit to secure cargo upon contact. The polycarbonate hatch intake consists of a pin-and-slot swiveling finger with a pusher tab allowing for hatch pickup and dropoff at unforgiving angles and horizontal displacements. The reverse 2 CIM gearboxes situated in the rear feature integrated “heely” wheels that come into contact with the ground when the robot tips backwards, allowing for control during the climbing sequence which utilizes two large pistons in the front and a rack and pinion system in the back. Gromit ranked 1st seed alliance at Monterey Bay Regional and advanced to become, for the first time in team history, an Alliance Captain at the FRC World Championship in Houston. <br>
   Awards: Quality Award - Sponsored by Motorola, 1st Seed @ Monterey Bay Regional. 33-13-0 W-L-T Record in Official Play. <br>
-  Tools: Solidworks"
+  Tools: Solidworks <br>"
   image: 2019.png
   github:
   website:
@@ -45,7 +45,7 @@
   Weight: 95 lbs <br>
   Top Speed: 9.5 mph <br><br>
   With our 2017 robot, we wanted to build a robot that excelled at the key elements of the game. Throughout numerous revisions and designs, we settled on Ferb. Ferb had a reliable scaling mechansim that efficently and effectively hooked on to the rope and scaled in just under 5 seconds. Ferb also sported an active gear mechanism that allowed for gear intake from both the loading zone and the ground, allowing us to ensure that all gears that ended up by the airship made it on. Ferb was sturdy and reliable and ended up allowing our team to become the Finalist Alliance Captain at the San Diego Regional, securing our spot at the FRC World Championship in Houston. <br>
-  Tools: Solidworks"
+  Tools: Solidworks <br>"
   image: 2017.png
   github:
   website:
