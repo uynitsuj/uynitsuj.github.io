@@ -5,99 +5,96 @@ excerpt: ""
 categories: [project]
 ---
 
-In this post, I will describe basic intuitions developing for speed-scaled scheduling and extend them to more general workloads. I will express the workload as a directed acyclic graph (DAG), where the nodes represent the jobs that need to be completed and the edges represent the precedence constraints between jobs.
 
 
-### Optimal dynamic speed scaling with 1 machine, n jobs
+### 1 Introduction
 
+In this paper we develop the forward or configuration kinematic equations for a rigid robot of 6R (6 Revolute Joints) using the Denavit-Hartenberg convention. The forward kinematics problem is concerned with the relationship between the individual joints of a robot manipulator and the position and orientation of the tool or end-effector. Formally, the forward kinematics problem is to determine the position and orientation of the end-effector, given joint variable values of the robot. The joint variables are the angles between the links in the case of revolute or rotational joints, and the link extension displacement in the case of prismatic or sliding joints. The forward kinematics problem is to be contrasted with the inverse kinematics problem, which will be explored at another time, which is concerned with the determination of values for the joint variables that achieve a desired position and orientation for the end-effector of the robot.
 
-Suppose that we have $n$ tasks of various sizes ready to be scheduled on 1 machine. We will first consider the workload case with no precedence constraints. The cost to run some task $i$ is $T_i + E_i$, where $T_i$ is the total time that $i$ needs to wait and run and $E_i = P^{-1}(s_i)$, where $P^{-1}$ is the inverse power function and $s_i$ is the speed at which task $i$ runs at. We will define $P(s) = s^2$, where $s$ is the speed; in words, this is the power to run at speed $s$. Our objective is to minimize $T+E = \sum_i T_i + E_i$. 
+### 2 Kinematics Fundamentals
 
-Let's consider an instance where $n$ jobs of size $x_1 \geq x_2 \geq \dots \geq x_n$ arrive at time 0. Then,
+Intuitively, to be able to determine both the position and orientation of a robot end effector, one must know the parameters such as link length, rotational link offset, and the two possible joint variables: link offset, and joint angle represented by symbols d, 𝛼, a, and 𝜃 respectively.  The usage of either joint variable at each link depends on the joint type at each link. This paper deals with a 6R arm, and therefore the joint angle will be variable, and the link distance will be static (there exist no P joints). To perform forward kinematics, it is beneficial to establish orthogonal x,y,z coordinate frames at each of the various robot links to keep track of the different parameters as the system configuration changes.
 
+### 3 Denavit-Hartenberg Convention
+It is important to keep in mind that the choices of the various coordinate frames at each link are not unique. Thus it is possible for different engineers to derive differing frame assignments for the links on the robot by using different conventions.
 
-$$T + E = \left(\frac{x_n}{s_n} + \frac{x_n}{s_n}P(s_n)\right) + \left(\frac{x_n}{s_n} + \frac{x_{n-1}}{s_{n-1}} + \frac{x_{n-1}}{s_{n-1}}P(s_{n-1})\right) + \dots$$
+While it is possible to carry out analysis using arbitrary frame assignments, the Denavit-Hartenberg convention makes frame selection systematic and consistent. By this convention, resultant calculations are also simplified as the DH convention follows two assumptions:
 
+(DH1) The axis xi is ⟂ to the axis zi-1
 
-$$= x_n\left(\frac{n}{s_n} + \frac{P(s_n)}{s_n}\right) + x_{n-1}\left(\frac{n-1}{s_{n-1}} + \frac{P(s_{n-1})}{s_{n-1}}\right) + \dots $$
+(DH2) The axis xi is coincident with the axis zi-1
 
-
-From above, we can observe that in this case, optimal speeds are dependent only on the number of jobs in the system, not the sizes. For each task $i$, the optimal speed occurs when 
-
-$$
-\frac{i}{s_i} = \frac{P(s_i)}{s_i}
-$$
-
-
-$$
-\frac{i}{s_i} = s_i
-$$
-
-$$
-s_i^2 = i
-$$
-
-$$
-s_i = \sqrt{i}
-$$
-
-This implies that the speed at which a task $i$ runs at is dependent on the number of remaining tasks, $i$, left on the machine. This is also true for the objective of minimizing mean response time and energy: since the speed is optimized when $\frac{1}{n}(\frac{i}{s_i}) = \frac{P(s_i)}{s_i}$, the optimal speed that each task runs at is $s_i = \sqrt{\frac{i}{n}}$. Moreover, we can accurately calculate the pseudosize of a task to be precisely the number of tasks remaining. 
-
-This relationship holds even if the tasks arrive with precedence constraints; since there is only one machine, we can simply construct a valid permutation of all the tasks such that the precedence constraints are satisfied. 
+By following these assumptions, the need to reconcile a y-axis frame along every step is removed, and the forward kinematics problem becomes much easier to solve. As a part of the DH convention, the z axis of all frames are collinear with the joint axis, being the rotational axis in the case of a (R) revolute joint, and the linear actuation axis in the case of a (P) prismatic joint.
 
 
 
-
-### Optimal dynamic speed scaling with m machines, n jobs 
-
-#### Theoretical Intuition
-
-
-We will first show that with no precedence constraints, the optimal schedule for a workload with $n$ unit size tasks is when tasks are distributed evenly across all $m$ machines. For simplicity, we will describe this using a 2-machine example. 
-
-Suppose that we have $n$ tasks of size 1 ready to be scheduled on 2 machines, $m_1, m_2$, with no precedence constraints. 
-We will have tasks indexed as $(1, 2, \dots, n)$ and define $N_1, N_2$ as the set of tasks assigned to machines $m_1, m_2$, respectively. Then, $N_1  = (1, 2, \dots, \mid N_1\mid )$ and $N_2 = (\mid N_1 \mid + 1, \dots, n )$. For each task $i$ running at speed $s_i$, we will define its power cost as $P(s_i) = s_i^2$.
+Figure  3.1: Coordinate frames attached to a 3R manipulator
+A robot manipulator with n joints will have n+1 links (Fig 3.1) since each joint connects two links. Joints are numbered 1 to n, and links are numbered 0 to n, starting from the base. By this convention, joint i connects link i-1 to link i. When joint i is actuated, link i moves.
+With these frames, it is possible to derive a transformation matrix T, that expresses the position and orientation of frame ojxjyjzj with respect to a base frame oixiyizi. Tji is represented as a product of the separate transformation matrices that are based off of each link.
 
 
-On $m_1$, we have
 
-$$
-\min_{s_k \text{for } k \in [1, \mid N_1\mid ]} \left( \sum_{i = 1}^{\mid N_1\mid } \frac{1}{\mid N_1\mid }(\frac{i}{s_i}) + \frac{P(s_i)}{s_i})\right)
-$$
+(3.2)
 
+By this definition, it is possible to derive the position and orientation of not just the end effector, but any of the frame origins established along one of the joints.
+	Each homogeneous transformation Ai is of the form
+(3.3)
 
-This implies that on $m_1$, the optimal speed in which tasks run at is $s_i = \sqrt{\frac{i}{\mid N_i\mid }}$. Likewise, on $m_2$, we have 
-
-
-$$
-\min_{s_k \text{for } k \in [\mid N_1\mid +1, n]} \left( \sum_{i = \mid N_1\mid +1}^{n} \frac{1}{\mid N_2\mid }(\frac{i}{s_i}) + \frac{P(s_i)}{s_i})\right)
-$$
-
-With re-indexing, we have 
-
-$$
-\min_{s_k \text{for } k \in [\mid N_1\mid +1, n]} \left( \sum_{i = 1}^{\mid N_2\mid } \frac{1}{\mid N_2\mid }(\frac{i + \mid N_1\mid }{s_{i+\mid N_1\mid }}) + \frac{P(s_{i+\mid N_1\mid })}{s_{i+\mid N_1\mid }})\right)
-$$
-
-This implies that on $m_2$, the optimal speed in which tasks run at is $s_{i+ \mid N_1 \mid } = \sqrt{\frac{i + \mid N_1 \mid }{\mid N_2 \mid }}$. 
-
-Our overall objective function over both machines is 
-
-$$
-\min_{s_k \text{for } k \in [1, \mid N_1\mid ]} \left( \sum_{i = 1}^{\mid N_1\mid } \frac{1}{\mid N_1\mid }(\frac{i}{s_i}) + \frac{P(s_i)}{s_i})\right) + \min_{s_k \text{for } k \in [\mid N_1\mid +1, n]} \left( \sum_{i = 1}^{\mid N_2\mid } \frac{1}{\mid N_2\mid }(\frac{i + \mid N_1\mid }{s_{i+\mid N_1\mid }}) + \frac{P(s_{i+\mid N_1\mid })}{s_{i+\mid N_1\mid }})\right) 
-$$
-
-After re-indexing, plugging in the optimal speeds and refining the objective function, we have that
-
-$$
-\min_{\mid N_1\mid , \mid N_2\mid } \sum_{i = 1}^{\mid N_1\mid } \left( \frac{i}{\mid N_1\mid }\sqrt{\frac{\mid N_1\mid }{i}} + \sqrt{\frac{i}{\mid N_1\mid }} \right) + \sum_{i =  1}^{\mid N_2\mid } \left( \frac{i}{\mid N_2\mid }\sqrt{\frac{\mid N_2\mid }{i}} + \sqrt{\frac{i}{\mid N_2\mid }} \right) 
-$$
-
-$$
-\min_{\mid N_1\mid , \mid N_2\mid } \sum_{i = 1}^{\mid N_1\mid } \left( 2\frac{i}{\mid N_1\mid } \right) + \sum_{i = \mid N_2\mid  + 1}^{n} \left( 2\frac{i}{\mid N_2\mid }  \right) 
-$$
-
-The function is minimized when $\mid N_1\mid  = \mid N_2\mid $. Moreover, we can accurately calculate the pseudosize of a task to be precisely the number of tasks remaining on its machine.
+Thus the position and orientation of the end effector with respect to the base frame is given by homogeneous transformation matrix
+H  =  Tn0 = A1 · · · An
+(3.4)
 
 
-This relationship does not hold when tasks have precedence constraints, as tasks need to rely on the completion of tasks on other machines before they start, and these constraints make the overall objective function difficult to define. This prevents us from calculating the pseudosize of a task as it is now a combination of the number of remaining tasks on its machine and other machines.
+
+
+
+### 4 Summary
+
+We may summarize the above procedure based on the D-H convention in the following algorithm for deriving the forward kinematics for any manipulator
+
+Step 4.l: Locate and label the joint axes z0, ... ,zn−1.
+Step 4.2: Establish the base frame. Set the origin anywhere on the z0-axis. The x0 and y0 axes are     chosen conveniently to form a right-hand frame. For i = 1, ... , n − 1, perform Steps 3 to 5.
+Step 4.3: Locate the origin Oi where the common normal to zi and zi−1 intersects zi. If zi intersects zi−1 locate Oi at this intersection. If zi and zi−1 are parallel, locate Oi in any convenient position along zi.
+Step 4.4: Establish xi along the common normal between zi−1 and zi through Oi, or in the direction normal to the zi−1 − zi plane if zi−1 and zi intersect.
+Step 4.5: Establish yi to complete a right-hand frame.
+Step 4.6: Establish the end-effector frame onxnynzn. Assuming the n-th joint is revolute, set zn = a along the direction zn−1. Establish the origin On conveniently along zn, preferably at the center of the gripper or at the tip of any tool that the manipulator may be carrying. Set yn = s in the direction of the gripper closure and set xn = n as s × a. If the tool is not a simple gripper set xn and yn conveniently to form a right-hand frame.
+Step 4.7: Create a table of link parameters ai, di, αi, θi
+
+
+
+Step 4.8: Form the homogeneous transformation matrices Ai by substituting the above parameters into (3.4).
+Step 4.9: Form Hn0= Tn0 = A1 · · · An. This then gives the position and orientation of the tool frame expressed in base coordinates.
+
+### 5 Specific Embodiment of DH Convention on a 6R Example 
+
+By going through the steps outlined in section 4, one may arrive at the resultant Hn0 matrix for a rigid robot with any number of joints and any combination of joint types. In this section we attempt the outlined steps 4.1 through 4.9 on a specific example of a designed 6R robotic arm.
+
+
+
+Figure 5.1: Specific embodiment of a 6R robot arm with 
+frame assignment via DH convention
+
+Figure 5.2: Link offsets and link lengths defined by a1...a8
+
+In (Fig 5.1), it is evident that steps 4.1 and 4.2 are completed, and that 4.3-4.5 are satisfied for each link. Step 4.1 is simply the convention that the z axis at any link i should be collinear with the joint axis. Step 4.2 is the establishment of the base frame, which is grounded in our case and defined as the origin at x0y0z0. Steps 4.3-4.5 are simply the assumptions of the Denavit-Hartenberg convention stated by DH1 and DH2 in section 3. Step 4.6 is also satisfied and is illustrated in (Fig 5.1) and the end effector frame origin is assigned as the point coplanar to and centered on the actuator surface. There exists no explicit joint at frame x6y6z6, however, it is actuated by Axis6. 
+
+
+Table 5.3: Denavit-Hartenberg table for the specific embodiment of a 6R arm
+
+By completing Table 5.3 we have completed step 4.7. Notice that frame 0 of x0y0z0 is not present, as all of the parameters within the table are based on the relation between frame i, and frame i-1. Thus, with frame 0 having no preceding frame to reference, it is not present within the table, but instead we look to establish parameters of frame 1 in relation to frame 0 in the first data row of the table. 
+Since the robot is of 6R, we must include variable parameters that account for the freely rotating joints. These variables are present in the 𝜃i column, since per the D-H convention, 𝜃i is a variable if joint i is revolute. To verify that the table was done correctly, all joint variables (𝜃1...𝜃6) as well as all link lengths (di) and link offsets (ai) (a1-a8) should be accounted for in the table.
+Next, we must establish each transformation matrix Ai, which describes the transformational relation between frame i, and frame i-1, for each frame. This becomes difficult to compute by hand so we may use computational tools such as python to aid us.
+
+
+Figure 5.4 & 5.5: Translation of transformation matrix Ai into a python function
+
+Using the determined matrices for each frame, we may then dot them all together in the order of A1·  ⋯  ·A6 to determine transform matrix H60, which describes the end effector position and orientation in relation to the base frame.
+
+
+Figure 5.6: Solidworks model with measurement of end effector origin relative to base frame origin. Rounded measurements, X,Y,Z: (6.3, 40.5, 19.2) in cm
+
+
+Figure 5.7: Python console output with resultant H60 matrix mentioned by equation (3.4)
+Notice the first 3 entries of the last column of matrix, that are the X,Y,Z components of frame x6y6z6 ; that is, X,Y,Z: (6.3, 40.5, 19.3) in cm
+
+The numbers match closely! (Variance is due to hand-placed and orientated arm links in CAD model). The -6.3cm value in the python console is correctly negative. Base frame (grounded frame) utilizes an x0 axis frame pointing in the opposite direction (Fig 5.6). As detailed in (Fig 5.7), end effector position is detailed by the first 3 entries of the final column of the matrix. End effector orientation is reconciled by the first 3x3 rows and columns of the matrix.
