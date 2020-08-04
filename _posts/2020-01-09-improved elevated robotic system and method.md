@@ -4,7 +4,7 @@ title:  "Improved elevated robotic system and method"
 excerpt: "Discussion of new ceiling mounted robotic system."
 categories: [internship]
 ---
-##Elevated Robotic Module System Mechanical Design
+## Elevated Robotic Module System Mechanical Design
 
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
 productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
@@ -83,7 +83,7 @@ In an exemplary embodiment, shoulder bolts may be used to retain a 3d printed wh
 rather than regular bolts due to its smooth surface, allowing for better fit of the bearing inside races
 compared to bolts with thread all along its body.
 
-##Elevated Robotic Module System Control
+## Elevated Robotic Module System Control
 
 An exemplary control mechanism is comprised of a SISO (single input single output) system--input is the
 voltage applied to the motor and the output is the linear position of the module on the track. This highly
