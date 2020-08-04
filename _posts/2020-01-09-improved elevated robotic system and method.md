@@ -20,7 +20,7 @@ robotics systems exist with varying mechanical designs and control mechanisms to
 elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
 provides smooth and efficient traversal along an elevated track.
 
-## Elevated Robotic Module Chassis Mechanical Design
+### Elevated Robotic Module Chassis Mechanical Design
 
 In an exemplary embodiment, an elevated robotic module traverses along a T-extrusion track as shown in
 the following figure.
@@ -86,7 +86,7 @@ In an exemplary embodiment, shoulder bolts may be used to retain a 3d printed wh
 rather than regular bolts due to its smooth surface, allowing for better fit of the bearing inside races
 compared to bolts with thread all along its body.
 
-## Elevated Robotic Module System Control
+### Elevated Robotic Module System Control
 
 An exemplary control mechanism is comprised of a SISO (single input single output) system--input is the
 voltage applied to the motor and the output is the linear position of the module on the track. This highly
