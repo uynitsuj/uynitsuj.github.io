@@ -4,8 +4,6 @@ title:  "Improved elevated robotic system and method"
 excerpt: "Discussion of new ceiling mounted robotic system."
 categories: [internship]
 ---
-## Elevated Robotic Module System Mechanical Design
-
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
 productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
 vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
@@ -21,7 +19,9 @@ while still not alleviating the potential for a sense of obtrusiveness on the pa
 robotics systems exist with varying mechanical designs and control mechanisms to traversal along an
 elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
 provides smooth and efficient traversal along an elevated track.
-Elevated Robotic Module Chassis Mechanical Design
+
+## Elevated Robotic Module Chassis Mechanical Design
+
 In an exemplary embodiment, an elevated robotic module traverses along a T-extrusion track as shown in
 the following figure.
 

@@ -4,6 +4,26 @@
   github: https://github.com/uynitsuj/Open6R_ARM
   website:
 
+- name: Elevated Robotic Assistive Device
+  descr: "Since the advent of robotic systems and devices, the primary application focus has been with enhancing
+          productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
+          vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
+          and disbursement, and crop harvesting to name a few. Robotic assistance devices have also been
+          deployed in military applications employing various form factors (e.g. tanks, unmanned aerial vehicles)
+          and various levels of artificial intelligence. The popularity of robotic assistance devices in personal and
+          domestic markets comparably have been primarily confined to toys including flying devices (e.g. drones)
+          and cleaning devices (e.g. carpet or pool cleaners). Consequently, these devices typically occupy space in
+          the open air or on the ground. While floor-based mobile robots (e.g. telepresence robots) may have great
+          potential for automating processes and assisting people (i.e. the disabled and infirmed or home/industrial
+          security), their need to navigate around objects (people, furniture, stairs, pets..) makes them expensive
+          while still not alleviating the potential for a sense of obtrusiveness on the part of the users. Elevated
+          robotics systems exist with varying mechanical designs and control mechanisms to traversal along an
+          elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
+          provides smooth and efficient traversal along an elevated track."
+  image: ERAD.JPG
+  github:
+  website:
+
 - name: 2020 FRC Robot - Cheems the Harvester of Souls
   descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
   Dimensions: 25&#34; W x 28&#34; L x 44.7&#34; H <br>
