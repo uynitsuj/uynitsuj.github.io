@@ -54,12 +54,8 @@ Instead of having either a vertical or horizontal surface rubbing on the track a
 angling the wheels and creating grooved wheels, two wheels are effectively created, one with rolling
 motion on the top surface, and another also with rolling motion on the side surface, with neither
 producing excessive kinetic friction. The groove wheel design allows both tread surfaces to “peel away”
-from contact with the track faces, creating a thinner contact patch than lipped designs would allow. The
-
-grip wheels that drove the carriage from the underside were also situated as close as possible to the 3D-
-Printed groove wheels. This would mitigate any bowing and deflection of the groove wheels while also
-
-better securing the contact from both wheels. One option for robust v-groove wheel mounting was 45
+from contact with the track faces, creating a thinner contact patch than lipped designs would allow. The grip wheels that drove the carriage from the underside were also situated as close as possible to the 3D-
+Printed groove wheels. This would mitigate any bowing and deflection of the groove wheels while also better securing the contact from both wheels. One option for robust v-groove wheel mounting was 45
 degree metal v-groove bearings.
 However, a 45 degree angle may be too shallow of an angle, and providing a steeper angle might allow
 for larger loads on the base carriage without excessive torsional stress on the mounted shoulder bolts and
@@ -126,6 +122,7 @@ past commands, a sequential order of the hand swipes is retained.
 Using a simple list or dynamic buffer is not memory efficient when resized or when their elements are
 rearranged/manipulated. Instead a Fixed-Size FIFO (first in first out) ring buffer is used. The explicit
 advantages of this approach are many:
+
 First-in First-out behavior gives a temporal priority to the newer commands. In the case that all of the
 slots in the buffer are used, old commands are popped out of the buffer before newer commands
 The fixed size of the ring buffer allows better management processing constraints (namely memory),
@@ -140,6 +137,7 @@ The existence of a ring buffer allows multiple processes to cleanly control the 
 without interference between them. For instance, the hand gesture recognition pipeline can add a drive
 signal to the ring buffer, and then some other process (like a direct drive command) can also add to the
 ring buffer, and they will get executed sequentially, retaining the drive signal sent by both processes.
+
 It should be noted that the StateTracker Node in the diagram is a purely heuristic layer that allows setting
 a priority to some processes in terms of executing a drive signal. In a deployment scenario, it is likely that
 the StateTracker layer gets shifted up to a higher abstraction level before the drive signal gets added to the
@@ -152,6 +150,7 @@ position delta is defined from the setpoint and whenever inside that tolerance, 
 have plateaued. In an exemplary embodiment the elevated robotics module position is marked as
 plateaued within tolerance for more than 5 iterations of the main While loop, then the next drive signal in
 the ring buffer is executed.
+
 The Position/Velocity Control algorithms are the common Feedforward + PID Feedback approach to
 controlling a motor’s angular position and angular velocity. The control algorithm effectively drives the
 elevated robotics module towards the desired drive signal position at the designated velocity setpoint. The
