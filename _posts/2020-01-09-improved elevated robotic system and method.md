@@ -4,7 +4,6 @@ title:  "Improved elevated robotic system and method"
 excerpt: "Discussion of new ceiling mounted robotic system."
 categories: [internship]
 ---
-IMPROVED ELEVATED ROBOTIC SYSTEM AND METHOD
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
 productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
 vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
@@ -23,6 +22,9 @@ provides smooth and efficient traversal along an elevated track.
 Elevated Robotic Module Chassis Mechanical Design
 In an exemplary embodiment, an elevated robotic module traverses along a T-extrusion track as shown in
 the following figure.
+
+![Annotation 2020-08-03 205741]({{ site.url }}/img/Post1/Annotation 2020-08-03 205741.png)
+{: .pull-right}
 
 In an exemplary embodiment, the rigidity of the mounting solution of the base carriage to the track
 improves stability and efficient traversal along the track.
