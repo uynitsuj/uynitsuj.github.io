@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Improved Elevated Robotic System and Method"
-excerpt: "Discussion of new and improved ceiling mounted robotic system."
+excerpt: "Discussion of new and improved ceiling mounted robotic system"
 categories: [internship]
 ---
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing

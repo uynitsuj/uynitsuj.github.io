@@ -20,13 +20,13 @@ It is important to keep in mind that the choices of the various coordinate frame
 
 While it is possible to carry out analysis using arbitrary frame assignments, the Denavit-Hartenberg convention makes frame selection systematic and consistent. By this convention, resultant calculations are also simplified as the DH convention follows two assumptions:
 
-(DH1) The axis xi is ⟂ to the axis zi-1
+(DH1) The axis xi is ⟂ to the axis \(z_i-1\)
 
-(DH2) The axis xi is coincident with the axis zi-1
+(DH2) The axis xi is coincident with the axis \(z_i-1\)
 
 By following these assumptions, the need to reconcile a y-axis frame along every step is removed, and the forward kinematics problem becomes much easier to solve. As a part of the DH convention, the z axis of all frames are collinear with the joint axis, being the rotational axis in the case of a (R) revolute joint, and the linear actuation axis in the case of a (P) prismatic joint.
 
-
+![Annotation 2020-08-03 221946]({{ site.url }}/img/Post2/Annotation 2020-08-03 221946.png)
 
 Figure  3.1: Coordinate frames attached to a 3R manipulator
 A robot manipulator with n joints will have n+1 links (Fig 3.1) since each joint connects two links. Joints are numbered 1 to n, and links are numbered 0 to n, starting from the base. By this convention, joint i connects link i-1 to link i. When joint i is actuated, link i moves.
@@ -44,25 +44,28 @@ Thus the position and orientation of the end effector with respect to the base f
 H  =  Tn0 = A1 · · · An
 (3.4)
 
-
-
-
-
 ### 4 Summary
 
 We may summarize the above procedure based on the D-H convention in the following algorithm for deriving the forward kinematics for any manipulator
 
 Step 4.l: Locate and label the joint axes z0, ... ,zn−1.
+
 Step 4.2: Establish the base frame. Set the origin anywhere on the z0-axis. The x0 and y0 axes are     chosen conveniently to form a right-hand frame. For i = 1, ... , n − 1, perform Steps 3 to 5.
+
 Step 4.3: Locate the origin Oi where the common normal to zi and zi−1 intersects zi. If zi intersects zi−1 locate Oi at this intersection. If zi and zi−1 are parallel, locate Oi in any convenient position along zi.
+
 Step 4.4: Establish xi along the common normal between zi−1 and zi through Oi, or in the direction normal to the zi−1 − zi plane if zi−1 and zi intersect.
+
 Step 4.5: Establish yi to complete a right-hand frame.
+
 Step 4.6: Establish the end-effector frame onxnynzn. Assuming the n-th joint is revolute, set zn = a along the direction zn−1. Establish the origin On conveniently along zn, preferably at the center of the gripper or at the tip of any tool that the manipulator may be carrying. Set yn = s in the direction of the gripper closure and set xn = n as s × a. If the tool is not a simple gripper set xn and yn conveniently to form a right-hand frame.
+
 Step 4.7: Create a table of link parameters ai, di, αi, θi
 
 
 
 Step 4.8: Form the homogeneous transformation matrices Ai by substituting the above parameters into (3.4).
+
 Step 4.9: Form Hn0= Tn0 = A1 · · · An. This then gives the position and orientation of the tool frame expressed in base coordinates.
 
 ### 5 Specific Embodiment of DH Convention on a 6R Example 
