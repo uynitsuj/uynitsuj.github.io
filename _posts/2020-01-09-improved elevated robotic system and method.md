@@ -71,13 +71,13 @@ effective thickness works for the same reason that tape measures use curved prof
 remain extended at longer distances.
 
 ![Annotation 2020-08-03 205828]({{ site.url }}/img/Post1/Annotation 2020-08-03 205828.png)
-Base + 3DP Wheel
+<div align="center">Base + 3DP Wheel</div>
 
 ![Annotation 2020-08-03 205841]({{ site.url }}/img/Post1/Annotation 2020-08-03 205841.png)
-Base Side View
+<div align="center">Base Side View</div>
 
 ![Annotation 2020-08-03 205852]({{ site.url }}/img/Post1/Annotation 2020-08-03 205852.png)
-Main Carriage Assembly Exploded View
+<div align="center">Main Carriage Assembly Exploded View</div>
 
 In an exemplary embodiment, shoulder bolts may be used to retain a 3d printed wheel+bearing combo
 rather than regular bolts due to its smooth surface, allowing for better fit of the bearing inside races
