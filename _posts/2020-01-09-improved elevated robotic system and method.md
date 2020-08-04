@@ -36,10 +36,13 @@ contact with the thin side-face of the extrusion. Out of these iterations, the d
 best were the vertically oriented wheels, providing consistent contact even during motion.
 
 To secure the carriage to the track, some of the vertical-wheel iterations would have lips on the treads
-which would hang over the edge and lock the carriage laterally. In the horizontally oriented wheels, the
+which would hang over the edge and lock the carriage laterally (Fig. 1). In the horizontally oriented wheels, the
 carriage was already laterally locked by nature of the wheel contact to the track, and lips were added on
-both ends of the treads to lock the carriage in the vertical orientation. Neither of these solutions proved
-particularly elegant; the friction component from the lip would increase if the lip faces were pressured
+both ends of the treads to lock the carriage in the vertical orientation. 
+
+![Annotation 2020-08-03 213723]({{ site.url }}/img/Post1/Annotation 2020-08-03 213723.png)
+
+Neither of these solutions proved particularly elegant; the friction component from the lip would increase if the lip faces were pressured
 onto the surface. This meant that tight and fully-secure contact with lip-wheel designs was inherently not
 feasible; there would always exist a bit of slop between the lip faces and the extrusion faces, resulting in a
 carriage that could be shifted around while the track remained static.
