@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Improved elevated robotic system and method"
-excerpt: "Discussion of new ceiling mounted robotic system."
+title:  "Improved Elevated Robotic System and Method"
+excerpt: "Discussion of new and improved ceiling mounted robotic system."
 categories: [internship]
 ---
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
@@ -20,7 +20,7 @@ robotics systems exist with varying mechanical designs and control mechanisms to
 elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
 provides smooth and efficient traversal along an elevated track.
 
-![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png)
+![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png){:width=50%}
 
 ### Elevated Robotic Module Chassis Mechanical Design
 

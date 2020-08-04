@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Basic Mathematical Intuitions for Speed-Scaled Task Scheduling"
+title:  "Forward Kinematics: Denavit-Hartenberg Convention on a 6R Robotic Arm Example"
 excerpt: ""
-categories: [internship]
+categories: [project]
 ---
 
 In this post, I will describe basic intuitions developing for speed-scaled scheduling and extend them to more general workloads. I will express the workload as a directed acyclic graph (DAG), where the nodes represent the jobs that need to be completed and the edges represent the precedence constraints between jobs.
