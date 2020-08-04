@@ -38,7 +38,7 @@ best were the vertically oriented wheels, providing consistent contact even duri
 To secure the carriage to the track, some of the vertical-wheel iterations would have lips on the treads
 which would hang over the edge and lock the carriage laterally (Fig. 1). In the horizontally oriented wheels, the
 carriage was already laterally locked by nature of the wheel contact to the track, and lips were added on
-both ends of the treads to lock the carriage in the vertical orientation. 
+both ends of the treads to lock the carriage in the vertical orientation (Fig. 2). 
 
 ![Annotation 2020-08-03 213723]({{ site.url }}/img/Post1/Annotation 2020-08-03 213723.png)
 
