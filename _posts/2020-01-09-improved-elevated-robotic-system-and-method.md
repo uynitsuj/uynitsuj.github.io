@@ -20,7 +20,7 @@ robotics systems exist with varying mechanical designs and control mechanisms to
 elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
 provides smooth and efficient traversal along an elevated track.
 
-![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png){:width=50%}
+<img src="{{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png }}" alt="{{ Annotation 2020-08-03 214351.png }}" width="400">
 
 ### Elevated Robotic Module Chassis Mechanical Design
 
