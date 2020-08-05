@@ -3,7 +3,7 @@
   background-color: $background-color;
   position: fixed;
   text-align: center;
-  width: 75%;
+  width: 100%;
   min-height: 400px;
   padding: 30px 15px 20px;
   z-index: 1;
@@ -14,7 +14,7 @@
   @include media-query($medium-screen) {
     height: 100vh;
     position: initial;
-    width: 75%;
+    width: 100%;
   }
 }
 .cover-card {
