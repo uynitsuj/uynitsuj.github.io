@@ -28,7 +28,7 @@ By following these assumptions, the need to reconcile a y-axis frame along every
 
 ![Annotation 2020-08-03 221946]({{ site.url }}/img/Post2/Annotation 2020-08-03 221946.png)
 
-Figure  3.1: Coordinate frames attached to a 3R manipulator
+*Figure  3.1: Coordinate frames attached to a 3R manipulator*
 
 A robot manipulator with n joints will have n+1 links (Fig 3.1) since each joint connects two links. Joints are numbered 1 to n, and links are numbered 0 to n, starting from the base. By this convention, joint i connects link i-1 to link i. When joint i is actuated, link i moves.
 With these frames, it is possible to derive a transformation matrix T, that expresses the position and orientation of frame ojxjyjzj with respect to a base frame oixiyizi. Tji is represented as a product of the separate transformation matrices that are based off of each link.

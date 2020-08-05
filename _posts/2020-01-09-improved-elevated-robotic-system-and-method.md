@@ -50,6 +50,7 @@ feasible; there would always exist a bit of slop between the lip faces and the e
 carriage that could be shifted around while the track remained static.
 In an exemplary embodiment, the friction issue is bypassed completely and instead, significant contact
 with the top corner edges of the track is created with angled groove wheels.
+
 Instead of having either a vertical or horizontal surface rubbing on the track as the carriage traverses, by
 angling the wheels and creating grooved wheels, two wheels are effectively created, one with rolling
 motion on the top surface, and another also with rolling motion on the side surface, with neither
