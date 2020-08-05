@@ -7,12 +7,19 @@
                 <img src="{{ site.url }}/img/robots/{{ project.image }}" alt="{{ site.url }}/img/robots/{{ project.image }}" width="400">
                 <p style="margin: 0">{{ project.descr }}</p>
 
+                {% if project.youtube %}
+                <iframe width="500"
+                src="{{ project.youtube }}">
+                </iframe>
+                {% endif %}
                 {% if project.github %}
                 <a href="{{ project.github }} "><i class="fa fa-fw fa-github"></i>GitHub</a>
                 {% endif %}
                 {% if project.website %}
                 <a href="{{ project.website }} "><i class="fa fa-fw fa-home"></i>Homepage</a>
                 {% endif %}
+                {% if project.youtube %}
+
 
             </div>
     </div>
