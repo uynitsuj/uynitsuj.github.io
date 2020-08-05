@@ -3,7 +3,7 @@
   image: 6DoF.jpg
   github: https://github.com/uynitsuj/Open6R_ARM
   website:
-  youtube: https://youtu.be/CedyWQmqiJ0
+  youtube: https://www.youtube.com/embed/CedyWQmqiJ0
 
 - name: Elevated Robotic Assistive Device
   descr: "Since the advent of robotic systems and devices, the primary application focus has been with enhancing
@@ -38,7 +38,7 @@
   image: 2020.png
   github:
   website:
-  youtube: https://youtu.be/iFeYwJSkDD8
+  youtube: https://www.youtube.com/embed/iFeYwJSkDD8
 
 - name: 2019 FRC Robot - Gromit
   descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
@@ -51,7 +51,7 @@
   image: 2019.png
   github:
   website:
-  youtube: https://youtu.be/e-3wpLIAMWE
+  youtube: https://www.youtube.com/embed/e-3wpLIAMWE
 
 - name: 2018 FRC Robot - Guido
   descr: "Affiliation: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
@@ -63,7 +63,7 @@
   image: 2018.png
   github:
   website:
-  youtube: 
+  youtube:
 
 - name: 2017 FRC Robot - Ferb
   descr: "Affiliation: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
