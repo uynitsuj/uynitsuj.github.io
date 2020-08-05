@@ -20,7 +20,7 @@ It is important to keep in mind that the choices of the various coordinate frame
 
 While it is possible to carry out analysis using arbitrary frame assignments, the Denavit-Hartenberg convention makes frame selection systematic and consistent. By this convention, resultant calculations are also simplified as the DH convention follows two assumptions:
 
-(DH1) The axis xi is ⟂ to the axis \(z_{i-1}\)
+(DH1) The axis xi is ⟂ to the axis \\(z_{i-1}\\)
 
 (DH2) The axis xi is coincident with the axis \(z_{i-1}\)
 
@@ -33,7 +33,12 @@ Figure  3.1: Coordinate frames attached to a 3R manipulator
 A robot manipulator with n joints will have n+1 links (Fig 3.1) since each joint connects two links. Joints are numbered 1 to n, and links are numbered 0 to n, starting from the base. By this convention, joint i connects link i-1 to link i. When joint i is actuated, link i moves.
 With these frames, it is possible to derive a transformation matrix T, that expresses the position and orientation of frame ojxjyjzj with respect to a base frame oixiyizi. Tji is represented as a product of the separate transformation matrices that are based off of each link.
 
-(3.2)
+$$\begin{array}{c}
+T_{j}^{i}=A_{i+1} A_{i+2} \ldots A_{j-1} A_{j} \text { if } i<j \\
+T_{j}^{i}=I \text { if } i=j \\
+T_{j}^{i}=\left(T_{i}^{j}\right)^{-1} \text {if } j>i
+\label{3.2}
+\end{array}$$
 
 By this definition, it is possible to derive the position and orientation of not just the end effector, but any of the frame origins established along one of the joints.
 	Each homogeneous transformation Ai is of the form
@@ -67,23 +72,23 @@ Step 4.8: Form the homogeneous transformation matrices Ai by substituting the ab
 
 Step 4.9: Form Hn0= Tn0 = A1 · · · An. This then gives the position and orientation of the tool frame expressed in base coordinates.
 
-### 5 Specific Embodiment of DH Convention on a 6R Example 
+### 5 Specific Embodiment of DH Convention on a 6R Example
 
 By going through the steps outlined in section 4, one may arrive at the resultant Hn0 matrix for a rigid robot with any number of joints and any combination of joint types. In this section we attempt the outlined steps 4.1 through 4.9 on a specific example of a designed 6R robotic arm.
 
 
 
-Figure 5.1: Specific embodiment of a 6R robot arm with 
+Figure 5.1: Specific embodiment of a 6R robot arm with
 frame assignment via DH convention
 
 Figure 5.2: Link offsets and link lengths defined by a1...a8
 
-In (Fig 5.1), it is evident that steps 4.1 and 4.2 are completed, and that 4.3-4.5 are satisfied for each link. Step 4.1 is simply the convention that the z axis at any link i should be collinear with the joint axis. Step 4.2 is the establishment of the base frame, which is grounded in our case and defined as the origin at x0y0z0. Steps 4.3-4.5 are simply the assumptions of the Denavit-Hartenberg convention stated by DH1 and DH2 in section 3. Step 4.6 is also satisfied and is illustrated in (Fig 5.1) and the end effector frame origin is assigned as the point coplanar to and centered on the actuator surface. There exists no explicit joint at frame x6y6z6, however, it is actuated by Axis6. 
+In (Fig 5.1), it is evident that steps 4.1 and 4.2 are completed, and that 4.3-4.5 are satisfied for each link. Step 4.1 is simply the convention that the z axis at any link i should be collinear with the joint axis. Step 4.2 is the establishment of the base frame, which is grounded in our case and defined as the origin at x0y0z0. Steps 4.3-4.5 are simply the assumptions of the Denavit-Hartenberg convention stated by DH1 and DH2 in section 3. Step 4.6 is also satisfied and is illustrated in (Fig 5.1) and the end effector frame origin is assigned as the point coplanar to and centered on the actuator surface. There exists no explicit joint at frame x6y6z6, however, it is actuated by Axis6.
 
 
 Table 5.3: Denavit-Hartenberg table for the specific embodiment of a 6R arm
 
-By completing Table 5.3 we have completed step 4.7. Notice that frame 0 of x0y0z0 is not present, as all of the parameters within the table are based on the relation between frame i, and frame i-1. Thus, with frame 0 having no preceding frame to reference, it is not present within the table, but instead we look to establish parameters of frame 1 in relation to frame 0 in the first data row of the table. 
+By completing Table 5.3 we have completed step 4.7. Notice that frame 0 of x0y0z0 is not present, as all of the parameters within the table are based on the relation between frame i, and frame i-1. Thus, with frame 0 having no preceding frame to reference, it is not present within the table, but instead we look to establish parameters of frame 1 in relation to frame 0 in the first data row of the table.
 Since the robot is of 6R, we must include variable parameters that account for the freely rotating joints. These variables are present in the 𝜃i column, since per the D-H convention, 𝜃i is a variable if joint i is revolute. To verify that the table was done correctly, all joint variables (𝜃1...𝜃6) as well as all link lengths (di) and link offsets (ai) (a1-a8) should be accounted for in the table.
 Next, we must establish each transformation matrix Ai, which describes the transformational relation between frame i, and frame i-1, for each frame. This becomes difficult to compute by hand so we may use computational tools such as python to aid us.
 
