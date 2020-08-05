@@ -82,11 +82,10 @@ s_{\theta_{i}} & c_{\theta_{i}} c_{\alpha_{i}} & -c_{\theta_{i}} s_{\alpha_{i}} 
 
 Thus the position and orientation of the end effector with respect to the base frame is given by homogeneous transformation matrix
 
-$$
-\begin{array}{c}
+$$\begin{aligned}\begin{array}{c}
 H=T_{n}^0=A_{1} \cdots A_{n}
-\end{array}
-$$
+\end{array}\end{aligned}$$
+
 <div align="right"> <i>(3.4)</i> </div>
 
 ### 4 Summary
