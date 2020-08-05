@@ -12,9 +12,9 @@
     padding: 30px;
   }
   @include media-query($medium-screen) {
-    height: 50vh;
+    height: 100vh;
     position: initial;
-    width: 100%;
+    width: 75%;
   }
 }
 .cover-card {
