@@ -27,18 +27,20 @@ While it is possible to carry out analysis using arbitrary frame assignments, th
 By following these assumptions, the need to reconcile a y-axis frame along every step is removed, and the forward kinematics problem becomes much easier to solve. As a part of the DH convention, the z axis of all frames are collinear with the joint axis, being the rotational axis in the case of a (R) revolute joint, and the linear actuation axis in the case of a (P) prismatic joint.
 
 ![Annotation 2020-08-03 221946]({{ site.url }}/img/Post2/Annotation 2020-08-03 221946.png)
+<div align="center"> *Figure  3.1: Coordinate frames attached to a 3R manipulator* </div>
 
-*Figure  3.1: Coordinate frames attached to a 3R manipulator*
 
 A robot manipulator with n joints will have n+1 links (Fig 3.1) since each joint connects two links. Joints are numbered 1 to n, and links are numbered 0 to n, starting from the base. By this convention, joint i connects link i-1 to link i. When joint i is actuated, link i moves.
 With these frames, it is possible to derive a transformation matrix T, that expresses the position and orientation of frame ojxjyjzj with respect to a base frame oixiyizi. Tji is represented as a product of the separate transformation matrices that are based off of each link.
 
-$$\begin{array}{c}
+$$
+\begin{array}{c}
 T_{j}^{i}=A_{i+1} A_{i+2} \ldots A_{j-1} A_{j} \text { if } i<j \\
 T_{j}^{i}=I \text { if } i=j \\
 T_{j}^{i}=\left(T_{i}^{j}\right)^{-1} \text {if } j>i
-\label{(3.2)}
-\end{array}$$
+\end{array}
+$$
+<div align="right"> *(3.2)* </div>
 
 By this definition, it is possible to derive the position and orientation of not just the end effector, but any of the frame origins established along one of the joints.
 	Each homogeneous transformation Ai is of the form
