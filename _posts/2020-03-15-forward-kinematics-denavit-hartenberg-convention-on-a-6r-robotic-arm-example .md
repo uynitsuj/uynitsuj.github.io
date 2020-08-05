@@ -96,7 +96,7 @@ We may summarize the above procedure based on the D-H convention in the followin
 
 **Step 4.2:** Establish the base frame. Set the origin anywhere on the $z_0$-axis. The $x_0$ and $y_0$ axes are     chosen conveniently to form a right-hand frame. For $i = 1, ... , n − 1$, perform Steps 3 to 5.
 
-**Step 4.3:** Locate the origin Oi where the common normal to $z_i$ and $z_{i−1}$ intersects $z_i$. If $z_i$ intersects $z_{i−1}$ locate $O_i$ at this intersection. If $z_i$ and $z_{i−1}$ are parallel, locate $O_i$ in any convenient position along $z_i$.
+**Step 4.3:** Locate the origin $O_i$ where the common normal to $z_i$ and $z_{i−1}$ intersects $z_i$. If $z_i$ intersects $z_{i−1}$ locate $O_i$ at this intersection. If $z_i$ and $z_{i−1}$ are parallel, locate $O_i$ in any convenient position along $z_i$.
 
 **Step 4.4:** Establish $x_i$ along the common normal between $z_{i−1}$ and $z_i$ through $O_i$, or in the direction normal to the $z_{i−1} − z_i$ plane if $z_{i−1}$ and $z_i$ intersect.
 
@@ -126,7 +126,7 @@ frame assignment via DH convention </i> </div>
 ![Annotation 2020-08-03 222307]({{ site.url }}\img\Post2\Annotation 2020-08-03 222307.png)
 <div align="center"> <i> Figure Figure 5.2: Link offsets and link lengths defined by a1...a8 </i> </div>
 
-In *(Fig 5.1)*, it is evident that steps 4.1 and 4.2 are completed, and that 4.3-4.5 are satisfied for each link. Step 4.1 is simply the convention that the z axis at any link *i* should be collinear with the joint axis. Step 4.2 is the establishment of the base frame, which is grounded in our case and defined as the origin at $x_0y_0z_0$. Steps 4.3-4.5 are simply the assumptions of the Denavit-Hartenberg convention stated by **DH1** and **DH2** in section 3. Step 4.6 is also satisfied and is illustrated in (Fig 5.1) and the end effector frame origin is assigned as the point coplanar to and centered on the actuator surface. There exists no explicit joint at frame $x_6y_6z_6$, however, it is actuated by Axis6.
+In *(Fig 5.1)*, it is evident that steps 4.1 and 4.2 are completed, and that 4.3-4.5 are satisfied for each link. Step 4.1 is simply the convention that the z axis at any link *i* should be collinear with the joint axis. Step 4.2 is the establishment of the base frame, which is grounded in our case and defined as the origin at $x_0y_0z_0$. Steps 4.3-4.5 are simply the assumptions of the Denavit-Hartenberg convention stated by **DH1** and **DH2** in section 3. Step 4.6 is also satisfied and is illustrated in *(Fig 5.1)* and the end effector frame origin is assigned as the point coplanar to and centered on the actuator surface. There exists no explicit joint at frame $x_6y_6z_6$, however, it is actuated by Axis6.
 $a_i, d_i, α_i, θ_i$
 
 $i$(Frame)  |$θ_i$   |$α_i$   |$a_i$   |$d_i$  
@@ -140,11 +140,11 @@ $i$(Frame)  |$θ_i$   |$α_i$   |$a_i$   |$d_i$
 
 <div align="center"> <i> Table 5.3: Denavit-Hartenberg table for the specific embodiment of a 6R arm </i> </div>
 
-By completing Table 5.3 we have completed step 4.7. Notice that frame 0 of $x_0y_0z_0$ is not present, as all of the parameters within the table are based on the relation between frame $i$, and frame $i-1$. Thus, with frame 0 having no preceding frame to reference, it is not present within the table, but instead we look to establish parameters of frame 1 in relation to frame 0 in the first data row of the table.
+By completing Table 5.3 we have completed step *4.7*. Notice that frame 0 of $x_0y_0z_0$ is not present, as all of the parameters within the table are based on the relation between frame $i$, and frame $i-1$. Thus, with frame 0 having no preceding frame to reference, it is not present within the table, but instead we look to establish parameters of frame 1 in relation to frame 0 in the first data row of the table.
 
 Since the robot is of 6R, we must include variable parameters that account for the freely rotating joints. These variables are present in the $θ_i$ column, since per the D-H convention, $θ_i$ is a variable if joint $i$ is revolute. To verify that the table was done correctly, all joint variables ( $θ_1$ ... $θ_6$ ) as well as all link lengths ($d_i$) and link offsets ($a_i$) (a1-a8) should be accounted for in the table.
 
-Next, we must establish each transformation matrix $A_i$, which describes the transformational relation between frame i, and frame i-1, for each frame. This becomes difficult to compute by hand so we may use computational tools such as python to aid us.
+Next, we must establish each transformation matrix $A_i$, which describes the transformational relation between frame $i$, and frame $i-1$, for each frame. This becomes difficult to compute by hand so we may use computational tools such as python to aid us.
 
 $$\begin{aligned}\left[\begin{array}{cccc}
 c_{\theta_{i}} & -s_{\theta_{i}} c_{a_{i}} & s_{\theta_{i}} s_{\alpha_{i}} & a_{i} c_{\theta_{i}} \\
