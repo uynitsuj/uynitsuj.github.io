@@ -20,7 +20,7 @@ robotics systems exist with varying mechanical designs and control mechanisms to
 elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
 provides smooth and efficient traversal along an elevated track.
 
-![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png){:height="50%" width="50%"} 
+![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png){:height="50%" width="50%"}
 
 ### Elevated Robotic Module Chassis Mechanical Design
 
@@ -40,7 +40,7 @@ best were the vertically oriented wheels, providing consistent contact even duri
 To secure the carriage to the track, some of the vertical-wheel iterations would have lips on the treads
 which would hang over the edge and lock the carriage laterally (Fig. 1). In the horizontally oriented wheels, the
 carriage was already laterally locked by nature of the wheel contact to the track, and lips were added on
-both ends of the treads to lock the carriage in the vertical orientation (Fig. 2). 
+both ends of the treads to lock the carriage in the vertical orientation (Fig. 2).
 
 ![Annotation 2020-08-03 213723]({{ site.url }}/img/Post1/Annotation 2020-08-03 213723.png)
 
@@ -54,18 +54,19 @@ Instead of having either a vertical or horizontal surface rubbing on the track a
 angling the wheels and creating grooved wheels, two wheels are effectively created, one with rolling
 motion on the top surface, and another also with rolling motion on the side surface, with neither
 producing excessive kinetic friction. The groove wheel design allows both tread surfaces to “peel away”
-from contact with the track faces, creating a thinner contact patch than lipped designs would allow. The grip wheels that drove the carriage from the underside were also situated as close as possible to the 3D-
-Printed groove wheels. This would mitigate any bowing and deflection of the groove wheels while also better securing the contact from both wheels. One option for robust v-groove wheel mounting was 45
-degree metal v-groove bearings.
+from contact with the track faces, creating a thinner contact patch than lipped designs would allow. The grip wheels that drove the carriage from the underside were also situated as close as possible to the 3D-Printed groove wheels. This would mitigate any bowing and deflection of the groove wheels while also better securing the contact from both wheels. One option for robust v-groove wheel mounting was 45 degree metal v-groove bearings.
+
 However, a 45 degree angle may be too shallow of an angle, and providing a steeper angle might allow
 for larger loads on the base carriage without excessive torsional stress on the mounted shoulder bolts and
 the rest of the carriage body. In an exemplary embodiment, a 65 degree angle from horizontal may be
 used, so as to provide improved mounting support in the vertical orientation and still allow for a thin
 contact patch on the side wheel contacts.
+
 In an exemplary embodiment a compression of 0.03 inches provided to the grip wheels on the underside
 provides a secure contact between all wheels and the track. Care must be taken to ensure the carriage isn’t
 too tight on the track which would prohibit the motor from overcoming friction such that it can begin to
 turn the wheels.
+
 Small “wings” or tabs may be added to the side face of the carriage to increase the effective thickness of
 the base, alleviating some of the torsional stress from the load of an additional module. Increased
 effective thickness works for the same reason that tape measures use curved profiles to allow them to
@@ -95,7 +96,10 @@ controlled and model-able environment allows the elevated robotics module to act
 platform for a wide application of different technologies. However, the versatility of the elevated robotics
 module platform necessitates proper systems design in order to allow it to be easily applied from one
 application to another.
+
 An exemplary system control and pipeline of the elevated robotics control system is shown as follows.
+
+![Annotation 2020-08-03 205908]({{ site.url }}/img/Post1/Annotation 2020-08-03 205908.png)
 
 As aforementioned, keeping the low-level control of the elevated robotics module consistent is extremely
 important because it allows full utilization of the ERAD platform’s versatility across multiple platforms.
@@ -108,9 +112,6 @@ elevated robotics module is deployed in, the high-level code only ever has to te
 position/velocity setpoint, and the position/velocity control algorithms will take care of reaching the
 setpoints.
 
-![Annotation 2020-08-03 205908]({{ site.url }}/img/Post1/Annotation 2020-08-03 205908.png)
-
-
 However, considering the complexity of the more advanced applications an improved buffer system to
 handle the latency between the sent setpoints and the module actually reaching those setpoints is desired,
 for example, as a hand-gesture-obeying robot. In the example, the length of a hand swipe would
@@ -119,6 +120,7 @@ the right would indicate a 30 cm movement in the right direction, and a short sw
 cm movement. A computer vision system could read multiple hand swipes before the elevated robotics
 module could actually reach the desired positions based on the last setpoints. Instead of overriding the
 past commands, a sequential order of the hand swipes is retained.
+
 Using a simple list or dynamic buffer is not memory efficient when resized or when their elements are
 rearranged/manipulated. Instead a Fixed-Size FIFO (first in first out) ring buffer is used. The explicit
 advantages of this approach are many:
@@ -133,6 +135,7 @@ This allows the ability to compromise on ignoring entire commands instead of the
 each command, which is very important, because missing new hand gestures or receiving sporadic hand
 detections due to insufficient system capabilities limits the performance of the system. In this case
 resizing the ring buffer is not needed, making it very memory efficient.
+
 The existence of a ring buffer allows multiple processes to cleanly control the elevated robotics module
 without interference between them. For instance, the hand gesture recognition pipeline can add a drive
 signal to the ring buffer, and then some other process (like a direct drive command) can also add to the
