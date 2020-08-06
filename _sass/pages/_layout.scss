@@ -3,7 +3,7 @@
   background-color: $background-color;
   position: fixed;
   text-align: center;
-  width: 100%;
+  width: 75%;
   min-height: 400px;
   padding: 30px 15px 20px;
   z-index: 1;
@@ -50,7 +50,7 @@
   @include media-query($medium-screen) {
     text-align: right;
     margin: 0 auto;
-    padding: 0 0px 80px;
+    padding: 20vh 0px;
   }
 }
 .social-links {
