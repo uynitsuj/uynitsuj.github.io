@@ -147,7 +147,13 @@ footer {
 
 #bottom {
     position:absolute;
-    bottom:0;
-    left:0;
-    max-width: 23vw;
+    bottom:20px;
+    left:20px;
+    max-width: 22vw;
+}
+#top {
+    position:absolute;
+    top:20px;
+    left:20px;
+    max-width: 22vw;
 }
