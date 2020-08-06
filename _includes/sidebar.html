@@ -1,7 +1,7 @@
 {% if page.author %} {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %} {% endif %}
 
 <div class="hidden-md"><p align=center style="font-size:22px"><img style="float: left" src="{{ site.url }}/{{ author.icon }}" alt="" class="icon" width="39">{{ author.FH }}</p></div>
-<div class="cover-card">
+<div class="table-middle cover-card">
   {% if author.avatar %}
   <a href="{{ site.url }}/">
     <img src="{{ site.url }}/img/{{ author.avatar }}" alt="" class="avatar">
