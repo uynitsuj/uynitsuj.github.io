@@ -106,7 +106,7 @@ We may summarize the above procedure based on the D-H convention in the followin
 
 **Step 4.7:** Create a table of link parameters $a_i, d_i, α_i, θ_i$
 
-![Annotation 2020-08-03 222209]({{ site.url }}\img\Post2\Annotation 2020-08-03 222209.png){:height="30%" width="30%"}
+![Annotation 2020-08-03 222209]({{ site.url }}\img\Post2\Annotation 2020-08-03 222209.png){:height="60%" width="60%"}
 
 **Step 4.8:** Form the homogeneous transformation matrices Ai by substituting the above parameters into *(3.4)*.
 
