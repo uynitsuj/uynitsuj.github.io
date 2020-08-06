@@ -4,7 +4,7 @@
   position: fixed;
   text-align: center;
   width: 75%;
-  min-height: 400px;
+  min-height: 300px;
   padding: 30px 15px 20px;
   z-index: 1;
   @include media-query($small-screen) {
