@@ -1,27 +1,10 @@
-
 ---
 layout: post
-title:  "Improved Elevated Robotic System and Method"
-excerpt: "Discussion of new and improved ceiling mounted robotic system"
-categories: [internship]
-image: robots/ERAD.JPG
+title:  "What an Incoming UMich EECS Freshman is Doing to Stay Sharp During Quarantine"
+excerpt: From developing a 3d-printed 6DoF arm from scratch to making a personal portfolio website to showcase my projects, I’ve been busy.
+categories: [projects]
 ---
-
-Since the advent of robotic systems and devices, the primary application focus has been with enhancing
-productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
-vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
-and disbursement, and crop harvesting to name a few. Robotic assistance devices have also been
-deployed in military applications employing various form factors (e.g. tanks, unmanned aerial vehicles)
-and various levels of artificial intelligence. The popularity of robotic assistance devices in personal and
-domestic markets comparably have been primarily confined to toys including flying devices (e.g. drones)
-and cleaning devices (e.g. carpet or pool cleaners). Consequently, these devices typically occupy space in
-the open air or on the ground. While floor-based mobile robots (e.g. telepresence robots) may have great
-potential for automating processes and assisting people (i.e. the disabled and infirmed or home/industrial
-security), their need to navigate around objects (people, furniture, stairs, pets..) makes them expensive
-while still not alleviating the potential for a sense of obtrusiveness on the part of the users. Elevated
-robotics systems exist with varying mechanical designs and control mechanisms to traversal along an
-elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
-provides smooth and efficient traversal along an elevated track.
+When the first news of 2019-nCoV broke, I was cautiously optimistic that it would be difficult for it to transmit between humans. However, within weeks of following the news, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
 
 ![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png){:height="50%" width="50%"}
 
