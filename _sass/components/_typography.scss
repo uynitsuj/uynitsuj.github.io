@@ -73,7 +73,7 @@ h6 { font-size: $font-size-h6; margin: ($font-size-h6 / 2) 0 ($font-size-h6 / 2.
 hr {
   margin-top: $spacer-y;
   margin-bottom: $spacer-y;
-  border: 0;
+  border: 1;
   border-top: $hr-border-width solid $hr-border-color;
 }
 
