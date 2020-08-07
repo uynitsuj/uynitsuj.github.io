@@ -103,6 +103,10 @@ Now that I have the thing built, I want to start making the thing move. So I got
 
 ![ezgif-4-581c98fc16cb]({{ site.url }}/img/Post3/ezgif-4-581c98fc16cb.gif){:height="40%" width="40%"}
 
-Ok, that was easy enough. Now how about making it move predictably?
+Ok, that was easy enough. Now how about making it move predictably? I then went onto the web to search for ways that I could coordinate stepper movement effectively, and found much more than I was expecting.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+This video by iforce2d had absolutely everything I was looking for and more. By the end, he has introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them complete with stepper start-time end-time coordination, linear acceleration, and interrupts. This massively simplifies everything.
 
 ### The Kinematics Conspiracy
