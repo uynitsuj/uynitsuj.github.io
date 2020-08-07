@@ -38,9 +38,11 @@ layout: default
     <div class="post-description">
       <p>
         {{ post.excerpt }}
-        <img align="right" src="{{ site.url }}/img/{{ post.image }}" alt="{{ site.url }}/img/{{ post.image }}" width="300">
+        {% if post.image %}
+        <img align="right" src="{{ site.url }}/img/{{ post.image }}" alt="{{ site.url }}/img/{{ post.image }}" height="200">
       </p>
     </div>
+    {% endif %}
     {% endif %}
 
     {% if post.image.feature %}
@@ -61,3 +63,4 @@ layout: default
 
 </section>
 {% endfor %}
+<hr>
