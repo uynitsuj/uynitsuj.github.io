@@ -16,10 +16,10 @@ The content of this post will be primarily technical, but beyond that, I spent m
   <div class="column" style="float: left">
     <img src="{{ site.url }}/img/Post3/IMG_1096.JPG" alt="IMG_1096.JPG" width="300px">
   </div>
-  <div class="column">
+  <div class="column" style="float: left">
     <img src="{{ site.url }}/img/Post3/IMG_1094.JPG" alt="IMG_1094.JPG" width="300px">
   </div>
-  <div class="column" style="float: right">
+  <div class="column" style="float: left">
     <img src="{{ site.url }}/img/Post3/IMG_1095.JPG" alt="IMG_1095.JPG" width="300px">
   </div>
 </div>
@@ -111,12 +111,14 @@ Ok, that was easy enough. Now how about making it move predictably? I then went 
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-This video by iforce2d had absolutely everything I was looking for and more. By the end, he had introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them complete with stepper start-time end-time coordination, linear speed ramping, *and even interrupts*. This massively simplifies everything.
+This video by iforce2d had absolutely everything I was looking for and more. By the end, he had introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them complete with stepper start-time end-time coordination, linear speed ramping, *and even interrupts*. This massively simplifies everything. And this is where that got us:
+
+<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/8E2R9iQnwQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 Next, I needed to figure out how to give angle inputs, and I also wanted to move out of the arduino IDE interface, since preparing movements within the sketch currently consists of editing the step# parameter manually:
 
 ![Annotation 2020-08-07 134854.png]({{ site.url }}/img/Post3/Annotation 2020-08-07 134854.png){:height="40%" width="40%"}
 
-This got me to learn TKinter for Python so that I could make my own home-brewed interface.
+So I decided to use Python, since it would allow me to send the Arduino data over serial, and also so I could learn and use TKinter for Python for my home-brewed interface.
 
 ### The Kinematics Conspiracy
