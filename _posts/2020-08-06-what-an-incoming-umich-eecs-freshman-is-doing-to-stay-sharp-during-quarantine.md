@@ -12,12 +12,16 @@ When the first news of 2019-nCoV broke, I was cautiously optimistic that the vir
 
 The content of this post will be primarily technical, but beyond that, I spent my quarantine time doing many other things. I also went running, mountain biking, and surfing, all things that I can enjoy while complying with social-distancing guidelines. For the first couple of weeks of quarantine, I was getting quite chunky from having more frequent access to the refrigerator at home. I read through a couple of papers on fasting, and have healthily lost about 19 pounds since the beginning of quarantine conducting 3:4 fasts. I’m satisfied with my current physical fitness. With a contagious virus running rampant I also put my 3D-printer to good use to help out the nation's healthcare system by printing roughly 284 face shields in total. (Disclaimer: these weren't intended to be distributed to frontline workers, but rather to long-term care and other nursing facilities so that our front-line workers can get the higher quality PPE in higher quantity)
 
-<div>
-<img src="{{ site.url }}/img/Post3/IMG_1096.JPG" alt="IMG_1096.JPG" width="300px">
-
-<img src="{{ site.url }}/img/Post3/IMG_1094.JPG" alt="IMG_1094.JPG" width="300px">
-
-<img src="{{ site.url }}/img/Post3/IMG_1095.JPG" alt="IMG_1095.JPG" width="300px">
+<div class="row">
+  <div class="column">
+    <img src="{{ site.url }}/img/Post3/IMG_1096.JPG" alt="IMG_1096.JPG" width="300px">
+  </div>
+  <div class="column">
+    <img src="{{ site.url }}/img/Post3/IMG_1094.JPG" alt="IMG_1094.JPG" width="300px">
+  </div>
+  <div class="column">
+    <img src="{{ site.url }}/img/Post3/IMG_1095.JPG" alt="IMG_1095.JPG" width="300px">
+  </div>
 </div>
 
 Now, for the good stuff:
