@@ -10,7 +10,15 @@ image: robots/ezgif-4-f28f910a4123.gif
 
 When the first news of 2019-nCoV broke, I was cautiously optimistic that the virus would have a more difficult time transmitting between humans. However, within weeks, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I then realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
 
-The content of this post will be primarily technical, but beyond that, I spent my quarantine time doing many other things. I also went running, mountain biking, and surfing, all things that I can enjoy while complying with social-distancing guidelines. For the first couple of weeks of quarantine, I was getting quite chunky from having more frequent access to the refrigerator at home. I read through a couple of papers on fasting, and have healthily lost about 19 pounds since the beginning of quarantine conducting 3:4 fasts. I’m satisfied with my current physical fitness. Now, for the good stuff:
+The content of this post will be primarily technical, but beyond that, I spent my quarantine time doing many other things. I also went running, mountain biking, and surfing, all things that I can enjoy while complying with social-distancing guidelines. For the first couple of weeks of quarantine, I was getting quite chunky from having more frequent access to the refrigerator at home. I read through a couple of papers on fasting, and have healthily lost about 19 pounds since the beginning of quarantine conducting 3:4 fasts. I’m satisfied with my current physical fitness. With a contagious virus running rampant I also put my 3D-printer to good use to help out the nation's healthcare system by printing roughly 284 face shields in total. (Disclaimer: these weren't intended to be distributed to frontline workers, but rather to long-term care and other nursing facilities so that the front-line workers can get the higher quality PPE in higher quantity)
+
+![IMG_1096]({{ site.url }}/img/Post3/IMG_1096.JPG){:height="40%" width="40%"}
+<br>
+![IMG_1094]({{ site.url }}/img/Post3/IMG_1094.JPG){:height="40%" width="40%"}
+<br>
+![IMG_1095]({{ site.url }}/img/Post3/IMG_1095.JPG){:height="40%" width="40%"}
+
+Now, for the good stuff:
 
 First, I’ll give a brief context for my technical proficiency going into quarantine. I had an internship with a local robotics startups and two research internships with UCSD over the duration of high school. I was simultaneously the Head of Mechanical Build and Design for my robotics team in my latter 2 years of high school, where I would build my repertoire for managing and designing robotics systems with SolidWorks CAD software. I would consider myself a pretty motivated student with a good amount of engineering experience and a pretty solid academic foundation (Multivariable calculus, Linear Algebra).
 
@@ -59,7 +67,7 @@ While I had solved my latter issue mentioned above, the former was one I still h
 ![Annotation 2020-04-25 231450]({{ site.url }}/img/Post3/Annotation 2020-04-25 231450.jpg){:height="40%" width="40%"}  
 <br>
 ![IMG_1006]({{ site.url }}/img/Post3/IMG_1006.JPG){:height="40%" width="40%"}
-
+<br>
 ![IMG_1037]({{ site.url }}/img/Post3/IMG_1037.JPG){:height="40%" width="40%"}
 <br>
 ![IMG_1039]({{ site.url }}/img/Post3/IMG_1039.JPG){:height="40%" width="40%"}
@@ -69,8 +77,8 @@ After much time, I had finished the arm, complete with motor port covers featuri
 
 ![IMG_1925]({{ site.url }}/img/Post3/IMG_1925.jpg){:height="40%" width="40%"}
 <br>
-![Annotation 2020-05-12 211349]({{ site.url }}/img/Post3/Annotation 2020-05-12 211349.jpg){:height="70%" width="70%"}
+![Annotation 2020-05-12 211349]({{ site.url }}/img/Post3/Annotation 2020-05-12 211349.jpg){:height="40%" width="40%"}
 
 And now it was time to start assembly
 
-![IMG_1499]({{ site.url }}/img/Post3/IMG_1499.jpg)
+![IMG_1499]({{ site.url }}/img/Post3/IMG_1499.jpg){:height="40%" width="40%"}
