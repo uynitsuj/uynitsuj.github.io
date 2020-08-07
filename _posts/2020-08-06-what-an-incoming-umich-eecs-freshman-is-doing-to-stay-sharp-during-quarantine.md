@@ -24,9 +24,9 @@ First, I’ll give a brief context for my technical proficiency going into quara
 
 At heart, I’m much more of a mechanical engineering person than I am a computer science or an electrical engineering one, and I've always joked that this could be attributed to my inclination to short-term gratification (perhaps I'd be one to fail the Stanford marshmallo test). But as an aspiring roboticist, I realized I could not just stop at mechanical engineering and let that be that, which is what motivated me to dive head-first into EECS over this summer and also pursue it as my undergraduate degree at UMichigan. Also, ever since finding my passion for robotics on my middle school FTC team, I had told myself that I should eventually be able build my own robot arm from scratch. So what better time than now to give it my first go?
 
-### My 3d-Printed 6DoF Arm Journey
+### My 3D-Printed 6DoF Arm Journey
 
-Homemade robot arms aren't all that they're chalked up to be. At least not the ones I make anyway.
+Homemade robot arms aren't all that they're chalked up to be. Not the ones that I make anyway.
 
 My first design iteration did not have many things going for it to say the absolute least.
 
