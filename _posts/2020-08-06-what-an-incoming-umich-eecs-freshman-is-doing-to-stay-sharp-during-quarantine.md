@@ -8,7 +8,7 @@ image: robots/ezgif-4-f28f910a4123.gif
 
 ![6DoF]({{ site.url }}/img/robots/ezgif-4-f28f910a4123.gif){:height="25%" width="25%"}
 
-When the first news of 2019-nCoV broke, I was cautiously optimistic that the virus would have a more difficult time transmitting between humans. However, within weeks of following the news, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I then realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
+When the first news of 2019-nCoV broke, I was cautiously optimistic that the virus would have a more difficult time transmitting between humans. However, within weeks, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I then realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
 
 The content of this post will be primarily technical, but beyond that, I spent my quarantine time doing many other things. I also went running, mountain biking, and surfing, all things that I can enjoy while complying with social-distancing guidelines. For the first couple of weeks of quarantine, I was getting quite chunky from having more frequent access to the refrigerator at home. I read through a couple of papers on fasting, and have healthily lost about 19 pounds since the beginning of quarantine conducting 3:4 fasts. I’m satisfied with my current physical fitness. Now, for the good stuff:
 
@@ -34,6 +34,10 @@ It didn't take long for me to realize that I had downplayed too severely many of
 
 *Firstly:*  
 I had opted to use NEMA17 stepper motors. Besides the fact that the Haddington Dynamics guys did too, I decided to use NEMA17s because my past robotics experience doesn't include very many stepper motors, but rather DC brushed and brushless motors. The NEMA17s aren't the most powerful, spec'd at an average of 0.5Nm for many of the different models and lengths that it came in. Now this meant that I would require a gearbox to increase the torque produced by the motors. For this, the Dexter guys had used the mechanical engineering marvel that is the harmonic flex-spline gearbox, which are mind-numbingly expensive to buy any number of.
+
+Which sadly left me to my own devices...
+
+![Annotation 2020-03-30 151859]({{ site.url }}/img/Post3/Annotation 2020-03-30 151859.jpg)
 
 
 [get the PDF](/pdf/ImprovedElevatedRoboticSystemAndMethod.pdf)
