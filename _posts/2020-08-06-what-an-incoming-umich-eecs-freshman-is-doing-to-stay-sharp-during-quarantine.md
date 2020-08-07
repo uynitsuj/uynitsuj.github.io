@@ -72,7 +72,7 @@ While I had solved my latter issue mentioned above, the former was one I still h
 
 <div class="row" style="margin-left:7vw">
   <div class="column" style="float: left">
-    <img src="{{ site.url }}}/img/Post3/Annotation 2020-04-25 231450.jpg" alt="Annotation 2020-04-25 231450" width="250px">
+    <img src="{{ site.url }}}/img/Post3/Annotation2020-04-25231450.jpg" alt="Annotation 2020-04-25 231450" width="250px">
   </div>
   <div class="column" style="float: left">
     <img src="{{ site.url }}/img/Post3/IMG_1006.JPG" alt="IMG_1006.JPG" width="250px">
