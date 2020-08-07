@@ -33,11 +33,21 @@ I had taken particular liking to their design philosophy of weight distribution,
 It didn't take long for me to realize that I had downplayed too severely many of the the most obvious downsides that came with opting for such a transmission method.
 
 *Firstly:*  
-I had opted to use NEMA17 stepper motors. Besides the fact that the Haddington Dynamics guys did too, I decided to use NEMA17s because my past robotics experience doesn't include very many stepper motors, but rather DC brushed and brushless motors. The NEMA17s aren't the most powerful, spec'd at an average of 0.5Nm for many of the different models and lengths that it came in. Now this meant that I would require a gearbox to increase the torque produced by the motors. For this, the Dexter guys had used the mechanical engineering marvel that is the harmonic flex-spline gearbox, which are mind-numbingly expensive to buy any number of.
+I had opted to use NEMA17 stepper motors. Besides the fact that the Haddington Dynamics guys did too, I decided to use NEMA17s because my past robotics experience doesn't include very many stepper motors, but rather DC brushed and brushless motors, so I wanted some experience in them. Stepper motors can get quite powerful, but The NEMA17s aren't very strong, spec'd at an average of 0.5Nm for many of the different models and lengths that it came in. This meant that a gearbox was needed to increase the torque produced by the motors if my arm had any hope of lifting itself. For this, the Dexter guys had used the mechanical engineering marvel that is the harmonic flex-spline gearbox, which are mind-numbingly expensive to buy any number of.
 
 Which sadly left me to my own devices...
 
 ![Annotation 2020-03-30 151859]({{ site.url }}/img/Post3/Annotation 2020-03-30 151859.jpg)
 
+I spent many days and late-nights trying to tune my 3D-printed planetary gearbox (you read that right... *never again*) to have minimal backlash while at the same time adding in clearance on certain areas of the teeth face to minimize friction. Back-driveability was simply out of the question.
 
-[get the PDF](/pdf/ImprovedElevatedRoboticSystemAndMethod.pdf)
+*Secondly:*
+I do not have the deepest of pockets, and this was also amidst the early stages of the pandemic, so I tried as best I could to not make a dent in the worldwide effort to mobilize and distribute medical equipment (half-joke). So trying to minimize sourced and fabricated parts such as structural square-tubing, bearings and belting was a priority. Unsurprisingly, sourcing a >1000mm loop GT belts was quite the hassle. I don't have a home machine shop either, so trying to source pre-cut or even custom-length 1"x1" square tube was impossible. Many of the other structural things I wanted to do were also out of the question. The Dexter guys used a *MarkForged* for the printed parts and even had carbon-fiber reinforced structural parts printed from it. I was sitting here with my meek and humble (but able) Prusa Mk3S 3D-printer.
+
+For these reasons, along with many other concerns I had about how the design was progressing, I made the executive decision to scrap this iteration.
+
+### Back to the Basics
+
+While keeping the end-effector light is quite the noble effort, it is definitely more involved on the mechanical side. With my limited budget and resources, I determined that my best course of action was to reject modernity and return to tradition with proven line of UR-style arms from Universal Robots.
+
+![Annotation 2020-08-06 223117]({{ site.url }}/img/Post3/Annotation 2020-08-06 223117.png)
