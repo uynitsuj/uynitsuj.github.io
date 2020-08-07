@@ -42,12 +42,22 @@ Which sadly left me to my own devices...
 I spent many days and late-nights trying to tune my 3D-printed planetary gearbox (you read that right... *never again*) to have minimal backlash while at the same time adding in clearance on certain areas of the teeth face to minimize friction. Back-driveability was simply out of the question.
 
 *Secondly:*
-I do not have the deepest of pockets, and this was also amidst the early stages of the pandemic, so I tried as best I could to not make a dent in the worldwide effort to mobilize and distribute medical equipment (half-joke). So trying to minimize sourced and fabricated parts such as structural square-tubing, bearings and belting was a priority. Unsurprisingly, sourcing a >1000mm loop GT belts was quite the hassle. I don't have a home machine shop either, so trying to source pre-cut or even custom-length 1"x1" square tube was impossible. Many of the other structural things I wanted to do were also out of the question. The Dexter guys used a *MarkForged* for the printed parts and even had carbon-fiber reinforced structural parts printed from it. I was sitting here with my meek and humble (but able) Prusa Mk3S 3D-printer.
+I do not have the deepest of pockets, and this was also amidst the early stages of the pandemic, so I tried as best I could to not make a dent in the worldwide effort to mobilize and distribute medical equipment (half-joke). So trying to minimize sourced and fabricated parts such as structural square-tubing, bearings and belting was a priority. Unsurprisingly, sourcing >1000mm loop GT belts was quite the hassle. I don't have a home machine shop either, so trying to source pre-cut or even custom-length 1"x1" square tube was impossible. Many of the other structural things I wanted to do were also out of the question. The Dexter guys used a *MarkForged* industrial 3D-printer for the printed parts and even had carbon-fiber reinforced structural parts printed from it. I was sitting here with my meek and humble (but able) Prusa Mk3S 3D-printer.
 
 For these reasons, along with many other concerns I had about how the design was progressing, I made the executive decision to scrap this iteration.
 
 ### Back to the Basics
 
-While keeping the end-effector light is quite the noble effort, it is definitely more involved on the mechanical side. With my limited budget and resources, I determined that my best course of action was to reject modernity and return to tradition with proven line of UR-style arms from Universal Robots.
+While keeping the end-effector light is quite the noble effort, it is definitely more involved on the mechanical side. Doubtlessly, with enough time, budget and resources, I would be able to make an arm more similar to Dexter. But given that I was limited in these particular items, I determined that my best course of action was to reject modernity and return to tradition with the proven line of UR style arms from Universal Robots.
+
+![Annotation 2020-08-06 223117]({{ site.url }}/img/Post3/Annotation 2020-08-06 223117.png)
+
+This style of arm featured actuators situated *at* every joint within the arm, massively simplifying the design constraints.
+
+While I had solved my latter issue mentioned above, the former was one I still had to contend with since I decided to use NEMA17s again. So I further iterated on my gearbox design, implementing finer teeth thereby allowing me to create larger reduction ratios and a more compact gearbox system. Now that the actuators were situated directly at the joints, the diameter of the joint bases also needed to be significantly larger to ensure that the increased radial and axial load could be addressed properly. To reconcile the larger load, a larger bearing would be needed. But I once again had issues sourcing thin-section bearings, so I tried my hand at creating my own completely 3D-printed gearbox with an integrated slewing bearing using printed cylindrical bearing beads (you'll find printing spheres to be quite difficult). This is one of my prouder creations.
+
+![Annotation 2020-08-06 223117]({{ site.url }}/img/Post3/Annotation 2020-08-06 223117.png)
+
+After much time, I had finished the arm, complete with motor port covers featuring hexagonal patterns. They add a whole lotta personality.
 
 ![Annotation 2020-08-06 223117]({{ site.url }}/img/Post3/Annotation 2020-08-06 223117.png)
