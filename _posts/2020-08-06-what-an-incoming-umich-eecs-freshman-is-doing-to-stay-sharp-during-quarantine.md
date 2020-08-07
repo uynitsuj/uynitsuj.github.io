@@ -102,9 +102,9 @@ Oops. The gearbox body's threads stripped out which led to the entire gearbox to
 
 Which leads us to the next iteration of the gearbox with nut inserts and wider distribution of fasteners. The side-swept cut sadly had to go. But that was for the better.
 
-![IMG_1377]({{ site.url }}/img/Post3/IMG_1377.jpg){:height="40%" width="40%"}
+![IMG_1377]({{ site.url }}/img/Post3/IMG_1377.jpg){:height="30%" width="30%"}
 <br>
-![IMG_1380]({{ site.url }}/img/Post3/IMG_1380.jpg){:height="40%" width="40%"}
+![IMG_1380]({{ site.url }}/img/Post3/IMG_1380.jpg){:height="30%" width="30%"}
 
 And bam - there she is.
 
