@@ -18,23 +18,17 @@ At heart, I’m much more of a mechanical engineering person than I am a compute
 
 ### My 3d-Printed 6DoF Arm Journey
 
-In an exemplary embodiment, an elevated robotic module traverses along a T-extrusion track as shown in
-the following figure.
+Homemade robot arms aren't all that they're chalked up to be. At least not the ones I make anyway.
 
-![Annotation 2020-08-03 205741]({{ site.url }}/img/Post1/Annotation 2020-08-03 205741.png)
+My first design iteration did not have many things going for it to say the absolute least.
 
-In an exemplary embodiment, the rigidity of the mounting solution of the base carriage to the track
-improves stability and efficient traversal along the track.
-Previous iterations of the carriage utilized a combination of grip wheels (rubber tread) or non-compliant
-3D-Printed tread wheels (High-Temp PLA or PETG) that were either vertically oriented making
-significant contact with the top surface of the upside-down T-extrusion or horizontally oriented making
-contact with the thin side-face of the extrusion. Out of these iterations, the designs that seemed to operate
-best were the vertically oriented wheels, providing consistent contact even during motion.
+![Annotation 2020-04-20 140716]({{ site.url }}/img/Post3/Annotation 2020-04-20 140716.jpg)
 
-To secure the carriage to the track, some of the vertical-wheel iterations would have lips on the treads
-which would hang over the edge and lock the carriage laterally (Fig. 1). In the horizontally oriented wheels, the
-carriage was already laterally locked by nature of the wheel contact to the track, and lips were added on
-both ends of the treads to lock the carriage in the vertical orientation (Fig. 2).
+Perhaps too overly ambitious, I had taken quite heavy inspiration from the folks over at Haddington Dynamics with their robot Dexter:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EgVPiBiKNjs"frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+I had really taken a liking to their design philosophy of weight distribution, positioning all of the heavy powered implements such as motors and gearboxes closer to the base
 
 ![Annotation 2020-08-03 213723]({{ site.url }}/img/Post1/Annotation 2020-08-03 213723.png)
 
