@@ -3,6 +3,7 @@ layout: post
 title:  "What an Incoming UMich EECS Freshman is Doing to Stay Sharp During Quarantine"
 excerpt: From developing a 3d-printed 6DoF arm from scratch to making a personal portfolio website to showcase my projects, I’ve been busy.
 categories: [project]
+image: ezgif-4-f28f910a4123.gif
 ---
 When the first news of 2019-nCoV broke, I was cautiously optimistic that it would be difficult for it to transmit between humans. However, within weeks of following the news, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
 
