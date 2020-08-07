@@ -12,7 +12,7 @@ When the first news of 2019-nCoV broke, I was cautiously optimistic that the vir
 
 The content of this post will be primarily technical, but beyond that, I spent my quarantine time doing many other things. I also went running, mountain biking, and surfing, all things that I can enjoy while complying with social-distancing guidelines. For the first couple of weeks of quarantine, I was getting quite chunky from having more frequent access to the refrigerator at home. I read through a couple of papers on fasting, and have healthily lost about 19 pounds since the beginning of quarantine conducting 3:4 fasts. I’m satisfied with my current physical fitness. With a contagious virus running rampant I also put my 3D-printer to good use to help out the nation's healthcare system by printing roughly 284 face shields in total. (Disclaimer: these weren't intended to be distributed to frontline workers, but rather to long-term care and other nursing facilities so that our front-line workers can get the higher quality PPE in higher quantity)
 
-<div class="row">
+<div class="row" style="margin-left:10vw">
   <div class="column" style="float: left">
     <img src="{{ site.url }}/img/Post3/IMG_1096.JPG" alt="IMG_1096.JPG" width="300px">
   </div>
@@ -69,7 +69,7 @@ While keeping the end-effector light is quite the noble effort, it is definitely
 This style of arm featured actuators situated *at* every joint within the arm, massively simplifying the design constraints.
 
 While I had solved my latter issue mentioned above, the former was one I still had to contend with since I decided to use NEMA17s again. So I further iterated on my gearbox design, implementing finer teeth thereby allowing me to create larger reduction ratios and a more compact gearbox system. Now that the actuators were situated directly at the joints, the diameter of the joint bases also needed to be significantly larger to ensure that the increased radial and axial load could be addressed properly. To reconcile the larger load, a larger bearing would be needed. But I once again had issues sourcing thin-section bearings, so I tried my hand at creating my own completely 3D-printed gearbox with an integrated slewing bearing using printed cylindrical bearing beads (you'll find printing spheres to be quite difficult). This first iteration of the gearbox features a seductive swept-cut side surface, which didn't make it onto the final iteration, the reason for which I will address later. This is one of my prouder creations.
-<div class="row">
+<div class="row" style="margin-left:7vw">
   <div class="column" style="float: left">
     <img src="{{ site.url }}}/img/Post3/Annotation 2020-04-25 231450.jpg" alt="Annotation 2020-04-25 231450" width="250px">
   </div>
