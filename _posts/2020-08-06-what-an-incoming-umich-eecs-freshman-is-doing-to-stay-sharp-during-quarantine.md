@@ -95,9 +95,9 @@ Which leads us to the next iteration of the gearbox with nut inserts and wider d
 
 And bam - there she is.
 
-![IMG_1502]({{ site.url }}/img/Post3/IMG_1502.jpg){:height="40%" width="40%"}
+![Annotation 2020-08-07 011350]({{ site.url }}/img/Post3/Annotation 2020-08-07 011350.png){:height="40%" width="40%"}
 
-Now that I have the thing built, I want to start making the thing move.
+Now that I have the thing built, I want to start making the thing move. So I got myself an Arduino Mega 2560 and a Ramps 1.4 shield with A9488 Drivers and uploaded a simple Step+Direction control sketch.
 
 ![ezgif-4-581c98fc16cb]({{ site.url }}/img/Post3/ezgif-4-581c98fc16cb.gif){:height="40%" width="40%"}
 
