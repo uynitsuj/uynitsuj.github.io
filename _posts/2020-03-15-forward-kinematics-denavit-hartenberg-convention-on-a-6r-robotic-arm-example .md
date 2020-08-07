@@ -173,3 +173,5 @@ Notice the first 3 entries of the last column of matrix, that are the X,Y,Z comp
 
 
 The numbers match closely! (Variance is due to hand-placed and orientated arm links in CAD model). The -6.3cm value in the python console is correctly negative. Base frame (grounded frame) utilizes an $x_0$ axis frame pointing in the opposite direction *(Fig 5.6)*. As detailed in *(Fig 5.7)*, end effector position is detailed by the first 3 entries of the final column of the matrix. End effector orientation is reconciled by the first 3x3 rows and columns of the matrix.
+
+[get the PDF](/pdf/FORWARD KINEMATICS DH Convention on a 6R Robot Arm.pdf)
