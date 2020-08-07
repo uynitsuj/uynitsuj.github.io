@@ -5,11 +5,18 @@ excerpt: From developing a 3d-printed 6DoF arm from scratch to making a personal
 categories: [project]
 image: robots/ezgif-4-f28f910a4123.gif
 ---
-When the first news of 2019-nCoV broke, I was cautiously optimistic that it would be difficult for it to transmit between humans. However, within weeks of following the news, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
 
-![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png){:height="50%" width="50%"}
+![6DoF]({{ site.url }}/img/robots/ezgif-4-f28f910a4123.gif)
 
-### Elevated Robotic Module Chassis Mechanical Design
+When the first news of 2019-nCoV broke, I was cautiously optimistic that the virus would have a difficult time transmitting between humans. However, within weeks of following the news, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I then realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
+
+The content of this post will be primarily technical, but beyond that, I spent my quarantine time doing many other things. I also went running, mountain biking, and surfing, all things that I can enjoy while complying with social-distancing guidelines. For the first couple of weeks of quarantine, I was getting quite chunky from having more frequent access to the refrigerator at home. I read through a couple of papers on fasting, and have healthily lost about 19 pounds since the beginning of quarantine conducting 3:4 fasts. I’m satisfied with my current physical fitness. Now, for the good stuff:
+
+First, I’ll give a brief context for my technical proficiency going into quarantine. I had an internship with a local robotics startups and two research internships with UCSD over the duration of high school. I was simultaneously the Head of Mechanical Build and Design for my robotics team in my latter 2 years of high school, where I would build my repertoire for managing and designing robotics systems with SolidWorks CAD software. I would consider myself a pretty motivated student with a good amount of engineering experience and a pretty solid academic foundation (Multivariable calculus, Linear Algebra).
+
+At heart, I’m much more of a mechanical engineering person than I am a computer science or an electrical engineering one, and I've always joked that this could be attributed to my inclination to short-term gratification (perhaps I'd be one to fail the Stanford marshmallo test). But as an aspiring roboticist, I realized I could not just stop at mechanical engineering and let that be that, which is what motivated me to dive head-first into EECS over this summer and also pursue it as my undergraduate degree at UMichigan. Also, ever since finding my passion for robotics on my middle school FTC team, I had told myself that I should eventually be able build my own robot arm from scratch. So what better time than now to give it my first go?
+
+### My 3d-Printed 6DoF Arm Journey
 
 In an exemplary embodiment, an elevated robotic module traverses along a T-extrusion track as shown in
 the following figure.
