@@ -109,9 +109,9 @@ Now that I have the thing built, I want to start making the thing move. So I got
 
 Ok, that was easy enough. Now how about making it move predictably? I then went onto the web to search for ways that I could coordinate stepper movement effectively, and found much more than I was expecting.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-This video by iforce2d had absolutely everything I was looking for and more. By the end, he has introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them complete with stepper start-time end-time coordination, linear speed ramping, *and even interrupts*. This massively simplifies everything.
+This video by iforce2d had absolutely everything I was looking for and more. By the end, he had introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them complete with stepper start-time end-time coordination, linear speed ramping, *and even interrupts*. This massively simplifies everything.
 
 Next, I needed to figure out how to give angle inputs, and I also wanted to move out of the arduino IDE interface, since preparing movements within the sketch currently consists of editing the step# parameter manually:
 
