@@ -73,12 +73,26 @@ While I had solved my latter issue mentioned above, the former was one I still h
 ![IMG_1039]({{ site.url }}/img/Post3/IMG_1039.JPG){:height="40%" width="40%"}
 
 
-After much time, I had finished the arm, complete with motor port covers featuring hexagonal patterns. They add a whole lotta personality.
+After much time, I had finished the arm, complete with motor port covers featuring hexagonal patterns. Don't they add a whole lotta personality?
 
 ![IMG_1925]({{ site.url }}/img/Post3/IMG_1925.jpg){:height="40%" width="40%"}
 <br>
 ![Annotation 2020-05-12 211349]({{ site.url }}/img/Post3/Annotation 2020-05-12 211349.jpg){:height="40%" width="40%"}
 
-And now it was time to start assembly
+And now it's time to start assembly!
 
 ![IMG_1499]({{ site.url }}/img/Post3/IMG_1499.jpg){:height="40%" width="40%"}
+
+Oops. The gearbox body's threads stripped out which led to the entire gearbox torquing itself out of the motor casing. It looks like the force was too much for the PETG plastic...
+
+![IMG_1184]({{ site.url }}/img/Post3/IMG_1184.jpg){:height="40%" width="40%"}
+
+Which leads us to the next iteration of the gearbox with nut inserts and wider distribution of fasteners. The seductive side-swept cut sadly had to go. But that was for the better.
+
+![IMG_1377]({{ site.url }}/img/Post3/IMG_1377.jpg){:height="40%" width="40%"}
+<br>
+![IMG_1380]({{ site.url }}/img/Post3/IMG_1380.jpg){:height="40%" width="40%"}
+
+And bam - there she is.
+
+![IMG_1502]({{ site.url }}/img/Post3/IMG_1502.jpg){:height="40%" width="40%"}
