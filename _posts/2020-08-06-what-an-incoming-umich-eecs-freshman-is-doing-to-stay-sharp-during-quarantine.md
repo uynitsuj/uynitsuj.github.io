@@ -107,6 +107,12 @@ Ok, that was easy enough. Now how about making it move predictably? I then went 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-This video by iforce2d had absolutely everything I was looking for and more. By the end, he has introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them complete with stepper start-time end-time coordination, linear acceleration, and interrupts. This massively simplifies everything.
+This video by iforce2d had absolutely everything I was looking for and more. By the end, he has introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them complete with stepper start-time end-time coordination, linear speed ramping, *and even interrupts*. This massively simplifies everything.
+
+Next, I needed to figure out how to give angle inputs, and I also wanted to move out of the arduino IDE interface, since preparing movements within the sketch currently consists of editing the step# parameter manually:
+
+![Annotation 2020-08-07 134854.png]({{ site.url }}/img/Post3/Annotation 2020-08-07 134854.png){:height="40%" width="40%"}
+
+This got me to learn TKinter for Python so that I could make my own home-brewed interface.
 
 ### The Kinematics Conspiracy
