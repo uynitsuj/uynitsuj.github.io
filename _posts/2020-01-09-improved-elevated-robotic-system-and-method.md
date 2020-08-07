@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "Improved Elevated Robotic System and Method"
