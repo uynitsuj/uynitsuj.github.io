@@ -138,7 +138,7 @@ To control the parameters for my prepareMovement() method in the Arduino sketch,
 
 Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space and the cartesian coordinate space.
 
-![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg)
+![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg){:height="30%" width="30%"}
 
 This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for basically all things involving robotic linkages.
 
