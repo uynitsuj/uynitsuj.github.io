@@ -132,7 +132,7 @@ In learning about serial data communication, I had to create my own command prot
 
 ![CommandStructure]({{ site.url }}/img/Post3/Annotation 2020-08-07 172642.png)
 
-To control the parameters for my prepareMovement() method in the Arduino sketch, my Command prefix would consist of MTR0, MTR1, ... to MTR6 to pass in the Motor ID, and the Data suffix would pass in the desired step count. A full command would look something like #MTR2500\\n to prepare movement on motor 2 for 500 steps, or #MTR51780\\n to prepare movement on motor 5 for 1780 steps. For the runAndWait() method, a simple #EXEC\\n without anything in the data field would suffice.
+To control the parameters for my prepareMovement() method in the Arduino sketch, my Command prefix would consist of MTR0, MTR1, ... to MTR6 to pass in the Motor ID, and the Data suffix would pass in the desired step count. A full command would look something like #MTR2500\\n to prepare movement on motor 2 for 500 steps, or #MTR51780\\n to prepare movement on motor 5 for 1780 steps. For the runAndWait() method, a simple #EXEC\\n command without anything in the data field would suffice.
 
 ### The Kinematics Conspiracy
 
@@ -154,7 +154,25 @@ The Inverse Kinematics process is much more involved, as it is the inverse of th
 
 At the end of the day, the goal of IK is to be able to determine what arm joint theta1, theta2, theta3, etc. are based on the final end effector position and orientation. The math here is your average trigonometry mixed with some linear algebra which I won't get into myself, but keeping track of the relevant reference frame definitions becomes very difficult to manage. I would be lying if I told you that I solved it all myself. I might have never completed this endeavor in reasonable time with my current skillset were it not for the brave adventurers who have pioneered this path before I had. Some of the resources I used are cited below[^1][^2][^3]. However, going through and parsing the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
 
-The next step is about as involved as parsing the literature: translating the useful information to python code to verify my IK model, as well as using the IK definition to run my visualization pipeline.
+The next step is about as involved as parsing the literature: translating the useful information to python code to verify my IK model, as well as using the IK definition to run my visualization pipeline. I would frequently end up in what were seemingly dead ends, and there were also points where I knew I was close but couldn't pinpoint what was up:
+
+![Annotation 2020-08-07 195530]({{ site.url }}/img/Post3/Annotation 2020-08-07 195530.png)
+
+The thing looks like a Demogorgon from Stranger Things! Symmetrical, yet not a very beautiful sight to behold. Eventually, I would come to find a couple of stray negatives, undotted i's and uncrossed t's scattered around my code, as I usually do, and I eventually got there.
+
+![Annotation 2020-05-29 214041]({{ site.url }}/img/Post3/Annotation 2020-05-29 214041.png)
+
+It's not easy to see, but all possible 8 configurations converge onto one end-effector position!
+
+The final step is to create my full .py file complete with my TKinter interface with an embedded mplot3d plot (took some time to figure that out). This code would also keep track of the previous arm joint variables so that motion relative to the previous position could be executed properly. I also took some inspiration from the 3D-Printer host GUI Pronterface, and added in some step buttons and a step size field so I wouldn't need to manually type into every field.
+
+<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/WChiQJFVNRw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+### And it all Comes Together
+
+Now that we have our coordinated stepper sketch with acceleration + interrupts, a TKinter interface, a command protocol over serial, and our FK and IK models verified, it's time to mash it all together with some scotch tape and gum.
+
+<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 
 [^1]:[M.E. 530.646 UR5 Inverse Kinematics - Ryan Keating](uynitsuj.github.io/pdf/ur5ik-170410122303.pdf)
