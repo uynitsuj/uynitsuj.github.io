@@ -122,7 +122,7 @@ This video by iforce2d had absolutely everything I was looking for and more. By 
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/8E2R9iQnwQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-Next, I needed to figure out how to give angle inputs, and I also wanted to move out of the arduino IDE interface, since preparing movements within the sketch currently consists of editing the motor ID and step# parameter manually:
+Next, I needed to figure out how to give angle inputs, and I also wanted to move out of the Arduino IDE interface, since preparing movements within the sketch currently consists of editing the motor ID and step# parameter manually:
 
 ![Annotation 2020-08-07 134854.png]({{ site.url }}/img/Post3/Annotation 2020-08-07 134854.png){:height="40%" width="40%"}
 
