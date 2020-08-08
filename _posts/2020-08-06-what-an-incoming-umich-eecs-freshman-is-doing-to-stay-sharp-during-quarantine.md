@@ -145,7 +145,7 @@ This allows us to determine a robot's kinematic chain, such as a robot manipulat
 
 ![snek]({{ site.url }}/img/Post3/teslasnake.gif)
 
-My journey through Forward Kinematics is laid out in one of my previous informal papers and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example), so I won't go into much detail for it here. In short, the Forward Kinematics process is pretty simple, consisting of determining the full kinematic chain as a product of several 4x4 transformation matricies while using the joint angle space as input values. During this time I also gained some substantial experience working with matplotlib's mplot3d module for 3-dimentional plots:
+My journey through Forward Kinematics is laid out in one of my previous informal papers and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example), so I won't go into much detail for it here. In short, the Forward Kinematics process is pretty simple, consisting of determining the full kinematic chain as a product of several 4x4 transformation matricies while using the joint angle space as input values. During this time I also gained some substantial experience working with matplotlib's mplot3d module for 3-dimensional plots:
 
 ![Annotation 2020-05-17 173422]({{ site.url }}/img/Annotation 2020-05-17 173422.png)
 
