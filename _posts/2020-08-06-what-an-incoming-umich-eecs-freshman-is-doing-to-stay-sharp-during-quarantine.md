@@ -140,7 +140,7 @@ Forward and inverse kinematics, simply put, are the mathematical processes of co
 
 ![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg){:height="30%" width="30%"}
 
-This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for basically all things involving robotic linkages.
+This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for all things involving robotic linkages.
 
 ![snek]({{ site.url }}/img/Post3/teslasnake.gif)
 
