@@ -168,7 +168,7 @@ The final step is to create my full .py file complete with my TKinter interface 
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/WChiQJFVNRw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-### And it all Comes Together
+### And it All Comes Together
 
 Now that we have our coordinated movement sketch with acceleration + interrupts, a TKinter interface, a command protocol over serial, and our FK and IK models verified, it's time to stick it all together with some scotch tape and gum.
 
