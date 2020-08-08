@@ -158,5 +158,5 @@ The next step is about as involved as parsing the literature: translating the us
 
 
 [^1]:[M.E. 530.646 UR5 Inverse Kinematics - Ryan Keating](uynitsuj.github.io/pdf/ur5ik-170410122303.pdf)
-[^2] [INVERSE KINEMATICS Chapter 4] (https://thydzik.com/academic/robotics-315/chap4.pdf)
-[^3][Inverse Kinematics of a 7R 6-DOF Robot with Nonspherical Wrist Based on Transformation into the 6R Robot](https://www.hindawi.com/journals/mpe/2017/2074137/)
+[^2]:[INVERSE KINEMATICS Chapter 4] (https://thydzik.com/academic/robotics-315/chap4.pdf)
+[^3]:[Inverse Kinematics of a 7R 6-DOF Robot with Nonspherical Wrist Based on Transformation into the 6R Robot](https://www.hindawi.com/journals/mpe/2017/2074137/)
