@@ -174,13 +174,13 @@ Now that we have our coordinated movement sketch with acceleration + interrupts,
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-It's been a wild ride.
+It has been a wild ride.
 
 ### Welcome to my Website
 
 Throughout the aforementioned project, it became very clear to me that working on the technical side of projects was my comfort zone. When I began sharing my project videos on instagram, one of my friends reached out to me and commended me on my effort to market the project. I realized he was more right than even he knew. I didn’t want to fall into the infamous engineer pitfall of only being able to think about the technical aspects of projects. I wanted to put more effort into marketing the projects themselves and producing helpful documentation for potential collaborators. I also wanted to learn how to market myself professionally, especially considering that I’m about to enter UMichigan, where most of the people around me are extremely accomplished, which would make it harder for me to set myself apart.
 
-With this in mind, I came up with an idea that would appeal to this concern, as well as my desire to continue working on a technical project. I decided I was going to make this personal portfolio website.
+With this in mind, I came up with an idea that would appeal to this concern, as well as my desire to continue working on a technical project. I decided I was going to make this personal portfolio website with activity starting on July 31, 2020.
 
 **Welcome to my humble abode!**
 
