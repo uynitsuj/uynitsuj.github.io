@@ -152,11 +152,11 @@ The Inverse Kinematics process is much more involved, as it is the inverse of th
 
 ![Annotation 2020-08-07 190630]({{ site.url }}/img/Post3/Annotation 2020-08-07 190630.png)
 
-At the end of the day, the goal of IK is to be able to determine what arm joint theta1, theta2, theta3, etc. are based on the final end effector position and orientation. The math here is your average trigonometry mixed with some linear algebra which I won't get into myself, but keeping track of the relevant reference frame definitions becomes very difficult to manage. I would be lying if I told you that I solved it all myself. I might have never completed this endeavor in reasonable time with my current skillset were it not for the brave adventurers who have pioneered this path before I had. Some of the resources I used are cited here[^1][^2][^3]. However, going through and parsing the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
+At the end of the day, the goal of IK is to be able to determine what arm joint theta1, theta2, theta3, etc. are based on the final end effector position and orientation. The math here is your average trigonometry mixed with some linear algebra which I won't get into myself, but keeping track of the relevant reference frame definitions becomes very difficult to manage. I would be lying if I told you that I solved it all myself. I might have never completed this endeavor in reasonable time with my current skillset were it not for the brave adventurers who have pioneered this path before I had. Some of the resources I used are cited below[^1][^2][^3]. However, going through and parsing the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
 
 The next step is about as involved as parsing the literature: translating the useful information to python code to verify my IK model, as well as using the IK definition to run my visualization pipeline.
 
 
 [^1]:[M.E. 530.646 UR5 Inverse Kinematics - Ryan Keating](uynitsuj.github.io/pdf/ur5ik-170410122303.pdf)
-[^2]:[INVERSE KINEMATICS Chapter 4] (https://thydzik.com/academic/robotics-315/chap4.pdf)
+[^2]:[Inverse Kinematics Chapter 4](https://thydzik.com/academic/robotics-315/chap4.pdf)
 [^3]:[Inverse Kinematics of a 7R 6-DOF Robot with Nonspherical Wrist Based on Transformation into the 6R Robot](https://www.hindawi.com/journals/mpe/2017/2074137/)
