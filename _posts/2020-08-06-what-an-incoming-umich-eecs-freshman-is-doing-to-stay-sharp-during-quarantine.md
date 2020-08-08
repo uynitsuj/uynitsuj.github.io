@@ -128,7 +128,7 @@ Next, I needed to figure out how to give angle inputs, and I also wanted to move
 
 So I decided to use Python, since it would allow me to send the Arduino data over serial, and also so I could learn and use TKinter for Python for my home-brewed interface.
 
-In learning about serial data communication, I had to create my own command protocol that my Python code could send which the Arduino could then receive and interpret. My protocol needed to be able to assign a motorID as well as stepcount for the particular motor, and I also needed a protocol for executing the runAndWait() function. So I ended up with the following command structure:
+In learning about serial data communication, I had to create my own command protocol that my Python code could send which the Arduino could then receive and interpret. My protocol needed to be able to assign a Motor ID as well as step count for that particular motor, and I also needed a protocol for executing the runAndWait() function. So I ended up with the following command structure:
 
 ![CommandStructure]({{ site.url }}/img/Post3/Annotation 2020-08-07 172642.png)
 
