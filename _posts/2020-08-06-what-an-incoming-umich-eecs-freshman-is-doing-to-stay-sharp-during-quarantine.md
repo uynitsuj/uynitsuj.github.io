@@ -174,11 +174,17 @@ Now that we have our coordinated movement sketch with acceleration + interrupts,
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-It has been a wild ride.
+As a postmortem discussion: there are several areas that I could improve upon in future iterations. First off, you might've noticed that my interface was lacking a homing procedure button. This particular robot is completely open-loop, relying only on the accuracy (or lack thereof) of the steppers. The stepper gearboxes were also not back-driveable, so going entirely open-loop was less of a risk. Granting that, I would consider the current performance to be semi- to less-than-satisfactory. In the previous demonstration video, there is visible disparity between the initial arm position versus the final position after homing. However, it should be argued that this disparity was also a function of a number of additional factors, including the fact that the frame is entirely 3D-Printed, save for the motors and some nut and bolt hardware, so excessive flex/torsion is definitely a possible source for error.
+
+Prior to assembly, forseeing this possible issue led me to take measures to mitigate. So prior to installing the motors, I put each of them through my testbench to ensure that there was no step loss. Though it should be noted that the test bench environment was conducted without load, so it isn't at all representative of its performance under non-zero and even variable loads.
+
+Though in the future, I would definitely look to include absolute encoders for feedback and establishing ground-truth for joint angles. Perhaps messing with optical encoder discs are a project to look into.
+
+Nevertheless, it has been a wild ride.
 
 ### Welcome to my Website
 
-Throughout the aforementioned project, it became very clear to me that working on the technical side of projects was my comfort zone. When I began sharing my project videos on instagram, one of my friends reached out to me and commended me on my effort to market the project. I realized he was more right than even he knew. I didn’t want to fall into the infamous engineer pitfall of only being able to think about the technical aspects of projects. I wanted to put more effort into marketing the projects themselves and producing helpful documentation for potential collaborators. I also wanted to learn how to market myself professionally, especially considering that I’m about to enter UMichigan, where most of the people around me are extremely accomplished, which would make it harder for me to set myself apart.
+Throughout the aforementioned project, it became very clear to me that working on the technical side of projects was my comfort zone. When I began sharing my project videos on instagram, one of my friends reached out to me and commended me on my effort to market the project. I realized he was more right than even *he* knew. I didn’t want to fall into the infamous engineer pitfall of only being able to think about the technical aspects of projects. I wanted to put more effort into marketing the projects themselves and producing helpful documentation for potential collaborators. I also wanted to learn how to market myself professionally, especially considering that I’m about to enter UMichigan, where most of the people around me are extremely accomplished, which would make it harder for me to set myself apart.
 
 With this in mind, I came up with an idea that would appeal to this concern, as well as my desire to continue working on a technical project. I decided I was going to make this personal portfolio website with activity starting on July 31, 2020.
 
