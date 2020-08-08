@@ -134,19 +134,17 @@ In learning about serial data communication, I had to create my own command prot
 
 To control the parameters for my prepareMovement() method in the Arduino sketch, my Command prefix would consist of MTR0, MTR1, ... to MTR6 to pass in the Motor ID, and the Data suffix would pass in the desired step count. A full command would look something like #MTR2500\\n to prepare movement on motor 2 for 500 steps, or #MTR51780\\n to prepare movement on motor 5 for 1780 steps. For the runAndWait() method, a simple #EXEC\\n without anything in the data field would suffice.
 
-
-
 ### The Kinematics Conspiracy
 
-Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space variable and the cartesian coordinate space variable.
+Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space and the cartesian coordinate space.
 
 ![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg)
 
-This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for all things robotics.
+This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for basically all things involving robotic linkages.
 
 ![snek]({{ site.url }}/img/Post3/teslasnake.gif)
 
-My journey through forward kinematics is laid out in one of my previous informal papers and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example). In short, the Forward Kinematics process is pretty simple, consisting of determining the full kinematic chain as a product of several 4x4 transformation matricies while using the joint angle space as input values. During this time I also gained some substantial experience working with matplotlib's mplot3d module for 3-dimentional plots.
+My journey through Forward Kinematics is laid out in one of my previous informal papers and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example), so I won't go into much detail for it here. In short, the Forward Kinematics process is pretty simple, consisting of determining the full kinematic chain as a product of several 4x4 transformation matricies while using the joint angle space as input values. During this time I also gained some substantial experience working with matplotlib's mplot3d module for 3-dimentional plots:
 
 ![Annotation 2020-05-17 173422]({{ site.url }}/img/Annotation 2020-05-17 173422.png)
 
@@ -154,7 +152,7 @@ The Inverse Kinematics process is much more involved, as it is the inverse of th
 
 ![Annotation 2020-08-07 190630]({{ site.url }}/img/Post3/Annotation 2020-08-07 190630.png)
 
-At the end of the day, the goal of IK is to be able to determine what arm joint theta1, theta2, theta3, etc. are based on the final end effector position and orientation. The math here is your average trigonometry mixed with some linear algebra which I won't get into myself, but keeping track of the relevant reference frame definitions gets very difficult to manage. I would be lying if I told you that I solved it all myself. I might have never completed this endeavor in reasonable time with my current skillset were it not for the brave adventurers who have pioneered this path before I had. Some of the resources I used are cited here[^1][^2][^3]. However, going through and parsing the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
+At the end of the day, the goal of IK is to be able to determine what arm joint theta1, theta2, theta3, etc. are based on the final end effector position and orientation. The math here is your average trigonometry mixed with some linear algebra which I won't get into myself, but keeping track of the relevant reference frame definitions becomes very difficult to manage. I would be lying if I told you that I solved it all myself. I might have never completed this endeavor in reasonable time with my current skillset were it not for the brave adventurers who have pioneered this path before I had. Some of the resources I used are cited here[^1][^2][^3]. However, going through and parsing the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
 
 The next step is about as involved as parsing the literature: translating the useful information to python code to verify my IK model, as well as using the IK definition to run my visualization pipeline.
 
