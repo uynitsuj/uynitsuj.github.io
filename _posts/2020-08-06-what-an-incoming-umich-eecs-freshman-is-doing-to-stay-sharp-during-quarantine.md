@@ -137,3 +137,28 @@ To control the parameters for my prepareMovement() method in the Arduino sketch,
 
 
 ### The Kinematics Conspiracy
+
+Robot forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space variable and the cartesian coordinate space variable.
+
+![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg)
+
+This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for all things robotics.
+
+![snek]({{ site.url }}/img/Post3/teslasnake.gif)
+
+My journey through forward kinematics is laid out in one of my previous informal papers and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example). In short, the Forward Kinematics process is pretty simple, consisting of determining the full kinematic chain as a product of several 4x4 transformation matricies while using the joint angle space as input values. During this time I also gained some substantial experience working with matplotlib's mplot3d module for 3-dimentional plots.
+
+![Annotation 2020-05-17 173422]({{ site.url }}/img/Annotation 2020-05-17 173422.png)
+
+The Inverse Kinematics process is much more involved, as it is the inverse of the above process. The IK model must produce the joint angle space with only the cartesian coordinate space transform matrix that defines the end effector position plus its offset. One of the reasons why this is more complicated is because its joint space solutions are not necessarily unique. You might've guessed by now, for every unique cartesian coordinate space x, y, z, pitch, roll, or yaw input, the result could consist of multiple joint space solutions. In fact, there may be up to 8 as shown here:
+
+![Annotation 2020-08-07 190630]({{ site.url }}/img/Post3/Annotation 2020-08-07 190630.png)
+
+At the end of the day, the goal of IK is to be able to determine what arm joint theta1, theta2, theta3, etc. are based on the final end effector position and orientation. The math here is your average trigonometry mixed with some linear algebra which I won't get into myself, but keeping track of the relevant reference frame definitions gets very difficult to manage. I would be lying if I told you that I solved it all myself. I might have never completed this endeavor in reasonable time with my current skillset were it not for the brave adventurers who have pioneered this path before I had. Some of the resources I used are cited here[^1][^2][^3]. However, going through and parsing the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
+
+The next step is about as involved as parsing the literature: translating the useful information to python code to verify my IK model, as well as using the IK definition to run my visualization pipeline.
+
+
+[^1]:[M.E. 530.646 UR5 Inverse Kinematics - Ryan Keating](uynitsuj.github.io/pdf/ur5ik-170410122303.pdf)
+[^2] [INVERSE KINEMATICS Chapter 4] (https://thydzik.com/academic/robotics-315/chap4.pdf)
+[^3][Inverse Kinematics of a 7R 6-DOF Robot with Nonspherical Wrist Based on Transformation into the 6R Robot](https://www.hindawi.com/journals/mpe/2017/2074137/)
