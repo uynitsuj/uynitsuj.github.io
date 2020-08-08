@@ -137,7 +137,7 @@ To control the parameters for my prepareMovement() method in the Arduino sketch,
 
 ### The Kinematics Conspiracy
 
-Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space and the cartesian coordinate space.
+Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space and the cartesian coordinate space, or vice versa.
 
 ![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg){:height="45%" width="45%"}
 
