@@ -6,8 +6,6 @@ categories: [project]
 image: robots/ezgif-4-f28f910a4123.gif
 ---
 
-![6DoF]({{ site.url }}/img/robots/ezgif-4-f28f910a4123.gif){:height="25%" width="25%"}
-
 When the first news of 2019-nCoV broke, I was cautiously optimistic that the virus would have a more difficult time transmitting between humans. However, within weeks, many research groups had produced their own R0 estimates, which fell alarmingly somewhere between 1.4 and 4. This is when I realized that we were in it for the long haul. I then realized the privilege I had (which I’m extremely grateful for) and decided it was time to take advantage of an unprecedented amount of free time.
 
 The content of this post will be primarily technical, but beyond that, I spent my quarantine time doing many other things. I also went running, mountain biking, and surfing, all things that I can enjoy while complying with social-distancing guidelines. For the first couple of weeks of quarantine, I was getting quite chunky from having more frequent access to the refrigerator at home. I read through a couple of papers on fasting, and have healthily lost about 19 pounds since the beginning of quarantine by conducting 3:4 fasts. I’m satisfied with my current physical fitness.
