@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What an Incoming UMich EECS Freshman is Doing to Stay Sharp During Quarantine"
-excerpt: From developing a 3d-printed 6DoF arm from scratch to making a personal portfolio website to showcase my projects, I’ve been busy.
+excerpt: From printing face shields for medical workers, developing a 3d-printed 6DoF arm from scratch, to making a personal portfolio website to showcase my projects, I’ve been busy.
 categories: [project]
 image: robots/ezgif-4-f28f910a4123.gif
 ---
