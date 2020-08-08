@@ -130,7 +130,7 @@ So I decided to use Python, since it would allow me to send the Arduino data ove
 
 In learning about serial data communication, I had to create my own command protocol that my Python code could send which the Arduino could then receive and interpret. My protocol needed to be able to assign a motorID as well as stepcount for the particular motor, and I also needed a protocol for executing the runAndWait() function. So I ended up with the following command structure:
 
-![CommandStructure]({{ site.url }}img/Post3/Annotation 2020-08-07 172642.png)
+![CommandStructure]({{ site.url }}/img/Post3/Annotation 2020-08-07 172642.png)
 
 To control the parameters for my prepareMovement() method in the Arduino sketch, my Command prefix would consist of MTR0, MTR1, ... to MTR6 to pass in the Motor ID, and the Data suffix would pass in the desired step count. A full command would look something like #MTR2500\\n to prepare movement on motor 2 for 500 steps, or #MTR51780\\n to prepare movement on motor 5 for 1780 steps. For the runAndWait() method, a simple #EXEC\\n without anything in the data field would suffice.
 
