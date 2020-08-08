@@ -164,16 +164,25 @@ The thing looks like a Demogorgon from Stranger Things! Symmetrical, yet not a v
 
 It's not easy to see, but all possible 8 configurations converge onto one end-effector position!
 
-The final step is to create my full .py file complete with my TKinter interface with an embedded mplot3d plot (took some time to figure that out). This code would also keep track of the previous arm joint variables so that motion relative to the previous position could be executed properly. I also took some inspiration from the 3D-Printer host GUI Pronterface, and added in some step buttons and a step size field so I wouldn't need to manually type into every field.
+The final step is to create my full .py file complete with my TKinter interface with an embedded mplot3d plot (took some time to figure that one out). This code would also keep track of the previous arm joint variables so that motion relative to the previous position could be executed properly. I also took some inspiration from the 3D-Printer host GUI Pronterface, and added in some step buttons and a step size field so I wouldn't need to manually type into every field.
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/WChiQJFVNRw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ### And it all Comes Together
 
-Now that we have our coordinated stepper sketch with acceleration + interrupts, a TKinter interface, a command protocol over serial, and our FK and IK models verified, it's time to mash it all together with some scotch tape and gum.
+Now that we have our coordinated movement sketch with acceleration + interrupts, a TKinter interface, a command protocol over serial, and our FK and IK models verified, it's time to stick it all together with some scotch tape and gum.
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
+It's been a wild ride.
+
+### Welcome to my Website
+
+Throughout the aforementioned project, it became very clear to me that working on the technical side of projects was my comfort zone. When I began sharing my project videos on instagram, one of my friends reached out to me and commended me on my effort to market the project. I realized he was more right than even he knew. I didn’t want to fall into the infamous engineer pitfall of only being able to think about the technical aspects of projects. I wanted to put more effort into marketing the projects themselves and producing helpful documentation for potential collaborators. I also wanted to learn how to market myself professionally, especially considering that I’m about to enter UMichigan, where most of the people around me are extremely accomplished, which would make it harder for me to set myself apart.
+
+With this in mind, I came up with an idea that would appeal to this concern, as well as my desire to continue working on a technical project. I decided I was going to make this personal portfolio website.
+
+**Welcome to my humble abode!**
 
 [^1]:[M.E. 530.646 UR5 Inverse Kinematics - Ryan Keating](uynitsuj.github.io/pdf/ur5ik-170410122303.pdf)
 [^2]:[Inverse Kinematics Chapter 4](https://thydzik.com/academic/robotics-315/chap4.pdf)
