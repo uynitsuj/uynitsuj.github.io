@@ -163,7 +163,7 @@ The thing looks like a Demogorgon from Stranger Things! Symmetrical, yet not a v
 
 ![Annotation 2020-05-29 214041]({{ site.url }}/img/Post3/Annotation 2020-05-29 214041.png)
 
-It's not easy to see, but all possible 8 configurations converge onto one end-effector position!
+It's not easy to see, but all of the 8 possible configurations converge onto one end-effector position!
 
 The final step is to create my full .py file complete with my TKinter interface with an embedded mplot3d plot (took some time to figure that one out). This code would also keep track of the previous arm joint variables so that motion relative to the previous position could be executed properly. I also took some inspiration from the 3D-Printer host GUI Pronterface, and added in some step buttons and a step size field so I wouldn't need to manually type into every field.
 
