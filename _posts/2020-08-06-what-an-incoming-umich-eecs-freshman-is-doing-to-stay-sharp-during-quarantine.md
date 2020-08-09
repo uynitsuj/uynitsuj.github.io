@@ -41,7 +41,7 @@ My first design iteration did not have many things going for it to say the absol
 
 Perhaps too overly ambitious, I had taken quite heavy inspiration from the folks over at Haddington Dynamics with their robot Dexter:
 
-<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/EgVPiBiKNjs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<div align="center"><iframe width="450vw" height="253.125vw" src="https://www.youtube.com/embed/EgVPiBiKNjs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 I had taken particular liking to their design philosophy of weight distribution, positioning all of the heavy powered implements such as stepper motors and gearboxes closer to the base, and using timing belts to transmit that power to the rest of the joints and end-effectors. If there was one thing I could take away from all of my time in competitive robotics, it would be: *keep end effectors as light as humanly possible*, with F=MA and inertial moments and the whole sha-bang. The thing that's supposed to move the most nimbly shouldn't be bogged down by so much mass. So this power transmission method seemed like a no-brainer.
 
@@ -117,11 +117,11 @@ Now that I have the thing built, I want to start making the thing move. So I got
 
 Ok, that was easy enough. Now how about making it move predictably? I then went onto the web to search for ways that I could coordinate stepper movement effectively, and found much more than I was expecting.
 
-<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe width="90%" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 This video by iforce2d had absolutely everything I was looking for and more. By the end, he had introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them, complete with stepper start-time end-time coordination, linear speed ramping, *and even interrupts*. This massively simplifies everything. And this is where that got us:
 
-<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/8E2R9iQnwQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe width="90%" src="https://www.youtube.com/embed/8E2R9iQnwQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 Next, I needed to figure out how to give angle inputs, and I also wanted to move out of the Arduino IDE interface, since preparing movements within the sketch currently consists of editing the motor ID and step# parameter manually:
 
@@ -139,7 +139,7 @@ To control the parameters for my prepareMovement() method in the Arduino sketch,
 
 Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space and the cartesian coordinate space, or vice versa.
 
-![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg){:height="45%" width="45%"}
+![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg){:width="70%"}
 
 This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for all things involving robotic linkages.
 
@@ -167,13 +167,13 @@ It's not easy to see, but all of the 8 possible configurations converge onto one
 
 The final step is to create my full .py file complete with my TKinter interface with an embedded mplot3d plot (took some time to figure that one out). This code would also keep track of the previous arm joint variables so that motion relative to the previous position could be executed properly. I also took some inspiration from the 3D-Printer host GUI Pronterface, and added in some step buttons and a step size field so I wouldn't need to manually type into every field.
 
-<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/WChiQJFVNRw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe width="90%" src="https://www.youtube.com/embed/WChiQJFVNRw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ### And it All Comes Together
 
 Now that we have our coordinated movement sketch with acceleration + interrupts, a TKinter interface, a command protocol over serial, and our FK and IK models verified, it's time to stick it all together with some scotch tape and gum.
 
-<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe width="90%" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 As a postmortem discussion: there are several areas that I could improve upon in future iterations. First off, you might've noticed that my interface was lacking a homing procedure button. This particular robot is completely open-loop, relying only on the accuracy (or lack thereof) of the steppers. The stepper gearboxes were also not back-driveable, so going entirely open-loop was less of a risk. Granting that, I would consider the current performance to be semi- to less-than-satisfactory. In the previous demonstration video, there exists visible disparity between the initial arm position versus the final position after homing. However, it should be argued that this disparity was also a function of a number of additional factors, including the fact that the frame is entirely 3D-Printed, save for the motors and some nut and bolt hardware, so excessive flex/torsion is definitely an expected source for error.
 
@@ -185,7 +185,7 @@ Nevertheless, it has been a wild ride.
 
 ### Welcome to my Website
 
-Throughout the aforementioned project, it became very clear to me that working on the technical side of projects was my comfort zone. When I began sharing my project videos on instagram, one of my friends reached out to me and commended me on my effort to market the project. I realized he was more right than even *he* knew. I didn’t want to fall into the infamous engineer pitfall of only being able to think about the technical aspects of projects. I wanted to put more effort into marketing the projects themselves and producing helpful documentation for potential collaborators. I also wanted to learn how to market myself professionally, especially considering that I’m about to enter UMichigan, where most of the people around me are extremely accomplished, which would make it harder for me to set myself apart.
+Throughout the aforementioned project, it became very clear to me that working on the technical side of projects was my comfort zone. When I began sharing my project videos on instagram, one of my friends reached out to me and commended my effort to market the project. I realized he was more right than even *he* knew. I didn’t want to fall into the infamous engineer pitfall of only being able to think about the technical aspects of projects. I wanted to put more effort into marketing the projects themselves and producing helpful documentation for potential collaborators. I also wanted to learn how to market myself professionally, especially considering that I’m about to enter UMichigan, where most of the people around me are extremely accomplished, which would make it harder for me to set myself apart.
 
 With this in mind, I came up with an idea that would appeal to this concern, as well as my desire to continue working on a technical project. I decided I was going to make this personal portfolio website with activity starting on July 31, 2020.
 
