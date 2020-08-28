@@ -8,17 +8,17 @@ image: Post4/91Bt1Azn+kL.jpg
 
 ![Rocky Flats]({{ site.url }}/img/Post4/Rocky_Flats_Site_in_July_1995_Prior_to_Final_Cleanup.jpg)
 <div align="center"> <i> Rocky Flats Facility, July, 1995 Prior to Final Cleanup </i> </div>
-</p>
+
 After completing the book <u>Full Body Burden: Growing Up in the Nuclear Shadow of Rocky Flats</u> by Kristen Iversen, and having had a couple of days for it to simmer in the back of my mind, here is my discussion on the book.
-</p>
+
 Firstly, my thoughts on the book as a whole: <u>Full Body Burden</u> is an enjoyable and easy read, and is definitely a book I'd recommend to aspiring and existing scientists and engineers. These are people that already hold profound and firsthand understanding on the positive impacts of science and engineering through infrastructure and services that reach far and wide. But we don't often get much firsthand historical account when it comes to what has happened in the muddier, more morally grey areas of technological advancement, which have existed forever and will continue to emerge in relevant fields such as nuclear weapons, general energy, general artificial intelligence, CRISPR, robotics, and more. These technologies have prompted and will always prompt both breathless predictions of societal breakthroughs and warnings of apocalypse.
-</p>
+
 As a foreword and introductory exposition, without spoiling too much of the book, <u>Full Body Burden</u> is a book about Rocky Flats, a Department of Energy facility in Colorado managed by Dow Chemical, and subsequently, Rockwell International. This facility primarily manufactured plutonium pucks, which serve as the trigger to the secondary, much more powerful blast in a nuclear weapon. These triggers were made for the US nuclear weapons arsenal throughout the 1950s and for the rest of the Cold-War and 20th century. The book is Iversen's historical recounting, pointed analysis, and criticism of the facility management's massive degree of neglect, mishandling, and public misinformation campaign, as well as serving as a sort of autobiography on the part of Iversen about what life was like for her growing up in Arvada, Colorado in close proximity to the Rocky Flats facility.
-</p>
+
 As an offhand remark, I should humorously note that the story of Rocky Flats reminds me tremendously of that of the Hawkins Lab in the fictitious TV show series, Stranger Things. Except instead of bringing a girl with superpowers and an alternate mirror dimension in the backdrop of the MKUltra trials, Rocky Flats brought instead, cancer, other life-long health issues, and contaminated land that will be unusable for millennia, all in the name of maintaining the upper hand in the arms race. At <i>whatever</i> cost.
-</p>
+
 It is also very interesting to me that Rocky Flats isn't a more well known case, despite the obvious secrecy by the government, since us Americans seem to be the very same people to point the finger at Russia for the very same neglect, mishandling, and disinformation they engaged in during the Chernobyl nuclear disaster. Though I will concede that, given the evidence, Chernobyl had the much larger negative impact, permanently displacing 300,000 residents, and impacting millions more.
-</p>
+
 To provide further context to my analysis and reading, this book was assigned to me as a part of University of Michigan's College of Engineering course ENGR 110 discussion class.
 
 Due to this, I strongly believe that this book was assigned in large part to illustrate to us the far and wide reaching impact of our very own engineering as we progress through college and beyond into research or industry. To me, that is most obviously the desired response to reading this book. The less obvious conclusion that I have arrived at would be that throughout our engineering endeavors, the moralization of our work is never so simple, but the onus is nonetheless on us to moralize it, and to justify it at least to ourselves.
