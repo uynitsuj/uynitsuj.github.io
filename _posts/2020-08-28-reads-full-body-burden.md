@@ -3,7 +3,7 @@ layout: post
 title:  "Book Reads: Full Body Burden by Kristen Iversen"
 excerpt: "After completing the book and having had a couple of days for it to simmer in the back of my mind, here is my discussion on the book."
 categories: [books]
-image: Post4/91Bt1Azn+kL.gif
+image: Post4/91Bt1Azn+kL.jpg
 ---
 
 ![Rocky Flats]({{ site.url }}/img/Post4/Rocky_Flats_Site_in_July_1995_Prior_to_Final_Cleanup.jpg)
