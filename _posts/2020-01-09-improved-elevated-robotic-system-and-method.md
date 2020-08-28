@@ -2,7 +2,7 @@
 layout: post
 title:  "Improved Elevated Robotic System and Method"
 excerpt: "Discussion of new and improved ceiling mounted robotic system"
-categories: [internship]
+categories: [internships]
 image: robots/ERAD.JPG
 ---
 
