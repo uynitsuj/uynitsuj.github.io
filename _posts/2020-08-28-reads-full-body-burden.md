@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Book Reads: Full Body Burden by Kristen Iversen"
+title:  "Book Discussion: Full Body Burden by Kristen Iversen"
 excerpt: "After completing the book and having had a couple of days for it to simmer in the back of my mind, here is my discussion on the book."
 categories: [books]
 image: Post4/91Bt1Azn+kL.jpg
