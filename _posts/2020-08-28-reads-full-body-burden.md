@@ -21,7 +21,7 @@ As a foreword and introductory exposition, without spoiling too much of the book
 As an offhand remark, I should note that the story of Rocky Flats reminds me tremendously of that of the Hawkins Lab in the fictitious TV show series, Stranger Things. Except instead of bringing a girl with superpowers and an alternate mirror dimension in the backdrop of the MKUltra trials, Rocky Flats brought instead, cancer, other life-long health issues, and contaminated land that will be unusable for millennia, all in the name of maintaining the upper hand in the arms race - at <i>whatever</i> cost.
 
 
-It is also very interesting to me that Rocky Flats isn't a more well known case, despite the obvious secrecy by the government, since us Americans seem to be the very same people to point the finger at Russia for the very same neglect, mishandling, and disinformation they engaged in during the Chernobyl nuclear disaster. Though I will concede that, given the evidence, Chernobyl had the much larger negative impact, permanently displacing 300,000 residents, and impacting millions more.
+It is also very interesting to me that Rocky Flats isn't a more well known case, despite the obvious secrecy by the government, since us Americans seem to be the very same people t easily point the finger at Russia for the very same neglect, mishandling, and disinformation they engaged in during the Chernobyl nuclear disaster. Though I will concede that, given the evidence, Chernobyl had the much larger negative impact, permanently displacing 300,000 residents, and impacting millions more.
 
 
 To provide further context to my analysis and reading, this book was assigned to me as a part of University of Michigan's College of Engineering course ENGR 110 discussion class.
