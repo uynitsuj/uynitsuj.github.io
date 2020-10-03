@@ -137,11 +137,11 @@ To control the parameters for my prepareMovement() method in the Arduino sketch,
 
 ### The Kinematics Conspiracy
 
-Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint space and the cartesian coordinate space, or vice versa.
+Forward and inverse kinematics, simply put, are the mathematical processes of converting between the joint angle space (theta1, theta2, theta3, ...) and the cartesian coordinate space (x,y,z,p,r,y) relative to the grounded base frame origin, or vice versa.
 
 ![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg){:height="45%" width="45%"}
 
-This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for all things involving robotic linkages.
+This allows us to determine a robot's kinematic chain, such as a robot manipulator or animation character's skeleton, in a given position and orientation relative to the start of the chain, and is necessary for pretty much all things involving robotic linkages.
 
 ![snek]({{ site.url }}/img/Post3/teslasnake.gif)
 
@@ -149,7 +149,7 @@ My journey through Forward Kinematics is laid out in one of my previous informal
 
 ![Annotation 2020-05-17 173422]({{ site.url }}/img/Annotation 2020-05-17 173422.png)
 
-The Inverse Kinematics process is much more involved, as it is the inverse of the above process. The IK model must produce the joint angle space with only the cartesian coordinate space transform matrix that defines the end effector position plus its offset. One of the reasons why this is more complicated is because its joint space solutions are not necessarily unique. You might've guessed by now, for every unique cartesian coordinate space x, y, z, pitch, roll, or yaw input, the result could consist of multiple joint space solutions. In fact, there may be up to 8 as shown here:
+The Inverse Kinematics process is much more involved, as it is the inverse of the above process. The IK model must produce the joint angle space with only the cartesian coordinate space transform matrix that defines the end effector position plus its offset relative to the grounded base frame origin. One of the reasons why this is more complicated is because its joint space solutions are not necessarily unique. You might've guessed by now, for every unique cartesian coordinate space x, y, z, pitch, roll, or yaw input, the result could consist of multiple joint space solutions. In fact, there may be up to 8 as shown here:
 
 ![Annotation 2020-08-07 190630]({{ site.url }}/img/Post3/Annotation 2020-08-07 190630.png)
 
