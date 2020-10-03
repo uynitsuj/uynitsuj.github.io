@@ -21,10 +21,10 @@
           robotics systems exist with varying mechanical designs and control mechanisms to traversal along an
           elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
           provides smooth and efficient traversal along an elevated track. <br>
-          Tools: Solidworks, NVIDIA Jetson Nano"
+          Tools: Solidworks, NVIDIA Jetson Nano <br>ERAD provisional patent document can be read in the homepage link below"
   image: ERAD.JPG
   github:
-  website:
+  website: https://uynitsuj.github.io/articles/2020-01/improved-elevated-robotic-system-and-method
   youtube:
 
 - name: 2020 FRC Robot - Cheems the Harvester of Souls

@@ -6,7 +6,7 @@ categories: [projects]
 image: Annotation 2020-05-17 173422.png
 ---
 
-[read in PDF](/pdf/FORWARD KINEMATICS DH Convention on a 6R Robot Arm.pdf)
+[read as PDF](/pdf/FORWARD KINEMATICS DH Convention on a 6R Robot Arm.pdf)
 
 
 ### 1 Introduction

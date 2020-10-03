@@ -5,6 +5,7 @@ excerpt: "Discussion of new and improved ceiling mounted robotic system"
 categories: [internships]
 image: robots/ERAD.JPG
 ---
+[read as PDF](/pdf/ImprovedElevatedRoboticSystemAndMethod.pdf)
 
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
 productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
@@ -163,5 +164,3 @@ elevated robotics module towards the desired drive signal position at the design
 velocity setpoint is reached by effectively adding a default negative term (proportional to the difference
 between the desired velocity and the current velocity) to the common FF+PID control law for position
 control.
-
-[get the PDF](/pdf/ImprovedElevatedRoboticSystemAndMethod.pdf)
