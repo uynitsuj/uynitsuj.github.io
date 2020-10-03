@@ -6,6 +6,9 @@ categories: [projects]
 image: Annotation 2020-05-17 173422.png
 ---
 
+[read in PDF](/pdf/FORWARD KINEMATICS DH Convention on a 6R Robot Arm.pdf)
+
+
 ### 1 Introduction
 
 In this paper we develop the forward or configuration kinematic equations for a rigid robot of 6R (6 Revolute Joints) using the Denavit-Hartenberg convention. The forward kinematics problem is concerned with the relationship between the individual joints of a robot manipulator and the position and orientation of the tool or end-effector. Formally, the forward kinematics problem is to determine the position and orientation of the end-effector, given joint variable values of the robot. The joint variables are the angles between the links in the case of revolute or rotational joints, and the link extension displacement in the case of prismatic or sliding joints. The forward kinematics problem is to be contrasted with the inverse kinematics problem, which will be explored at another time, which is concerned with the determination of values for the joint variables that achieve a desired position and orientation for the end-effector of the robot.
@@ -173,5 +176,3 @@ Notice the first 3 entries of the last column of matrix, that are the X,Y,Z comp
 
 
 The numbers match closely! (Variance is due to hand-placed and orientated arm links in CAD model). The -6.3cm value in the python console is correctly negative. Base frame (grounded frame) utilizes an $x_0$ axis frame pointing in the opposite direction *(Fig 5.6)*. As detailed in *(Fig 5.7)*, end effector position is detailed by the first 3 entries of the final column of the matrix. End effector orientation is reconciled by the first 3x3 rows and columns of the matrix.
-
-[get the PDF](/pdf/FORWARD KINEMATICS DH Convention on a 6R Robot Arm.pdf)
