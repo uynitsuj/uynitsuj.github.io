@@ -75,6 +75,9 @@ contact patch on the side wheel contacts.
 ![Screenshot 2020-10-03 201106]({{ site.url }}/img/Post1/Screenshot 2020-10-03 201106.png)
 <div align="center">Base Carriage Isometric View</div>
 
+![Screenshot 2020-10-03 225300]({{ site.url }}/img/Post1/Screenshot 2020-10-03 225300.png)
+<div align="center">Cross Sectional View</div>
+
 In an exemplary embodiment a compression of 0.03 inches provided to the grip wheels on the underside
 provides a secure contact between all wheels and the track. Care must be taken to ensure the carriage isn’t
 too tight on the track which would prohibit the motor from overcoming friction such that it can begin to
