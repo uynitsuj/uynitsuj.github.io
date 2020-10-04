@@ -24,9 +24,9 @@ It is important to keep in mind that the choices of the various coordinate frame
 
 While it is possible to carry out analysis using arbitrary frame assignments, the Denavit-Hartenberg convention makes frame selection systematic and consistent. By this convention, resultant calculations are also simplified as the DH convention follows two assumptions:
 
-**(DH1)** The axis xi is ⟂ to the axis $z_{i-1}$
+**(DH1)** The axis $x_i$ is ⟂ to the axis $z_{i-1}$
 
-**(DH2)** The axis xi is coincident with the axis $z_{i-1}$
+**(DH2)** The axis $x_i$ is coincident with the axis $z_{i-1}$
 
 By following these assumptions, the need to reconcile a y-axis frame along every step is removed, and the forward kinematics problem becomes much easier to solve. As a part of the DH convention, the z axis of all frames are collinear with the joint axis, being the rotational axis in the case of a (R) revolute joint, and the linear actuation axis in the case of a (P) prismatic joint.
 
