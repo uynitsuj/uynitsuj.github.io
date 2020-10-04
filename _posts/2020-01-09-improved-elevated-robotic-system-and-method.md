@@ -70,7 +70,7 @@ contact patch on the side wheel contacts.
 <div align="center">Base Carriage Front View w/o driver wheels</div>
 
 ![Screenshot 2020-10-03 201017]({{ site.url }}/img/Post1/Screenshot 2020-10-03 201017.png)
-<div align="center">Base Carriage Front View w/ driver wheels</div>
+<div align="center">Base Carriage Front View w/ driver wheels and motor+transmission</div>
 
 ![Screenshot 2020-10-03 201106]({{ site.url }}/img/Post1/Screenshot 2020-10-03 201106.png)
 <div align="center">Base Carriage Isometric View</div>
