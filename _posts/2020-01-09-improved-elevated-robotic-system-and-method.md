@@ -67,6 +67,7 @@ used, so as to provide improved mounting support in the vertical orientation and
 contact patch on the side wheel contacts.
 
 ![Screenshot 2020-10-03 185006]({{ site.url }}/img/Post1/Screenshot 2020-10-03 185006.png)
+<<<<<<< HEAD
 <div align="center">Base Carriage Front View w/o driver wheels</div>
 
 ![Screenshot 2020-10-03 201017]({{ site.url }}/img/Post1/Screenshot 2020-10-03 201017.png)
@@ -74,6 +75,8 @@ contact patch on the side wheel contacts.
 
 ![Screenshot 2020-10-03 201106]({{ site.url }}/img/Post1/Screenshot 2020-10-03 201106.png)
 <div align="center">Base Carriage Isometric View</div>
+=======
+>>>>>>> d82de91fadccd4534a1f5cd5c92bb7608d07cf4f
 
 In an exemplary embodiment a compression of 0.03 inches provided to the grip wheels on the underside
 provides a secure contact between all wheels and the track. Care must be taken to ensure the carriage isn’t
