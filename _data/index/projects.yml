@@ -1,25 +1,22 @@
 - name: 6DoF 3D-Printed Robotic Arm
-  descr: "Affiliation: Systems Designer<br>Personal project over the 2020 coronavirus quarantine summer to build a 6DoF robot arm platform from complete scratch. This started off as a pretty ambitious project to build a pretty accurate/precise and repeatable 6DoF arm. But then because of various constraints I scaled it down to become mostly a learning experience in working out forward kinematics and inverse kinematics, and also in running complex visualization pipelines in python. Robot Control Interface is built from scratch in python using TKinter module with imbedded matplotlib mplot3d so that I could teach myself forward and inverse kinematics on a 6DoF robot arm. Robot uses NEMA 17 stepper motors for every joint besides the 2nd, where a NEMA 23 and a larger controller is necessary for greater torque. Robot control is completely open-loop. Serial data is sent over USB in order to prepare motor movement and execution commands using my custom control protocol. The basis for my custom Arduino sketch comes from iforce2d's Coordinated Stepper Movement Arduino Sketch. And my Over-Serial command protocol integrated into my Custom Arduino sketch comes from educ8s.tv. <br>Tools: Solidworks, Python, Arduino IDE <br>My journey can be read in the homepage link below"
+  descr: "Affiliation/Role: Solo Systems Designer<br>Personal project over the 2020 coronavirus quarantine summer to build a 6DoF robot arm platform from complete scratch. This started off as a pretty ambitious project to build a pretty accurate/precise and repeatable 6DoF arm. But then because of various constraints I scaled it down to become mostly a learning experience in working out forward kinematics and inverse kinematics, and also in running complex visualization pipelines in python. Robot Control Interface is built from scratch in python using TKinter module with imbedded matplotlib mplot3d so that I could teach myself forward and inverse kinematics on a 6DoF robot arm. Robot uses NEMA 17 stepper motors for every joint besides the 2nd, where a NEMA 23 and a larger controller is necessary for greater torque. Robot control is completely open-loop. Serial data is sent over USB in order to prepare motor movement and execution commands using my custom control protocol. The basis for my custom Arduino sketch comes from iforce2d's Coordinated Stepper Movement Arduino Sketch. And my Over-Serial command protocol integrated into my Custom Arduino sketch comes from educ8s.tv. <br>Tools: Solidworks, Python, Arduino IDE <br>My journey can be read in the homepage link below"
   image: ezgif-4-f28f910a4123.gif
   github: https://github.com/uynitsuj/Open6R_ARM
   website: https://uynitsuj.github.io/articles/2020-08/what-an-incoming-umich-freshman-is-doing-to-stay-sharp-during-quarantine
   youtube: https://www.youtube.com/embed/CedyWQmqiJ0
 
 - name: Elevated Robotic Assistive Device
-  descr: "Affiliation: Mechanical Systems Designer<br>Since the advent of robotic systems and devices, the primary application focus has been with enhancing
-          productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
-          vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
+  descr: "Affiliation/Role: Lead Mechanical Systems Designer<br>Since the advent of robotic systems and devices, the primary application focus has been with enhancing
+          productivity and safety in industrial and agricultural markets such as manufacturing assembly lines, warehouse package/container retrieval
           and disbursement, and crop harvesting to name a few. Robotic assistance devices have also been
           deployed in military applications employing various form factors (e.g. tanks, unmanned aerial vehicles)
           and various levels of artificial intelligence. The popularity of robotic assistance devices in personal and
           domestic markets comparably have been primarily confined to toys including flying devices (e.g. drones)
           and cleaning devices (e.g. carpet or pool cleaners). Consequently, these devices typically occupy space in
-          the open air or on the ground. While floor-based mobile robots (e.g. telepresence robots) may have great
+          the open air or on the ground. While floor-based mobile robots may have great
           potential for automating processes and assisting people (i.e. the disabled and infirmed or home/industrial
-          security), their need to navigate around objects (people, furniture, stairs, pets..) makes them expensive
-          while still not alleviating the potential for a sense of obtrusiveness on the part of the users. Elevated
-          robotics systems exist with varying mechanical designs and control mechanisms to traverse along an
-          elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
+          security), their need to navigate around objects makes them an expensive option
+          while still not alleviating the potential for a sense of obtrusiveness on the part of the users. Accordingly, it would be advantageous to provide an elevated robotic system which
           provides smooth and efficient traversal along an elevated track. <br>
           Tools: Solidworks, NVIDIA Jetson Nano <br>ERAD provisional patent document can be read in the homepage link below"
   image: ERAD.JPG
@@ -28,7 +25,7 @@
   youtube:
 
 - name: 2020 FRC Robot - Cheems the Harvester of Souls
-  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
   Dimensions: 25&#34; W x 28&#34; L x 44.7&#34; H <br>
   Weight: 110 lbs <br>
   Top Speed: 10.9 mph <br><br>
@@ -41,7 +38,7 @@
   youtube: https://www.youtube.com/embed/iFeYwJSkDD8
 
 - name: 2019 FRC Robot - Gromit
-  descr: "Affiliation: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
   Dimensions: 28&#34; W x 32&#34; L x 48&#34; H <br>
   Weight: 119.8 lbs <br>
   Top Speed: 10.5 mph <br><br>
@@ -54,7 +51,7 @@
   youtube: https://www.youtube.com/embed/e-3wpLIAMWE
 
 - name: 2018 FRC Robot - Guido
-  descr: "Affiliation: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "Affiliation/Role: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
   Dimensions: 33&#34; W x 28&#34; L x 54&#34; H <br>
   Weight: 119.7 lbs <br>
   Top Speed: 9.5 mph <br><br>
@@ -66,7 +63,7 @@
   youtube:
 
 - name: 2017 FRC Robot - Ferb
-  descr: "Affiliation: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "Affiliation/Role: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
   Dimensions: 34.5&#34; W x 31.25&#34; L x 24&#34; H <br>
   Weight: 95 lbs <br>
   Top Speed: 9.5 mph <br><br>
