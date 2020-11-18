@@ -19,7 +19,7 @@ the open air or on the ground. While floor-based mobile robots (e.g. telepresenc
 potential for automating processes and assisting people (i.e. the disabled and infirmed or home/industrial
 security), their need to navigate around objects (people, furniture, stairs, pets..) makes them expensive
 while still not alleviating the potential for a sense of obtrusiveness on the part of the users. Elevated
-robotics systems exist with varying mechanical designs and control mechanisms to traversal along an
+robotics systems exist with varying mechanical designs and control mechanisms to traverse along an
 elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
 provides smooth and efficient traversal along an elevated track.
 
