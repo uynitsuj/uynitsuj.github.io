@@ -1,7 +1,7 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 
-- name: Computational Autonomy & Robotics Laboratory @ UM
+- name: Computational Autonomy & Robotics Laboratory at University of Michigan
   link: https://curly.engin.umich.edu/
   date: Oct 2020 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
   job: Undergraduate Research Assistant
