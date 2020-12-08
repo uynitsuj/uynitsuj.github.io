@@ -5,12 +5,12 @@ excerpt: "Development of Maze Traversal & Spatial Mapping algorithms"
 categories: [projects]
 image: Post5/main.png
 ---
-[read as PDF](/pdf/QC.pdf)
 
+[read as PDF](/pdf/QC.pdf)
 
 Team : Ashwani Aggarwal, Ashwin Srinivasan, Diego Suazo, Justin Yu
 
-We will discuss the two projects we worked on with our prototype quadcopter - maze traversal and spatial visualization.  At a high level, the former involved the quadcopter autonomously traversing a maze via an algorithm we coded. The latter involved extracting and processing sensor data from the quadcopter to construct a 3D map of the ambient space.  We were able to complete both projects.
+We will discuss the two projects we worked on with our prototype quadcopter - maze traversal and spatial visualization.  At a high level, the former involved the quadcopter autonomously traversing a maze via an algorithm we coded. The latter involved extracting and processing sensor data from the quadcopter to construct a 3D map of the ambient space. 
 
 ## Maze Traversal
 
