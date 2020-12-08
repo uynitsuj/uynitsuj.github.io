@@ -10,7 +10,7 @@ image: Post5/main.png
 
 Team : Ashwani Aggarwal, Ashwin Srinivasan, Diego Suazo, Justin Yu
 
-We will discuss the two projects we worked on with our prototype quadcopter - maze traversal and spatial visualization.  At a high level, the former involved the quadcopter autonomously traversing a maze via an algorithm we coded. The latter involved extracting and processing sensor data from the quadcopter to construct a 3D map of the ambient space. 
+We will discuss the two projects we worked on with our prototype quadcopter - maze traversal and spatial visualization.  At a high level, the former involved the quadcopter autonomously traversing a maze via an algorithm we coded. The latter involved extracting and processing sensor data from the quadcopter to construct a 3D map of the ambient space.
 
 ## Maze Traversal
 
@@ -46,7 +46,7 @@ The aforementioned logic allows the quadcopter to decide whether to turn or cont
 
 To summarize this algorithm (Fig 4), first, the quadcopter sets its heading as “forward” (relative to its nose) and takes off.  Then it moves in the direction of the heading for three seconds (the delay).  After that, it completes its check of whether or not to land and whether or not to turn.  If it decides to land, the algorithm is complete.  Otherwise, it returns to moving in the direction of the new heading for three seconds and loops.  
 
-In the background, we have a collision avoidance protocol that checks if the quadcopter is getting too close to any walls and if so, acts to move it away possibly overriding its movement in the heading direction.  This algorithm is influenced by the cutoff distance for it to activate and several parameters in the Mission Planner software including the PID control, all of which had to be tuned.  See Appendix I for the full maze traversal algorithm code.
+In the background, we have a collision avoidance protocol that checks if the quadcopter is getting too close to any walls and if so, acts to move it away possibly overriding its movement in the heading direction.  This algorithm is influenced by the cutoff distance for it to activate and several parameters in the Mission Planner software including the PID control, all of which had to be tuned. 
 
 ![Fig4]({{ site.url }}/img/Post5/f4.png)
 <div align="center"> <i> Fig 4. Maze Algorithm Chart </i> </div>
