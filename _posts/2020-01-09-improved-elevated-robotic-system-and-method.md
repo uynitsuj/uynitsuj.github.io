@@ -7,6 +7,8 @@ image: robots/ERAD.JPG
 ---
 [read as PDF](/pdf/ImprovedElevatedRoboticSystemAndMethod.pdf)
 
+Team : Adham Elarabawy, Justin Yu
+
 Since the advent of robotic systems and devices, the primary application focus has been with enhancing
 productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
 vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
