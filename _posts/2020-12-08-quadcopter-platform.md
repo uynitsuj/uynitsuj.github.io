@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Autonomous Quadcopter Maze Traversal & Spatial Mapping"
+title:  "Autonomous Quadcopters"
+excerpt: "Development of Maze Traversal & Spatial Mapping algorithms"
 categories: [projects]
 image: Post5/main.png
 ---
