@@ -51,8 +51,7 @@ In the background, we have a collision avoidance protocol that checks if the qua
 ![Fig4]({{ site.url }}/img/Post5/f4.png){:height="40%" width="40%"}
 <div align="center"> <i> Fig 4. Maze Algorithm Chart </i> </div>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/uZTgKDcrUIk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/uZTgKDcrUIk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 #### Discussion of Results and Recommendations
 
 Overall, we feel that our results on the maze project met the objectives that we set out to accomplish.  Our best flight had only one minor collision and was completed in just under thirty seconds.  As such, we believe that we met the primary objective of navigating the maze autonomously and the optimization objectives of reducing collisions and increasing speed.
