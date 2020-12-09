@@ -48,7 +48,7 @@ To summarize this algorithm (Fig 4), first, the quadcopter sets its heading as �
 
 In the background, we have a collision avoidance protocol that checks if the quadcopter is getting too close to any walls and if so, acts to move it away possibly overriding its movement in the heading direction.  This algorithm is influenced by the cutoff distance for it to activate and several parameters in the Mission Planner software including the PID control, all of which had to be tuned.
 
-![Fig4]({{ site.url }}/img/Post5/f4.png)
+![Fig4]({{ site.url }}/img/Post5/f4.png){:height="40%" width="40%"}
 <div align="center"> <i> Fig 4. Maze Algorithm Chart </i> </div>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uZTgKDcrUIk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -78,7 +78,7 @@ These data values are made available to the quadcopter by the downward-facing ul
 <div align="center"> <i>  select-string IMU,PRX,CTUN,ATT ‘53 10-13-2020 11-31-05 AM.bin.log’ | select-object -expandproperty line > outfile.csv </i> </div>
 <div align="center"> <i> Fig 5. Windows Powershell Keyword Filter Command </i> </div>
 
-![Fig6]({{ site.url }}/img/Post5/f6.png)
+![Fig6]({{ site.url }}/img/Post5/f6.png){:height="40%" width="40%"}
 <div align="center"> <i> Fig 6. First 35 Rows of a Filtered Log </i> </div>
 
 #### Flight & Spatial Visualization Algorithm
