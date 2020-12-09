@@ -81,7 +81,7 @@ These data values are made available to the quadcopter by the downward-facing ul
 
 #### Flight & Spatial Visualization Algorithm
 
-One of our objectives is for the logged data to be reliable, so we needed to design our flight algorithm with this in mind. And to do this, we modified the template flight algorithm so that our quadcopter ascended, spun around 3 times, and then landed. Our quadcopter PID and collision avoidance layers were left unchanged from the maze traversal task.
+One of our objectives is for the logged data to be reliable, so we needed to design our flight algorithm with this in mind. And to do this, we devised a flight algorithm so that our quadcopter ascended, spun around 3 times, and then landed. Our quadcopter PID and collision avoidance layers were left unchanged from the maze traversal task.
 
 For the spatial visualization, the algorithm runs a core loop iterating over the rows of data      (Fig 8). Taking a log such as the one shown in the previous section, our objective is to manipulate the raw data to produce a visualization of the flight path and an environment map that is intuitive to us.
 
