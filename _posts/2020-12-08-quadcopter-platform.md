@@ -77,7 +77,7 @@ These data values are made available to the quadcopter by the downward-facing ul
 <div align="center"> <i>  select-string IMU,PRX,CTUN,ATT ‘53 10-13-2020 11-31-05 AM.bin.log’ | select-object -expandproperty line > outfile.csv </i> </div>
 <div align="center"> <i> Fig 5. Windows Powershell Keyword Filter Command </i> </div>
 
-![Fig6]({{ site.url }}/img/Post5/f6.png){:height="40%" width="40%"}
+![Fig6]({{ site.url }}/img/Post5/f6.png){:height="70%" width="70%"}
 <div align="center"> <i> Fig 6. First 35 Rows of a Filtered Log </i> </div>
 
 #### Flight & Spatial Visualization Algorithm
@@ -92,7 +92,7 @@ Once a buffer is updated, we take these things -- the pitch-roll-yaw, altitude, 
 
 The math to update the pose estimation involves a series of affine transformations on a 4x4 matrix, which we’ll briefly touch on (Fig 7). Precisely, the transformation includes a translation, rotation, followed by another translation. To define an updated pose, we take a 4x4 matrix containing the dx and dy displacement information from the buffer. This effectively translates a point along the x-y plane according to the environment frame, but not the quadcopter frame. Next, the resultant matrix is dotted with a rotation matrix containing the roll-pitch-yaw information from the buffer. This effectively makes our first dx & dy displacement matrix a translation from the origin in relation to the quadcopter reference frame. Finally, this result is dotted with another translation matrix which translates the point using the x-y-z cartesian coordinates from the previous pose. Finally, the altitude buffer updates the z coordinate in the pose matrix. This produces a 4x4 matrix containing the quadcopter’s updated location in 3d space as well as its new orientation.
 
-![Fig7]({{ site.url }}/img/Post5/f7.png){:height="40%" width="40%"}
+![Fig7]({{ site.url }}/img/Post5/f7.png){:height="60%" width="60%"}
 <div align="center"> <i> Fig 7. Affine Transformation Series to Determine the Updated Pose Estimate Matrix P </i> </div>
 
 
@@ -100,7 +100,7 @@ Through a similar process, we manipulate the LiDAR readings and add these to a L
 
 Finally, the loop moves on to the next row where the same process is repeated for a new data type.
 
-![Fig8]({{ site.url }}/img/Post5/f8.png){:height="40%" width="40%"}
+![Fig8]({{ site.url }}/img/Post5/f8.png){:height="70%" width="70%"}
 <div align="center"> <i> Fig 8. Visualization Algorithm Core Loop </i> </div>
 
 #### Discussion of Results and Recommendations
@@ -111,7 +111,7 @@ On top of our results, which prove the concepts of modifying the quadcopter with
 
 Due to the unreliable nature of the IMU, the positional readings experienced significant amounts of drift, which could be improved upon given better IMUs, or an improved filter or technique, such as a Kalman filter. For the mapping portion, better LiDAR sensors could be implemented, and other technology and techniques like SLAM or cameras can improve the visual aspect of this project.
 
-![Fig9]({{ site.url }}/img/Post5/f9.png){:height="40%" width="40%"}
+![Fig9]({{ site.url }}/img/Post5/f9.png){:height="70%" width="70%"}
 <div align="center"> <i> Fig 9. Resultant environment map </i> </div>
 
 ## Conclusion
