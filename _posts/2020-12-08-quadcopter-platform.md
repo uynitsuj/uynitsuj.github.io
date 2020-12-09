@@ -66,7 +66,7 @@ If given more time and resources, we would recommend finer tuning of collision a
 
 #### Objectives
 
-For our this project, we set out to construct a 3-dimensional visualization of the space our quadcopter is flying in, based on post hoc analysis of onboard sensor data obtained from the quadcopter’s exploration flight-logs. Several high-level objectives include extracting position, orientation, and LiDAR data from the quadcopter flight logs. Furthermore, an algorithm to fly the quadcopter such that reliable data can be obtained is necessary. Finally, we wanted to develop a correct and reliable algorithm for rendering the space using the extracted data.
+For this project, we set out to construct a 3-dimensional visualization of the space our quadcopter is flying in, based on post hoc analysis of onboard sensor data obtained from the quadcopter’s exploration flight-logs. Several high-level objectives include extracting position, orientation, and LiDAR data from the quadcopter flight logs. Furthermore, an algorithm to fly the quadcopter such that reliable data can be obtained is necessary. Finally, we wanted to develop a correct and reliable algorithm for rendering the space using the extracted data.
 
 #### Log Extraction
 
