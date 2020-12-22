@@ -1,6 +1,6 @@
 - name: 12DoF Quadrupedal Robot (Work In Progress)
   descr: "Affiliation/Role: Systems Designer<br> Personal project over 2020 winter break and 2021 summer to build a 12DoF quadrupedal robot from scratch."
-  image: Microcheetah2.png
+  image: Quadruped2.gif
   github: https://github.com/uynitsuj/quadruped
 
 - name: 6DoF 3D-Printed Robotic Arm
