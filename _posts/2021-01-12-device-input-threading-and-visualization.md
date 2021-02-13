@@ -36,3 +36,5 @@ Here's where I am at currently:
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/RiKDt2fboVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/Qadp65k-Nd0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<br>
+<div align="center">![IK]({{ site.url }}/img/robots/IK.gif){:height="40%" width="40%"}</div>
