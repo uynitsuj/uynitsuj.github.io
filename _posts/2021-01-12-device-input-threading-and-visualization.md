@@ -20,7 +20,7 @@ I'm starting out small scale with some 20KG RC car hobby servos for rudimentary 
 What progress have I made? The first step on my list was to solve for the inverse kinematics and also to verify it in a custom visualization pipeline. The former has been done for a while now, actually since before winter break.
 
 ![IK1]({{ site.url }}/img/Post6/Scannable Document on Feb 12, 2021 at 5_23_46 PM.png){:height="40%" width="40%"}
-![IK2]({{ site.url }}/img/Post6/Scannable Document 2 on Feb 12, 2021 at 5_23_46 PM.png){:height="40%" width="40%"}
+![IK2]({{ site.url }}/img/Post6/Scannable Document on Feb 13, 2021 at 1_34_17 AM.png){:height="40%" width="40%"}
 
 And I recently got around the the latter. I have been looking around for python visualization modules for quite some time now, since I was getting tired of how slow matplotlib 3D is. It's made to look nice and presentable for research paper graphics, but it's not necessarily built for performance. I've finally found one that I'm pretty happy with: [pyqtgraph](http://www.pyqtgraph.org/). It is an impressively robust 2d and 3d visualization module that uses OpenGL, and is built with your choice of either Qt or PySide as a backend.
 
