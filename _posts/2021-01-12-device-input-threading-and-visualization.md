@@ -32,7 +32,7 @@ I started putting together my visualization, but then realized that I had a prob
 
 Here's where I am at currently:
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/fkbPEBkFw38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-
+<br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RiKDt2fboVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Qadp65k-Nd0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
