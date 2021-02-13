@@ -1,9 +1,10 @@
 - name: 12DoF Quadrupedal Robot (Work In Progress)
   descr: "Affiliation/Role: Systems Designer<br> Personal project over 2020 winter break and 2021 summer to build a 12DoF quadrupedal robot from scratch."
   image: Quadruped2.gif
+  youtube: https://youtu.be/Qadp65k-Nd0
   github: https://github.com/uynitsuj/quadruped
-  
-- name: Michigan Mars Rover 
+
+- name: Michigan Mars Rover
   descr: "Affiliation/Role: Robotic Arm Electrical Harness Designer<br> Aided in electrical hardware design of the Michigan Mars Rover team's wire harness and rigging in enterprise software including Altium and Siemens NX."
   image: 01Overview.jpg
 
