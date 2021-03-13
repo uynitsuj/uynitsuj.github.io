@@ -3,7 +3,7 @@ layout: post
 title:  "A Quick Post about my Next Project, /dev/input, Threading, and Visualization in Python"
 excerpt: "I've come to a revelation"
 categories: [projects]
-image: robots/IK.gif
+image: gallery/QIKstress.gif
 ---
 
 Recently, I've found some precious time in between studying for 17 credit-hours of courses to make progress towards my next project: a Quadrupedal Robot. This project is, of course, highly inspired by the work of Boston Dynamics on Spot Mini, MIT on MiniCheetah (who I have the pleasure of working with at UM), and last but not least, my good friend Adham Elarabawy's work on Open Quadruped. Adham is currently at Berkeley, and will go on to do much more impressive things, I'm sure.
