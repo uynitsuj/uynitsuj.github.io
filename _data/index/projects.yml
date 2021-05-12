@@ -1,5 +1,5 @@
-- name: 12DoF Quadrupedal Robot (Work In Progress)
-  descr: "Affiliation/Role: Systems Designer<br> Personal project over 2020 winter break and 2021 summer to build a 12DoF quadrupedal robot from scratch."
+- name: 3D Printed Quadrupedal Robot (Work In Progress)
+  descr: "Affiliation/Role: Systems Designer<br> Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
   image: QPRev2.png
   youtube: https://www.youtube.com/embed/zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
