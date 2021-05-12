@@ -1,7 +1,7 @@
 - name: 12DoF Quadrupedal Robot (Work In Progress)
   descr: "Affiliation/Role: Systems Designer<br> Personal project over 2020 winter break and 2021 summer to build a 12DoF quadrupedal robot from scratch."
-  image: ezgif-3-fced31d97cb5.gif
-  youtube: https://www.youtube.com/embed/KtBiSxGE5vI
+  image: QPRev2.png
+  youtube: https://www.youtube.com/embed/zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
 
 - name: Michigan Mars Rover
