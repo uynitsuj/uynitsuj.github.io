@@ -6,7 +6,7 @@
   
 - name: Mini Cheetah Autonomous Sensor Suite Platform
   descr: "Affiliation/Role: Hardware Systems Designer for University of Michigan CURLY group<br> This sensor suite was designed to augment the autonomous capabilities of the MIT Minicheetah. It houses and protects an NVIDIA Jetson Xavier as well as a vision system. The suite will accept either the Intel depth camera or L515 LiDAR system. Additional components such as network switches may be mounted at the rear via tape. 2 cargo straps are run through the sensor suite frame to secure a Krisdonia portable battery to the underside of the Minicheetah. Sensor suite platorm has been made public for all other Minicheetah groups to take advantage of. (Github link with stl files below)"
-  image: 000085550022.jpg
+  image: MiniCheetah063021.png
   github: https://github.com/UMich-CURLY/minicheetah-sensorsuite
   youtube: https://www.youtube.com/embed/oVbP-Y8xT_E
 
