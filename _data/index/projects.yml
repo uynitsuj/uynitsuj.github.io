@@ -3,6 +3,12 @@
   image: QPRev2.png
   youtube: https://www.youtube.com/embed/zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
+  
+- name: Mini Cheetah Autonomous Sensor Suite Platform
+  descr: "Affiliation/Role: Hardware Systems Designer for University of Michigan CURLY group<br> This sensor suite was designed to augment the autonomous capabilities of the MIT Minicheetah. It houses and protects an NVIDIA Jetson Xavier as well as a vision system. The suite will accept either the Intel depth camera or L515 LiDAR system. Additional components such as network switches may be mounted at the rear via tape. 2 cargo straps are run through the sensor suite frame to secure a Krisdonia portable battery to the underside of the Minicheetah. Sensor suite platorm has been made public for all other Minicheetah groups to take advantage of. (Github link with stl files below)"
+  image: P4.JPG
+  github: https://github.com/UMich-CURLY/minicheetah-sensorsuite
+  youtube: https://www.youtube.com/embed/oVbP-Y8xT_E
 
 - name: Michigan Mars Rover
   descr: "Affiliation/Role: Robotic Arm Electrical Harness Designer<br> Aided in electrical hardware design of the Michigan Mars Rover team's wire harness and rigging in enterprise software including Altium and Siemens NX."
@@ -14,12 +20,6 @@
   github: https://github.com/uynitsuj/Open6R_ARM
   website: https://uynitsuj.github.io/articles/2020-08/what-an-incoming-umich-freshman-is-doing-to-stay-sharp-during-quarantine
   youtube: https://www.youtube.com/embed/CedyWQmqiJ0
-
-- name: MIT Minicheetah Autonomous Sensor Suite Platform
-  descr: "Affiliation/Role: Hardware Systems Designer for University of Michigan CURLY group<br> This sensor suite was designed to augment the autonomous capabilities of the MIT Minicheetah. It houses and protects an NVIDIA Jetson Xavier as well as a vision system. The suite will accept either the Intel depth camera or L515 LiDAR system. Additional components such as network switches may be mounted at the rear via tape. 2 cargo straps are run through the sensor suite frame to secure a Krisdonia portable battery to the underside of the Minicheetah. Sensor suite platorm has been made public for all other Minicheetah groups to take advantage of. (Github link with stl files below)"
-  image: P4.JPG
-  github: https://github.com/UMich-CURLY/minicheetah-sensorsuite
-  youtube: https://www.youtube.com/embed/oVbP-Y8xT_E
 
 - name: Elevated Robotic Assistive Device
   descr: "Affiliation/Role: Lead Mechanical Systems Designer<br>Since the advent of robotic systems and devices, the primary application focus has been with enhancing
