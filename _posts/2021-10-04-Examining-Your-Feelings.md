@@ -2,7 +2,7 @@
 layout: post
 title:  "Examining Your Feelings"
 excerpt: "Some advice I gave friends that were feeling down recently"
-categories: [personal life]
+categories: [personal]
 ---
 
 I'm going to try something a little new for this post. 
