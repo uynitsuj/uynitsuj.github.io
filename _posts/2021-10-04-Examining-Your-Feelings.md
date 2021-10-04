@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Examining Your Feelings"
+title:  "Examine Your Feelings"
 excerpt: "Some advice I gave friends that were feeling down recently"
 categories: [personal]
 ---
