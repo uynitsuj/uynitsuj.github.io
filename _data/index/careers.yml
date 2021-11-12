@@ -1,6 +1,11 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 
+- name: Medtronic
+  link: https://www.medtronic.com/
+  date: Jun 2022 - Aug 2022
+  job: Engineering Intern
+
 - name: Computational Autonomy & Robotics Laboratory at University of Michigan
   link: https://curly.engin.umich.edu/
   date: Aug 2020 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
@@ -9,7 +14,7 @@
 - name: Michigan Mars Rover
   link: https://mrover.org/
   date: Aug 2020 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  job: Rover Robotic Arm Electrical Hardware Designer
+  job: Head of Rover RF/Comms Subteam
 
 - name: hibotics ERAD
   link: https://www.hibotics.com/
