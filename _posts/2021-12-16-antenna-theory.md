@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Some RF Communications Theory"
+title:  "Some Antenna Theory"
 excerpt: "Learning cool new stuff"
 categories: [projects]
 image: IMG_0671.jpg
