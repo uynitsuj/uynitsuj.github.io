@@ -3,7 +3,7 @@ layout: post
 title:  "Some Antenna Theory"
 excerpt: "Learning cool stuff"
 categories: [projects]
-image: IMG_0671.jpg
+image: SAR-Blue.jpg
 ---
 ![Annotation]({{ site.url }}/img/SAR-Blue.jpg)
 ### Introduction
@@ -53,3 +53,5 @@ the horizontal plane and pointing tangent to the spherical wavefront), giving us
 strength was accordingly the weakest when the rover antenna was upright, giving an average of -79 dBm. From this test we’ve verified the extremely important 
 assumption that antenna polarization and radiation pattern have a non-trivial effect on communications system performance. We also look to do further 
 testing with a vertically polarized base station antenna in order to leverage the omnidirectional radiation pattern given by an upright rover antenna, decreasing the real estate required for the on-rover communications system.
+
+![Annotation]({{ site.url }}/img/IMG_0671.jpg)
