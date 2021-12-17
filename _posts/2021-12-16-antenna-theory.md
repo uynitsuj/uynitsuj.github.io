@@ -7,8 +7,8 @@ image: SAR-Blue.jpg
 ---
 ![Annotation]({{ site.url }}/img/SAR-Blue.jpg)
 ### Introduction
-The Michigan Mars Rover team is a student design team on campus that designs a rover that is subsequently entered into a design 
-competition every year called the University Rover Challenge. The competition requirements and guidelines allow for the rover to be 
+The Michigan Mars Rover team is a student design team on campus that designs a rover that is subsequently entered into an annual design 
+competition called the University Rover Challenge. The competition requirements and guidelines allow for the rover to be 
 controlled via wireless communication systems between a base of operations and the rover as long as it adheres to all applicable FCC regulations. 
 Currently, the Michigan Mars Rover team operates at the 900MHz UHF carrier band. The rover communication system commonly has to deal with non line of 
 sight and long distance conditions of up to 1-2km away. In the most recent competition (2019), the team dealt with some issues relating to loss of 
