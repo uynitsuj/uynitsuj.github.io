@@ -28,10 +28,17 @@ and giving the materials the appropriate properties (permittivities, permeabilit
 you will commonly find radiation pattern information in the form of a polar radiation pattern plot.
 
 ![Annotation 2021-12-16 112916]({{ site.url }}/img/Screenshot 2021-12-16 232737.png)
+
+
 The example above is the radiation pattern plot taken from the product specification sheet of a 3dBi whip antenna used on the rover, which are commonly monopole antennas. The geometry of the monopole antenna causes it to radiate equal radio power in all azimuthal directions perpendicular to the antenna's axis (left picture), but causes “lobes” in the vertical plane where no power radiates from the top and bottom of the whip antenna (right picture). This causes a 3D representation of the radiation pattern to look something like a “donut” shown below:
+
 ![Annotation 2021-12-16 112920]({{ site.url }}/img/Screenshot 2021-12-16 232813.png)
+
+
 The Friis transmission equation is commonly used by the MRover communications team to compute expected received power at the rover antenna. The Friis equation is given by 
+
 ![Annotation 2021-12-16 112921]({{ site.url }}/img/Screenshot 2021-12-16 232827.png)
+
 Where $$P_T$$ is transmit power (Watts), $$G_T$$ is transmitting antenna gain (dBi), $$G_R$$ is the receiving antenna gain (dBi), and R is the distance between the antennas. 
 You may recognize that the 4*pi*R term characterizes the spherical inverse square law appropriately applied to the directional power radiated by an antenna. 
 An example of the friis equation being used on our team comes from a recent equipment test. The test was performed with a horizontally polarized 13dBi base 
