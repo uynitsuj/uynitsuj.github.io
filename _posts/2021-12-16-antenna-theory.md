@@ -19,7 +19,7 @@ methods used by our team to ensure optimal performance.
 
 In antenna theory, an isotropic radiator is a theoretical, lossless antenna which radiates power uniformly in all directions (spherically). The power 
 radiated from the isotropic antenna will have a uniform power per unit area no matter where you measure it from. The isotropic antenna is therefore the 
-reference for all antennas. The unit dBi is commonly used to characterize antenna gain and describes a ratio between the realized antenna radiation gain in 
+reference for all antennas. The unit dBi (decibels-isotropic) is commonly used to characterize antenna gain and describes a ratio between the realized antenna radiation gain in 
 a certain direction compared to an isotropic radiator as reference. On real antennas, the radiation pattern is not isotropic, but rather has lobes where 
 power is concentrated or even amplified (>0dBi), and other directions where the transmitted signal radiates very little (<0dBi), either due to intrinsic 
 antenna conductor geometry or hardware such as metal backing panels or dishes to reflect the signal and concentrate the power in another direction. HFSS 
