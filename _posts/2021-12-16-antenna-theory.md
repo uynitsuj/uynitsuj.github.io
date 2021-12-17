@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Some Antenna Theory"
-excerpt: "Learning cool new stuff"
+excerpt: "Learning cool stuff"
 categories: [projects]
 image: IMG_0671.jpg
 ---
