@@ -34,7 +34,7 @@ The example above is the radiation pattern plot taken from the product specifica
 
 ![Annotation2]({{ site.url }}/img/Screenshot 2021-12-16 232813.png)
 
-The radiation plots found in specification sheets are measured via the use of an anechoic chamber. An anechoic chamber is a room designed to completely absorb reflections of either sound or electromagnetic waves, effectively creating a room with "infinite bounds" in the perspective of the signal receiver. In a regular room, wall surfaces properties may cause signal reflection, resulting in multipathing and interference. It should not be difficult to imagine why a room with wave-absorbing walls would be necessary for such a test.
+The radiation plots found in specification sheets are measured via the use of an anechoic chamber. An anechoic chamber is a room designed to completely absorb reflections of either sound or electromagnetic waves, effectively creating a room with "infinite bounds" in the perspective of the signal receiver. In a regular room, wall surfaces properties will cause signal reflection, resulting in multipathing and interference. It should not be difficult to imagine why a room with wave-absorbing walls would be necessary for such a test.
 
 ### Friis Transmission Equation
 The Friis transmission equation is commonly used by the MRover communications team to compute expected received power at the rover antenna. The Friis equation is given by 
