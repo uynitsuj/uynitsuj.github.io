@@ -5,7 +5,7 @@ excerpt: "Learning cool new stuff"
 categories: [projects]
 image: IMG_0671.jpg
 ---
-
+### Introduction
 The Michigan Mars Rover team is a student design team on campus that designs a rover that is subsequently entered into a design 
 competition every year called the University Rover Challenge. The competition requirements and guidelines allow for the rover to be 
 controlled via wireless communication systems between a base of operations and the rover as long as it adheres to all applicable FCC regulations. 
@@ -16,7 +16,7 @@ distances of ~1.5km out. As the head of the communications team, it is my respon
 system performance and mitigate the possibility of loss of signal. For this post, I will go over some of the theory behind the testing and verification 
 methods used by our team to ensure optimal performance.
 
-
+### Basic Antenna Theory
 In antenna theory, an isotropic radiator is a theoretical, lossless antenna which radiates power uniformly in all directions (spherically). The power 
 radiated from the isotropic antenna will have a uniform power per unit area no matter where you measure it from. The isotropic antenna is therefore the 
 reference for all antennas. The unit dBi (decibels-isotropic) is commonly used to characterize antenna gain and describes a ratio between the realized antenna gain in 
@@ -34,7 +34,9 @@ The example above is the radiation pattern plot taken from the product specifica
 
 ![Annotation2]({{ site.url }}/img/Screenshot 2021-12-16 232813.png)
 
+The radiation plots found in specification sheets are measured via the use of an anechoic chamber. An anechoic chamber is a room designed to completely absorb reflections of either sound or electromagnetic waves, effectively creating a room with "infinite bounds" in the perspective of the signal receiver. In a regular room, wall surfaces properties may cause signal reflection, resulting in multipathing and interference. It should not be difficult to imagine why a room with wave-absorbing walls would be necessary for such a test.
 
+### Friis Transmission Equation
 The Friis transmission equation is commonly used by the MRover communications team to compute expected received power at the rover antenna. The Friis equation is given by 
 
 ![Annotation3]({{ site.url }}/img/Screenshot 2021-12-16 232827.png)
