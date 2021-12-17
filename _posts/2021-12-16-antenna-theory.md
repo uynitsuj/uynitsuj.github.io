@@ -51,5 +51,4 @@ strength to be strongest when the polarization of the rover antenna agreed with 
 the horizontal plane and pointing tangent to the spherical wavefront), giving us an average of -62.6 dBm, which is quite close to the expected. Signal 
 strength was accordingly the weakest when the rover antenna was upright, giving an average of -79 dBm. From this test we’ve verified the extremely important 
 assumption that antenna polarization and radiation pattern have a non-trivial effect on communications system performance. We also look to do further 
-testing with a vertically polarized base station antenna in order to leverage the omnidirectional radiation pattern given by an upright rover antenna,  
-decreasing the real estate required for the on-rover communications system.
+testing with a vertically polarized base station antenna in order to leverage the omnidirectional radiation pattern given by an upright rover antenna, decreasing the real estate required for the on-rover communications system.
