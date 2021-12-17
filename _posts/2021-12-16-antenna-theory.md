@@ -40,7 +40,7 @@ The Friis transmission equation is commonly used by the MRover communications te
 ![Annotation3]({{ site.url }}/img/Screenshot 2021-12-16 232827.png)
 
 Where $P_T$ is transmit power (Watts), $G_T$ is transmitting antenna gain (dBi), $G_R$ is the receiving antenna gain (dBi), and R is the distance between the antennas. 
-You may recognize that the 4*pi*R term characterizes the spherical inverse square law appropriately applied to the directional power radiated by an antenna. 
+You may recognize that the term in the denominator characterizes the spherical inverse square law appropriately applied to the directional power radiated by an antenna. 
 An example of the friis equation being used on our team comes from a recent equipment test. The test was performed with a horizontally polarized 13dBi base 
 station antenna and a vertically polarized 5dBi rover antenna at a distance of 200m with a transmit power of 0dBm (or 0.001W of transmitted power). 
 The expected power received by the rover antenna at that distance is calculated to be 67.6 nW or -61.70 dBm. During actual testing, we observed signal 
