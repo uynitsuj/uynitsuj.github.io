@@ -5,6 +5,7 @@ excerpt: "Learning cool new stuff"
 categories: [projects]
 image: IMG_0671.jpg
 ---
+![Annotation]({{ site.url }}/img/SAR-Blue.jpg)
 ### Introduction
 The Michigan Mars Rover team is a student design team on campus that designs a rover that is subsequently entered into a design 
 competition every year called the University Rover Challenge. The competition requirements and guidelines allow for the rover to be 
