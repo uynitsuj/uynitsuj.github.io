@@ -31,7 +31,7 @@ you will commonly find radiation pattern information in the form of a polar radi
 ![Annotation1]({{ site.url }}/img/Screenshot 2021-12-16 232737.png)
 
 
-The example above is the radiation pattern plot taken from the product specification sheet of a 3dBi whip antenna used on the rover, which are commonly sleeved dipole antennas. The geometry of the monopole antenna causes it to radiate equal radio power in all azimuthal directions perpendicular to the antenna's axis (left picture), but causes “lobes” in the vertical plane where no power radiates from the top and bottom of the whip antenna (right picture). This causes a 3D representation of the radiation pattern to look something like a “donut” shown below:
+The example above is the radiation pattern plot taken from the product specification sheet of a 3dBi whip antenna used on the rover, which are commonly sleeved dipole antennas. The geometry of the antenna causes it to radiate equal radio power in all azimuthal directions perpendicular to the antenna's axis (left picture), but causes “lobes” in the vertical plane where no power radiates from the top and bottom of the whip antenna (right picture). This causes a 3D representation of the radiation pattern to look something like a “donut” shown below:
 
 ![Annotation2]({{ site.url }}/img/Screenshot 2021-12-16 232813.png)
 
