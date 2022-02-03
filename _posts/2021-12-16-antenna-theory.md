@@ -35,7 +35,7 @@ The example above is the radiation pattern plot taken from the product specifica
 
 ![Annotation2]({{ site.url }}/img/Screenshot 2021-12-16 232813.png)
 
-The radiation plots found in specification sheets are measured via the use of an anechoic chamber. An anechoic chamber is a room designed to completely absorb reflections of either sound or electromagnetic waves, effectively creating a room with "infinite bounds" in the perspective of the signal receiver. In a regular room or even outdoors, surfaces properties will cause signal reflection, resulting in multipathing and interference. It should not be difficult to imagine why a room with wave-absorbing walls would be necessary for such a test.
+The radiation plots found in specification sheets are measured via the use of an anechoic chamber. An anechoic chamber is a room designed to completely absorb reflections of either sound or electromagnetic waves, effectively creating a room with "infinite bounds" in the perspective of the signal receiver. In a regular room or even outdoors, surfaces properties will cause signal reflection, resulting in multipathing and interference. It should not be difficult to imagine why a room with low reflection walls would be necessary for such a test.
 
 ![Annotation4]({{ site.url }}/img/d1.jpg)
 ### Friis Transmission Equation
