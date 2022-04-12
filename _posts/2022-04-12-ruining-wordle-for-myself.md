@@ -26,7 +26,7 @@ And below, I have embedded a wordle game as well as our homebrewed wordle solver
 <div id="form">
   <form style="text-align:center;" onsubmit="return formdata1()">
 
-<select name="algo" id="algo" onchange="firstfive();"style="color:black;">
+<select name="algo" id="algo" onchange="firstfive();" style="color:black;">
   <option value="none" selected="" disabled="" hidden="">Choose an algorithm</option>
   <option value="Cosine">Cosine Similarity</option>
   <option value="Cosine PosFreq">Cosine Similarity w/ Position Frequency</option>
