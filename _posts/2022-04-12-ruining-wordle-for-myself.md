@@ -88,7 +88,7 @@ function firstfive() {
     } else if (document.getElementById("algo").value == "Greedy") {
       gamelist = [...GreedyWords]
     }
-    document.getElementById("submittext0").innerHTML = "<p style = text-align:center;>Top 5 starter word suggestions</p><br><p style=\'font-size:20px; text-align:center;margin-top: 0px;\'><font face=Arial color=#000000>" + (1) + " : " + gamelist[0] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (2) + " : " + gamelist[1] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (3) + " : " + gamelist[2] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (4) + " : " + gamelist[3] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (5) + " : " + gamelist[4] + "</p></font></font>";
+    document.getElementById("submittext0").innerHTML = "<p style = text-align:center;>Top 5 starter word suggestions</p><br><p style=\'font-size:20px; text-align:center;margin-top: 0px;\'><font face=Arial>" + (1) + " : " + gamelist[0] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (2) + " : " + gamelist[1] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (3) + " : " + gamelist[2] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (4) + " : " + gamelist[3] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (5) + " : " + gamelist[4] + "</p></font></font>";
   }
 }
 
@@ -171,7 +171,7 @@ function topfive() {
   rem = [...remcopy]
   gamelist = [...rem]
 
-  document.getElementById("submittext2").innerHTML = "<p style = text-align:center;>Top 5  word suggestions</p><br><p style=\'font-size:20px; text-align:center;margin-top: 0px;\'><font face=Arial color=#000000>" + (1) + " : " + gamelist[0] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (2) + " : " + gamelist[1] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (3) + " : " + gamelist[2] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (4) + " : " + gamelist[3] + "</p></font></font>" + "<font face=Arial color=#000000>" + "<p style=\'font-size:20px; text-align:center;\'>" + (5) + " : " + gamelist[4] + "</p></font></font>";
+  document.getElementById("submittext2").innerHTML = "<p style = text-align:center;>Top 5  word suggestions</p><br><p style=\'font-size:20px; text-align:center;margin-top: 0px;\'><font face=Arial>" + (1) + " : " + gamelist[0] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (2) + " : " + gamelist[1] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (3) + " : " + gamelist[2] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (4) + " : " + gamelist[3] + "</p></font></font>" + "<font face=Arial>" + "<p style=\'font-size:20px; text-align:center;\'>" + (5) + " : " + gamelist[4] + "</p></font></font>";
   return false;
 }
 
