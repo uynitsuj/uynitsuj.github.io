@@ -6,8 +6,12 @@ categories: [projects]
 image: 2022-04-12032738.png
 ---
 
-I'm currently working towards a EECS 351 Digital Signal Processing final project along with three peers, which turns out to be a wordle helper! If you are a fan of 3Blue1Brown's content on Youtube, you'll likely know where we drew inspiration from. More to be updated on this post, but here's the link to the project website where you'll find more background on the different solver algorithms we have implemented as well as some analysis of our results: https://umicheecs351.wixsite.com/wordle-helpers
-And below, I have embedded a wordle game as well as our homebrewed wordle solver. Hopefully the UI is intuitive enough.
+I'm currently working towards a EECS 351 Digital Signal Processing final project along with three peers, which turns out to be a wordle helper! If you are a fan of 3Blue1Brown's content on Youtube, you'll likely know where we drew inspiration from. More to be updated on this post, but here's the link to the project website where you'll find more background on the different solver algorithms we have implemented as well as some analysis of our results: 
+
+[Wordle Helpers](https://umicheecs351.wixsite.com/wordle-helpers)
+
+Below, I have embedded a wordle game as well as our homebrewed wordle helper. Hopefully the UI is intuitive enough.
+
 
 <html>
 <head></head>
