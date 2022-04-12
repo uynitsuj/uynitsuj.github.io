@@ -13,10 +13,11 @@ And below, I have embedded a wordle game as well as our homebrewed wordle solver
 <head></head>
  <body>
     <div style="width: 100%;">
-        <div style="width: 50%; height: 500px; float: left;"> 
-<iframe src="https://hellowordl.net/" title="Wordle"></iframe>
+        <div style="width: 50%; height: 650px; float: left;"> 
+<iframe src="https://hellowordl.net/" title="Wordle" scrolling="no" frameborder="0"
+    style="position: relative; height: 100%; width: 100%;"></iframe>
         </div>
-        <div style="margin-left: 50%; height: 500px;"> 
+        <div style="margin-left: 50%; height: 650px;"> 
 		<html><head>
 </head>
 <body>
@@ -292,6 +293,8 @@ function formdata1() {
 
 
 </body></html>
+
+
         </div>
     </div>
  </body>
