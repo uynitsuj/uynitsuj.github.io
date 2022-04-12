@@ -17,11 +17,11 @@ Below, I have embedded a wordle game as well as our homebrewed wordle helper. Ho
 <head></head>
  <body>
     <div style="width: 100%;">
-        <div style="width: 50%; height: 650px; float: left;"> 
+        <div style="width: 50%; height: 750px; float: left;"> 
 <iframe src="https://hellowordl.net/" title="Wordle" scrolling="no" frameborder="0"
     style="position: relative; height: 100%; width: 100%;"></iframe>
         </div>
-        <div style="margin-left: 50%; height: 650px;"> 
+        <div style="margin-left: 50%; height: 750px;"> 
 		<html><head>
 </head>
 <body>
