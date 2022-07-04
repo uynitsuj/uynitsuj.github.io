@@ -34,7 +34,7 @@ In chronological order (probably). First problem on my plate is that the Raspber
 First, I moved the RPi from the Quadruped breakout board to an external power supply. Undervolting issue goes away, get_throttle warning flag goes away, but this did not solve Wifi connection issue. 
 In the middle of trying to solve the Wifi issue, I managed to get SSH working with the PuTTY terminal emulator. SSH will allow me to access and modify RPi files from my laptop over an ethernet connection network, circumventing the need to hook the RPi up to an dedicated display and keyboard setup.
 
-Managed to get Wifi working! Turns out I had minor typos in my wpa_supplicant.conf file. The country= entry field for example wanted “us” instead of “\<US\>” like I saw somewhere online. Ifconfig command now shows transmitted and received packets for wlan0. I can also now successfully ping raspberrypi.local or 10.0.0.41 from my laptop wirelessly.
+Managed to get Wifi working! Turns out I had minor typos in my wpa_supplicant.conf file. The country= entry field for example wanted “us” instead of “\<US\>” like I saw somewhere online. Ifconfig command now shows transmitted and received packets for wlan0. I can also now successfully ping raspberrypi.local from my laptop wirelessly.
 
 ### July 4th, 2022
 Happy Independence Day
