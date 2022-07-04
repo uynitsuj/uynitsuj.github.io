@@ -10,24 +10,15 @@ Picking up the Quadruped project again in the middle of my internship at Medtron
 
 Current roadmap consists of:
 
-
-Hardware // Find out how to SSH a headless RPi over ethernet and connect to Wifi
-
-Hardware // Rectify RPi undervolting issue
-
-Hardware & Software // Untethered operation with joystick pose control
-
-Software // Rewrite python visualization+controller code in C++
-
-Software // Change power-on servo initialization behavior
-
-Software // Basic gait generation & walking
-
-Hardware // Research current sense circuit for contact detection
-
-Software // Physics Simulation - ROS & Gazebo
-
-Software // Complex gait generation & walking
+* Hardware // Find out how to SSH a headless RPi over ethernet and connect to Wifi
+* Hardware // Rectify RPi undervolting issue
+* Hardware & Software // Untethered operation with joystick pose control
+* Software // Rewrite python visualization+controller code in C++
+* Software // Change power-on servo initialization behavior
+* Software // Basic gait generation & walking
+* Hardware // Research current sense circuit for contact detection	
+* Software // Physics Simulation - ROS & Gazebo
+* Software // Complex gait generation & walking
 
 
 In chronological order (probably). First problem on my plate is that the Raspberry Pi is not connecting to Wifi. Wifi configuration is probably a lot simpler on an RPi with the GUI boot image, however I opted for the headless image for compute resource concerns. The RPi is also detecting an undervoltage event on power-on, which I suspect may cause network connection issues. 
@@ -56,19 +47,13 @@ For fully untethered operation, a lot needs to happen. But the important bit is 
 
 Because this is such a large milestone with lots of things going into it, I think another roadmap for this specific goal is warranted:
 
-Hardware & Software // Pair PS4 controller to RPi via BT and verify input event detection
-
-Software // Modify controller code for onboard RPi mounted version
-
-  Remove 3D visualization code
-  
-  Rewrite serial link code to support RPi to teensy4.0 MCU communication link
-  
-  Verify RPi to MCU communication
-  
-Software // Find out how to run python code on power-on/boot
-
-Hardware & Software // Untethered operation with joystick pose control!
+* Hardware & Software // Pair PS4 controller to RPi via BT and verify input event detection
+* Software // Modify controller code for onboard RPi mounted version
+  * Remove 3D visualization code
+  * Rewrite serial link code to support RPi to teensy4.0 MCU communication link
+  * Verify RPi to MCU communication
+* Software // Find out how to run python code on power-on/boot
+* Hardware & Software // Untethered operation with joystick pose control!
 
 
 I think I’ll get around to generating a software & hardware architecture report after I’ve completed this milestone.
