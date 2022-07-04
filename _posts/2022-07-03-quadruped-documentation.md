@@ -10,15 +10,26 @@ Picking up the Quadruped project again in the middle of my internship at Medtron
 
 Current roadmap consists of:
 
+
 Hardware // Find out how to SSH a headless RPi over ethernet and connect to Wifi
+
 Hardware // Rectify RPi undervolting issue
+
 Hardware & Software // Untethered operation with joystick pose control
+
 Software // Rewrite python visualization+controller code in C++
+
 Software // Change power-on servo initialization behavior
+
 Software // Basic gait generation & walking
+
 Hardware // Research current sense circuit for contact detection
+
 Software // Physics Simulation - ROS & Gazebo
+
 Software // Complex gait generation & walking
+
+
 In chronological order (probably). First problem on my plate is that the Raspberry Pi is not connecting to Wifi. Wifi configuration is probably a lot simpler on an RPi with the GUI boot image, however I opted for the headless image for compute resource concerns. The RPi is also detecting an undervoltage event on power-on, which I suspect may cause network connection issues. 
 First, I moved the RPi from the Quadruped breakout board to an external power supply. Undervolting issue goes away, get_throttle warning flag goes away, but this did not solve Wifi connection issue. 
 In the middle of trying to solve the Wifi issue, I managed to get SSH working with the PuTTY terminal emulator. The IP address to use is the RPi Ethernet Network Interface Card IP (169.254.130.240) with port 22. Ethernet NIC IP is found with ifconfig command.
