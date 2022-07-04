@@ -55,6 +55,23 @@ Because this is such a large milestone with lots of things going into it, I thin
 * Software // Find out how to run python code on power-on/boot
 * Hardware & Software // Untethered operation with joystick pose control!
 
-
 I think I’ll get around to generating a software & hardware architecture report after I’ve completed this milestone.
+
+Got PS4 Joystick paired with the RPi pretty quickly. I’ll go into more detail about how I did this since it might be useful for future reference. 
+
+* Run command *bluetoothctl* on RPi command line to enter bluetooth control mode.
+* Turn on the Bluetooth, if not already on, by running *power on*.
+* Enter device discovery mode with *scan on* command.
+* My PS4 controller showed up as “Wireless Controller” with a MAC address.
+* Enter *pair \[MAC Address\]* to pair between devices.
+* Finally, connect to your device with *connect \[MAC Address\]*.
+If you’d like to view the input event stream to verify the connection:
+* Navigate to root directory, then to /dev/input/
+* Within this directory should be a js0 joystick device or something with a similar name.
+* You will need to download an event decoder package, so make sure the RPi is connected to the internet.
+* Run command *sudo apt-get update* and then *sudo apt-get install joystick*
+* Run sudo jstest *\[Joystick Device\]*
+* The stream should immediately begin populating the terminal. Moving joystick tabs or pressing buttons should cause the stream to update with new values.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fIgTX0zC1i0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
