@@ -21,7 +21,7 @@ Current roadmap consists of:
 * Software // Complex gait generation & walking
 
 
-In chronological order (probably). First problem on my plate is that the Raspberry Pi is not connecting to Wifi. Wifi configuration is probably a lot simpler on an RPi with the GUI boot image, however I opted for the headless image for compute resource concerns. The RPi is also detecting an undervoltage event on power-on, which I suspect may cause network connection issues. 
+In chronological order (probably). First problem on my plate is that the Raspberry Pi is not connecting to Wifi. Wifi configuration is probably a lot simpler on an RPi with the GUI boot image, however I opted for the headless image for compute resource concerns and also just to gain more experience working with a headless RPi and directly in the terminal. The RPi is also detecting an undervoltage event on power-on, which I suspect may cause network connection issues. 
 First, I moved the RPi from the Quadruped breakout board to an external power supply. Undervolting issue goes away, throttle warning flag goes away, but this did not solve Wifi connection issue. 
 
 In the middle of trying to solve the Wifi issue, I managed to get SSH working with the PuTTY terminal emulator, which is a tool I actually very recently learned about during my internship at Medtronic. SSH capability will allow me to access and modify RPi files from my laptop over an ethernet connection network, circumventing the need to hook the RPi up to an dedicated display and keyboard setup.
