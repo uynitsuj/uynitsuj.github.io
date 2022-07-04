@@ -39,7 +39,7 @@ This issue brings up a desire to redo my PCB but this time with custom power reg
 
 Just ran a Quadruped power-on with the RPi feeding from the onboard power supply. Undervolt detected warning appears consistently. Multimeter reads 4.92v at the lowest throughout the entire bootup. It is possible the voltage drops much lower momentarily but the multimeter measurement rate is not fast enough to catch these transient drops. I don’t have an oscilloscope to determine whether this is the case, so for the short term, my best course of action is likely to purchase an alternate voltage regulator circuit, with higher amperage, and a better safety margin (target 5.25v or 5.5v instead of 5v so any drops from internal resistances or a degrading power supply can be compensated). 
 
-Just purchased a LM2596 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Arrives July 6th. Comes with a potentiometer so I can adjust the output voltage to the upper 5.25v limit.
+Just purchased a 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Arrives July 6th. Comes with a potentiometer so I can adjust the output voltage to the upper 5.25v limit.
 
 The good news is that the undervoltage issue doesn’t seem to possess extremely high severity at the moment. Wifi connection is stable and benchmark runs with no noticeable performance hit. Meaning I should be able to continue work while I wait for the power regulator replacement.
 
