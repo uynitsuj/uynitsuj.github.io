@@ -32,7 +32,7 @@ Software // Complex gait generation & walking
 
 In chronological order (probably). First problem on my plate is that the Raspberry Pi is not connecting to Wifi. Wifi configuration is probably a lot simpler on an RPi with the GUI boot image, however I opted for the headless image for compute resource concerns. The RPi is also detecting an undervoltage event on power-on, which I suspect may cause network connection issues. 
 First, I moved the RPi from the Quadruped breakout board to an external power supply. Undervolting issue goes away, get_throttle warning flag goes away, but this did not solve Wifi connection issue. 
-In the middle of trying to solve the Wifi issue, I managed to get SSH working with the PuTTY terminal emulator. SSH will allow me to access and modify RPi files from my laptop over an ethernet connection network, circumventing the need to hook the RPi up to an dedicated display and keyboard setup.
+In the middle of trying to solve the Wifi issue, I managed to get SSH working with the PuTTY terminal emulator. SSH capability will allow me to access and modify RPi files from my laptop over an ethernet connection network, circumventing the need to hook the RPi up to an dedicated display and keyboard setup.
 
 Managed to get Wifi working! Turns out I had minor typos in my wpa_supplicant.conf file. The country= entry field for example wanted “us” instead of “\<US\>” like I saw somewhere online. Ifconfig command now shows transmitted and received packets for wlan0. I can also now successfully ping raspberrypi.local from my laptop wirelessly.
 
