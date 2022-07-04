@@ -35,7 +35,7 @@ First, I moved the RPi from the Quadruped breakout board to an external power su
 
 In the middle of trying to solve the Wifi issue, I managed to get SSH working with the PuTTY terminal emulator, which is a tool I actually very recently learned about during my internship at Medtronic. SSH capability will allow me to access and modify RPi files from my laptop over an ethernet connection network, circumventing the need to hook the RPi up to an dedicated display and keyboard setup.
 
-Managed to get Wifi working! Turns out I had minor typos while setting up one of my wireless network config files. Interface monitor now shows transmitted and received packets for wlan0. I can also now successfully ping raspberrypi.local from my laptop wirelessly.
+Managed to get Wifi working! Turns out I had minor typos while modifying one of the wireless network config files. On a RPi with a GUI, this truly would've been as simple as selecting the correct network and entering the password. Interface monitor now shows transmitted and received packets for wlan0. I can also now successfully ping raspberrypi.local from my laptop wirelessly.
 
 ### July 4th, 2022
 Happy Independence Day
