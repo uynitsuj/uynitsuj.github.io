@@ -48,8 +48,21 @@ This issue brings up a desire to redo my PCB but this time with custom power reg
 
 Just ran a Quadruped power-on with the RPi feeding from the onboard power supply. Undervolt detected warning appears consistently. Multimeter reads 4.92v at the lowest throughout the entire bootup. It is possible the voltage drops much lower momentarily but the multimeter measurement rate is not fast enough to catch these transient drops. I don’t have an oscilloscope to determine whether this is the case, so for the short term, my best course of action is likely to purchase an alternate voltage regulator circuit, with higher amperage, and a better safety margin (target 5.25v or 5.5v instead of 5v so any drops from internal resistances or a degrading power supply can be compensated). 
 
-Just purchased a 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Arrives July 6th. Comes with a potentiometer so I can adjust the output voltage to the upper 5.25v limit.
+Just purchased a LM2596 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Arrives July 6th. Comes with a potentiometer so I can adjust the output voltage to the upper 5.25v limit.
 
 The good news is that the undervoltage issue doesn’t seem to possess extremely high severity at the moment. Wifi connection is stable and benchmark runs with no noticeable performance hit. Meaning I should be able to continue work while I wait for the power regulator replacement.
 
-For fully untethered operation, I will load my IK joint angle solver to the RPi, which shouldn’t be difficult at all since the RPi is connected over the internet and this code is already developed and pushed to github. I will have to create a copy of the code and remove the 3D visualization and also verify that the RPi to MCU serial link is established correctly.
+For fully untethered operation, a lot needs to happen. But the important bit is loading my IK joint angle solver to the RPi, which shouldn’t be difficult at all since the RPi is connected over the internet and this code is already developed and pushed to github. I will have to modify the existing code a bit and remove the 3D visualization and also verify that the RPi to MCU serial link is established correctly.
+
+Because this is such a large milestone with lots of things going into it, I think another roadmap for this specific goal is warranted:
+
+Hardware & Software // Pair PS4 controller to RPi via BT and verify input event detection
+Software // Modify controller code for onboard RPi mounted version
+Remove 3D visualization code
+Rewrite serial link code to support RPi to teensy4.0 MCU communication link
+Verify RPi to MCU communication
+Software // Find out how to run python code on power-on/boot
+Hardware & Software // Untethered operation with joystick pose control!
+
+I think I’ll get around to generating a software & hardware architecture report after I’ve completed this milestone.
+
