@@ -43,7 +43,7 @@ Just purchased a 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Arrive
 
 The good news is that the undervoltage issue doesn’t seem to possess extremely high severity at the moment. Wifi connection is stable and benchmark runs with no noticeable performance hit. Meaning I should be able to continue work while I wait for the power regulator replacement.
 
-For fully untethered operation, a lot needs to happen. But the important bit is loading my IK joint angle solver to the RPi, which shouldn’t be difficult at all since the RPi is connected over the internet and this code is already developed and pushed to github. I will have to modify the existing code a bit and remove the 3D visualization and also verify that the RPi to MCU serial link is established correctly.
+For fully untethered operation, a lot needs to happen. I will have to modify the existing code a bit and remove the 3D visualization and also verify that the RPi to MCU serial link is established correctly.
 
 Because this is such a large milestone with lots of things going into it, I think another roadmap for this specific goal is warranted:
 
