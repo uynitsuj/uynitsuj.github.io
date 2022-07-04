@@ -69,8 +69,8 @@ If you’d like to view the input event stream to verify the connection:
 * Navigate to root directory, then to /dev/input/
 * Within this directory should be a js0 joystick device or something with a similar name.
 * You will need to download an event decoder package, so make sure the RPi is connected to the internet.
-* Run command **sudo apt-get update** and then **sudo apt-get install joystick**
-* Run sudo jstest **\[Joystick Device\]**
+* Run command **sudo apt-get update** and then **sudo apt-get install joystick**.
+* Run sudo **jstest \[Joystick Device\]**.
 * The stream should immediately begin populating the terminal. Moving joystick tabs or pressing buttons should cause the stream to update with new values.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fIgTX0zC1i0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
