@@ -57,12 +57,19 @@ For fully untethered operation, a lot needs to happen. But the important bit is 
 Because this is such a large milestone with lots of things going into it, I think another roadmap for this specific goal is warranted:
 
 Hardware & Software // Pair PS4 controller to RPi via BT and verify input event detection
+
 Software // Modify controller code for onboard RPi mounted version
-Remove 3D visualization code
-Rewrite serial link code to support RPi to teensy4.0 MCU communication link
-Verify RPi to MCU communication
+
+  Remove 3D visualization code
+  
+  Rewrite serial link code to support RPi to teensy4.0 MCU communication link
+  
+  Verify RPi to MCU communication
+  
 Software // Find out how to run python code on power-on/boot
+
 Hardware & Software // Untethered operation with joystick pose control!
+
 
 I think I’ll get around to generating a software & hardware architecture report after I’ve completed this milestone.
 
