@@ -65,6 +65,7 @@ Got PS4 Joystick paired with the RPi pretty quickly. I’ll go into more detail 
 * My PS4 controller showed up as “Wireless Controller” with a MAC address.
 * Enter **pair \[MAC Address\]** to pair between devices.
 * Finally, connect to your device with **connect \[MAC Address\]**.
+
 If you’d like to view the input event stream to verify the connection:
 * Navigate to root directory, then to /dev/input/
 * Within this directory should be a js0 joystick device or something with a similar name.
