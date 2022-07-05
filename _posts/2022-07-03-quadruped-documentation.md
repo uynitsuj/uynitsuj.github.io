@@ -78,6 +78,6 @@ If you’d like to view the input event stream to verify the connection:
 
 Just rebooted and did not achieve a undervoltage warning. Leads me to believe that the issue does lie in some transient behavior upon boot-up. Power supply circuit will be replaced anyway because the replacement seems more robust in all aspects. 
 
-It appears the PS4 controller does not automatically reconnect if I power cycle the RPi, like my laptop usually would. It would be annoying to have to access the RPi and SSH to connect the device every time I wanted to control it. The goal is to be able to power on the Quadruped and control it with the PS4 joystick. Adding another step on the roadmap to find out if I can change this boot-up behavior. 
+It appears the PS4 controller does not automatically reconnect if I power cycle the RPi, like it usually would on my laptop. It would be annoying to have to access the RPi and SSH to connect the joystick every time I wanted to control the Quadruped. The goal is to be able to power-on and control it with the joystick pretty much immediately. Adding another step on the roadmap to find out if I can change this boot-up behavior. 
 
 Turns out I can rectify this by simply running a **trust \[MAC Address\]** command in the bluetooth control mode… 
