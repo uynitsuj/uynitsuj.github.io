@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Quadruped Documentation [Live Post]"
+title:  "Quadruped Informal Documentation [Live Post]"
 excerpt: "More effort into documenting my engineering process"
 categories: [projects]
 image: IMG_5705.jpg 
