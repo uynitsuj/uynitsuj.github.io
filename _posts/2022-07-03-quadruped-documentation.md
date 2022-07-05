@@ -63,7 +63,7 @@ Got PS4 Joystick paired with the RPi pretty quickly. I’ll go into more detail 
 * Turn on the Bluetooth, if not already on, by running **power on**.
 * Enter device discovery mode with **scan on** command.
 * My PS4 controller showed up as “Wireless Controller” with a MAC address.
-* Enter **pair \[MAC Address\]** to pair between devices.
+* Enter **pair \[MAC Address\]** to pair between devices with the controller in pairing mode.
 * Finally, connect to your device with **connect \[MAC Address\]**.
 
 If you’d like to view the input event stream to verify the connection:
