@@ -76,3 +76,8 @@ If you’d like to view the input event stream to verify the connection:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fIgTX0zC1i0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+Just rebooted and did not achieve a undervoltage warning. Leads me to believe that the issue does lie in some transient behavior upon boot-up. Power supply circuit will be replaced anyway because the replacement seems more robust in all aspects. 
+
+It appears the PS4 controller does not automatically reconnect if I power cycle the RPi, like my laptop usually would. It would be annoying to have to access the RPi and SSH to connect the device every time I wanted to control it. Adding another step on the roadmap to find out if I can change this boot-up behavior. 
+
+Turns out I can rectify this by simply running a trust [MAC Address] command in the bluetooth control mode… 
