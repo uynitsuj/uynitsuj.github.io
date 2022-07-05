@@ -81,3 +81,7 @@ Just rebooted and did not achieve a undervoltage warning. Leads me to believe th
 It appears the PS4 controller does not automatically reconnect if I power cycle the RPi, like it usually would on my laptop. It would be annoying to have to access the RPi and SSH to connect the joystick every time I wanted to control the Quadruped. The goal is to be able to power-on and control it with the joystick pretty much immediately. Adding another step on the roadmap to find out if I can change this boot-up behavior. 
 
 Turns out I can rectify this by simply running a **trust \[MAC Address\]** command in the bluetooth control mode… 
+
+### July 5th, 2022
+
+Just found out about a 3A, Synchronous Step-Down Converter IC from work (RT8299ZQW) with good input and output ranges! I didn't know they made them this small! Seems like the perfect chip for my power regulation needs, and is bringing me closer to a PCB redesign. I'd need to learn more about PCB SMDs and how I could get a PCB reflow operation going at home...
