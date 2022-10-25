@@ -1,5 +1,5 @@
 - name: Open Source Unified Robotic State Estimation Library (Work In Progress)
-  descr: "Affiliation/Role: Software Developer for University of Michigan CURLY group<br> This project is an open-source robotic state estimation library intended to work across different robot architectures utilizing state of the art robotic state estimation via invariant extended Kalman filtering (inEKF). Currently implementing C++ sensor measurement container/queue classes and ROS1 & ROS2 wrapper interfaces. Unit testing done with GoogleTest. Other tools/libraries: CMake, Doxygen, Docker, Eigen3."
+  descr: "Affiliation/Role: Software Developer for University of Michigan CURLY group<br> This project is an open-source robotic state estimation library intended to work across a number of robot architectures (quadruped, biped, wheeled). Utilizes state of the art robotic state estimation methods via invariant extended Kalman filtering (inEKF). Currently implementing C++ sensor measurement container/queue classes and ROS1 & ROS2 wrapper interfaces. Unit testing done with GoogleTest. Other tools/libraries: CMake, Doxygen, Docker, Eigen3."
   image: MiniCheetah063021.png
   github: https://github.com/UMich-CURLY/curly_state_estimator
 
