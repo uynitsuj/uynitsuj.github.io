@@ -1,6 +1,10 @@
-{% if page.author %} {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %} {% endif %}
+{% if page.author %} {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %} {%
+endif %}
 
-<div id="top" class="hidden-md"><p align=center style="font-size:22px"><img style="float: left;margin-right: 10px;" src="{{ site.url }}/{{ author.icon }}" alt="" class="icon" width="46">{{ author.FH }}</p></div>
+<div id="top" class="hidden-md">
+  <p align=center style="font-size:22px"><img style="float: left;margin-right: 10px;"
+      src="{{ site.url }}/{{ author.icon }}" alt="" class="icon" width="46">{{ author.FH }}</p>
+</div>
 <div class="table-middle cover-card">
   {% if author.avatar %}
   <a href="{{ site.url }}/">
@@ -24,4 +28,8 @@
   </nav>
   {% include social-links.html %}
 </div>
-<div id="bottom" class="hidden-md"><p align=center style="font-size:12.5px"><i>​"Fail harder, but never without documenting the failure conditions. Some failures are detrimental, far fewer are permanent. Life is iterative. Celebrate failures in life, as you would in engineering design. Fail, learn, improve."</i></p></div>
+<div id="bottom" class="hidden-md">
+  <p align=center style="font-size:12.5px"><i>​"Fail harder, but never without documenting the failure conditions. Some
+      failures are detrimental, far fewer are permanent. Life is iterative. Celebrate failures in life, as you would in
+      engineering and design. Fail, learn, improve."</i></p>
+</div>
