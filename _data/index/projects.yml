@@ -1,3 +1,8 @@
+- name: Open Source Unified Robotic State Estimation Library (Work In Progress)
+  descr: "Affiliation/Role: Software Developer for University of Michigan CURLY group<br> This project is an open-source robotic state estimation library intended to work across different robot architectures utilizing state of the art robotic state estimation via invariant extended Kalman filtering (inEKF). Currently implementing C++ sensor measurement container/queue classes and ROS1 & ROS2 wrapper interfaces. Unit testing done with GoogleTest. Other tools/libraries: CMake, Doxygen, Docker, Eigen3."
+  image: MiniCheetah063021.png
+  github: https://github.com/UMich-CURLY/curly_state_estimator
+
 - name: 3D Printed Quadrupedal Robot (Work In Progress)
   descr: "Affiliation/Role: Systems Designer<br> Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
   image: QPRev2.png
