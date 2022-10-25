@@ -85,3 +85,11 @@ Turns out I can rectify this by simply running a **trust \[MAC Address\]** comma
 ### July 5th, 2022
 
 Just found out about a 3A, Synchronous Step-Down Converter IC from work (RT8299ZQW) with good input and output ranges! I didn't know they made them this small! Seems like the perfect chip for my power regulation needs, and is bringing me closer to a PCB redesign. I'd need to learn more about PCB SMDs and how I could get a PCB reflow operation going at home...
+
+### July 9th, 2022
+
+Untethered operation achieved!
+
+<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/M4QWi-B-I3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+I'll probably have to go inactive for a while again since my internship work is picking up again and soon my fall semester will begin. The next thing that I'll try to put out will be the architecture report.
