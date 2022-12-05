@@ -6,7 +6,7 @@ categories: [projects]
 image: gallery/QIKstress.gif
 ---
 
-Recently, I've found some precious time in between studying for 17 credit-hours of courses to make progress towards my next project: a Quadrupedal Robot. This project is, of course, highly inspired by the work of Boston Dynamics on Spot Mini, MIT on MiniCheetah (who I have the pleasure of working with at UM), and last but not least, my good friend Adham Elarabawy's work on Open Quadruped with Maurice Rahme. Go check out [his work](https://www.adham-e.dev/project/openquadruped)! Adham is currently at Berkeley and Maurice at Boston Dynamics, and they will both go on to do much more impressive things, I'm sure.
+Recently, I've found some precious time in between studying for 17 credit-hours of courses to make progress towards my next project: a Quadrupedal Robot. This project is, of course, highly inspired by the work of Boston Dynamics on Spot, MIT on MiniCheetah (who I have the pleasure of working with at UM), and last but not least, my good friend Adham Elarabawy's work on Open Quadruped with Maurice Rahme. Go check out [his work](https://www.adham-e.dev/project/openquadruped)! Adham is currently at Berkeley and Maurice at Boston Dynamics, and they will both go on to do much more impressive things, I'm sure.
 
 There are some goals that I have for this project, as any good designer should have. These include both high level and low level goals, short term and long term goals, and perhaps even longer term goals reaching decades into the future.
 
