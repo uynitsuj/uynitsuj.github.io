@@ -2,7 +2,7 @@
 layout: post
 title:  "Improved Elevated Robotic System and Method"
 excerpt: "Discussion of new and improved ceiling mounted robotic system"
-categories: [internships]
+categories: [projects]
 image: robots/ERAD.JPG
 ---
 [read as PDF](/pdf/ImprovedElevatedRoboticSystemAndMethod.pdf)
