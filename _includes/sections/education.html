@@ -3,8 +3,11 @@
 
 <div class="archive">
   <div class="timeline" id="timeline">
-    {% for career in site.data.index.education %}
-          <div class="archive-title bio"><div class="archive-year"><strong>{{ career.date }}</strong> <a href="{{ career.link }}">{{ career.name }}</a></div></div>
+    {% for education in site.data.index.education %}
+    <div class="archive-title bio">
+      <div class="archive-year"><strong>{{ education.date }}</strong> <a href="{{ career.link }}">{{ education.name
+          }}</a></div>
+    </div>
     {% endfor %}
   </div>
 </div>
