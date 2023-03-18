@@ -92,4 +92,4 @@ Untethered operation achieved!
 
 <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/M4QWi-B-I3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-I'll probably have to go inactive for a while again since my internship work is picking up again and soon my fall semester will begin. The next thing that I'll try to put out will be the architecture report.
+I'll probably have to go inactive for a while again since my internship work is picking up again and soon my fall semester will begin.
