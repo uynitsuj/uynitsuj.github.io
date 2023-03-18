@@ -142,9 +142,9 @@ $i$(Frame)  |$θ_i$   |$α_i$   |$a_i$   |$d_i$
 <div align="center"> <i> Table 5.3: Denavit-Hartenberg table for the specific embodiment of a 6R arm </i> </div>
 
 By completing Table 5.3 we have completed step *4.7*. Notice that frame 0 of $x_0y_0z_0$ is not present, as all of the parameters within the table are based on the relation between frame $i$, and frame $i-1$. Thus, with frame 0 having no preceding frame to reference, it is not present within the table, but instead we look to establish parameters of frame 1 in relation to frame 0 in the first data row of the table.
-
+<br>
 Since the robot is of 6R, we must include variable parameters that account for the freely rotating joints. These variables are present in the $θ_i$ column, since per the D-H convention, $θ_i$ is a variable if joint $i$ is revolute. To verify that the table was done correctly, all joint variables ( $θ_1$ ... $θ_6$ ) as well as all link lengths ($d_i$) and link offsets ($a_i$) (a1-a8) should be accounted for in the table.
-
+<br>
 Next, we must establish each transformation matrix $A_i$, which describes the transformational relation between frame $i$, and frame $i-1$, for each frame. This becomes difficult to compute by hand so we may use computational tools such as python to aid us.
 
 $$\begin{aligned}\left[\begin{array}{cccc}
@@ -170,6 +170,5 @@ Using the determined matrices for each frame, we may then dot them all together 
 <div align="center"> <i> Figure 5.7: Python console output with resultant matrix mentioned by equation (3.4)
 Notice the first 3 entries of the last column of matrix, that are the X,Y,Z components of the final frame; that is, X,Y,Z: (6.3, 40.5, 19.3) in cm
  </i> </div>
-
 
 The numbers match closely! (Variance is due to hand-placed and orientated arm links in CAD model). The -6.3cm value in the python console is correctly negative. Base frame (grounded frame) utilizes an $x_0$ axis frame pointing in the opposite direction *(Fig 5.6)*. As detailed in *(Fig 5.7)*, end effector position is detailed by the first 3 entries of the final column of the matrix. End effector orientation is reconciled by the first 3x3 rows and columns of the matrix.

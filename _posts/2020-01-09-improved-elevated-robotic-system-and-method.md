@@ -42,6 +42,8 @@ significant contact with the top surface of the upside-down T-extrusion or horiz
 contact with the thin side-face of the extrusion. Out of these iterations, the designs that seemed to operate
 best were the vertically oriented wheels, providing consistent contact even during motion.
 
+<br>
+
 To secure the carriage to the track, some of the vertical-wheel iterations would have lips on the treads
 which would hang over the edge and lock the carriage laterally (Fig. 1). In the horizontally oriented wheels, the
 carriage was already laterally locked by nature of the wheel contact to the track, and lips were added on
@@ -56,11 +58,15 @@ carriage that could be shifted around while the track remained static.
 In an exemplary embodiment, the friction issue is bypassed completely and instead, significant contact
 with the top corner edges of the track is created with angled groove wheels.
 
+<br>
+
 Instead of having either a vertical or horizontal surface rubbing on the track as the carriage traverses, by
 angling the wheels and creating grooved wheels, two wheels are effectively created, one with rolling
 motion on the top surface, and another also with rolling motion on the side surface, with neither
 producing excessive kinetic friction. The groove wheel design allows both tread surfaces to “peel away”
 from contact with the track faces, creating a thinner contact patch than lipped designs would allow. The grip wheels that drove the carriage from the underside were also situated as close as possible to the 3D-Printed groove wheels. This would mitigate any bowing and deflection of the groove wheels while also better securing the contact from both wheels. One option for robust v-groove wheel mounting was 45 degree metal v-groove bearings.
+
+<br>
 
 However, a 45 degree angle may be too shallow of an angle, and providing a steeper angle might allow
 for larger loads on the base carriage without excessive torsional stress on the mounted shoulder bolts and
@@ -84,6 +90,8 @@ In an exemplary embodiment a compression of 0.03 inches provided to the grip whe
 provides a secure contact between all wheels and the track. Care must be taken to ensure the carriage isn’t
 too tight on the track which would prohibit the motor from overcoming friction such that it can begin to
 turn the wheels.
+
+<br>
 
 Small “wings” or tabs may be added to the side face of the carriage to increase the effective thickness of
 the base, alleviating some of the torsional stress from the load of an additional module. Increased
@@ -115,6 +123,8 @@ platform for a wide application of different technologies. However, the versatil
 module platform necessitates proper systems design in order to allow it to be easily applied from one
 application to another.
 
+<br>
+
 An exemplary system control and pipeline of the elevated robotics control system is shown as follows.
 
 ![Annotation 2020-08-03 205908]({{ site.url }}/img/Post1/Annotation 2020-08-03 205908.png)
@@ -130,6 +140,7 @@ elevated robotics module is deployed in, the high-level code only ever has to te
 position/velocity setpoint, and the position/velocity control algorithms will take care of reaching the
 setpoints.
 
+<br>
 
 However, considering the complexity of the more advanced applications an improved buffer system to
 handle the latency between the sent setpoints and the module actually reaching those setpoints is desired,
@@ -140,6 +151,7 @@ cm movement. A computer vision system could read multiple hand swipes before the
 module could actually reach the desired positions based on the last setpoints. Instead of overriding the
 past commands, a sequential order of the hand swipes is retained.
 
+<br>
 
 Using a simple list or dynamic buffer is not memory efficient when resized or when their elements are
 rearranged/manipulated. Instead a Fixed-Size FIFO (first in first out) ring buffer is used. The explicit
@@ -156,12 +168,14 @@ each command, which is very important, because missing new hand gestures or rece
 detections due to insufficient system capabilities limits the performance of the system. In this case
 resizing the ring buffer is not needed, making it very memory efficient.
 
+<br>
 
 The existence of a ring buffer allows multiple processes to cleanly control the elevated robotics module
 without interference between them. For instance, the hand gesture recognition pipeline can add a drive
 signal to the ring buffer, and then some other process (like a direct drive command) can also add to the
 ring buffer, and they will get executed sequentially, retaining the drive signal sent by both processes.
 
+<br>
 
 It should be noted that the StateTracker Node in the diagram is a purely heuristic layer that allows setting
 a priority to some processes in terms of executing a drive signal. In a deployment scenario, it is likely that
@@ -176,6 +190,7 @@ have plateaued. In an exemplary embodiment the elevated robotics module position
 plateaued within tolerance for more than 5 iterations of the main While loop, then the next drive signal in
 the ring buffer is executed.
 
+<br>
 
 The Position/Velocity Control algorithms are the common Feedforward + PID Feedback approach to
 controlling a motor’s angular position and angular velocity. The control algorithm effectively drives the
