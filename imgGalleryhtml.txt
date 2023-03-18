@@ -1,8 +1,8 @@
----
-layout: page
-title:  Image Gallery
-permalink: /img_gallery/
----
+%---
+%layout: page
+%title:  Image Gallery
+%permalink: /img_gallery/
+%---
 
 <div class="gallery">
   <div class="timeline" id="timeline">

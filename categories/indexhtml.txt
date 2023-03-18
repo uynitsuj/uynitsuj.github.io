@@ -1,8 +1,8 @@
----
-layout: page
-title:  Categories
-permalink: /categories/
----
+%---
+%layout: page
+%title:  Categories
+%permalink: /categories/
+%---
 <div class="tag-list">
 {% for cat in site.categories %}
   <div class="tag-group">
