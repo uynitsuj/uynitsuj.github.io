@@ -1,12 +1,12 @@
 - name: University of California Berkeley
   link: https://www.berkeley.edu/
   date: 2023 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  descr: EECS Ph.D. student concentrating in AI & Robotics
+  desc: EECS Ph.D. student concentrating in AI & Robotics
 
 - name: University of Michigan
   link: https://www.umich.edu/
   date: 2020 - 2023
-  descr: EE Bachelors | Summa Cum Laude | EECS Outstanding Achievement Award Finalist 2023
+  desc: EE Bachelors | Summa Cum Laude | EECS Outstanding Achievement Award Finalist 2023
 
 - name: Canyon Crest Academy
   link: https://cc.sduhsd.net/
