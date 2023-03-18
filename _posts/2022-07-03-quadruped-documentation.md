@@ -3,7 +3,7 @@ layout: post
 title:  "Quadruped Updates"
 excerpt: "More effort into documenting my engineering process"
 categories: [projects]
-image: IMG_5705.jpg 
+image: 1660686728056.jpeg
 ---
 ### July 3rd, 2022
 Picking up the Quadruped project again in the middle of my internship at Medtronic. Left this project last year at [a python script with inverse kinematics fully implemented](https://youtube.com/shorts/zvvzg43DtZo?feature=share). It was able to provide a 3D visualization of linkages with joystick or keyboard pose control, and simultaneously generate joint angles, which are then sent to the teensy4.0 microcontroller for servo angle control. In short, I can make the Quadruped wiggle its rear pretty good. But the python control program was executed on my laptop sending joint angle data over serial to the teensy4.0, meaning the robot was tethered to my laptop by a USB cable. The next step is untethered operation which involves actually utilizing the onboard Raspberry Pi computer to replace the function my laptop served. I also have not gotten the Quadruped walking yet. This writing is also an attempt at increasing effort to document my process. 

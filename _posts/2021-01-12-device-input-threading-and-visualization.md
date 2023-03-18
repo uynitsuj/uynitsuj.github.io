@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A quick post about my next project and other stuff"
+title:  "A quick post about my next project"
 excerpt: "Quick updates"
 categories: [projects]
 image: gallery/QIKstress.gif
