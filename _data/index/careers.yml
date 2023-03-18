@@ -2,7 +2,7 @@
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 - name: Qualcomm
   link: https://www.qualcomm.com/home
-  date: Jun 2023 - Aug 2023
+  date: May 2023 - Aug 2023
   job: Engineering Intern
 
 - name: Medtronic
@@ -12,12 +12,12 @@
 
 - name: Computational Autonomy & Robotics Laboratory
   link: https://curly.engin.umich.edu/
-  date: Aug 2020 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  date: Aug 2020 - May 2023 
   job: Researcher
   
 - name: Michigan Mars Rover
   link: https://mrover.org/
-  date: Nov 2021 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  date: Nov 2021 - May 2023 
   job: RF Wireless Communications Electrical Team Lead
 
 - name: FRC Team 3128 Aluminum Narwhals
