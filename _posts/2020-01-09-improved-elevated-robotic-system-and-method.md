@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Improved Elevated Robotic System and Method"
+title:  "Elevated Assistive Robotic Device"
 excerpt: "Discussion of new and improved ceiling mounted robotic system"
 categories: [projects]
 image: robots/ERAD.JPG
@@ -130,6 +130,7 @@ elevated robotics module is deployed in, the high-level code only ever has to te
 position/velocity setpoint, and the position/velocity control algorithms will take care of reaching the
 setpoints.
 
+
 However, considering the complexity of the more advanced applications an improved buffer system to
 handle the latency between the sent setpoints and the module actually reaching those setpoints is desired,
 for example, as a hand-gesture-obeying robot. In the example, the length of a hand swipe would
@@ -138,6 +139,7 @@ the right would indicate a 30 cm movement in the right direction, and a short sw
 cm movement. A computer vision system could read multiple hand swipes before the elevated robotics
 module could actually reach the desired positions based on the last setpoints. Instead of overriding the
 past commands, a sequential order of the hand swipes is retained.
+
 
 Using a simple list or dynamic buffer is not memory efficient when resized or when their elements are
 rearranged/manipulated. Instead a Fixed-Size FIFO (first in first out) ring buffer is used. The explicit
@@ -154,10 +156,12 @@ each command, which is very important, because missing new hand gestures or rece
 detections due to insufficient system capabilities limits the performance of the system. In this case
 resizing the ring buffer is not needed, making it very memory efficient.
 
+
 The existence of a ring buffer allows multiple processes to cleanly control the elevated robotics module
 without interference between them. For instance, the hand gesture recognition pipeline can add a drive
 signal to the ring buffer, and then some other process (like a direct drive command) can also add to the
 ring buffer, and they will get executed sequentially, retaining the drive signal sent by both processes.
+
 
 It should be noted that the StateTracker Node in the diagram is a purely heuristic layer that allows setting
 a priority to some processes in terms of executing a drive signal. In a deployment scenario, it is likely that
@@ -171,6 +175,7 @@ position delta is defined from the setpoint and whenever inside that tolerance, 
 have plateaued. In an exemplary embodiment the elevated robotics module position is marked as
 plateaued within tolerance for more than 5 iterations of the main While loop, then the next drive signal in
 the ring buffer is executed.
+
 
 The Position/Velocity Control algorithms are the common Feedforward + PID Feedback approach to
 controlling a motor’s angular position and angular velocity. The control algorithm effectively drives the
