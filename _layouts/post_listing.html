@@ -25,10 +25,6 @@ layout: default
             {% endunless %}
             {% endfor %}
             {% endif %}
-            {% if post.image %}
-            <img align="right" class="hidden-md" style="margin-left:10px;border-radius:25px;padding-bottom:3px"
-              src="{{ site.url }}/img/{{ post.image }}" alt="{{ site.url }}/img/{{ post.image }}" height="340">
-            {% endif %}
           </p>
           <h4>
             <a href="{{ site.url }}{{ post.url }}" class="post-title" title="{{ post.title | escape }}">{{ post.title
@@ -59,17 +55,9 @@ layout: default
 
 
 
-    <div class="col m6" style="float:right">
-      {% if post.image.feature %}
-      <div class="post-image-feature">
-        <img src={% if post.image.feature contains 'http' %} "{{ post.image.feature }}" {% else
-          %} "{{ site.url }}/img/{{ post.image.feature }}" {% endif %} alt="{{ post.title | escape }} feature image">
-
-        {% if post.image.credit %}
-        <span class="image-credit">Photo Credit: <a href="{{ post.image.creditlink }}">{{ post.image.credit
-            }}</a></span>
-        {% endif %}
-      </div><!-- /.image-wrap -->
+    <div class="col m6" style="float:right">{% if post.image %}
+      <img align="right" class="hidden-md" style="margin-left:10px;border-radius:25px;padding-bottom:3px"
+        src="{{ site.url }}/img/{{ post.image }}" alt="{{ site.url }}/img/{{ post.image }}" height="340">
       {% endif %}
     </div>
 </section>
