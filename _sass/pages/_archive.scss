@@ -1,15 +1,17 @@
 .archive {
   #timeline {
     position: relative;
+
     &:before {
       content: '';
       position: absolute;
       top: 0;
-      left: -2px;
+      left: -4px;
       height: 100%;
-      width: 4px;
-      background: $white;
+      width: 8px;
+      background: #953ef847;
     }
+
     &:after {
       content: "";
       display: table;
@@ -20,18 +22,20 @@
   .archive-title {
     position: relative;
     margin: 2em auto 1em;
+
     .archive-year {
       margin-left: 1em;
+
       &:before {
         content: " ";
         position: absolute;
         left: 0;
         top: 50%;
-        margin-left: -4px;
+        margin-left: -7px;
         margin-top: -4px;
-        width: 8px;
-        height: 8px;
-        background: #8d7edc;
+        width: 14px;
+        height: 14px;
+        background: #8a22ff;
         border-radius: 50%;
       }
     }
@@ -40,6 +44,7 @@
 
   ul {
     list-style: none;
+
     li {
       margin: 1em auto;
     }
