@@ -3,7 +3,7 @@ layout: post
 title:  "Forward Kinematics: Denavit-Hartenberg Convention on a 6R Robotic Arm Example"
 excerpt: "Forward kinematics for a rigid 6R arm"
 categories: [projects]
-image: Annotation 2020-05-17 173422.png
+image: /Post2/Annotation 2020-08-03 222246.png
 ---
 
 ### 1 Introduction
