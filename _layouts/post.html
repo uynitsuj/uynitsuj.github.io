@@ -3,7 +3,7 @@ layout: default
 ---
 
 <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -21,18 +21,14 @@ autoNumber: "AMS"
 });
 </script>
 
-<a class="btn" href= "{{ site.url }}/" >
+<a class="btn" href="{{ site.url }}/">
   Home
 </a>
 {% if page.image.feature %}
 <div class="post-image-feature">
-  <img class="feature-image" src=
-  {% if page.image.feature contains 'https' or page.image.feature contains 'http' %}
-  "{{ page.image.feature }}"
-  {% else %}
-  "{{ site.url }}/img/{{ page.image.feature }}"
-  {% endif %}
-  alt="{{ page.title | escape }} feature image">
+  <img class="feature-image" src={% if page.image.feature contains 'https' or page.image.feature contains 'http'
+    %} "{{ page.image.feature }}" {% else %} "{{ site.url }}/img/{{ page.image.feature }}" {% endif %}
+    alt="{{ page.title | escape }} feature image">
 
   {% if page.image.credit %}
   <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
@@ -58,7 +54,7 @@ autoNumber: "AMS"
     {{ content }}
   </article>
 </div>
-
+<!--
 <div class="share-buttons">
   <h6>Share on: </h6>
   <ul>
@@ -78,7 +74,8 @@ autoNumber: "AMS"
       <a href="https://www.reddit.com/submit?url={{ site.url }}{{ page.url }}" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
     </li>
   </ul>
-</div><!-- end share-buttons -->
+</div> 
+end share-buttons -->
 
 {% if site.owner.disqus-shortname and page.comments == true %}
 <div id="disqus_thread"></div>

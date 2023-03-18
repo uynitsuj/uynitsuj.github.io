@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "First Attempt at a 6DoF Robot Arm"
+title:  "First attempt at a 6DoF robot arm"
 excerpt: Keeping myself busy during quarantine
 categories: [projects]
 image: robots/ezgif-4-f28f910a4123.gif
 ---
 
-When the first news of 2019-nCoV broke, I was cautiously optimistic that the virus would be less transmissible. Within a couple weeks, I realized that we were in it for the long haul. I decided it was time to take advantage of an unprecedented amount of free time.
+When news of Covid-19 broke, I was cautiously optimistic that the virus would be less transmissible. Within a couple weeks however, I realized that we were in it for the long haul. I decided it was time to take advantage of an unprecedented amount of free time.
 
 ### My 3D-Printed 6DoF Arm Journey
 

@@ -1,5 +1,9 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: Qualcomm
+  link: https://www.qualcomm.com/home
+  date: Jun 2023 - Aug 2023
+  job: Engineering Intern
 
 - name: Medtronic
   link: https://www.medtronic.com/
@@ -9,13 +13,8 @@
 - name: Computational Autonomy & Robotics Laboratory at University of Michigan
   link: https://curly.engin.umich.edu/
   date: Aug 2020 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  job: Undergraduate Researcher
+  job: Researcher
   
-- name: University of Michigan College of Engineering
-  link: https://www.engin.umich.edu/
-  date: Aug 2021 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  job: Undergraduate Instructional Aide for ROB 101
-
 - name: Michigan Mars Rover
   link: https://mrover.org/
   date: Nov 2021 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Quadruped Informal Documentation"
+title:  "Quadruped Updates"
 excerpt: "More effort into documenting my engineering process"
 categories: [projects]
 image: IMG_5705.jpg 
@@ -31,17 +31,17 @@ Managed to get Wifi working! Turns out I had minor typos while modifying one of 
 ### July 4th, 2022
 Happy Independence Day!
 
-The cause of the undervolting issue is a bit tricky to isolate. Booting the RPi when connected to the Quadruped 5v source throws the undervolt warning. When I apply digital multimeter probes to the 5v source with the RPi removed, the measurement reads 4.97v. Not great considering the RPi voltage requirements are pretty strict, but confusing since the RPi should be okay with inputs ranging from 4.9v to 5.25v. One thought is that the input resistance of the RPi and output resistance of the supply is somehow dropping the 5v source much lower. Will have to find a way to measure voltage value with RPi connected to Quadruped supply. 
+The cause of the undervolting issue is a bit tricky to isolate. Booting the RPi when connected to the Quadruped 5v source throws the undervolt warning. When I apply digital multimeter probes to the output of my converter with the RPi removed, the measurement reads 4.97v. Not great. Also confusing since the RPi should be okay with inputs ranging from 4.9v to 5.25v. One thought is that the input resistance of the RPi and output resistance of the supply is somehow dropping the 5v source lower. I'll need to find a way to measure voltage with RPi connected to Quadruped supply. 
 
-Nudging the supply a bit closer to 5.25v to achieve a safer margin could also help but is tricky in my situation since I’m using a COTS (commercial off the shelf) 6-20v to 5v converter circuit. It doesn’t come with a potentiometer or any similar control mechanism so I don’t have much control over the output voltage. Another thought is that the RPi is unhappy with the max current the converter circuit is capable of supplying, which is advertised as 1.5A, whereas the RPi 4 spec says it would like a 5v 3A capable input. Unfortunately I missed that spec the first time around when searching for a RPi power regulator.
+Nudging the supply a bit closer to 5.25v to achieve a safer margin could also help but is tricky in my situation since I’m using a COTS (commercial off the shelf) 6-20v to 5v converter circuit. It doesn’t come with a potentiometer or any similar control mechanism so I don’t have control over the output voltage. Another thought is that the RPi is unhappy with the max current the converter circuit is capable of supplying, which is advertised as 1.5A, whereas the RPi 4 spec says it would like a 5v 3A capable input. Unfortunately I missed that spec the first time around when searching for a RPi power regulator.
 
 This issue brings up a desire to redo my PCB but this time with custom power regulation circuitry for both the RPi and teensy MCU. This will be very time consuming but I’m eager to go down this path in the future mainly for more circuit design/CAD experience in Altium. Other additions to the PCB could include more robust PCB to cable connectors (right now they’re simply loose headers like the ones on breadboard jumper cables), integrated mount for the IMU, and future research could yield fruit for current sensing circuitry which might allow for foot contact event detection, which will be massively important if I wish to do any complex gait/motion planning.
 
-Just ran a Quadruped power-on with the RPi feeding from the onboard power supply. Undervolt detected warning appeared again. Multimeter reads 4.92v at the lowest throughout the entire bootup. It is possible the voltage drops much lower momentarily but the multimeter measurement sampling frequency is not fast enough to catch these transient drops, whereas the RPi can catch it and immediately throws the undervolt flag. I don’t have an oscilloscope to determine whether this is the case, so for the short term, my best course of action is likely to purchase an alternate voltage regulator circuit, with higher amperage, and a better safety margin (target 5.25v or 5.5v instead of 5v so any drops from internal resistances or a degrading power supply can be compensated). 
+Just ran a Quadruped power-on with the RPi feeding from the onboard power supply. Undervolt detected warning appeared again. Multimeter reads 4.92v at the lowest throughout the entire bootup. It is possible the voltage drops much lower momentarily but the multimeter's sampling frequency is not fast enough to catch these transient drops, whereas the RPi detects it and immediately throws the undervolt flag. I don’t have an oscilloscope to determine whether this is the case, so for the short term, my best course of action is likely to purchase an alternate voltage regulator circuit, with higher amperage, and a better safety margin (target 5.25v or 5.5v instead of 5v so any drops from internal resistances or a degrading power supply can be compensated). 
 
 Just purchased a 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Comes with a potentiometer so I can adjust the output voltage to the upper 5.25v limit.
 
-The good news is that the undervoltage issue doesn’t seem to possess extremely high severity at the moment. Wifi connection is stable and benchmark runs with no noticeable performance hit. Meaning I should be able to continue work while I wait for the power regulator replacement.
+The good news is that the undervoltage issue doesn’t seem to possess extremely high severity at the moment. Wifi connection is stable and a benchmark runs with no noticeable performance hit. Meaning I should be able to continue work while I wait for the power regulator replacement.
 
 For fully untethered operation, a lot needs to happen. I will have to modify the existing code a bit and remove the 3D visualization and also verify that the RPi to MCU serial link is established correctly.
 

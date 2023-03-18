@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "A Quick Post about my Next Project, /dev/input, Threading, and Visualization in Python"
-excerpt: "Updates"
+title:  "A quick post about my next project and other stuff"
+excerpt: "Quick updates"
 categories: [projects]
 image: gallery/QIKstress.gif
 ---
@@ -19,14 +19,11 @@ I'm starting out small scale with some 20KG RC car hobby servos for rudimentary 
 
 What progress have I made? The first step on my list was to solve for the inverse kinematics and also to verify it in a custom visualization pipeline. The former has been done for a while now, actually since before winter break.
 
-![IK1]({{ site.url }}/img/Post6/Scannable Document on Feb 12, 2021 at 5_23_46 PM.png){:height="40%" width="40%"}
-![IK2]({{ site.url }}/img/Post6/Scannable Document on Feb 13, 2021 at 1_34_17 AM.png){:height="40%" width="40%"}
+And I recently got around the the latter. I have been looking around for python visualization modules for quite some time now, since I was getting tired of how slow matplotlib is for 3D visualizations. It's made to look presentable for research paper graphics, but it's not necessarily built with real-time performance in mind. I've finally found one that I'm pretty happy with: [pyqtgraph](http://www.pyqtgraph.org/). It appears to be an impressively robust 2d and 3d visualization module that uses OpenGL, and is built with your choice of either Qt or PySide as a backend.
 
-And I recently got around the the latter. I have been looking around for python visualization modules for quite some time now, since I was getting tired of how slow matplotlib 3D is. It's made to look nice and presentable for research paper graphics, but it's not necessarily built for performance. I've finally found one that I'm pretty happy with: [pyqtgraph](http://www.pyqtgraph.org/). It is an impressively robust 2d and 3d visualization module that uses OpenGL, and is built with your choice of either Qt or PySide as a backend.
+One of the things that I wanted for my visualization was to be able to provide user input. On this front I had quite a few options. Though I steered away from the keyboard or any kind of binary-state input since I wanted a little bit more ganularity for high-speed input. For this, I opted for a PS4 controller. Going down this path led me to the discovery of a whole wide world involving /dev/input. The /dev/input directory is one of those things on Linux where once you know your way around it, you'll be pretty unstoppable with device I/O. The directory holds the device files for various input devices such as mice, keyboards, joysticks and so on. For my PS4 joystick, if you open the device file and attempt to read it, you'll receive streams of binary data, which correspond to events on the device, such as pressing down a button or pushing the joystick up on a PlayStation controller.
 
-One of the things that I wanted for my visualization was to be able to provide user input. On this front I had quite a few options. Though I steered away from the keyboard or any kind of binary-state input since I wanted a little bit more ganularity for high-speed input. For this, I opted for a PS4 controller. Going down this path led me to the discovery of a whole wide world involving /dev/input. The /dev/input directory is one of those things on Linux where once you know your way around it, you'll be unstoppable with device I/O. The directory holds the device files for various input devices such as mice, keyboards, joysticks and so on. If you open the device file and attempt to read it, you'll receive streams of binary data, which correspond to events on the device, such as pressing down a button or pushing the joystick up on a PlayStation controller.
-
-Once you decode this stream, you have the ability to do just about anything with the device inputs. /dev/input gives you the ability to create event hooks to run a block of code after a specified event, or even a sequence of several events.
+Once you decode this stream, you have the ability to do just about anything with the device inputs. This gives you the ability to create callbacks to run a block of code after a specified event.
 
 I started putting together my visualization, but then realized that I had a problem. I had two loops that I wanted to run: 1) the pyqtgraph Qt5 backend loop which constantly updates and refreshes the visualization window, 2) the device input stream that's constantly reading the binary data stream. This is the problem that introduced me to the wonders of python threading and callbacks.
 
