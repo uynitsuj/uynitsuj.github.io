@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Forward Kinematics: Denavit-Hartenberg Convention on a 6R Robotic Arm Example"
-excerpt: "Development of the forward or configuration kinematic equations for a rigid robot of 6R (6 Revolute Joints)"
+excerpt: "Forward kinematics for a rigid 6R arm"
 categories: [projects]
 image: Annotation 2020-05-17 173422.png
 ---
