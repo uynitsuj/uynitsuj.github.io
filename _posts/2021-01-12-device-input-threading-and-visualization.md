@@ -10,7 +10,7 @@ Recently, I've found some precious time in between studying for 17 credit-hours 
 
 <br>
 
-There are some goals that I have for this project, as any good designer should have. These include both high level and low level goals, short term and long term goals, and perhaps even longer term goals reaching decades into the future.
+There are some high level and low level goals, short term and long term goals, and perhaps even longer term goals reaching far into the future (this is a fun albeit expensive hobby to maintain).
 
 <br>
 
