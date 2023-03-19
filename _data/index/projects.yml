@@ -1,4 +1,4 @@
-- name: Open Source Unified Robotic State Estimation Library
+- name: CURLY State Estimator: An inEKF-Based Mobile Robot Odometry Estimator
   descr: "<b>Affiliation/Role: Researcher and Software Developer for University of Michigan CURLY lab</b><br> 
   This project is an open-source robotic state estimation library intended to work across a number of robot architectures (quadruped, biped, wheeled). Utilizes state of the art robotic state estimation methods via invariant extended Kalman filtering (inEKF). "
   image: MiniCheetah063021.png
