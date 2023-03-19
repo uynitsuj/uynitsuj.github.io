@@ -21,27 +21,27 @@ Some high level goals for this first iteration include:
 
 <br>
 
-I'm starting out small scale with some 20KG RC car hobby servos for rudimentary pose acquisition and gait generation. The most obvious downsides would have to be the pitiful resolution and accuracy that comes with hobbyist servo motors, and implementing velocity control or even force control for more complex motion planning is non-trivial. Though, currently, I'm pretty happy with the scope of this project as it would allow me to become better acquainted to items such as ROS and gazebo. In the future, this project can also serve as a platform for other explorations involving CV, SLAM, motion planning, and variants of extended kalman filters, and on the hardware side, perhaps I might become interested in implementing custom brushless motor technology. I have a pretty good idea of where I want to take this project in the immediate future. But who knows where this project will take me later down the line?
+I'm starting out small scale with some 20KG RC car hobby servos for rudimentary pose acquisition and gait generation. The most obvious downsides would have to be the pitiful resolution and accuracy that comes with hobbyist servo motors, and implementing velocity control or even force control for more complex motion planning is non-trivial. Though, currently, I'm pretty happy with the scope of this project as it would allow me to become better acquainted to items such as ROS and gazebo. In the future, this project can also serve as a platform for other explorations involving CV, SLAM, motion planning, sensor fusion with extended kalman filters, etc. On the hardware side, I might become interested in developing custom brushless motor technology. I have a decent idea of where I want to take this project in the immediate future. But who knows where this project will take me?
 
 <br>
 
-What progress have I made? The first step on my list was to solve for the inverse kinematics and also to verify it in a custom visualization pipeline. The former has been done for a while now, actually since before winter break.
+The first step was to solve for the inverse kinematics and also to visually verify it in a custom visualization pipeline. The former has been done for a while now, actually since before winter break.
 
 <br>
 
-And I recently got around the the latter. I have been looking around for python visualization modules for quite some time now, since I was getting tired of how slow matplotlib is for 3D visualizations. It's made to look presentable for research paper graphics, but it's not necessarily built with real-time performance in mind. I've finally found one that I'm pretty happy with: [pyqtgraph](http://www.pyqtgraph.org/). It appears to be an impressively robust 2d and 3d visualization module that uses OpenGL, and is built with your choice of either Qt or PySide as a backend.
+And I recently got around the the latter. I have been looking around for python visualization modules for quite some time, since I was getting tired of how slow matplotlib is for 3D visualizations. It's made to look presentable for research paper graphics, but it's not necessarily built with real-time performance in mind. I've finally found one that I'm pretty happy with: [pyqtgraph](http://www.pyqtgraph.org/). It appears to be an impressively robust 2d and 3d visualization module that uses OpenGL for fast object rendering, and is built with your choice of either Qt or PySide as a GUI backend.
 
 <br>
 
-One of the things that I wanted for my visualization was to be able to provide user input. On this front I had quite a few options. Though I steered away from the keyboard or any kind of binary-state input since I wanted a little bit more ganularity for high-speed input. For this, I opted for a PS4 controller. Going down this path led me to the discovery of a whole wide world involving /dev/input. The /dev/input directory is one of those things on Linux where once you know your way around it, you'll be pretty unstoppable with device I/O. The directory holds the device files for various input devices such as mice, keyboards, joysticks and so on. For my PS4 joystick, if you open the device file and attempt to read it, you'll receive streams of binary data, which correspond to events on the device, such as pressing down a button or pushing the joystick up on a PlayStation controller.
+Next I needed to develop a user input scheme for both the final robot and the visualization. On this front I had quite a few options. I steered away from the keyboard or any kind of binary-state input since I wanted a little bit more ganularity. For this, I opted for a PS4 controller. Going down this path led me to the discovery of a whole world involving the /dev/input directory. The /dev/input directory in Linux is a must-know for pretty much anything involving device I/O. The directory can contain device files for various input devices such as mice, keyboards, joysticks and so on. If you "open" a device file, you'll receive streams of binary data, which correspond to events on the device, such as button presses or thumbstick state changes.
 
 <br>
 
-Once you decode this stream, you have the ability to do just about anything with the device inputs. This gives you the ability to create callbacks to run a block of code after a specified event.
+After decoding this data stream for a PS4 controller, you have the ability to create callbacks to run a block of code after a specified event, allowing you to map PS4 controls to robot controls.
 
 <br>
 
-I started putting together my visualization, but then realized that I had a problem. I had two loops that I wanted to run: 1) the pyqtgraph Qt5 backend loop which constantly updates and refreshes the visualization window, 2) the device input stream that's constantly reading the binary data stream. This is the problem that introduced me to the wonders of python threading and callbacks.
+While I was developing my visualization, I realized that I had a problem. I had two loops that I wanted to run: 1) the pyqtgraph loop which updates the visualization state, 2) the PS4 loop that reads the PS4 input data stream and updates robot state varaibles. This is the problem that introduced me to the wonders of threaded programs.
 
 <br>
 
