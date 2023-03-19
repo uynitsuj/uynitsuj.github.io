@@ -28,11 +28,11 @@ Once you decode this stream, you have the ability to do just about anything with
 I started putting together my visualization, but then realized that I had a problem. I had two loops that I wanted to run: 1) the pyqtgraph Qt5 backend loop which constantly updates and refreshes the visualization window, 2) the device input stream that's constantly reading the binary data stream. This is the problem that introduced me to the wonders of python threading and callbacks.
 <br>
 Here's where I am at currently:
-<div align="center"><iframe width="90%" height="315" src="https://www.youtube.com/embed/fkbPEBkFw38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/fkbPEBkFw38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
-<div align="center"><iframe width="90%" height="315" src="https://www.youtube.com/embed/RiKDt2fboVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/RiKDt2fboVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
-<div align="center"><iframe width="90%" height="315" src="https://www.youtube.com/embed/Qadp65k-Nd0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/Qadp65k-Nd0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 <div align="center">
   <img src="{{ site.url }}/img/gallery/QIKstress.gif" alt="IK" width="800px">

@@ -16,7 +16,7 @@ My first design iteration did not have many things going for it to say the absol
 
 Perhaps overly ambitious, I had taken heavy inspiration from the team over at Haddington Dynamics:
 
-<div align="center"><iframe width="90%" height="315" src="https://www.youtube.com/embed/EgVPiBiKNjs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/EgVPiBiKNjs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 I liked their design philosophy regarding weight distribution, placing heavy components such as stepper motors and gearboxes closer to the base, and using timing belts to transmit that power to the rest of the joints and end-effectors. If there was one thing I could take away from all of my time in high-school robotics, it would be: *keep end effectors as light as you can get away with*. So this setup seemed like a no-brainer.
 <br>
@@ -83,11 +83,11 @@ Now that I have the thing built, I want to start making the thing move. I used a
 
 Ok, that was easy enough. Now how about making it move predictably? I then went onto the web to search for ways that I could coordinate stepper movement effectively, and found much more than I was expecting.
 
-<div align="center"><iframe width="90%" height="315" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/fHAO7SW-SZI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 This video by iforce2d had absolutely everything I was looking for and more. By the end, he had introduced a sketch that would allow you to prepare stepper movements for multiple steppers and execute them, complete with stepper start-time end-time coordination, linear speed ramping, *and even interrupts*. This massively simplifies everything. And this is where that got us:
 
-<div align="center"><iframe width="90%" height="315" src="https://www.youtube.com/embed/8E2R9iQnwQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/8E2R9iQnwQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 Next, I needed to figure out how to give angle inputs, and I also wanted to move out of the Arduino IDE interface, since preparing movements within the sketch currently consists of editing the motor ID and step# parameter manually:
 
@@ -137,7 +137,7 @@ It's not easy to see, but all of the 8 possible configurations converge onto one
 
 Now that we have our very rudimentary motion planner implemented, a user interface, and our FK and IK models verified, it's time to stick it all together with some scotch tape and bubblegum.
 
-<div align="center"><iframe width="90%" height="315" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 A postmortem discussion: there are several areas that I could improve upon in future iterations. First off, you might've noticed that my interface was lacking a homing procedure button. This particular robot is completely open-loop, relying only on the accuracy (or lack thereof) of the steppers. The stepper gearboxes were also not back-driveable, so going entirely open-loop was less of a risk. For what I set out to do I think I did a pretty good job. Granting that, I would consider the current state of arm performance to be unsatisfactory. 
 <br>
