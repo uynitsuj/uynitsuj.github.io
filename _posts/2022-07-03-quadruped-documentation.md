@@ -54,9 +54,13 @@ Because this is such a large milestone with lots of things going into it, I thin
   * Verify RPi to MCU communication
 * Software // Find out how to run python code on power-on/boot
 * Hardware & Software // Untethered operation with joystick pose control!
+
 <br>
+
 I think I’ll get around to generating a software & hardware architecture report after I’ve completed this milestone.
+
 <br>
+
 Got PS4 Joystick paired with the RPi pretty quickly. I’ll go into more detail about how I did this since it might be useful for future reference. 
 
 * Run command **bluetoothctl** on RPi command line to enter bluetooth control mode.
