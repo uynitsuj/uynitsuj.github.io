@@ -5,10 +5,10 @@
     <div class="col">
         <h2 style="margin: 0">{{ project.name }}</h2>
         <p align="center"><img src="{{ site.url }}/img/robots/{{ project.image }}"
-                alt="{{ site.url }}/img/robots/{{ project.image }}" width="400"></p>
+                alt="{{ site.url }}/img/robots/{{ project.image }}" style="max-height:400px;max-width:80%"></p>
 
         {% if project.youtube %}
-        <p align="center"><iframe width="560" height="315" src="{{ project.youtube }}" frameborder="0"
+        <p align=" center"><iframe width="90%" height="315" src="{{ project.youtube }}" frameborder="0"
                 allow="autoplay; encrypted-media" allowfullscreen>
             </iframe></p>
         {% endif %}
