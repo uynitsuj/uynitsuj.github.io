@@ -24,7 +24,11 @@ Current roadmap consists of:
 
 <br>
 
-In chronological order (probably). First problem on my plate is that the Raspberry Pi is not connecting to Wifi. Wifi configuration is probably a lot simpler on an RPi with the GUI boot image, however I opted for a headless image for compute resource concerns and also just to gain more experience working with a headless RPi and directly in the bash terminal. The RPi is also detecting an undervoltage event on power-on, which I'm concerned may cascade into other issues. 
+First problem on my plate is that the Raspberry Pi is not connecting to Wifi. Wifi is maily needed for a connection to github so that I can develop code on my laptop, push it to my repository, and pull the finished code from the robot. Wifi configuration is probably a lot simpler on an RPi with the GUI image, however I opted for a headless image for compute resource concerns and also just to gain more experience working with a headless RPi and directly in the bash terminal. 
+
+<br>
+
+The RPi is also detecting an undervoltage event on power-on, which I'm concerned may cascade into other issues. 
 
 <br>
 
@@ -41,6 +45,7 @@ Managed to get Wifi working! Turns out I had minor typos while modifying one of 
 ### July 4th, 2022
 Happy Independence Day!
 <br>
+
 The cause of the undervolting issue is a bit tricky to isolate. Booting the RPi when connected to the Quadruped 5v source throws the undervolt warning. When I apply digital multimeter probes to the output of my converter with the RPi removed, the measurement reads 4.97v. Not great. Also confusing since the RPi should be okay with inputs ranging from 4.9v to 5.25v. One thought is that the input resistance of the RPi and output resistance of the supply is somehow dropping the 5v source lower. I'll need to find a way to measure voltage with RPi connected to Quadruped supply. 
 
 <br>
