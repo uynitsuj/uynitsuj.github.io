@@ -133,19 +133,19 @@ My journey through Forward Kinematics is laid out in one of my previous posts an
 
 ![Annotation 2020-05-17 173422]({{ site.url }}/img/Annotation 2020-05-17 173422.png)
 
-The Inverse Kinematics process is much more involved, as it is the inverse of the above process. The IK model must produce the joint angle space with only the cartesian coordinate space transform matrix that defines the end effector position plus its offset relative to the grounded base frame origin. One of the reasons why this is more complicated is because its joint space solutions are not necessarily unique. For every unique cartesian coordinate space x, y, z, pitch, roll, or yaw input, the result could consist of multiple joint space solutions. In fact, there may be up to 8 as shown here:
+The Inverse Kinematics (IK) process is the inverse of the above, and is much more involved. The IK algorithm must produce an output in the joint angle space with only information about a desired pose in the cartesian space. One of the main reasons for why this is more complicated is because the IK joint space solutions are not unique. For every unique cartesian space input, the IK result can consist of multiple joint space solutions. In fact, there may be up to 8 as shown here:
 
 ![Annotation 2020-08-07 190630]({{ site.url }}/img/Post3/Annotation 2020-08-07 190630.png)
 
-At the end of the day, the goal of IK is to be able to determine what arm joint theta1, theta2, theta3, etc. are based on the final end effector position and orientation. The math here is your average trigonometry, but keeping track of the relevant reference frame definitions becomes very difficult to manage. I would be lying if I told you that I solved it all myself. I would have never completed this endeavor in reasonable time with my current skillset were it not for the brave adventurers who have pioneered this path before I had. Some of the resources I used are cited below[^1][^2][^3]. However, going through and parsing the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
+The goal of IK is to determine arm joint variables (theta1, theta2, theta3, etc.) based on a desired end effector position and orientation. The math here is your average trigonometry, but keeping track of the relevant reference frame definitions becomes very difficult to manage. Some of the resources I used for 6R IK are cited below[^1][^2][^3]. Going through the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
 
 <br>
 
-The next step is about as involved as parsing the literature: translating the useful information to python code to verify my IK model, as well as using the IK definition to run my visualization pipeline. I would frequently end up in what were seemingly dead ends, and there were also points where I knew I was close but couldn't pinpoint what was causing issues:
+The next step is about as involved as parsing the literature: translating useful information to develop my own IK model implementation. I would frequently end up in what were seemingly dead ends, and there were also points where I knew I was close but couldn't pinpoint what was causing issues:
 
 ![Annotation 2020-08-07 195530]({{ site.url }}/img/Post3/Annotation 2020-08-07 195530.png)
 
-Symmetrical, however not a very beautiful sight to behold in the context of my work. Eventually, I would come to find a couple of stray negatives, undotted i's and uncrossed t's scattered around my implementation, and I eventually got there.
+Symmetrical, however not a very beautiful sight to behold in the context of my work. Eventually, I would come across some stray negatives, undotted i's and uncrossed t's scattered around my implementation, and I eventually got there.
 
 ![Annotation 2020-05-29 214041]({{ site.url }}/img/Post3/Annotation 2020-05-29 214041.png)
 
@@ -160,7 +160,6 @@ Now that we have our very rudimentary motion planner implemented, a user interfa
 A postmortem discussion: there are several areas that I could improve upon in future iterations. First off, you might've noticed that my interface was lacking a homing procedure button. This particular robot is completely open-loop, relying only on the accuracy (or lack thereof) of the steppers. The stepper gearboxes were also not back-driveable, so going entirely open-loop was less of a risk. For what I set out to do I think I did a pretty good job. Granting that, I would consider the current state of arm performance to be unsatisfactory. 
 
 <br>
-
 In the future, closed loop control and improving arm structure rigidity is definitely top priority.
 
 
