@@ -1,34 +1,38 @@
 - name: Open Source Unified Robotic State Estimation Library (Work In Progress)
-  descr: "Affiliation/Role: Software Developer for University of Michigan CURLY group<br> This project is an open-source robotic state estimation library intended to work across a number of robot architectures (quadruped, biped, wheeled). Utilizes state of the art robotic state estimation methods via invariant extended Kalman filtering (inEKF). "
+  descr: "<b>Affiliation/Role: Researcher and Software Developer for University of Michigan CURLY lab</b><br> 
+  This project is an open-source robotic state estimation library intended to work across a number of robot architectures (quadruped, biped, wheeled). Utilizes state of the art robotic state estimation methods via invariant extended Kalman filtering (inEKF). "
   image: MiniCheetah063021.png
   github: https://github.com/UMich-CURLY/curly_state_estimator
 
 - name: 3D-Printed Quadrupedal Robot
-  descr: "Affiliation/Role: System Designer<br> Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
+  descr: "<b>Affiliation/Role: System Designer</b><br> 
+  Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
   image: QPRev2.png
   youtube: https://www.youtube.com/embed/zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
   
 - name: Mini Cheetah Autonomous Sensor Suite Platform
-  descr: "Affiliation/Role: Hardware Systems Designer for University of Michigan CURLY group<br> This sensor suite was designed to augment the autonomous capabilities of the MIT Minicheetah. It houses and protects an NVIDIA Jetson Xavier as well as a vision system. The suite will accept either the Intel depth camera or L515 LiDAR system. Sensor suite platorm has been made public for all other Minicheetah groups to take advantage of. (Github link with stl files below)"
+  descr: "<b>Affiliation/Role: Researcher and Hardware Designer for University of Michigan CURLY lab</b><br> 
+  This sensor suite was designed to augment the autonomous capabilities of the MIT Minicheetah. It houses and protects an NVIDIA Jetson Xavier as well as a vision system. The suite will accept either the Intel depth camera or L515 LiDAR system. Sensor suite platorm has been made public for all other Minicheetah groups to take advantage of. (Github link with stl files below)"
   image: MiniCheetah063021.png
   github: https://github.com/UMich-CURLY/minicheetah-sensorsuite
   youtube: https://www.youtube.com/embed/oVbP-Y8xT_E
 
 - name: 3D-Printed 6DoF Robotic Arm
-  descr: "Affiliation/Role: System Designer<br>Personal project over the coronavirus quarantine to build a 6DoF robot arm platform from complete scratch."
+  descr: "<b>Affiliation/Role: System Designer</b><br>
+  Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from complete scratch."
   image: ezgif-4-f28f910a4123.gif
   github: https://github.com/uynitsuj/Open6R_ARM
   youtube: https://www.youtube.com/embed/CedyWQmqiJ0
 
 - name: Elevated Robotic Assistive Device
-  descr: "Affiliation/Role: Lead Mechanical Systems Designer<br>An elevated robotic system which
-          provides smooth and efficient traversal along an elevated track."
+  descr: "<b>Affiliation/Role: Lead Mechanical Systems Designer</b><br>
+  An elevated robotic system which provides smooth and efficient traversal along an elevated track."
   image: ERAD.JPG
   website: https://uynitsuj.github.io/articles/2020-01/improved-elevated-robotic-system-and-method
 
 - name: 2020 FRC Robot - Cheems the Harvester of Souls
-  descr: "Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "<b>Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. </b><br>
   Dimensions: 25&#34; W x 28&#34; L x 44.7&#34; H <br>
   Weight: 110 lbs <br>
   Top Speed: 10.9 mph <br><br>
@@ -38,7 +42,7 @@
   youtube: https://www.youtube.com/embed/iFeYwJSkDD8
 
 - name: 2019 FRC Robot - Gromit
-  descr: "Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "<b>Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. </b><br>
   Dimensions: 28&#34; W x 32&#34; L x 48&#34; H <br>
   Weight: 119.8 lbs <br>
   Top Speed: 10.5 mph <br><br>
@@ -49,7 +53,7 @@
   youtube: https://www.youtube.com/embed/e-3wpLIAMWE
 
 - name: 2018 FRC Robot - Guido
-  descr: "Affiliation/Role: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "<b>Affiliation/Role: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. </b><br>
   Dimensions: 33&#34; W x 28&#34; L x 54&#34; H <br>
   Weight: 119.7 lbs <br>
   Top Speed: 9.5 mph <br><br>
@@ -59,7 +63,7 @@
   image: 2018.png
 
 - name: 2017 FRC Robot - Ferb
-  descr: "Affiliation/Role: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. <br>
+  descr: "<b>Affiliation/Role: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. </b><br>
   Dimensions: 34.5&#34; W x 31.25&#34; L x 24&#34; H <br>
   Weight: 95 lbs <br>
   Top Speed: 9.5 mph <br><br>
