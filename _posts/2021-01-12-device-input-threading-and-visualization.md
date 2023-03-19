@@ -41,7 +41,7 @@ After decoding this data stream for a PS4 controller, you have the ability to cr
 
 <br>
 
-While I was developing my visualization, I realized that I had a problem. I had two loops that I wanted to run: 1) the pyqtgraph loop which updates the visualization state, 2) the PS4 loop that reads the PS4 input data stream and updates robot state varaibles. This is the problem that introduced me to the wonders of threaded programs.
+While I was developing my visualization, I realized that I had a problem. I had two loops that I wanted to run: 1) the pyqtgraph loop which updates the visualization state, 2) the PS4 loop that reads the PS4 input data stream and updates robot state variables. This is the problem that introduced me to the wonders of threaded programs.
 
 <br>
 
