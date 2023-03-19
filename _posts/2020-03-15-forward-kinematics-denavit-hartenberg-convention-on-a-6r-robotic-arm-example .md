@@ -19,6 +19,8 @@ To be able to fully define both the position and orientation of a robot end effe
 ### 3 Denavit-Hartenberg Convention
 It is important to keep in mind that the choices of the various coordinate frames at each link are not unique. Thus it is possible for different engineers to derive differing frame assignments for the links on the robot by using different conventions.
 
+<br>
+
 While it is possible to carry out analysis using arbitrary frame assignments, the Denavit-Hartenberg convention makes frame selection systematic and consistent. By this convention, resultant calculations are also simplified as the DH convention follows two assumptions:
 
 **(DH1)** The axis $x_i$ is ⟂ to the axis $z_{i-1}$
@@ -31,6 +33,8 @@ By following these assumptions, the need to reconcile a y-axis frame along every
 <div align="center"> <i> Figure  3.1: Coordinate frames attached to a 3R manipulator </i> </div>
 
 A robot manipulator with *n* joints will have *n+1* links *(Fig 3.1)* since each joint connects two links. Joints are numbered 1 to *n*, and links are numbered 0 to *n*, starting from the base. By this convention, joint *i* connects link *i-1* to link i. *When joint i is actuated, link i moves.*
+
+<br>
 
 With these frames, it is possible to derive a transformation matrix T, that expresses the position and orientation of frame $o_nx_ny_nz_n$ with respect to a base frame $o_ix_iy_iz_i$. $T_{j}^i$ is represented as a product of the separate transformation matrices that are based off of each link.
 
@@ -45,6 +49,8 @@ $$
 <div align="right"> <i>(3.2)</i> </div>
 
 By this definition, it is possible to derive the position and orientation of not just the end effector, but any of the frame origins established along one of the joints.
+
+<br>
 
 Each homogeneous transformation $A_i$ is of the form
 
@@ -142,9 +148,13 @@ $i$(Frame)  |$θ_i$   |$α_i$   |$a_i$   |$d_i$
 <div align="center"> <i> Table 5.3: Denavit-Hartenberg table for the specific embodiment of a 6R arm </i> </div>
 
 By completing Table 5.3 we have completed step *4.7*. Notice that frame 0 of $x_0y_0z_0$ is not present, as all of the parameters within the table are based on the relation between frame $i$, and frame $i-1$. Thus, with frame 0 having no preceding frame to reference, it is not present within the table, but instead we look to establish parameters of frame 1 in relation to frame 0 in the first data row of the table.
+
 <br>
+
 Since the robot is of 6R, we must include variable parameters that account for the freely rotating joints. These variables are present in the $θ_i$ column, since per the D-H convention, $θ_i$ is a variable if joint $i$ is revolute. To verify that the table was done correctly, all joint variables ( $θ_1$ ... $θ_6$ ) as well as all link lengths ($d_i$) and link offsets ($a_i$) (a1-a8) should be accounted for in the table.
+
 <br>
+
 Next, we must establish each transformation matrix $A_i$, which describes the transformational relation between frame $i$, and frame $i-1$, for each frame. This becomes difficult to compute by hand so we may use computational tools such as python to aid us.
 
 $$\begin{aligned}\left[\begin{array}{cccc}

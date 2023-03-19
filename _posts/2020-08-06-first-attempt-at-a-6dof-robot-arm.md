@@ -19,23 +19,35 @@ Perhaps overly ambitious, I had taken heavy inspiration from the team over at Ha
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/EgVPiBiKNjs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
 I liked their design philosophy regarding weight distribution, placing heavy components such as stepper motors and gearboxes closer to the base, and using timing belts to transmit that power to the rest of the joints and end-effectors. If there was one thing I could take away from all of my time in high-school robotics, it would be: *keep end effectors as light as you can get away with*. So this setup seemed like a no-brainer.
+
 <br>
+
 It didn't take long for me to realize I had downplayed severely many of the the most obvious downsides that came with opting for such a setup.
+
 <br>
+
 *Firstly:*  
 I had opted to use NEMA17 stepper motors. Besides the fact that the Haddington Dynamics guys did too, I decided to use NEMA17s because they were reasonably light, reasonably powerful, and my past robotics experience didn't include very many stepper motors, but instead DC brushed and brushless motors. I wanted some of my own experience with them. 
+
 <br>
+
 NEMA17s aren't very strong. This meant that a gearbox was required to increase the mechanical advantage produced by the motors if my arm had any hopes of lifting itself. For this, the Dexter guys used a harmonic flex-spline gearbox, featuring zero backlash, a surprising degree of back-driveability, however they are also mind-numbingly expensive to get a hold of.
+
 <br>
+
 Which sadly left me to my own devices...
 
 ![Annotation 2020-03-30 151859]({{ site.url }}/img/Post3/Annotation 2020-03-30 151859.jpg)
 
 I spent many days and late-nights trying to fine-tune parameters of my 3D-printed planetary gearbox (you read that right... *never again*) to have minimal backlash with minimal friction. At the end of the day, I was never going to get very good results in either of these aspects since the accuracy of my printed parts is only as good as the accuracy of my printer. My reduction ratio was also decently high at 38.4:1. With the amount of friction in my 3D-printed gearboxes, the ability to back-drive my motors was simply out of the question.
+
 <br>
+
 *Secondly:*  
 Unsurprisingly, sourcing niche parts like >1000mm loop timing belts is a difficult endeavour. I don't have a home machine shop, and sourcing pre-cut custom-length 1"x1" square tubing proved impossible. The Dexter guys used a *MarkForged* industrial 3D-printer for the printed parts and even had carbon-fiber reinforced structural parts printed from it. I was sitting here with my meek and humble (but able) Prusa Mk3S 3D-printer.
+
 <br>
+
 For these reasons, along with many other concerns I had about how the design was progressing, I made the executive decision to scrap this iteration.
 
 ### Back to the Basics
@@ -45,7 +57,9 @@ I determined that my best course of action was to reject modernity and return to
 ![Annotation 2020-08-06 223117]({{ site.url }}/img/Post3/Annotation 2020-08-06 223117.png)
 
 This style of arm featured actuators situated directly at each joint within the arm, massively simplifying the design constraints.
+
 <br>
+
 I further iterated on my gearbox design, implementing finer gear teeth, allowing me to create larger reduction ratios and a more compact gearbox system. Now that the actuators were situated directly at the joints, I had to increase the diameter of the joint bases to help the design handle the increased radial and axial load. I was really interested in using thin-section bearings, but once again ran into some trouble. So in typical Justin Yu fashion, I tried my hand at designing a custom slewing bearing using printed cylindrical bearing beads (you'll find 3D-printing spheres to be quite difficult). This first iteration of the gearbox features a swept-cut side surface, which didn't make it onto the final iteration. This is one of my prouder creations.
 
 <div class="row" style="margin-left:11vw">
@@ -66,7 +80,9 @@ I further iterated on my gearbox design, implementing finer gear teeth, allowing
 After much time, I had finished the arm, complete with motor port covers featuring hexagonal patterns.
 
 ![IMG_1925]({{ site.url }}/img/Post3/IMG_1925.jpg){:height="40%" width="40%"}
+
 <br>
+
 ![Annotation 2020-05-12 211349]({{ site.url }}/img/Post3/Annotation 2020-05-12 211349.jpg){:height="40%" width="40%"}
 
 Time to start assembly!
@@ -94,7 +110,9 @@ Next, I needed to figure out how to give angle inputs, and I also wanted to move
 ![Annotation 2020-08-07 134854.png]({{ site.url }}/img/Post3/Annotation 2020-08-07 134854.png){:height="40%" width="40%"}
 
 So I decided to use Python, since it would allow me to send the Arduino data over serial, and also so I could learn and use TKinter for Python for my home-brewed interface.
+
 <br>
+
 In learning about serial data communication, I had to create my own command protocol that my Python code could send, which the Arduino could then receive and interpret. My protocol needed to be able to assign a Motor ID as well as step count for that particular motor, and I also needed a protocol for executing the runAndWait() function. So I ended up with the following command structure:
 
 ![CommandStructure]({{ site.url }}/img/Post3/Annotation 2020-08-07 172642.png)
@@ -140,7 +158,9 @@ Now that we have our very rudimentary motion planner implemented, a user interfa
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/CedyWQmqiJ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 A postmortem discussion: there are several areas that I could improve upon in future iterations. First off, you might've noticed that my interface was lacking a homing procedure button. This particular robot is completely open-loop, relying only on the accuracy (or lack thereof) of the steppers. The stepper gearboxes were also not back-driveable, so going entirely open-loop was less of a risk. For what I set out to do I think I did a pretty good job. Granting that, I would consider the current state of arm performance to be unsatisfactory. 
+
 <br>
+
 In the future, closed loop control and improving arm structure rigidity is definitely top priority.
 
 
