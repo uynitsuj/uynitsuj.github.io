@@ -5,20 +5,6 @@
   github: https://github.com/UMich-CURLY/curly_state_estimator
   website: https://umich-curly.github.io/DRIFT_Website/
 
-- name: 3D-Printed Quadrupedal Robot
-  descr: "<b>Affiliation/Role: System Designer</b><br> 
-  Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
-  image: QPRev2.png
-  youtube: https://www.youtube.com/embed/zvvzg43DtZo
-  github: https://github.com/uynitsuj/quadruped
-  
-- name: Legged Robot State Estimation via Invariant Extended Kalman Filtering and Deep Learning Contact Events
-  descr: "<b>Affiliation/Role: Researcher and Hardware Designer for University of Michigan CURLY lab</b><br> 
-  The deep learning contact estimator takes in proprioceptive measurements from a quadruped robot and estimates the instantaneous ground contact state of the robot with a convolutional neural network (CNN). An additional sensor suite was designed to provide experimental groundtruth using simultaneous localization and mapping (SLAM), and to generally augment autonomous capabilities of the MIT Minicheetah. It houses and protects a vision system along with the NVIDIA Jetson Xavier used for the experiment's contact estimator. The sensor suite platorm has been made public for all other Minicheetah groups to take advantage of."
-  image: MiniCheetah063021.png
-  github: https://github.com/UMich-CURLY/deep-contact-estimator
-  youtube: https://www.youtube.com/embed/oVbP-Y8xT_E
-
 - name: 2022 Michigan Mars Rover - Rosie
   descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> In 2022 our team of roughly 80 members was back in person and ready to build our greatest rover yet! New 3D printed wheels are powerful and highly durable, allowing Rosie to traverse rough terrain with great agility. The rocker-bogie wheel configuration and differential bar work together to keep the lightweight chassis level, and her robotic arm switches easily between different segment and end effector combinations to serve specific missions. In addition to manual, open-loop control, the robotic arm utilizes our closed-loop inverse kinematics algorithm to move itself to precise positions. <br>Rosie received an SAR score of 90.97 and finished FIRST at URC with an overall score of 388.97!"
   image: ROSIE.jpg
@@ -28,6 +14,20 @@
   descr: "<b>Affiliation/Role: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br> Logistical challenges presented by this highly-remote school year influenced our rover's design, with an added emphasis on making all systems highly manufacturable and easily serviceable. We switched to a welded-aluminum chassis, and incorporated a rocker-bogie suspension system and 3D-printed wheels to make it more suited to rocky and uneven terrain. <br> Though URC was cancelled this year due to the Covid-19 pandemic, we were still judged on our SAR submission, receiving a score of 93.09/100!"
   image: SAR-Blue.jpg
   youtube: https://www.youtube.com/watch?v=YMYH7ZxkKZw
+  
+- name: 3D-Printed Quadrupedal Robot
+  descr: "<b>Affiliation/Role: System Designer</b><br> 
+  Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
+  image: QPRev2.png
+  youtube: https://www.youtube.com/embed/zvvzg43DtZo
+  github: https://github.com/uynitsuj/quadruped
+
+- name: Legged Robot State Estimation via Invariant Extended Kalman Filtering and Deep Learning Contact Events
+  descr: "<b>Affiliation/Role: Researcher and Hardware Designer for University of Michigan CURLY lab</b><br> 
+  The deep learning contact estimator takes in proprioceptive measurements from a quadruped robot and estimates the instantaneous ground contact state of the robot with a convolutional neural network (CNN). An additional sensor suite was designed to provide experimental groundtruth using simultaneous localization and mapping (SLAM), and to generally augment autonomous capabilities of the MIT Minicheetah. It houses and protects a vision system along with the NVIDIA Jetson Xavier used for the experiment's contact estimator. The sensor suite platorm has been made public for all other Minicheetah groups to take advantage of."
+  image: MiniCheetah063021.png
+  github: https://github.com/UMich-CURLY/deep-contact-estimator
+  youtube: https://www.youtube.com/embed/oVbP-Y8xT_E
 
 - name: 3D-Printed 6DoF Robotic Arm
   descr: "<b>Affiliation/Role: System Designer</b><br>
