@@ -1,5 +1,5 @@
 - name: "Dead Reckoning for Robotics In Field Time (DRIFT): An Invariant Extended Kalman Filter Based Mobile Robot State Estimator Library"
-  descr: "<b>Affiliation/Role: Researcher and Software Developer for University of Michigan CURLY lab</b><br> 
+  descr: "<b>Affiliation/Role: Researcher and Software Developer for Computational Autonomy and Robotics Laboratory</b><br> 
   This project is an open-source robotic state estimation library intended to work across a number of mobile robot architectures (quadruped, biped, wheeled). Utilizes state of the art robotic state estimation methods via invariant extended Kalman filtering (inEKF). "
   image: DRIFT.png
   github: https://github.com/UMich-CURLY/curly_state_estimator
@@ -23,7 +23,7 @@
   github: https://github.com/uynitsuj/quadruped
 
 - name: Legged Robot State Estimation via Invariant Extended Kalman Filtering and Deep Learning Contact Events
-  descr: "<b>Affiliation/Role: Researcher and Hardware Designer for University of Michigan CURLY lab</b><br> 
+  descr: "<b>Affiliation/Role: Researcher and Hardware Designer for Computational Autonomy and Robotics Laboratory</b><br> 
   The deep learning contact estimator takes in proprioceptive measurements from a quadruped robot and estimates the instantaneous ground contact state of the robot with a convolutional neural network (CNN). An additional sensor suite was designed to provide experimental groundtruth using simultaneous localization and mapping (SLAM), and to generally augment autonomous capabilities of the MIT Minicheetah. It houses and protects a vision system along with the NVIDIA Jetson Xavier used for the experiment's contact estimator. The sensor suite platorm has been made public for all other Minicheetah groups to take advantage of."
   image: MiniCheetah063021.png
   github: https://github.com/UMich-CURLY/deep-contact-estimator
