@@ -3,6 +3,7 @@
   This project is an open-source robotic state estimation library intended to work across a number of mobile robot architectures (quadruped, biped, wheeled). Utilizes state of the art robotic state estimation methods via invariant extended Kalman filtering (inEKF). "
   image: DRIFT.png
   github: https://github.com/UMich-CURLY/curly_state_estimator
+  website: https://umich-curly.github.io/DRIFT_Website/
 
 - name: 3D-Printed Quadrupedal Robot
   descr: "<b>Affiliation/Role: System Designer</b><br> 
