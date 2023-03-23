@@ -7,12 +7,10 @@
 
 - name: 2022 Michigan Mars Rover - Rosie
   descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> In 2022 our team of roughly 80 members was back in person and ready to build our greatest rover yet! New 3D printed wheels are powerful and highly durable, allowing Rosie to traverse rough terrain with great agility. The rocker-bogie wheel configuration and differential bar work together to keep the lightweight chassis level, and her robotic arm switches easily between different segment and end effector combinations to serve specific missions. In addition to manual, open-loop control, the robotic arm utilizes our closed-loop inverse kinematics algorithm to move itself to precise positions. <br>Rosie received an SAR score of 90.97 and finished FIRST at URC with an overall score of 388.97!"
-  image: ROSIE.jpg
   youtube: https://www.youtube.com/embed/tp6KY05bgjM
 
 - name: 2021 Michigan Mars Rover - Blue
   descr: "<b>Affiliation/Role: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br> Logistical challenges presented by this highly-remote school year influenced our rover's design, with an added emphasis on making all systems highly manufacturable and easily serviceable. We switched to a welded-aluminum chassis, and incorporated a rocker-bogie suspension system and 3D-printed wheels to make it more suited to rocky and uneven terrain. <br> Though URC was cancelled this year due to the Covid-19 pandemic, we were still judged on our SAR submission, receiving a score of 93.09/100!"
-  image: SAR-Blue.jpg
   youtube: https://www.youtube.com/embed/YMYH7ZxkKZw
 
 - name: 3D-Printed Quadrupedal Robot
@@ -49,7 +47,7 @@
   Top Speed: 10.9 mph <br><br>
   Cheems is a transforming arm robot with a ball shooter at the end of the large arm. <br>
   Though Cheems only had the opportunity to perform at Del Mar Regional, we are very proud of the work we put in and have learned greatly from this season."
-  image: 2020.png
+  image: 2020.jpg
   youtube: https://www.youtube.com/embed/iFeYwJSkDD8
 
 - name: 2019 FRC Robot - Gromit

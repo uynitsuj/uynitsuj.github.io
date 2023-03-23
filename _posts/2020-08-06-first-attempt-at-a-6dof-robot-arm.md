@@ -95,7 +95,7 @@ Finished.
 
 Now that I have the thing built, I want to start making the thing move. I used an Arduino Mega 2560 and a Ramps 1.4 shield with A9488 Drivers and uploaded a simple Step+Direction control sketch.
 
-![ezgif-4-581c98fc16cb]({{ site.url }}/img/Post3/ezgif-4-581c98fc16cb.gif){:height="40%" width="40%"}
+![ezgif-4-581c98fc16cb]({{ site.url }}/img/Post3/ezgif-3-fced31d97cb5.gif){:height="40%" width="40%"}
 
 Ok, that was easy enough. Now how about making it move predictably? I then went onto the web to search for ways that I could coordinate stepper movement effectively, and found much more than I was expecting.
 
