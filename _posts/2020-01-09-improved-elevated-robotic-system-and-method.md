@@ -9,21 +9,7 @@ image: robots/ERAD.JPG
 
 Team : Adham Elarabawy, Justin Yu
 
-Since the advent of robotic systems and devices, the primary application focus has been with enhancing
-productivity and safety in industrial and agricultural markets such as manufacturing assembly lines (e.g.
-vehicles, integrated circuits and circuit boards, food preparation), warehouse package/container retrieval
-and disbursement, and crop harvesting to name a few. Robotic assistance devices have also been
-deployed in military applications employing various form factors (e.g. tanks, unmanned aerial vehicles)
-and various levels of artificial intelligence. The popularity of robotic assistance devices in personal and
-domestic markets comparably have been primarily confined to toys including flying devices (e.g. drones)
-and cleaning devices (e.g. carpet or pool cleaners). Consequently, these devices typically occupy space in
-the open air or on the ground. While floor-based mobile robots (e.g. telepresence robots) may have great
-potential for automating processes and assisting people (i.e. the disabled and infirmed or home/industrial
-security), their need to navigate around objects (people, furniture, stairs, pets..) makes them expensive
-while still not alleviating the potential for a sense of obtrusiveness on the part of the users. Elevated
-robotics systems exist with varying mechanical designs and control mechanisms to traverse along an
-elevated track. Accordingly, it would be advantageous to provide an elevated robotic system which
-provides smooth and efficient traversal along an elevated track.
+Robotic systems have been developed and utilized primarily for enhancing productivity and safety in various industrial and agricultural settings, such as manufacturing assembly lines, warehouse operations, and crop harvesting. In contrast, robotic devices in personal and domestic markets have been largely limited to toys, drones, and cleaning devices, occupying space on the ground or in the air. While floor-based mobile robots like telepresence robots have potential for automating processes and assisting people, their need to navigate around obstacles, including people, furniture, stairs, and pets, can make them expensive and intrusive. Therefore, elevated robotic systems with unique mechanical designs and control mechanisms that traverse along elevated tracks offer significant advantages.
 
 ![Annotation 2020-08-03 214351]({{ site.url }}/img/Post1/Annotation 2020-08-03 214351.png){:height="50%" width="50%"}
 
@@ -34,45 +20,23 @@ the following figure.
 
 ![Annotation 2020-08-03 205741]({{ site.url }}/img/Post1/Annotation 2020-08-03 205741.png)
 
-In an exemplary embodiment, the rigidity of the mounting solution of the base carriage to the track
-improves stability and efficient traversal along the track.
-Previous iterations of the carriage utilized a combination of grip wheels (rubber tread) or non-compliant
-3D-Printed tread wheels (High-Temp PLA or PETG) that were either vertically oriented making
-significant contact with the top surface of the upside-down T-extrusion or horizontally oriented making
-contact with the thin side-face of the extrusion. Out of these iterations, the designs that seemed to operate
-best were the vertically oriented wheels, providing consistent contact even during motion.
+The rigidity of the base carriage's mounting solution to the track improves stability and efficient traversal. Previous carriage iterations used grip wheels or 3D-printed tread wheels, but vertically oriented wheels provided consistent contact during motion and were most effective.
 
 <br>
 
-To secure the carriage to the track, some of the vertical-wheel iterations would have lips on the treads
-which would hang over the edge and lock the carriage laterally (Fig. 1). In the horizontally oriented wheels, the
-carriage was already laterally locked by nature of the wheel contact to the track, and lips were added on
-both ends of the treads to lock the carriage in the vertical orientation (Fig. 2).
+Some vertical-wheel designs utilized lips on the treads to lock the carriage laterally (Fig. 1). For horizontally oriented wheels, lips are added to secure the carriage in the vertical orientation (Fig. 2).
 
 ![Annotation 2020-08-03 213723]({{ site.url }}/img/Post1/Annotation 2020-08-03 213723.png)
 
-Neither of these solutions proved particularly elegant; the friction component from the lip would increase if the lip faces were pressured
-onto the surface. This meant that tight and fully-secure contact with lip-wheel designs was inherently not
-feasible; there would always exist a bit of slop between the lip faces and the extrusion faces, resulting in a
-carriage that could be shifted around while the track remained static.
-In an exemplary embodiment, the friction issue is bypassed completely and instead, significant contact
-with the top corner edges of the track is created with angled groove wheels.
+The lip-wheel designs were not ideal as pressure on the lip faces increased the friction, making it difficult to achieve tight and secure contact with the track. There was always play between the lip faces and the extrusion faces, causing the carriage to shift around while the track remained static. In an exemplary embodiment, angled groove wheels are used to create significant contact with the top corner edges of the track, bypassing the friction issue entirely.
 
 <br>
 
-Instead of having either a vertical or horizontal surface rubbing on the track as the carriage traverses, by
-angling the wheels and creating grooved wheels, two wheels are effectively created, one with rolling
-motion on the top surface, and another also with rolling motion on the side surface, with neither
-producing excessive kinetic friction. The groove wheel design allows both tread surfaces to “peel away”
-from contact with the track faces, creating a thinner contact patch than lipped designs would allow. The grip wheels that drove the carriage from the underside were also situated as close as possible to the 3D-Printed groove wheels. This would mitigate any bowing and deflection of the groove wheels while also better securing the contact from both wheels. One option for robust v-groove wheel mounting was 45 degree metal v-groove bearings.
+The use of angled groove wheels creates two rolling surfaces, one on the top and one on the side, without producing excessive kinetic friction. This design allows both tread surfaces to "peel away" from the track faces, resulting in a thinner contact patch than with lipped designs. To further secure contact, the grip wheels that drive the carriage from the underside are placed close to the 3D-printed groove wheels, minimizing bowing and deflection. 45 degree metal v-groove bearings are a robust option for mounting the v-groove wheels.
 
 <br>
 
-However, a 45 degree angle may be too shallow of an angle, and providing a steeper angle might allow
-for larger loads on the base carriage without excessive torsional stress on the mounted shoulder bolts and
-the rest of the carriage body. In an exemplary embodiment, a 65 degree angle from horizontal may be
-used, so as to provide improved mounting support in the vertical orientation and still allow for a thin
-contact patch on the side wheel contacts.
+In order to support larger loads on the base carriage without causing excessive torsional stress, a steeper angle than 45 degrees may be necessary. For instance, an exemplary embodiment might use a 65 degree angle from horizontal, which provides improved mounting support in the vertical orientation while still allowing for a thin contact patch on the side wheel contacts.
 
 ![Screenshot 2020-10-03 185006]({{ site.url }}/img/Post1/Screenshot 2020-10-03 185006.png)
 <div align="center">Base Carriage Front View w/o driver wheels</div>
@@ -93,10 +57,10 @@ turn the wheels.
 
 <br>
 
-Small “wings” or tabs may be added to the side face of the carriage to increase the effective thickness of
+Vertical wings or tabs may be added to the side of the carriage to increase the effective thickness of
 the base, alleviating some of the torsional stress from the load of an additional module. Increased
 effective thickness works for the same reason that tape measures use curved profiles to allow them to
-remain extended at longer distances.
+remain extended at distance, despite being made of such thin material.
 
 ![Annotation 2020-08-03 205828]({{ site.url }}/img/Post1/Annotation 2020-08-03 205828.png)
 <div align="center">Base + 3DP Wheel</div>
