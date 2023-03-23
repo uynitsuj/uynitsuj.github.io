@@ -5,7 +5,6 @@ excerpt: "Discussion of new and improved ceiling mounted robotic system"
 categories: [projects]
 image: robots/ERAD.JPG
 ---
-[read as PDF](/pdf/ImprovedElevatedRoboticSystemAndMethod.pdf)
 
 Team : Adham Elarabawy, Justin Yu
 
