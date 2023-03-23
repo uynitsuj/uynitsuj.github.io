@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Elevated Robotic Assistive Device"
-excerpt: "Discussion of new and improved ceiling mounted robotic system"
+excerpt: "Discussion of a novel ceiling mounted robotic system"
 categories: [projects]
 image: robots/ERAD.JPG
 ---
