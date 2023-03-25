@@ -6,17 +6,17 @@
   website: https://umich-curly.github.io/DRIFT_Website/
 
 - name: 2023 Michigan Mars Rover - Dahlia
-  descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> Dahlia received an System Acceptance Review score of 92.21!"
+  descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> Dahlia received a System Acceptance Review score of 92.21!"
   image: Dahlia.png
   youtube: https://www.youtube.com/embed/xKBLp-un0XE
 
 - name: 2022 Michigan Mars Rover - Rosie
-  descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> In 2022 our team of roughly 80 members was back in person and ready to build our greatest rover yet! New 3D printed wheels are powerful and highly durable, allowing Rosie to traverse rough terrain with great agility. The rocker-bogie wheel configuration and differential bar work together to keep the lightweight chassis level, and her robotic arm switches easily between different segment and end effector combinations to serve specific missions. In addition to manual, open-loop control, the robotic arm utilizes our closed-loop inverse kinematics algorithm to move itself to precise positions. <br>Rosie received an System Acceptance Review score of 90.97 and finished FIRST PLACE at the URC and CIRC competitions!"
+  descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> In 2022 our team of roughly 80 members was back in person and ready to build our greatest rover yet! New 3D printed wheels are powerful and highly durable, allowing Rosie to traverse rough terrain with great agility. The rocker-bogie wheel configuration and differential bar work together to keep the lightweight chassis level, and her robotic arm switches easily between different segment and end effector combinations to serve specific missions. In addition to manual, open-loop control, the robotic arm utilizes our closed-loop inverse kinematics algorithm to move itself to precise positions. <br>Rosie received a System Acceptance Review score of 90.97 and finished FIRST PLACE at the URC and CIRC competitions!"
   image: ROSIE.jpg
   youtube: https://www.youtube.com/embed/tp6KY05bgjM
 
 - name: 2021 Michigan Mars Rover - Blue
-  descr: "<b>Affiliation/Role: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br> Logistical challenges presented by this highly-remote school year influenced our rover's design, with an added emphasis on making all systems highly manufacturable and easily serviceable. We switched to a welded-aluminum chassis, and incorporated a rocker-bogie suspension system and 3D-printed wheels to make it more suited to rocky and uneven terrain. <br> Though URC was cancelled this year due to the Covid-19 pandemic, we were still judged on our SAR submission, receiving a score of 93.09/100!"
+  descr: "<b>Affiliation/Role: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br> Logistical challenges presented by this highly-remote school year influenced our rover's design, with an added emphasis on making all systems highly manufacturable and easily serviceable. We switched to a welded-aluminum chassis, and incorporated a rocker-bogie suspension system and 3D-printed wheels to make it more suited to rocky and uneven terrain. <br> Though URC was cancelled this year due to the Covid-19 pandemic, we were still judged on our SAR submission, receiving a System Acceptance Review score of 93.09/100!"
   image: SAR-Blue.jpg
   youtube: https://www.youtube.com/embed/YMYH7ZxkKZw
 
