@@ -11,7 +11,7 @@
   youtube: https://www.youtube.com/embed/xKBLp-un0XE
 
 - name: 2022 Michigan Mars Rover - Rosie
-  descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> In 2022 our team of roughly 80 members was back in person and ready to build our greatest rover yet! New 3D printed wheels are powerful and highly durable, allowing Rosie to traverse rough terrain with great agility. The rocker-bogie wheel configuration and differential bar work together to keep the lightweight chassis level, and her robotic arm switches easily between different segment and end effector combinations to serve specific missions. In addition to manual, open-loop control, the robotic arm utilizes our closed-loop inverse kinematics algorithm to move itself to precise positions. <br>Rosie received a System Acceptance Review score of 90.97 and finished FIRST PLACE at the URC and CIRC competitions!"
+  descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> New 3D printed wheels are powerful and highly durable, allowing Rosie to traverse rough terrain with great agility. The rocker-bogie wheel configuration and differential bar work together to keep the lightweight chassis level, and her robotic arm switches easily between different segment and end effector combinations to serve specific missions. In addition to manual, open-loop control, the robotic arm utilizes our closed-loop inverse kinematics algorithm to move itself to precise positions. <br>Rosie received a System Acceptance Review score of 90.97 and finished FIRST PLACE at the URC and CIRC competitions!"
   image: ROSIE.jpg
   youtube: https://www.youtube.com/embed/tp6KY05bgjM
 
