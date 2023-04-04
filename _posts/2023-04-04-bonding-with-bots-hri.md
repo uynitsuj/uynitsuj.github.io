@@ -76,7 +76,7 @@ An early example of a successful commercial social robot is the Sega Toys iDog[^
 
 <br>
 
-<img src="/img/Post7/idog.png" alt= "iDog" style="max-width:85%;height:auto">
+<img src="/img/Post7/idog.png" alt= "iDog" style="max-width:60%;height:auto">
 <div align="center">Figure 2. Sega Toys iDog</div>
 
 <br>
