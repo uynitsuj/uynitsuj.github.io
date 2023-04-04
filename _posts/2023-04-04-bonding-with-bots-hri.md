@@ -40,7 +40,7 @@ Researchers from Germany’s Otto-von-Guericke University Magdeburg have impleme
 
 <br>
 
-![HeadPose]({{ site.url }}/img/Post7/HeadPose.png)
+![HeadPose]({{ site.url }}/img/Post7/headpose.png)
 Figure 1. Head pose detection used in RoSA attention module
 
 <br>
