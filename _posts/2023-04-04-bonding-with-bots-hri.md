@@ -68,7 +68,7 @@ Developing robotic systems with high situational awareness contributes to buildi
 <br>
 
 ### R2-D2 or T-800?
-A common notion is that robots interacting with humans can and therefore should mimic human behavior and characteristics as closely as possible, with the aim of creating human-robot interactions that closely resemble human-human interactions. This idea stems from the belief that human-human interactions lead to more enjoyable relationships and efficient work dynamics. However, it is important to recognize that robots need not always be designed solely for work purposes, and their unique designs and capabilities may offer innovative ways to engage with humans.
+A common notion is that robots interacting with humans can and therefore should mimic human behavior and characteristics as closely as possible, with the aim of creating human-robot interactions that closely resemble human-human interactions. This idea stems from the belief that human-human interactions generally lead to more enjoyable relationships and efficient work dynamics. However, it is important to recognize that robots need not always be designed solely for work purposes, and their unique designs and capabilities may offer innovative ways to engage with humans.
 
 <br>
 
