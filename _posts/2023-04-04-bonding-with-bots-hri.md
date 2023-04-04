@@ -15,7 +15,7 @@ From factories to hospitals, our own houses to other planets within our system, 
 
 <br>
 
-This article explores the burgeoning field of human-robot interaction (HRI) and how researchers with this vision are laying the foundation for the ways we will exchange information with our intelligent metallic counterparts.
+This article explores recent advancements in the burgeoning field of human-robot interaction (HRI) and how researchers with this vision are laying the foundation for the ways we will exchange information with our intelligent metallic counterparts.
 
 <br>
 
