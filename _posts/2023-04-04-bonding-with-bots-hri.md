@@ -16,7 +16,7 @@ In a galaxy far far away, Anakin Skywalker constructed C-3PO in the "Star Wars" 
 
 <br>
 
-From factories to hospitals, our own houses to other planets within our system, robots are steadily making their way into every aspect of human life, showing no signs of slowing. According to Brian Scassellati, Ph.D., director of the Social Robotics Lab at Yale University, “Robots that engage with people are absolutely the future. There’s no question that’s where robotics is moving”([Weir, 2018](https://www.apa.org/monitor/2018/01/cover-social-robots)). As we continue designing and integrating intelligent machines with human society, it is crucial to develop effective and safe communication methods that allow humans and robots to come together harmoniously.
+From factories to hospitals, our own houses to other planets within our system, robots are steadily making their way into every aspect of human life, showing no signs of slowing. According to Brian Scassellati, Ph.D., director of the Social Robotics Lab at Yale University, “Robots that engage with people are absolutely the future. There’s no question that’s where robotics is moving” ([Weir, 2018](https://www.apa.org/monitor/2018/01/cover-social-robots)). As we continue designing and integrating intelligent machines with human society, it is crucial to develop effective and safe communication methods that allow humans and robots to come together harmoniously.
 
 <br>
 
