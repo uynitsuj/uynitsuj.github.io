@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Quadruped Updates"
-excerpt: "More effort into documenting my engineering process"
+excerpt: "Long overdue untethered functionality"
 categories: [project]
 image: 1660686728056.jpeg
 ---
