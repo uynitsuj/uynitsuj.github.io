@@ -20,7 +20,7 @@ This article explores recent advancements in the burgeoning field of human-robot
 <br>
 
 ### Learning the Language of Humans
-Effective human-robot collaboration relies on humans and robots understanding each other’s actions and intentions. To facilitate this understanding, researchers are developing robotic systems capable of both verbal and non-verbal communication, refining conversational skills, and interpreting gestures, posture, and movements.
+Effective human-robot collaboration relies on humans and robots understanding each other’s actions and intentions. To facilitate this understanding, researchers are developing robotic systems capable of both verbal and non-verbal communication, refining conversational skills, and developing capability to interpret gestures, posture, and other social cues.
 
 <br>
 
