@@ -6,7 +6,7 @@ categories: [article]
 image: Post7/file51575.jpg
 
 ---
-Preface: This piece was originally written as a final paper for a course on Human-Robot Interaction (HRI). The goal was to create an engaging and informative article on the subject. Since the content fit well enough with the overall theme of my website, I decided to adapt it into a post for this platform.
+Preface: This piece was originally written as a final paper on Human-Robot Interaction (HRI). The goal was to create an engaging and informative article on the subject. Since the content fit well enough with the overall theme of my website, I decided to adapt it into a post for this platform.
 
 <br>
 <div align="center">*   *   *</div>
