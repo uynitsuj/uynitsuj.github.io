@@ -28,7 +28,7 @@ Advances in natural language processing (NLP) enable robots to comprehend and pr
 
 <br>
 
-In addition to understanding human speech, mastering the subtle art of non-verbal conversation is essential for robots to collaborate effectively with humans. Non-verbal cues, such as gestures and body language, play a crucial role in our human communications. Andrea Bonarini's article, "Communication in Human-Robot Interaction," published in Current Robotics Reports 2020, highlights the diverse dimensions of human-robot communication, emphasizing that interactions are not confined to verbal language alone[^4]. This encompasses all relevant aspects of communication, utilizing the full range of sensory channels, including hearing, sight, and touch. The report emphasizes the need for both human and robotic agents to process the signals detected along these multi-modal channels to make informed decisions on how to behave and act when interacting with one another.
+In addition to understanding human speech, mastering the subtle art of non-verbal conversation is essential for robots to collaborate effectively with humans. Non-verbal cues, such as gestures and body language, play a crucial role in our human communications. Andrea Bonarini's article, "Communication in Human-Robot Interaction," published in Current Robotics Reports 2020, highlights the diverse dimensions of human-robot communication, emphasizing that interactions are not confined to verbal language alone[^4]. This encompasses all relevant aspects of communication, utilizing the full range of sensory channels, including hearing, sight, and touch. The report emphasizes the need for both human and robotic agents to process the signals detected along these multi-modal channels to make informed decisions on how to behave when interacting with one another.
 
 <br>
 
@@ -40,7 +40,7 @@ Researchers from Germany’s Otto-von-Guericke University Magdeburg have impleme
 
 <br>
 
-![HeadPose]({{ site.url }}/img/Post7/headpose.png)
+![HeadPose]({{ site.url }}/img/Post7/headpose.png){:height="45%" width="45%"}
 Figure 1. Head pose detection used in RoSA attention module
 
 <br>
@@ -71,7 +71,7 @@ An early example of a successful commercial social robot is the Sega Toys iDog[^
 
 <br>
 
-![iDog]({{ site.url }}/img/Post7/idog.png)
+![iDog]({{ site.url }}/img/Post7/idog.png){:height="45%" width="45%"}
 Figure 2. Sega Toys iDog
 
 <br>
