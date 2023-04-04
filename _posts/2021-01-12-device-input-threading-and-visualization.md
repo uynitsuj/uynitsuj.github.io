@@ -2,7 +2,7 @@
 layout: post
 title:  "A quick post about my next project"
 excerpt: "Quick updates"
-categories: [projects]
+categories: [project]
 image: gallery/QIKstress.gif
 ---
 

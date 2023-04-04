@@ -2,7 +2,7 @@
 layout: post
 title:  "First attempt at a 6DoF robot arm"
 excerpt: Keeping myself busy during quarantine
-categories: [projects]
+categories: [project]
 image: robots/ezgif-4-f28f910a4123.gif
 ---
 

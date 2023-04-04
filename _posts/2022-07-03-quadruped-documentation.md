@@ -2,7 +2,7 @@
 layout: post
 title:  "Quadruped Updates"
 excerpt: "More effort into documenting my engineering process"
-categories: [projects]
+categories: [project]
 image: 1660686728056.jpeg
 ---
 ### July 3rd, 2022
