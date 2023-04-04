@@ -46,7 +46,7 @@ Researchers from Germany’s Otto-von-Guericke University Magdeburg have impleme
 <br>
 
 <img src="/img/Post7/headpose.png" alt= HeadPose style="max-width:85%;height:auto">
-<div align="center">Figure 1. Head pose detection used in RoSA attention module</div>
+<div align="center">Figure 1. Head pose detection used in RoSA attention module. (<a href="https://www.mdpi.com/1424-8220/22/3/923">Strazdas et al., 2022</a>)</div>
 
 <br>
 
@@ -77,7 +77,7 @@ An early example of a successful commercial social robot is the Sega Toys iDog. 
 <br>
 
 <img src="/img/Post7/idog.png" alt= "iDog" style="max-width:60%;height:auto">
-<div align="center">Figure 2. Sega Toys iDog</div>
+<div align="center">Figure 2. Sega Toys iDog. (Courtesy of Google Images)</div>
 
 <br>
 
