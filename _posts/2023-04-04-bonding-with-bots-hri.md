@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bonding with Bots"
-excerpt: "A review of advancements in Human-Robot Interaction"
+excerpt: "A review of recent advancements in intelligent Human-Robot Interaction"
 categories: [article]
 image: Post7/file51575.jpg
 
