@@ -72,7 +72,7 @@ A common notion is that robots interacting with humans can and therefore should 
 
 <br>
 
-An early example of a successful commercial social robot is the Sega Toys iDog[^8], a robot dog toy that reacts to input from an MP3 player by lighting up and "dancing" to the music's rhythm (Fig. 2). Its worldwide popularity can be partly attributed to humans' inherent tendency to anthropomorphize non-human entities, assigning human-like characteristics, emotions, and intentions to them, regardless of whether there existed any intentionality. 
+An early example of a successful commercial social robot is the Sega Toys iDog[^8]. Released in 2005, the iDog is a robot dog  that reacts to input from an MP3 player by lighting up and "dancing" to the music's rhythm (Fig. 2). Its worldwide popularity can be partly attributed to humans' inherent tendency to anthropomorphize non-human entities, assigning human-like characteristics, emotions, and intentions to them, regardless of whether there existed any intentionality. 
 
 <br>
 
