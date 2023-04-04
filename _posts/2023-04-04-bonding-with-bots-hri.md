@@ -54,7 +54,7 @@ By closely examining how humans communicate, researchers are able to design and 
 
 <br>
 
-### Robot Competence, Human Confidence, and Mutual Trust
+### Robot Competence Equals Human Confidence
 Establishing trust is vital for effective collaboration between humans and robots. The Endsley model offers a structured approach to designing robotic systems with high situational awareness, enabling them to make competent and informed decisions while working alongside humans, thereby increasing human trust. The Endsley model consists of three components: perception, comprehension, and projection. The perception stage involves recognizing and processing relevant information from the environment. Robots must accurately perceive and interpret various elements such as objects, events, and the status of ongoing tasks. The comprehension stage requires understanding the meaning and implications of the perceived information. This involves integrating and analyzing data to develop a coherent understanding of the current situation and how it relates to the task at hand. The final stage, projection, involves anticipating future actions or events based on the current understanding of the situation. Projection allows robots to make informed decisions, adapt to changes, and act proactively. 
 
 <br>
