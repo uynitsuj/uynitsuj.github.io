@@ -21,7 +21,6 @@ From factories to hospitals, our own houses to other planets within our system, 
 <br>
 
 This article explores recent advancements in the burgeoning field of human-robot interaction (HRI) and how researchers with this vision are laying the foundation for the ways we will exchange information with our intelligent metallic counterparts.
-
 <br>
 
 ### Learning the Language of Humans
@@ -51,7 +50,6 @@ Researchers from Germany’s Otto-von-Guericke University Magdeburg have impleme
 <br>
 
 By closely examining how humans communicate, researchers are able to design and implement robots that can more effectively understand and interact with their human counterparts. Pioneering work such as RoSA demonstrates the potential for creating seamless and intuitive interactions between humans and robots through the use of multi-modal sensing. 
-
 <br>
 
 ### Robot Competence Equals Human Confidence
@@ -64,7 +62,6 @@ A special issue titled "Situation awareness in human-machine interactive systems
 <br>
 
 Developing robotic systems with high situational awareness contributes to building trust between humans and robots, as they demonstrate a deeper understanding of the context and make more competent decisions, leading to more realistic expectations and well-calibrated trust and confidence between humans and their robotic partners.
-
 <br>
 
 ### R2-D2 or T-800?
@@ -86,7 +83,6 @@ A research group at the University of Hertfordshire investigated deeper into the
 <br>
 
 By incorporating the ideas of intentionality and intrinsic motivation into robot design, roboticists can create more engaging and enjoyable human-robot interactions that do not solely rely on mimicking human behavior. 
-
 <br>
 
 ### Towards a Future
