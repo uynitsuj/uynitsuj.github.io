@@ -46,27 +46,27 @@ Managed to get Wifi working. Turns out I mistyped while modifying one of the net
 Happy Independence Day!
 <br>
 
-The cause of the undervolting issue is a bit tricky to isolate. Booting the RPi when connected to the Quadruped 5v source throws the undervolt warning. When I apply digital multimeter probes to the output of my converter with the RPi removed, the measurement reads 4.97v. Not great. Also confusing since the RPi should be okay with inputs ranging from 4.9v to 5.25v. One thought is that the input resistance of the RPi and output resistance of the supply is somehow dropping the 5v source lower. I'll need to find a way to measure voltage with RPi connected to Quadruped supply. 
+The cause of the undervolting issue is a bit tricky to isolate. Booting the RPi when connected to the Quadruped 5v source throws the undervolt warning. When I apply digital multimeter probes to the output of my converter with the RPi removed, the measurement reads 4.97v. Confusing since the RPi should be okay with inputs ranging from 4.9v to 5.25v. One thought is that the input resistance of the RPi and output resistance of the supply is somehow dropping the source lower. I'll need to find a way to measure voltage with RPi connected to Quadruped supply. 
 
 <br>
 
-Nudging the supply a bit closer to 5.25v to achieve a safer margin could also help but is tricky in my situation since I’m using a COTS (commercial off the shelf) 6-20v to 5v converter circuit. It doesn’t come with a potentiometer or any similar control mechanism so I don’t have control over the output voltage. Another thought is that the RPi is unhappy with the max current the converter circuit is capable of supplying, which is advertised as 1.5A, whereas the RPi 4 spec says it would like a 5v 3A capable input. Unfortunately I missed that spec the first time around when searching for a RPi power regulator.
+Nudging the supply a bit closer to 5.25v to achieve a safer margin could also help but is tricky in my situation since I’m using a COTS (commercial off the shelf) 6-20v to 5v converter circuit. It doesn’t come with a potentiometer or any similar output voltage control mechanism.
 
 <br>
 
-This issue brings up a desire to redo my PCB but this time with custom power regulation circuitry for both the RPi and teensy MCU. This will be very time consuming but I’m eager to go down this path in the future mainly for more circuit design/CAD experience in Altium. Other additions to the PCB could include more robust PCB to cable connectors (right now they’re simply loose headers like the ones on breadboard jumper cables), integrated mount for the IMU, and future research could yield fruit for current sensing circuitry which might allow for foot contact event detection, which will be massively important if I wish to do any complex gait/motion planning.
+This issue brings up a desire to redo my PCB but this time with custom power regulation circuitry for both the RPi and teensy MCU. This will be very time consuming but I’m eager to go down this path in the future mainly for more circuit design/CAD experience. Other additions to the PCB could include more robust PCB to actuator cable connectors (right now they’re simply loose headers like the ones on breadboard jumper cables), integrated mount for the IMU, and future research could yield fruit for current sensing circuitry which might allow for foot contact event detection, which will be massively important if I wish to do any complex gait/motion planning. But in reality my future endeavors should focus on adding joint angle feedback with some magnetic encoders or something similar.
 
 <br>
 
-Just ran a Quadruped power-on with the RPi feeding from the onboard power supply. Undervolt detected warning appeared again. Multimeter reads 4.92v at the lowest throughout the entire bootup. It is possible the voltage drops much lower momentarily but the multimeter's sampling frequency is not fast enough to catch these transient drops, whereas the RPi detects it and immediately throws the undervolt flag. I don’t have an oscilloscope to determine whether this is the case, so for the short term, my best course of action is likely to purchase an alternate voltage regulator circuit, with higher amperage, and a better safety margin (target 5.25v or 5.5v instead of 5v so any drops from internal resistances or a degrading power supply can be compensated). 
+Just ran a Quadruped power-on with the RPi feeding from the onboard power supply. Undervolt detected warning appeared again. Multimeter reads 4.92v at the lowest throughout the entire bootup. It is possible the voltage drops much lower momentarily but the multimeter's sampling frequency is not fast enough to catch these transient drops, whereas the RPi detects it and immediately throws the undervolt flag. I don’t have an oscilloscope to determine whether this is the case, so for the short term, my best course of action is likely to purchase an alternate voltage regulator circuit, with higher maximum current, and capable of achieving a better safety margin (target 5.25v or 5.5v instead of 5v so any drops from internal resistances or a degrading power supply can be compensated). 
 
 <br>
 
-Just purchased a 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Comes with a potentiometer so I can adjust the output voltage to the upper 5.25v limit.
+Just purchased a 3.0-40V to 1.5-35V Switching Buck Converter with 3A max. Comes with a potentiometer so I can adjust the output voltage to the upper 5.25v limit. This is a module that would be great to implement on a custom power distribution panel PCB.
 
 <br>
 
-The good news is that the undervoltage issue doesn’t seem to possess extremely high severity at the moment. Wifi connection is stable and a benchmark runs with no noticeable performance hit. Meaning I should be able to continue work while I wait for the power regulator replacement.
+The good news is that the undervoltage issue doesn’t appear to possess extremely high severity. Wifi connection is stable and a quick benchmark runs with no noticeable performance hit. Meaning I should be able to continue work while I wait for the power regulator replacement.
 
 <br>
 
