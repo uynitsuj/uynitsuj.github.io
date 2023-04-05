@@ -61,20 +61,15 @@ This style of arm featured actuators situated directly at each joint within the 
 <br>
 
 I further iterated on my gearbox design, implementing finer gear teeth, allowing me to create larger reduction ratios and a more compact gearbox system. Now that the actuators were situated directly at the joints, I had to increase the diameter of the joint bases to help the design handle the increased radial and axial load. I was really interested in using thin-section bearings, but once again ran into some trouble. So in typical Justin Yu fashion, I tried my hand at designing a custom slewing bearing using printed cylindrical bearing beads (you'll find 3D-printing spheres to be quite difficult). This first iteration of the gearbox features a swept-cut side surface, which didn't make it onto the final iteration. This is one of my prouder creations.
-
-<div class="row" style="margin-left:11vw">
-  <div class="column" style="float: left">
-    <img src="{{ site.url }}/img/Post3/Annotation2020-04-25231450.jpg" alt="Annotation2020-04-25231450" width="250px">
-  </div>
-  <div class="column" style="float: left">
-    <img src="{{ site.url }}/img/Post3/IMG_1006.JPG" alt="IMG_1006.JPG" width="250px">
-  </div>
-  <div class="column" style="float: left">
-    <img src="{{ site.url }}/img/Post3/IMG_1037.JPG" alt="IMG_1037.JPG" width="250px">
-  </div>
-  <div class="column" style="float: left">
-    <img src="{{ site.url }}/img/Post3/IMG_1039.JPG" alt="IMG_1039.JPG" width="250px">
-  </div>
+<div align="center">
+<img src="{{ site.url }}/img/Post3/Annotation2020-04-25231450.jpg" alt="Annotation2020-04-25231450" width="250px">
+<br>
+<img src="{{ site.url }}/img/Post3/IMG_1006.JPG" alt="IMG_1006.JPG" width="250px">
+<br>
+<img src="{{ site.url }}/img/Post3/IMG_1037.JPG" alt="IMG_1037.JPG" width="250px">
+<br>
+<img src="{{ site.url }}/img/Post3/IMG_1039.JPG" alt="IMG_1039.JPG" width="250px">
+<br>
 </div>
 
 After much time, I had finished the arm, complete with motor port covers featuring hexagonal patterns.
@@ -85,11 +80,9 @@ After much time, I had finished the arm, complete with motor port covers featuri
 
 ![Annotation 2020-05-12 211349]({{ site.url }}/img/Post3/Annotation 2020-05-12 211349.jpg){:height="40%" width="40%"}
 
-Time to start assembly!
 
 ![IMG_1499]({{ site.url }}/img/Post3/IMG_1499.jpg){:height="40%" width="40%"}
 
-Finished.
 
 ![Annotation 2020-08-07 011350]({{ site.url }}/img/Post3/Annotation 2020-08-07 011350.png){:height="40%" width="40%"}
 
