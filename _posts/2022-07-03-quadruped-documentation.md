@@ -40,7 +40,7 @@ In the middle of trying to recftify the Wifi issue, I managed to SSH (Secure She
 
 <br>
 
-Managed to get Wifi working! Turns out I had minor typos while modifying one of the wireless network config files. On a RPi with a GUI, this truly would've been as simple as selecting the correct network and entering a network password. Wireless network monitor now shows transmitted and received packets for wlan0. I can also now successfully ping raspberrypi.local from my laptop wirelessly since they're on the same network.
+Managed to get Wifi working. Turns out I mistyped while modifying one of the network config files. On a RPi with a GUI, this truly would've been as simple as selecting the correct network and entering a password. Wireless network monitor now shows transmitted and received packets for wlan0. I can also now successfully ping google.com.
 
 ### July 4th, 2022
 Happy Independence Day!
