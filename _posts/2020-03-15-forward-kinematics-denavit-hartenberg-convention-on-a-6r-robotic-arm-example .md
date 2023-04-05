@@ -142,7 +142,7 @@ $i$(Frame)  |$θ_i$   |$α_i$   |$a_i$   |$d_i$
 2|$θ_2$|$0$|$a_3$|$a_4-a_2$
 3|$θ_3$|$0$|$a_5$|$0$
 4|$θ_4$|$90$|$0$|$-a_6$
-5|$θ_5$|$90$|$0$|$a_7$
+5|$θ_5$|$0$|$0$|$a_7$
 6|$θ_6$|$0$|$0$|$a_8$
 
 <div align="center"> <i> Table 5.3: Denavit-Hartenberg table for the specific embodiment of a 6R arm </i> </div>
