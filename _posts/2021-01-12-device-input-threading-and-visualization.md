@@ -21,7 +21,7 @@ Some high level goals for this first iteration include:
 
 <br>
 
-I'm starting out small scale with some 20KG RC car hobby servos for rudimentary pose acquisition and gait generation. The most obvious downsides would have to be the pitiful resolution and accuracy that comes with hobbyist servo motors, and implementing velocity control or even force control for more complex motion planning is non-trivial. Though, currently, I'm pretty happy with the scope of this project as it would allow me to become better acquainted to items such as ROS and gazebo. In the future, this project can also serve as a platform for other explorations involving CV, SLAM, motion planning, sensor fusion with extended kalman filters, etc. On the hardware side, I might become interested in developing custom brushless motor technology. I have a decent idea of where I want to take this project in the immediate future. But who knows where this project will take me?
+I'm starting out small scale with some 20KG RC car hobby servos for rudimentary pose acquisition and gait generation. The most obvious downsides would have to be the pitiful resolution and accuracy that comes with hobbyist servo motors, and implementing velocity control or even force control for more complex motion planning is non-trivial. Though, currently, I'm pretty happy with the scope of this project. In the future, this project can also serve as a platform for other explorations involving CV, SLAM, motion planning, sensor fusion with kalman filters, etc. On the hardware side, I might become interested in developing custom brushless motor technology. I have a decent idea of where I want to take this project in the immediate future. But who knows where this project will take me?
 
 <br>
 
@@ -29,7 +29,7 @@ The first step was to solve for the inverse kinematics and also to visually veri
 
 <br>
 
-And I recently got around the the latter. I have been looking around for python visualization modules for quite some time, since I was getting tired of how slow matplotlib is for 3D visualizations. It's made to look presentable for research paper graphics, but it's not necessarily built with real-time performance in mind. I've finally found one that I'm pretty happy with: [pyqtgraph](http://www.pyqtgraph.org/). It appears to be an impressively robust 2d and 3d visualization module that uses OpenGL for fast object rendering, and is built with your choice of either Qt or PySide as a GUI backend.
+And I recently got around the the latter. I have been looking around for python visualization modules for quite some time, since I was getting tired of how slow matplotlib is for 3D visualizations. It's made to look presentable for research paper graphics, but it's not necessarily built with real-time performance in mind. I've finally found one that I'm pretty happy with: [pyqtgraph](http://www.pyqtgraph.org/). It appears to be an impressively robust 2d and 3d visualization module that uses OpenGL for fast object rendering, and is built with a choice of either Qt or PySide as a GUI backend.
 
 <br>
 
