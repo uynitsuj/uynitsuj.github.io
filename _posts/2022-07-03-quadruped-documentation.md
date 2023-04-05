@@ -74,7 +74,7 @@ For fully untethered operation, a lot needs to happen. I will have to modify the
 
 <br>
 
-Because this is such a large milestone with lots of things going into it, I think another roadmap for this specific goal is warranted:
+Because this milestone has quite a few things going into it, I feel another roadmap is warranted:
 
 * Hardware & Software // Pair PS4 controller to RPi via BT and verify input event detection
 * Software // Modify controller code for onboard RPi mounted version
