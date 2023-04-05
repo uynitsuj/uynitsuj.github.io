@@ -31,7 +31,7 @@ I had opted to use NEMA17 stepper motors. Besides the fact that the Haddington D
 
 <br>
 
-NEMA17s aren't very strong. This meant that a gearbox was required to increase the mechanical advantage produced by the motors if my arm had any hopes of lifting itself. For this, the Dexter guys used a harmonic flex-spline gearbox, featuring zero backlash, a surprising degree of back-driveability, however they are also mind-numbingly expensive to get a hold of.
+NEMA17s aren't very strong. This meant that a gearbox was required to increase the mechanical advantage produced by the motors if my arm had any hopes of lifting itself. For this, the Dexter guys used a [harmonic flex-spline gearbox](https://youtu.be/nj1vO3cP7ug?t=12), featuring zero backlash, a surprising degree of back-driveability, however they are also mind-numbingly expensive to get a hold of.
 
 <br>
 
