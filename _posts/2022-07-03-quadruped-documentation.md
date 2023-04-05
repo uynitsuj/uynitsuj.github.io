@@ -36,7 +36,7 @@ First, I moved the RPi from the Quadruped breakout board to an external power su
 
 <br>
 
-In the middle of trying to recftify the Wifi issue, I managed to SSH (Secure Shell) into the RPi from my laptop with the PuTTY terminal emulator. PuTTY is a tool I actually very recently learned about during my internship at Medtronic. SSH capability will allow me to access and modify RPi files from my laptop over an ethernet connection, circumventing the need to hook the RPi up to a dedicated display and keyboard setup.
+In the middle of trying to recftify the Wifi issue, I managed to SSH (Secure Shell) into the RPi from my laptop. SSH capability allows me to access the RPi's terminal over a local network and modify RPi files, circumventing the need to connect the RPi to a dedicated display and keyboard setup.
 
 <br>
 
