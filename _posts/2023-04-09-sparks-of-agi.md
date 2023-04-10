@@ -13,7 +13,7 @@ The most impactful scientific discoveries, inventions, medical breakthroughs, an
 <br>
 A little under three weeks ago, the team at Microsoft Research responsible for investigating OpenAI’s GPT-4 for the development of Bing Chat published their findings in a paper titled Sparks of Artificial General Intelligence: Early experiments with GPT-4 ([Bubeck et al., 2023](https://arxiv.org/pdf/2303.12712.pdf)).
 <br>
-The first author of the paper, Sebastien Bubeck, gave a talk of the same name at CSAIL MIT on the same evening the paper was published (22nd of March). If you have 50 minutes to spare, I highly recommend viewing the video as an abridged version of the paper.
+The first author of the paper, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT on the same evening the paper was published (22nd of March). If you have 50 minutes to spare, I highly recommend viewing the video as an abridged version of the paper.
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
