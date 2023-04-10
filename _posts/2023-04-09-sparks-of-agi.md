@@ -6,19 +6,15 @@ categories: [post]
 image: Post8/SOAGI.png
 ---
 It has become increasingly evident to me that I am living in the century when humanity is entrusted with the immense responsibility of developing artificial general intelligence systems that exceed human abilities.
-
 <br>
 <div align="center">-   -   -</div>
 <br>
-
 
 This is the single most important thing our species will have done with our time on this planet.
 
 <br>
 <div align="center">-   -   -</div>
 <br>
-
-
 The most impactful scientific discoveries, inventions, medical breakthroughs, and current political systems have come into the world through the birth canal of the human brain. We Homo Sapiens have thus far been the sole architects of our own future.
 
 <br>
