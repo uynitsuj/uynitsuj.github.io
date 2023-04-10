@@ -5,7 +5,7 @@ excerpt: "Review of a recent publication investigating the current state of a GP
 categories: [post]
 image: Post8/SOAGI.png
 ---
-It has become increasingly evident to me that we are living in the century when humanity is entrusted with the immense responsibility of developing artificial general intelligence systems that exceed human abilities.
+It has become increasingly evident to me that I am living in the century when humanity is entrusted with the immense responsibility of developing artificial general intelligence systems that exceed human abilities.
 
 <br>
 <div align="center">-   -   -</div>
