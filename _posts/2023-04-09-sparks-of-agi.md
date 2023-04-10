@@ -62,6 +62,6 @@ One of my primary concerns for the LLMs of the current day is their occasional p
 
 <br>
 
-It is however somewhat reassuring to know that we haven’t created an omnipotent being just yet
+It is reassuring to know that we haven’t created omnipotent beings just yet
 
 <br>
