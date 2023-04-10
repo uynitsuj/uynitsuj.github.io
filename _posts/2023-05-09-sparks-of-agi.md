@@ -5,7 +5,7 @@ excerpt: "Review of a recent publication investigating the current state of mach
 categories: [post]
 image: Post8/SOAGI.png
 ---
-It has become clear to me that we are living in the century when humanity is entrusted with the immense responsibility of developing artificial general intelligence systems that exceed human abilities.
+It has become increasingly evident to me that we are living in the century when humanity is entrusted with the immense responsibility of developing artificial general intelligence systems that exceed human abilities.
 <br>
 This is the single most important thing our species will have done with our time on this planet.
 <br>
