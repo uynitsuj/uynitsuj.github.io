@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sparks of Artificial General Intelligence"
-excerpt: "Review of a recent publication investigating the current state of a GPT implementation of machine intelligence"
+excerpt: "Highlighting a recent publication and the current state of a GPT implementation of machine intelligence"
 categories: [post]
 image: Post8/SOAGI.png
 ---
