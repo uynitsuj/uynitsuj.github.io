@@ -58,7 +58,11 @@ It makes a lot of sense to release internet search functionality through Plugins
 
 <br>
 
-One of my primary concerns for the LLMs of the current day is their occasional penchant for “hallucinating” or giving an outright wrong answer (many examples of this online). Some users won’t know any better and will treat its word as gospel, leading to the possibility of an increase in the spread of misinformation. GPT has also increasingly been used for the purposes of code generation. How long until we have people implementing a black-box algorithmic model that they know little about except for the natural language query used to generate it? It is therefore the responsibility of the creators of current and future intelligence models to properly communicate such limitations. It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
+One of my primary concerns for the LLMs of the current day is their occasional penchant for “hallucinating” or giving an outright wrong answer (many examples of this online). Some users won’t know any better and will treat its word as gospel, leading to the possibility of an increase in the spread of misinformation. 
+
+<br>
+
+GPT has also increasingly been used for the purposes of code generation. How long until we have people implementing a black-box algorithmic model that they know little about except for the natural language query used to generate it? It is therefore the responsibility of the creators of current and future intelligence models to properly communicate such limitations. It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
 
 <br>
 
