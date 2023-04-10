@@ -29,7 +29,7 @@ A little under three weeks ago, the team at Microsoft Research responsible for i
 
 <br>
 
-The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT on the same evening the paper was published (22nd of March). If you have 50 minutes to spare, I highly recommend viewing the recording as an abridged version of the paper's findings.
+The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT on the same day the paper was published (22nd of March). If you have 50 minutes to spare, I highly recommend viewing the recording as an abridged version of the paper's findings.
 
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
