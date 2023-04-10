@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sparks of Artificial General Intelligence"
-excerpt: "Review of a recent publication investigating the current state of machine intelligence"
+excerpt: "Review of a recent publication investigating the current state of a GPT implementation of machine intelligence"
 categories: [post]
 image: Post8/SOAGI.png
 ---
@@ -22,3 +22,4 @@ The first author of the paper, Sébastien Bubeck, gave a talk of the same name a
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 
+The rest of this post will be dedicated to exploring findings from the paper that I feel are worth highlighting, that are also not covered by Sébastien's talk for the sake of redundancy. 
