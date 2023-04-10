@@ -49,6 +49,7 @@ Upon the launch of ChatGPT, I immediately wondered why it wasn't meaningfully co
 <br>
 
 > Threat actors may also benefit from combining GPT-4 with internet browsing and open-source tools
+
 — GPT-4 Technical Report, p52
 
 <br>
