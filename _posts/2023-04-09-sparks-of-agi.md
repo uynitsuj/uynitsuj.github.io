@@ -9,12 +9,9 @@ It has become increasingly evident to me that I am living in the century when hu
 
 <br>
 <div align="center">-   -   -</div>
-<br>
-
 
 This is the single most important thing our species will have done with our time on this planet.
 
-<br>
 <div align="center">-   -   -</div>
 <br>
 
@@ -37,7 +34,7 @@ Moreover, OpenAI has already begun moving to augment the functionality of GPT-4 
 
 <br>
 
-<img src="/img/Post8/GPTPluginSearch.jpeg" alt= HeadPose style="max-width:85%;height:auto">
+<img src="/img/Post8/GPTPluginSearch.jpeg" alt= GPTSearch style="max-width:85%;height:auto">
 <div align="center">ChatGPT plugin for querying the internet</div>
 
 <br>
