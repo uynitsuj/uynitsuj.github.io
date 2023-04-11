@@ -34,7 +34,7 @@ The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT o
 <div align="center">*   *   *</div>
 <br>
 
-The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. 
+The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. You can take it as a bite-sized alternative to reading the full 155 page publication, with omitted content.
 
 
 ### TL;DR
@@ -221,8 +221,8 @@ In another example, GPT-4 demonstrates its ability to execute non-trivial Python
 <br>
 
 
-### GPT-4’s Stone Age
-One of GPT-4’s primary weaknesses (until now) was a lack of up-to-date world knowledge, difficulty with symbolic operations such as math, and an inability to execute code in actual compilers. GPT-4 relies on outdated information to answer a question and struggles to perform accurate operations for other questions, similar to the shortcomings observed in ChatGPT.
+### GPT-4 Enters the Stone Age
+Some of GPT-4’s primary weaknesses include a lack of up-to-date world knowledge, difficulty with symbolic operations such as math, and an inability to execute code in actual compilers. GPT-4 relies on outdated information to answer a question and struggles to perform accurate operations for other questions, similar to the shortcomings observed in ChatGPT.
 
 <br>
 
@@ -249,6 +249,26 @@ The authors also showcase GPT-4’s ability to manage a user's calendar and emai
 
 <br>
 
+#### Shortcomings
+GPT-4 showcases remarkable abilities in reasoning, content generation, and problem-solving. However, its architecture, based on the next-word prediction paradigm, has notable flaws. One such limitation is the absence of an "inner dialogue" or "scratchpad" for performing multi-step computations or storing intermediate results. 
+
+For example, consider the following question to which the model gives a wrong answer:
+
+<br>
+
+<img src="/img/Post8/scratchpad.png" alt=scratchpad style="max-width:85%;height:auto">
+
+<br>
+
+Then, the authors restructure the prompt, and instead ask the model to list the prime numbers in this range and then write what the count is. Here it does give the correct answer:
+
+<br>
+
+<img src="/img/Post8/scratchpad2.png" alt=scratchpad2 style="max-width:85%;height:auto">
+
+<br>
+
+Unlike humans, who can use a scratchpad to work through problems step by step, the model must generate an answer in a single pass of the feedforward architecture, making it difficult to implement complex procedures like a "for loop." Although some of these issues can be addressed by instructing the model to solve questions step by step, this approach may not always be sufficient.
 
 <br>
 <div align="center">*   *   *</div>
