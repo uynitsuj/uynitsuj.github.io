@@ -167,23 +167,63 @@ Here are some more amazing examples of GPT-4 demonstrating “visual comprehensi
 
 <br>
 
-### Coding
+### Fast-Tracked CS Degree from an Internet Snapshot
 GPT-4 is able to code at a very high level, both in terms of writing code from instructions and understanding existing code. The model can write and understand code across a wide range of tasks and languages, reason about code execution, simulate instructions, and explain the results using natural language. GPT-4 performs well with focused programs that rely on public libraries, which favorably compares to the average software engineer’s ability.
+
+<br>
 
 However, the authors acknowledge GPT-4's limitations, such as producing syntactically invalid or semantically incorrect code, misunderstanding or not following instructions, and generating code that doesn't match the intended functionality or style.
 
+<br>
+
 To measure GPT-4's coding skills, the authors use the HumanEval dataset and a custom benchmark based on LeetCode problems. GPT-4 outperforms other language models, including previous iterations of GPT and models specifically trained on code. While the model's accuracy is impressive, the authors acknowledge the possibility that GPT-4 may have seen and memorized some or all of HumanEval during pre-training.
+
+<br>
 
 To address this concern, the authors evaluated GPT-4 using a benchmark of 100 LeetCode problems posted *after* GPT-4's pretraining period. The model performs well, achieving pass rates that are comparable to or better than human performance. 
 
 <br>
 
 <img src="/img/Post8/leetcode.png" alt=leetcode style="max-width:75%;height:auto">
-<div align="center">Zero-shot pass@1 and pass@5 accuracies (%) on LeetCode.</div>
+<div align="center">Zero-shot pass@1 and pass@5 accuracies (%) on novel LeetCode.</div>
 
 <br>
 
+GPT-4 can also successfully extract data from LaTeX code and generate accurate visualizations. GPT-4 also responds accurately to user requests to manipulate the data representations accordingly. This highlights GPT-4's proficiency in data visualization tasks, further solidifying its potential for academic and research applications.
+
+<br>
+
+<img src="/img/Post8/latex.png" alt=latex style="max-width:75%;height:auto">
+<div align="center">GPT-4 visualizes data from a LaTeX table.</div>
+
+<br>
+
+GPT-4 will also write code for deep learning applications. Writing code for deep learning requires non-trivial knowledge and understanding of mathematics, statistics, and familiarity with frameworks and libraries such as PyTorch, TensorFlow, Keras, etc.
+
+<br>
+
+<img src="/img/Post8/dl.png" alt=latex style="max-width:75%;height:auto">
+<div align="center">GPT-4 vs ChatGPT at implementing a customized Pytorch optimizer module. The authors highlight the astuteness of GPT-4 vs the mistake by ChatGPT at ‘applying momentum’.</div>
+
+<br>
+
+The previous examples have shown that GPT-4 can write code from instructions, even when the instructions are vague, incomplete, or require domain knowledge. The authors also demonstrate GPT-4's ability to understand and reason about existing code, even when it is complex, obscure, or poorly documented. In an example, GPT-4 was asked to predict and explain the output of a C program. GPT-4 accurately accounts for the impact of compiler alignment rules on the output, illustrating its deep understanding of code execution. 
+
+<br>
+
+In another example, GPT-4 demonstrates its ability to execute non-trivial Python code by simulating the code execution in natural language rather than running it on a Python interpreter. This task requires an exceptional understanding of the code, the capacity to reason about its execution, and the ability to communicate results clearly. GPT-4 manages to track multiple variables, handle recursion, and provide detailed explanations of intermediate steps.
+
+<br>
+
+<img src="/img/Post8/pythonexec.png" alt=pythonexec style="max-width:75%;height:auto">
+<div align="center">GPT-4 executes Python code.</div>
+
+<br>
+
+
+
 ### Using Novel Tools
+(WIP)
 
 <br>
 <div align="center">*   *   *</div>
