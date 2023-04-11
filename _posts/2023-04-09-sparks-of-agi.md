@@ -176,7 +176,7 @@ However, the authors acknowledge GPT-4's limitations, such as producing syntacti
 
 <br>
 
-To measure GPT-4's coding skills, the authors use the HumanEval dataset and a custom benchmark based on LeetCode problems. GPT-4 outperforms other language models, including previous iterations of GPT and models specifically trained on code. While the model's accuracy is impressive, the authors acknowledge the possibility that GPT-4 may have seen and memorized some or all of HumanEval during pre-training.
+To measure GPT-4's coding skills, the authors use OpenAI’s [HumanEval](https://github.com/openai/human-eval) dataset. GPT-4 outperforms other language models, including previous iterations of GPT and models specifically trained on code. While the model's accuracy is impressive, the authors acknowledge the possibility that GPT-4 may have seen and memorized some or all of HumanEval during pre-training.
 
 <br>
 
