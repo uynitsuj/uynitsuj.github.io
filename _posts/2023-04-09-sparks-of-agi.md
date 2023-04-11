@@ -83,7 +83,7 @@ The unicorn generation example is brought up in both Bubeck’s talk and the pap
 
 <br>
 
-One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might be wondering: how does a language model that can only generate text or code draw? There are a lot of parts to that question, but technically speaking, it draws using TiKZ, a language for creating graphics in [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Of course, GPT-4 can only provide textual information and not render the actual image. To see the output, you will need to compile the TiKZ code using a LaTeX editor or an online compiler.
+One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might be wondering: how does a language model that can only generate text or code draw? There are a lot of parts to that question, but technically speaking, it draws using TiKZ, a language for creating graphics in [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Of course, GPT-4 can only provide textual information and not render the actual image. To see the output, you need to compile the TiKZ code using a LaTeX compiler.
 
 <br>
 
@@ -98,7 +98,19 @@ One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might b
 
 <br>
 
-I was personally quite shocked as well. To me this meant that GPT-4 was able to develop an internal concept of a unicorn merely from the textual descriptions present in its training data. Moreover, it is capable of reconstructing this representation using a graphics generation tool. It is important to re-emphasize here that the authors did *not* have access to the multi-modal version of GPT-4 that has developed and trained with image input in mind. GPT-4’s ability to reconcile the spatial relationships among abstract notions like "head," "tail," and "body" is genuinely extraordinary.
+I was personally quite shocked as well. To me this meant that GPT-4 was able to develop an internal concept of a unicorn merely from the textual descriptions present in its training data. Moreover, it is capable of reconstructing this representation using a text-based graphics generation tool. It is important to re-emphasize here that the authors did *not* have access to the multi-modal version of GPT-4 that was developed and trained with image input in mind. GPT-4’s ability to reconcile the spatial relationships among abstract notions like "head," "tail," and "body" is genuinely remarkable.
+
+<br>
+
+
+Interestingly, the authors had the privilege of investigating GPT-4 at the same time it was being developed, fine-tuned, and upgraded by OpenAI. They queried GPT-4 two more times, at roughly equal time intervals over the span of a month while the system was being refined, with the prompt “Draw a unicorn in TikZ”. We can see a clear evolution in the sophistication of GPT-4’s drawings.
+
+<br>
+
+<img src="/img/Post8/unicornovertime.png" alt=unicornovertime style="max-width:85%;height:auto">
+<div align="center">Improved unicorns in TiKZ</div>
+
+<br>
 
 <br>
 
@@ -111,9 +123,13 @@ For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and t
 
 <br>
 
+Why does it appear to be “worse” you might ask? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was “dumbed down” and fine-tuned further, mainly for reasons of safety.
+
+
 <br>
 <div align="center">*   *   *</div>
 <br>
+
 The rest of this post will be dedicated to discussing other recent developments in the field of AI that I feel are worth highlighting.
 
 #### OpenAI Plugins
