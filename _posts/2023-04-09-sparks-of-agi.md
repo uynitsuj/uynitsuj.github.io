@@ -240,6 +240,15 @@ GPT-4 demonstrates a truly impressive ability to leveraging external tools, such
 
 <br>
 
+The authors also showcase GPT-4’s ability to manage a user's calendar and email by combining multiple tools and APIs. The model retrieves calendar information, coordinates with others via email, books dinner, and messages the user with details. 
+
+<br>
+
+<img src="/img/Post8/calendar.png" alt=calendar style="max-width:75%;height:auto">
+<div align="center">Email and calendar execution.</div>
+
+<br>
+
 
 <br>
 <div align="center">*   *   *</div>
@@ -248,7 +257,7 @@ GPT-4 demonstrates a truly impressive ability to leveraging external tools, such
 The rest of this post will be dedicated to discussing other recent developments in the field of AI that I feel are worth highlighting.
 
 ### OpenAI Plugins
-Somewhat as a follow up to my *GPT-4’s Stone Age* section, OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
+This is somewhat of a direct follow up to my *GPT-4’s Stone Age* section. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
 
 <br>
 
