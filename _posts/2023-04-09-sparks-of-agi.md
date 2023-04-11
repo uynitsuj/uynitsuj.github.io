@@ -83,7 +83,7 @@ The unicorn generation example is brought up in both Bubeck’s talk and the pap
 
 <br>
 
-One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might be wondering: how does a language model that can only generate text draw? There are a lot of parts to that question, but technically speaking, it draws using TiKZ, a language for creating graphics in [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Of course, GPT-4 can only provide textual information and not render the actual image. To see the output, you need to compile the TiKZ code using a LaTeX compiler.
+One task the authors gave GPT-4 was to “draw a unicorn.” You might be wondering: how does a language model that can only generate text draw? There are a lot of parts to that question, but technically speaking, it draws using TiKZ, a language for creating graphics in [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Of course, GPT-4 can only provide textual information and cannot render the actual image. To see the output, you need to compile the TiKZ code using a LaTeX compiler.
 
 <br>
 
@@ -94,7 +94,7 @@ One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might b
 
 > When I see that, I am personally shocked, because it really understands the concept of a unicorn. It knows what are the key elements. It was able to draw this very abstract unicorn.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Sébastien Bubeck
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Sébastien Bubeck ([23:16](https://youtu.be/qbIk7-JPB2c?t=1396))
 
 <br>
 
@@ -123,11 +123,11 @@ For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and t
 
 <br>
 
-A very interesting insight that I can offer is that in the generated TiKZ code, GPT-4 provided documentation, sectioning and labeling the lines used to generate the head, body, tail, the eye and the horn. 
+A very interesting insight that I can offer is that in the generated TiKZ code, GPT-4 provided documentation, sectioning and labeling the graphical objects used to generate the head, body, tail, the eye and the horn. 
 
 <br>
 
-Why does it appear to be “worse” than their result you might ask? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was “dumbed down” and fine-tuned further, mainly for reasons of safety.
+Why does it appear to be *worse* than their result? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was dumbed down and tuned further, mainly for reasons of safety.
 
 <br>
 
@@ -137,7 +137,13 @@ Why does it appear to be “worse” than their result you might ask? Unfortunat
 
 <br>
 
-I was unable to find a more convincing line from the technical report to support that claim, so the only additional thing I can do is to appeal to Bubeck’s talk where he states as much ([26:24](https://youtu.be/qbIk7-JPB2c?t=1584)).
+I was unable to find a more convincing line from the technical report to support that claim, so the only additional thing I can do is to appeal to Bubeck’s talk where he states as much.
+
+<br>
+
+> Eventually, it started to degrade. Once they started to train for more safety, the unicorn started to degrade. So tonight if you go home and you ask GPT-4 and ChatGPT to draw a unicorn in TiKZ, you’re going to get something that doesn’t look great.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Sébastien Bubeck ([26:24](https://youtu.be/qbIk7-JPB2c?t=1584))
 
 <br>
 
