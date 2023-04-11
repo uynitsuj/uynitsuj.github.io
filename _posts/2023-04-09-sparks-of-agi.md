@@ -52,8 +52,8 @@ The authors argue that GPT-4 could be considered an early, yet incomplete, versi
 
 <br>
 
-### Consensus on Intelligence
-In order to have any intelligent argument about whether something exhibits intelligence, the definition of intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly, and learn from experience._
+### An Intelligent Consensus on Intelligence
+In order to have any meaningful argument about whether something exhibits intelligence, the definition of intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly, and learn from experience._
 
 ### Investigative Approach
 The standard approach in evaluating a machine learning model is to test the system against a set of standard benchmark datasets. This approach is designed to separate true learning from mere memorization of training data.
@@ -83,7 +83,7 @@ The unicorn generation example is brought up in both Bubeck’s talk and the pap
 
 <br>
 
-One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might be wondering: how does a language model that can only generate text or code draw? There are a lot of parts to that question, but technically speaking, it draws using TiKZ, a language for creating graphics in [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Of course, GPT-4 can only provide textual information and not render the actual image. To see the output, you need to compile the TiKZ code using a LaTeX compiler.
+One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might be wondering: how does a language model that can only generate text draw? There are a lot of parts to that question, but technically speaking, it draws using TiKZ, a language for creating graphics in [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Of course, GPT-4 can only provide textual information and not render the actual image. To see the output, you need to compile the TiKZ code using a LaTeX compiler.
 
 <br>
 
@@ -123,11 +123,17 @@ For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and t
 
 <br>
 
-Why does it appear to be “worse” you might ask? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was “dumbed down” and fine-tuned further, mainly for reasons of safety.
+A very interesting insight that I can offer is that in the generated TiKZ code, GPT-4 provided documentation, sectioning and labeling the lines used to generate the head, body, tail, the eye and the horn. 
+
+<br>
+
+Why does it appear to be “worse” than their result you might ask? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was “dumbed down” and fine-tuned further, mainly for reasons of safety.
 
 > [There exist] two versions of the model: an early version fine-tuned for instruction following (“GPT-4-early”); and a version fine-tuned for increased helpfulness and harmlessness that reflects the further mitigations outlined in this system card (“GPT-4-launch”)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— GPT-4 Technical Report, p42
+
+I was unable to find a more convincing line from the technical report to support that claim, so the only additional thing I can do is to appeal to Bubeck’s talk where he states the same ([26:24](https://youtu.be/qbIk7-JPB2c?t=1584)).
 
 <br>
 
@@ -146,8 +152,7 @@ Here are some more amazing examples of GPT-4 demonstrating “visual comprehensi
 <br>
 
 <img src="/img/Post8/vision3.png" alt=vision3 style="max-width:65%;height:auto">
-<div align="center">Demonstration that GPT-4 can usually preserve
-the identity of both the object and the letter and combine them in a creative way
+<div align="center">Demonstration that GPT-4 can usually preserve identity of both the object and the letter and combine them creatively
 </div>
 
 <br>
