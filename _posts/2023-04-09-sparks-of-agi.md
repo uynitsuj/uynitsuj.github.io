@@ -221,9 +221,25 @@ In another example, GPT-4 demonstrates its ability to execute non-trivial Python
 <br>
 
 
+### GPT-4’s Stone Age
+One of GPT-4’s primary weaknesses (until now) was a lack of up-to-date world knowledge, difficulty with symbolic operations such as math, and an inability to execute code in actual compilers. GPT-4 relies on outdated information to answer a question and struggles to perform accurate operations for other questions, similar to the shortcomings observed in ChatGPT.
 
-### Using Novel Tools
-(WIP)
+<br>
+
+<img src="/img/Post8/dt.png" alt=dt style="max-width:75%;height:auto">
+<div align="center">Current world knowledge and symbolic manipulation remain difficult tasks for pure language models.</div>
+
+<br>
+
+GPT-4 demonstrates a truly impressive ability to leveraging external tools, such as search engines or APIs, with minimal instruction. By pausing generation to call the appropriate functions and utilizing their output effectively, GPT-4 can solve complex tasks that require multiple tools in combination. 
+
+<br>
+
+<img src="/img/Post8/tools.png" alt=tools style="max-width:75%;height:auto">
+<div align="center">Examples of GPT-4 using various tools to answer questions.</div>
+
+<br>
+
 
 <br>
 <div align="center">*   *   *</div>
@@ -232,7 +248,7 @@ In another example, GPT-4 demonstrates its ability to execute non-trivial Python
 The rest of this post will be dedicated to discussing other recent developments in the field of AI that I feel are worth highlighting.
 
 ### OpenAI Plugins
-OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
+Somewhat as a follow up to my *GPT-4’s Stone Age* section, OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
 
 <br>
 
