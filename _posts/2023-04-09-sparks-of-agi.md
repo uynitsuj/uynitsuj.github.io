@@ -125,6 +125,10 @@ For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and t
 
 Why does it appear to be “worse” you might ask? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was “dumbed down” and fine-tuned further, mainly for reasons of safety.
 
+> [There exist] two versions of the model: an early version fine-tuned for instruction following (“GPT-4-early”); and a version fine-tuned for increased helpfulness and harmlessness that reflects the further mitigations outlined in this system card (“GPT-4-launch”)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— GPT-4 Technical Report, p42
+
 <br>
 
 Here are some more amazing examples of GPT-4 demonstrating “visual comprehension” and image generation.
@@ -188,6 +192,10 @@ With respect to code generation, which has become a very popular use case. How l
 <br>
 
 It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations, which I feel they are doing somewhat adequately, but could be better. It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
+
+<br>
+
+https://openai.com/blog/planning-for-agi-and-beyond
 
 <br>
 
