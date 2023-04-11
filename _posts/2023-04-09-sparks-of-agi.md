@@ -276,6 +276,43 @@ The authors restructure the prompt, and instead ask the model to list the prime 
 Unlike humans, who can use a scratchpad to work through problems step by step, the model must generate an answer in a single pass of the feedforward architecture, making it difficult to implement complex procedures like a "for loop." Although some of these issues can be addressed by instructing the model to solve questions step by step, this approach may not always be sufficient.
 
 <br>
+
+The authors then discuss further limitations of text generation models in tackling *incremental and discontinuous tasks*. Incremental tasks are those that can be solved gradually, by adding one word or sentence at a time, and do not require any major conceptual shifts or insights. Examples of such tasks include summarizing a text, answering factual questions, composing a poem based on a given rhyme scheme, or solving a math problem that follows a standard procedure. Text generation models appear to handle incremental tasks well, relying on existing knowledge and skills to produce coherent and relevant content.
+
+<br>
+
+However, text generation models face limitations when it comes to discontinuous tasks. Discontinuous tasks require a certain "Eureka" idea or creative leap to make progress towards a solution. The content generation process involves discovering or inventing a new way of looking at or framing the problem. Examples of such tasks include solving a math problem that requires a novel application of a formula, writing a joke or a riddle, creating a new genre or style of writing, or developing a scientific hypothesis or a philosophical argument. Text generation models struggle at such tasks, as they *lack the ability* to make creative leaps or think in a controlled and rational manner.
+
+<br>
+
+One possible way to understand these limitations is through the analogy of fast and slow thinking, as proposed by [Kahneman](https://psycnet.apa.org/record/2011-26535-000). Fast thinking is intuitive, automatic, and prone to errors and biases, while slow thinking is controlled, deliberate, rational, and generally more accurate and reliable. Text generation models appear to primarily exhibit fast thinking, as they can generate content quickly and efficiently. However, they lack the slow thinking component, which oversees and manages the thought process, uses fast thinking as a subroutine, and employs working memory and organized thinking to tackle more complex and creative tasks.
+
+<br>
+
+#### Societal Consequences
+The development and use of GPT-4 and its successors will undoubtedly have significant social and societal influences. While the potential positive impacts are vast, uncertainties remain about the negative impacts that may arise due to the uncertain use cases and applications that will be developed, as well as the norms and guardrails that will be established by organizations and individuals.
+
+<br>
+
+The authors highlight that GPT-4 and its successors have the potential to revolutionize various sectors, including healthcare, education, engineering, and the arts and sciences. Applications and use cases will be introduced quickly and will be promoted by their creators. While well-matched applications promise to be valuable to people and society, other applications and use cases will be premature or poorly thought out, leading to poor designs, unexplored scenarios, poor considerations of reliability and failure modes, and inadequate consideration of influences and implications of how the applications may be used. Thus, it is important to consider both the potential benefits and the costs associated with this emerging technology, and to work proactively and reactively to mitigate the downsides.
+
+<br>
+
+One of the significant societal influences of GPT-4 is its impact on the transformation of tasks addressed by people versus machines across a spectrum of occupations. While there is great opportunity for the technology to be harnessed to extend people's abilities via new forms of human-AI interaction and collaboration, the capabilities of GPT-4 may also lead to the displacement of jobs and broader economic influences. Another implication of the new powers includes the enablement of malevolent actors with new tools of disinformation and manipulation.
+
+<br>
+
+Moreover, deficits in the reliability of the system and biases that it learns may lead to problems given potential over-reliance and poor understanding about when the system fails or will demonstrate bias, potentially amplifying existing societal issues. The challenges of hallucinations and malevolent uses of GPT-4 for disinformation and manipulation must also be taken into account.
+
+<br>
+
+In addition, the impressive powers of GPT-4 may create an "AI divide" between those who have access to the new powers and learn to leverage the capabilities of these models versus those who do not have access. Issues around privacy and provenance of human versus machine-generated content also need to be addressed.
+
+<br>
+
+To inform policy and research on the core technology, specific uses, and applications, deeper and broader analyses of these topics, as well as continuous monitoring and reflection on the benefits and costs, are vital. It is essential to consider the potential societal influences and challenges that may arise due to the use of GPT-4 and its successors and work proactively to mitigate the downsides while harnessing the new powers to benefit people and society.
+
+<br>
 <div align="center">*   *   *</div>
 <br>
 
@@ -314,7 +351,7 @@ With respect to code generation, which has become a very popular use case. How l
 
 <br>
 
-It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations, which I feel they are doing somewhat adequately, but could be better. It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
+It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations, which I feel they are doing somewhat adequately, but could be better (it can always be better). It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
 
 <br>
 
