@@ -129,11 +129,15 @@ A very interesting insight that I can offer is that in the generated TiKZ code, 
 
 Why does it appear to be “worse” than their result you might ask? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was “dumbed down” and fine-tuned further, mainly for reasons of safety.
 
+<br>
+
 > [There exist] two versions of the model: an early version fine-tuned for instruction following (“GPT-4-early”); and a version fine-tuned for increased helpfulness and harmlessness that reflects the further mitigations outlined in this system card (“GPT-4-launch”)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— GPT-4 Technical Report, p42
 
-I was unable to find a more convincing line from the technical report to support that claim, so the only additional thing I can do is to appeal to Bubeck’s talk where he states the same ([26:24](https://youtu.be/qbIk7-JPB2c?t=1584)).
+<br>
+
+I was unable to find a more convincing line from the technical report to support that claim, so the only additional thing I can do is to appeal to Bubeck’s talk where he states as much ([26:24](https://youtu.be/qbIk7-JPB2c?t=1584)).
 
 <br>
 
