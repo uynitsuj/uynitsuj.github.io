@@ -25,29 +25,30 @@ A little under three weeks ago, the team at Microsoft Research responsible for i
 
 <br>
 
-The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT on the same evening the paper was published (22nd of March). If you have 50 minutes to spare, I highly recommend viewing the recording as an abridged version of the paper's findings.
+The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT on the same day the paper was published (22nd of March). If you have 50 minutes to spare, I highly recommend viewing the recording as an abridged version of the paper's findings.
 
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<br>
-
-The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. 
 
 <br>
 <div align="center">*   *   *</div>
 <br>
+
+The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. 
+
+
 #### TL;DR
 In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various fields, such as mathematics, coding, vision, medicine, law, and psychology, without special prompting. Its performance is notably close to human-level and surpasses prior models.
 
 <br>
 
-The authors argue that GPT-4 could be considered an early, yet incomplete, version of artificial general intelligence (AGI) due to its breadth and depth of capabilities. They focus on identifying its limitations and discussing the challenges in developing deeper and more comprehensive AGI systems. This may require a paradigm shift beyond designing next-word prediction models, and exerting explicit effort towards the implementation of AGI. The paper concludes with reflections on societal impacts and future research directions.
+The authors argue that GPT-4 could be considered an early, yet incomplete, version of artificial general intelligence (AGI) due to its breadth and depth of capabilities. They focus on identifying its limitations and discussing the challenges in developing deeper and more comprehensive AGI systems. This may require a paradigm shift beyond designing next-word prediction models, and exerting explicit effort towards the implementation of multi-modal AGI. The paper concludes with reflections on societal impacts and future research directions.
 
 <br>
 
 > while GPT-4 is at or beyond human-level for many tasks, overall its patterns of intelligence are decidedly not human-like. However, GPT-4 is almost certainly only a first step towards a series of increasingly generally intelligent systems
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bubeck et al. 2023
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bubeck et al., 2023
 
 <br>
 
@@ -71,7 +72,7 @@ OpenAI has begun moving to augment the functionality of GPT-4 by exploring its i
 
 <br>
 
-Upon the launch of ChatGPT, I immediately wondered why it wasn't meaningfully connected to the internet but was instead locked to a static snapshot of its content. GPT’s primary function is as a next-token prediction LLM, so it makes intuitive sense to train on static snapshots, but I was wondering why it didn’t have the capability to query the internet to search for more content to augment its response formulation. As I suspected, OpenAI later clarified that this decision was made primarily to address safety concerns.
+Upon the launch of ChatGPT, I immediately wondered why it wasn't meaningfully connected to the internet but was instead locked to a static snapshot of its content. GPT’s primary function is as a next-token prediction LLM, so it makes intuitive sense to train on static snapshots, but I was wondering why it didn’t have the capability to query the internet to search for content to augment its response formulation. As I suspected, OpenAI later clarified that this decision was made primarily to address safety concerns.
 
 <br>
 
@@ -90,8 +91,46 @@ One of my primary concerns for the LLMs of the current day is their occasional p
 
 <br>
 
-GPT has also increasingly been used for the purposes of code generation. How long until we have people implementing a black-box algorithmic model that they know little about except for the natural language query used to generate it? It is therefore the responsibility of the creators of current and future intelligence models to properly communicate such limitations. It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
+GPT has also increasingly been used for the purposes of code generation. How long until we have people implementing a black-box algorithmic model that they know little about except for the natural language query used to generate it? It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations. It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
 
 <br>
 
-We haven’t created omnipotent beings just yet
+I invite you to consider a dialogue generated by GPT-4 for reflection:
+
+<br>
+
+#### Prompt: 
+Plato’s Gorgias is a critique of rhetoric and sophistic oratory, where he makes the point that not only is it not a proper form of art, but the use of rhetoric and oratory can often be harmful and malicious. Can you write a dialogue by Plato where instead he criticizes the use of autoregressive language models?
+
+<br>
+
+#### GPT-4:
+Socrates: My friend, I am troubled by the recent rise of these so-called autoregressive
+language models.
+
+Aristotle: What do you mean, Socrates? 
+
+Socrates: I mean that these models are being used to generate text that appears to be written by humans, but is in fact produced by machines.
+
+Aristotle: And what is the problem with that?
+
+Socrates: The problem is that these models are being used to deceive people, to manipulate
+them, and to control them.
+
+Aristotle: But surely there are some positive applications of these models as well?
+
+Socrates: That may be, but I am still troubled by the potential for abuse. After all, a model that can generate text that is indistinguishable from that written by a human can be used to spread fake news, to impersonate others, and to create propaganda.
+
+Aristotle: But isn’t that just a matter of how these models are used, not a problem with the
+models themselves? 
+
+Socrates: I disagree. I believe these models are inherently problematic. They are a form
+of artifice, a way of creating the illusion of human thought and interaction. And as such,
+they can be used to deceive and manipulate in ways that are difficult to detect.
+
+Aristotle: But isn’t that the same argument you made against rhetoric and oratory?
+
+Socrates: Yes, and I stand by that argument as well. I believe that any form of art or communication that is designed to deceive or manipulate is inherently dangerous.
+
+Aristotle: I see. Thank you for sharing your thoughts, Socrates.
+
