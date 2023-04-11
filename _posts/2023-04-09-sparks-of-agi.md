@@ -231,7 +231,7 @@ Some of GPT-4’s primary weaknesses include a lack of up-to-date world knowledg
 
 <br>
 
-GPT-4 demonstrates a truly impressive ability to leveraging external tools, such as search engines or APIs, with minimal instruction. By pausing generation to call the appropriate functions and utilizing their output effectively, GPT-4 can solve complex tasks that require multiple tools in combination. 
+The authors highlight that GPT-4 can rectify this issue, demonstrating its truly impressive ability to leverage external tools, such as search engines or APIs, with minimal instruction. By pausing generation to call the appropriate functions and utilizing their output effectively, GPT-4 can solve complex tasks that require multiple tools in combination. 
 
 <br>
 
@@ -277,7 +277,7 @@ Unlike humans, who can use a scratchpad to work through problems step by step, t
 The rest of this post will be dedicated to discussing other recent developments in the field of AI that I feel are worth highlighting.
 
 ### OpenAI Plugins
-This is somewhat of a direct follow up to my *GPT-4’s Stone Age* section. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
+This is somewhat of a direct follow up to my *GPT-4 Enters the Stone Age* section. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
 
 <br>
 
