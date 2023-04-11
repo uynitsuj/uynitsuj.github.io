@@ -5,10 +5,10 @@ excerpt: "Highlighting a recent publication and the current state of a GPT imple
 categories: [post]
 image: Post8/SOAGI.png
 ---
-
 > Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less
 
-— Marie Curie
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Marie Curie
+<br>
 <br>
 
 It has become increasingly evident to me that I am living in the century when humanity is entrusted with the immense responsibility of developing artificial general intelligence systems that exceed human abilities.
@@ -31,20 +31,35 @@ The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT o
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 
-The rest of this post will be dedicated to exploring findings from Sébastien's paper that I feel are worth highlighting. 
+The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. 
 
 <br>
 <div align="center">*   *   *</div>
 <br>
 #### TL;DR
-
 In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various fields, such as mathematics, coding, vision, medicine, law, and psychology, without special prompting. Its performance is notably close to human-level and surpasses prior models.
 
-The authors argue that GPT-4 could be considered an early, yet incomplete, version of artificial general intelligence (AGI) due to its breadth and depth of capabilities. They focus on identifying its limitations and discussing the challenges in developing deeper and more comprehensive AGI systems. This may require a paradigm shift beyond designing next-word prediction models. The paper concludes with reflections on societal impacts and future research directions.
+<br>
+
+The authors argue that GPT-4 could be considered an early, yet incomplete, version of artificial general intelligence (AGI) due to its breadth and depth of capabilities. They focus on identifying its limitations and discussing the challenges in developing deeper and more comprehensive AGI systems. This may require a paradigm shift beyond designing next-word prediction models, and exerting explicit effort towards the implementation of AGI. The paper concludes with reflections on societal impacts and future research directions.
+
+<br>
+
+> while GPT-4 is at or beyond human-level for many tasks, overall its patterns of intelligence are decidedly not human-like. However, GPT-4 is almost certainly only a first step towards a series of increasingly generally intelligent systems
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bubeck et al. 2023
+
+<br>
 
 #### Consensus on Intelligence
-(WIP)
+In order to have any meaningful argument about whether something exhibits intelligence, the definition for intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly and learn from experience._
 
+#### 
+
+<br>
+<div align="center">*   *   *</div>
+<br>
+The rest of this post will be dedicated to discussing other recent developments in the field of AI that I feel are worth highlighting.
 
 #### OpenAI Plugins
 OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
@@ -62,7 +77,7 @@ Upon the launch of ChatGPT, I immediately wondered why it wasn't meaningfully co
 
 > Threat actors may also benefit from combining GPT-4 with internet browsing and open-source tools
 
-— GPT-4 Technical Report, p52
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— GPT-4 Technical Report, p52
 
 <br>
 
@@ -79,4 +94,4 @@ GPT has also increasingly been used for the purposes of code generation. How lon
 
 <br>
 
-It is reassuring to know that we haven’t created omnipotent beings just yet
+We haven’t created omnipotent beings just yet
