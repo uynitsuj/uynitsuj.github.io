@@ -198,7 +198,7 @@ GPT-4 can also successfully extract data from LaTeX code and generate accurate v
 
 <br>
 
-GPT-4 will also write code for deep learning applications. Writing code for deep learning requires non-trivial knowledge and understanding of mathematics, statistics, and familiarity with frameworks and libraries such as PyTorch, TensorFlow, Keras, etc.
+GPT-4 will also write code for deep learning applications. Doing so usually requires non-trivial knowledge and understanding of mathematics, statistics, and familiarity with frameworks and libraries such as PyTorch, TensorFlow, Keras, etc.
 
 <br>
 
@@ -260,7 +260,7 @@ For example, consider the following question to which the model gives a wrong an
 
 <br>
 
-Then, the authors restructure the prompt, and instead ask the model to list the prime numbers in this range and then write what the count is. Here it does give the correct answer:
+The authors restructure the prompt, and instead ask the model to list the prime numbers in this range and then write what the count is. Here it gives the correct answer:
 
 <br>
 
