@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "Sparks of Artificial General Intelligence"
-excerpt: "Highlighting a recent publication and the current state of a GPT implementation of machine intelligence"
+excerpt: "Investigating the current state of a GPT implementation of machine intelligence"
 categories: [post]
 image: Post8/SOAGI.png
 ---
-> Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less
+> Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Marie Curie
 <br>
@@ -38,7 +38,7 @@ The next section of this post will be dedicated to exploring and discussing find
 
 
 #### TL;DR
-In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various fields, such as mathematics, coding, vision, medicine, law, and psychology, without special prompting. Its performance is notably close to human-level and surpasses prior models.
+In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various disciplines, such as mathematics, coding, vision, music, medicine, law, and psychology. Its performance is close to human-level and surpasses prior models.
 
 <br>
 
@@ -46,7 +46,7 @@ The authors argue that GPT-4 could be considered an early, yet incomplete, versi
 
 <br>
 
-> while GPT-4 is at or beyond human-level for many tasks, overall its patterns of intelligence are decidedly not human-like. However, GPT-4 is almost certainly only a first step towards a series of increasingly generally intelligent systems
+> While GPT-4 is at or beyond human-level for many tasks, overall its patterns of intelligence are decidedly not human-like. However, GPT-4 is almost certainly only a first step towards a series of increasingly generally intelligent systems.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bubeck et al., 2023
 
@@ -55,7 +55,28 @@ The authors argue that GPT-4 could be considered an early, yet incomplete, versi
 #### Consensus on Intelligence
 In order to have any meaningful argument about whether something exhibits intelligence, the definition for intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly and learn from experience._
 
-#### 
+#### Investigative Approach
+The standard approach in evaluating a machine learning model is to test the system on a set of standard benchmark datasets. This approach is designed to separate true learning from mere memorization.
+
+<br>
+
+For GPT-4 however, the authors identify two primary reasons why this methodology is not suitable: 
+1. The authors lack of access to GPT-4's full training data, which means they must assume it has potentially seen every existing benchmark or similar data, and 
+2. GPT-4's intelligence is characterized by its generality and ability to understand and connect any topic, performing tasks beyond the scope of narrow AI systems. Traditional benchmarks struggle to evaluate the intelligence metric well. 
+
+<br>
+
+A point worth noting is that the authors highlight another paper that does propose a benchmark to evaluate general intelligence ([Chollet, 2019](https://arxiv.org/pdf/1911.01547.pdf)), however the benchmark is largely visual in nature, and thus would be better suited for the multi-modal version of GPT-4, which the authors did not have access to.
+
+<br>
+
+For these reasons, the authors do not test GPT-4 on a quantitative benchmark or propose a new testing framework for general intelligence. Instead, they take an approach closer to traditional psychology, testing GPT-4 with novel and difficult tasks to probe its deep and flexible understanding of concepts, skills, and domains.
+
+<br>
+
+>We acknowledge that this approach is somewhat subjective and informal, and that it may not satisfy the rigorous standards of scientific evaluation. However, we believe that it is a useful and necessary first step to appreciate the remarkable capabilities and challenges of GPT-4, and that such a first step opens up new opportunities for developing more formal and comprehensive methods for testing and analyzing AI systems with more general intelligence.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bubeck et al., 2023
 
 <br>
 <div align="center">*   *   *</div>
@@ -76,7 +97,7 @@ Upon the launch of ChatGPT, I immediately wondered why it wasn't meaningfully co
 
 <br>
 
-> Threat actors may also benefit from combining GPT-4 with internet browsing and open-source tools
+> Threat actors may also benefit from combining GPT-4 with internet browsing and open-source tools.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— GPT-4 Technical Report, p52
 
@@ -105,32 +126,56 @@ Plato’s Gorgias is a critique of rhetoric and sophistic oratory, where he make
 <br>
 
 #### GPT-4:
-Socrates: My friend, I am troubled by the recent rise of these so-called autoregressive
+**Socrates:** My friend, I am troubled by the recent rise of these so-called autoregressive
 language models.
+<br>
 
-Aristotle: What do you mean, Socrates? 
+**Aristotle:** What do you mean, Socrates? 
+<br>
 
-Socrates: I mean that these models are being used to generate text that appears to be written by humans, but is in fact produced by machines.
+**Socrates:** I mean that these models are being used to generate text that appears to be written by humans, but is in fact produced by machines.
+<br>
 
-Aristotle: And what is the problem with that?
+**Aristotle:** And what is the problem with that?
+<br>
 
-Socrates: The problem is that these models are being used to deceive people, to manipulate
+**Socrates:** The problem is that these models are being used to deceive people, to manipulate
 them, and to control them.
+<br>
 
-Aristotle: But surely there are some positive applications of these models as well?
+**Aristotle:** But surely there are some positive applications of these models as well?
+<br>
 
-Socrates: That may be, but I am still troubled by the potential for abuse. After all, a model that can generate text that is indistinguishable from that written by a human can be used to spread fake news, to impersonate others, and to create propaganda.
+**Socrates:** That may be, but I am still troubled by the potential for abuse. After all, a model that can generate text that is indistinguishable from that written by a human can be used to spread fake news, to impersonate others, and to create propaganda.
+<br>
 
-Aristotle: But isn’t that just a matter of how these models are used, not a problem with the
+**Aristotle:** But isn’t that just a matter of how these models are used, not a problem with the
 models themselves? 
+<br>
 
-Socrates: I disagree. I believe these models are inherently problematic. They are a form
+**Socrates:** I disagree. I believe these models are inherently problematic. They are a form
 of artifice, a way of creating the illusion of human thought and interaction. And as such,
 they can be used to deceive and manipulate in ways that are difficult to detect.
+<br>
 
-Aristotle: But isn’t that the same argument you made against rhetoric and oratory?
+**Aristotle:** But isn’t that the same argument you made against rhetoric and oratory?
+<br>
 
-Socrates: Yes, and I stand by that argument as well. I believe that any form of art or communication that is designed to deceive or manipulate is inherently dangerous.
+**Socrates:** Yes, and I stand by that argument as well. I believe that any form of art or communication that is designed to deceive or manipulate is inherently dangerous.
+<br>
 
-Aristotle: I see. Thank you for sharing your thoughts, Socrates.
+**Aristotle:** I see. Thank you for sharing your thoughts, Socrates.
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
 
