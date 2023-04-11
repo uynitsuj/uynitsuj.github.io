@@ -273,19 +273,23 @@ The authors restructure the prompt, and instead ask the model to list the prime 
 
 <br>
 
-Unlike humans, who can use a scratchpad to work through problems step by step, the model must generate an answer in a single pass of the feedforward architecture, making it difficult to implement complex procedures like a "for loop." Although some of these issues can be addressed by instructing the model to solve questions step by step, this approach may not always be sufficient.
+Unlike humans, who can use a scratchpad to work through problems step by step, the model must generate an answer in a single pass of the feedforward architecture. Although some of these issues can be addressed by instructing the model to solve questions step by step, this approach may not always be sufficient.
 
 <br>
 
-The authors then discuss further limitations of text generation models in tackling *incremental and discontinuous tasks*. Incremental tasks are those that can be solved gradually, by adding one word or sentence at a time, and do not require any major conceptual shifts or insights. Examples of such tasks include summarizing a text, answering factual questions, composing a poem based on a given rhyme scheme, or solving a math problem that follows a standard procedure. Text generation models appear to handle incremental tasks well, relying on existing knowledge and skills to produce coherent and relevant content.
+The authors then discuss further limitations of text generation models in tackling *incremental and discontinuous tasks*. Incremental tasks are those that can be solved gradually, by adding one word or sentence at a time, and do not require any major conceptual shifts or insights. Examples of such tasks include summarizing a text, answering factual questions, composing a poem based on a given rhyme scheme, or solving a math problem that follows a standard procedure. Text generation models appear to handle incremental tasks well, relying on existing knowledge and skills to produce content.
 
 <br>
 
-However, text generation models face limitations when it comes to discontinuous tasks. Discontinuous tasks require a certain "Eureka" idea or creative leap to make progress towards a solution. The content generation process involves discovering or inventing a new way of looking at or framing the problem. Examples of such tasks include solving a math problem that requires a novel application of a formula, writing a joke or a riddle, creating a new genre or style of writing, or developing a scientific hypothesis or a philosophical argument. Text generation models struggle at such tasks, as they *lack the ability* to make creative leaps or think in a controlled and rational manner.
+However, text generation models face limitations when it comes to discontinuous tasks, which require a certain "Eureka" moment or creative leap to make progress towards a solution. 
 
 <br>
 
-One possible way to understand these limitations is through the analogy of fast and slow thinking, as proposed by [Kahneman](https://psycnet.apa.org/record/2011-26535-000). Fast thinking is intuitive, automatic, and prone to errors and biases, while slow thinking is controlled, deliberate, rational, and generally more accurate and reliable. Text generation models appear to primarily exhibit fast thinking, as they can generate content quickly and efficiently. However, they lack the slow thinking component, which oversees and manages the thought process, uses fast thinking as a subroutine, and employs working memory and organized thinking to tackle more complex and creative tasks.
+The content generation process involves discovering or inventing a new way of looking at or framing the problem. Examples of such tasks include solving a math problem that requires a novel application of a formula, writing a joke or a riddle, creating a new genre or style of writing, or developing a scientific hypothesis or a philosophical argument. Text generation models struggle at such tasks, as they *lack the ability* to make creative leaps or think in a controlled and rational manner.
+
+<br>
+
+One way to understand these limitations is through the analogy of fast and slow thinking, as proposed by [Kahneman](https://psycnet.apa.org/record/2011-26535-000). Fast thinking is intuitive, automatic, and prone to errors and biases, while slow thinking is controlled, deliberate, rational, and generally more accurate and reliable. Text generation models appear to primarily exhibit fast thinking, as they can generate content quickly and efficiently. However, they lack the slow thinking component, which oversees and manages the thought process, uses fast thinking as a subroutine, and employs working memory and organized thinking to tackle more complex and creative tasks.
 
 <br>
 
@@ -298,19 +302,19 @@ The authors highlight that GPT-4 and its successors have the potential to revolu
 
 <br>
 
-One of the significant societal influences of GPT-4 is its impact on the transformation of tasks addressed by people versus machines across a spectrum of occupations. While there is great opportunity for the technology to be harnessed to extend people's abilities via new forms of human-AI interaction and collaboration, the capabilities of GPT-4 may also lead to the displacement of jobs and broader economic influences. Another implication of the new powers includes the enablement of malevolent actors with new tools of disinformation and manipulation.
+One of the significant societal influences of GPT-4 is its capacity to transform tasks across a spectrum of occupations. The capabilities of GPT-4 may lead to the displacement of jobs and broader economic influences. Another implication of the new powers includes the enablement of malevolent actors with new tools of disinformation and manipulation.
 
 <br>
 
-Moreover, deficits in the reliability of the system and biases that it learns may lead to problems given potential over-reliance and poor understanding about when the system fails or will demonstrate bias, potentially amplifying existing societal issues. The challenges of hallucinations and malevolent uses of GPT-4 for disinformation and manipulation must also be taken into account.
+Moreover, shortcomings in the reliability of the system and biases that it learns may lead to problems given potential over-reliance and poor understanding about when the system fails or will demonstrate bias, potentially amplifying existing societal issues. The challenges of hallucinations and malevolent uses of GPT-4 for disinformation and manipulation must be studied further.
 
 <br>
 
-In addition, the impressive powers of GPT-4 may create an "AI divide" between those who have access to the new powers and learn to leverage the capabilities of these models versus those who do not have access. Issues around privacy and provenance of human versus machine-generated content also need to be addressed.
+In addition, the impressive powers of GPT-4 and future iterations may create an "AI divide" between those who have access to the new powers and learn to leverage the capabilities of these models versus those who do not have access. Issues around privacy and provenance of human versus machine-generated content also need to be addressed.
 
 <br>
 
-To inform policy and research on the core technology, specific uses, and applications, deeper and broader analyses of these topics, as well as continuous monitoring and reflection on the benefits and costs, are vital. It is essential to consider the potential societal influences and challenges that may arise due to the use of GPT-4 and its successors and work proactively to mitigate the downsides while harnessing the new powers to benefit people and society.
+To inform policy and research on the core technology, specific uses, and applications, deeper and broader analyses of these topics, as well as continuous monitoring and reflection on the benefits and costs, are vital.
 
 <br>
 <div align="center">*   *   *</div>
