@@ -112,8 +112,6 @@ Interestingly, the authors had the privilege of investigating GPT-4 at the same 
 
 <br>
 
-<br>
-
 For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and this is the result:
 
 <br>
@@ -123,7 +121,7 @@ For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and t
 
 <br>
 
-A very interesting insight that I can offer is that in the generated TiKZ code, GPT-4 provided documentation, sectioning and labeling the graphical objects used to generate the head, body, tail, the eye and the horn. 
+An interesting insight that I can offer is that in the generated TiKZ code, GPT-4 provided documentation, sectioning and labeling the graphical objects used to generate the head, body, tail, the eye and the horn. 
 
 <br>
 
