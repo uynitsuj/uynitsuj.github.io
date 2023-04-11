@@ -127,7 +127,7 @@ A very interesting insight that I can offer is that in the generated TiKZ code, 
 
 <br>
 
-Why does it appear to be *worse* than their result? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was dumbed down and tuned further, mainly for reasons of safety.
+Why does it appear to be *worse* than their result? Unfortunately, (or fortunately, depending on the viewpoint) the public facing version of GPT-4 was “dumbed down” and tuned further, mainly for reasons of safety.
 
 <br>
 
@@ -157,7 +157,7 @@ Here are some more amazing examples of GPT-4 demonstrating “visual comprehensi
 <br>
 
 <img src="/img/Post8/vision2.png" alt=vision2 style="max-width:65%;height:auto">
-<div align="center">A reasonably-looking stick figure composed of the letters of O, H and Y</div>
+<div align="center">A reasonable-looking stick figure composed of the letters of O, H and Y</div>
 
 <br>
 
@@ -166,6 +166,24 @@ Here are some more amazing examples of GPT-4 demonstrating “visual comprehensi
 </div>
 
 <br>
+
+### Coding
+GPT-4 is able to code at a very high level, both in terms of writing code from instructions and understanding existing code. The model can write and understand code across a wide range of tasks and languages, reason about code execution, simulate instructions, and explain the results using natural language. GPT-4 performs well with focused programs that rely on public libraries, which favorably compares to the average software engineer’s ability.
+
+However, the authors acknowledge GPT-4's limitations, such as producing syntactically invalid or semantically incorrect code, misunderstanding or not following instructions, and generating code that doesn't match the intended functionality or style.
+
+To measure GPT-4's coding skills, the authors use the HumanEval dataset and a custom benchmark based on LeetCode problems. GPT-4 outperforms other language models, including previous iterations of GPT and models specifically trained on code. While the model's accuracy is impressive, the authors acknowledge the possibility that GPT-4 may have seen and memorized some or all of HumanEval during pre-training.
+
+To address this concern, the authors evaluated GPT-4 using a benchmark of 100 LeetCode problems posted *after* GPT-4's pretraining period. The model performs well, achieving pass rates that are comparable to or better than human performance. 
+
+<br>
+
+<img src="/img/Post8/leetcode.png" alt=leetcode style="max-width:75%;height:auto">
+<div align="center">Zero-shot pass@1 and pass@5 accuracies (%) on LeetCode.</div>
+
+<br>
+
+### Using Novel Tools
 
 <br>
 <div align="center">*   *   *</div>
