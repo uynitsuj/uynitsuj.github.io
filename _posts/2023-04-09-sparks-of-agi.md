@@ -211,6 +211,11 @@ The previous examples have shown that GPT-4 can write code from instructions, ev
 
 <br>
 
+<img src="/img/Post8/cpp.png" alt=cpp style="max-width:75%;height:auto">
+<div align="center">GPT-4 vs ChatGPT on the memory alignment rule of C/C++. GPT-4’s insightful comments are labeled in gold and ChatGPT’s Mistakes are labeled in red.</div>
+
+<br>
+
 In another example, GPT-4 demonstrates its ability to execute non-trivial Python code by simulating the code execution in natural language rather than running it on a Python interpreter. This task requires an exceptional understanding of the code, the capacity to reason about its execution, and the ability to communicate results clearly. GPT-4 manages to track multiple variables, handle recursion, and provide detailed explanations of intermediate steps.
 
 <br>
