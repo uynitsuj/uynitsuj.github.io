@@ -38,11 +38,11 @@ The next section of this post will be dedicated to exploring and discussing find
 
 
 #### TL;DR
-In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various disciplines, such as mathematics, coding, vision, music, medicine, law, and psychology. Its performance is close to human-level and surpasses prior models.
+In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various disciplines, such as mathematics, coding, vision, music, medicine, law, and psychology. Its performance is close to human level and surpasses prior models.
 
 <br>
 
-The authors argue that GPT-4 could be considered an early, yet incomplete, version of artificial general intelligence (AGI) due to its breadth and depth of capabilities. They focus on identifying its limitations and discussing the challenges in developing deeper and more comprehensive AGI systems. This may require a paradigm shift beyond designing next-word prediction models, and exerting explicit effort towards the implementation of multi-modal AGI. The paper concludes with reflections on societal impacts and future research directions.
+The authors argue that GPT-4 could be considered an early, yet incomplete, version of artificial general intelligence (AGI) due to its breadth and depth of capabilities. They focus on identifying its limitations and discussing the challenges in developing deeper and more comprehensive AGI systems. This may require a paradigm shift beyond designing next-word prediction models and exerting explicit effort towards the implementation of multi-modal AGI. The paper concludes with reflections on societal impacts and future research directions.
 
 <br>
 
@@ -53,7 +53,7 @@ The authors argue that GPT-4 could be considered an early, yet incomplete, versi
 <br>
 
 #### Consensus on Intelligence
-In order to have any meaningful argument about whether something exhibits intelligence, the definition for intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly and learn from experience._
+In order to have any meaningful argument about whether something exhibits intelligence, the definition for intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly, and learn from experience._
 
 #### Investigative Approach
 The standard approach in evaluating a machine learning model is to test the system on a set of standard benchmark datasets. This approach is designed to separate true learning from mere memorization.
@@ -61,12 +61,12 @@ The standard approach in evaluating a machine learning model is to test the syst
 <br>
 
 For GPT-4 however, the authors identify two primary reasons why this methodology is not suitable: 
-1. The authors lack of access to GPT-4's full training data, which means they must assume it has potentially seen every existing benchmark or similar data, and 
+1. The authors lack access to GPT-4's full training data, which means they must assume it has potentially seen every existing benchmark or similar data, and 
 2. GPT-4's intelligence is characterized by its generality and ability to understand and connect any topic, performing tasks beyond the scope of narrow AI systems. Traditional benchmarks struggle to evaluate the intelligence metric well. 
 
 <br>
 
-A point worth noting is that the authors highlight another paper that does propose a benchmark to evaluate general intelligence ([Chollet, 2019](https://arxiv.org/pdf/1911.01547.pdf)), however the benchmark is largely visual in nature, and thus would be better suited for the multi-modal version of GPT-4, which the authors did not have access to.
+A point worth noting is that the authors highlight another paper that does propose a benchmark to evaluate general intelligence ([Chollet, 2019](https://arxiv.org/pdf/1911.01547.pdf)), however, the benchmark is largely visual in nature and thus would be better suited for the multi-modal version of GPT-4, which the authors did not have access to.
 
 <br>
 
@@ -79,6 +79,37 @@ For these reasons, the authors do not test GPT-4 on a quantitative benchmark or 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bubeck et al., 2023
 
 #### The Unicorn
+The unicorn generation example is brought up in both Bubeck’s talk and the paper, but it is definitely worth highlighting.
+
+<br>
+
+One of the tasks the authors gave GPT-4 was to “draw a unicorn.” You might be wondering: how does a language model that can only generate text or code draw? There are a lot of parts to that question, but technically speaking, it draws using TiKZ, a language for creating graphics in [LaTeX](https://en.wikipedia.org/wiki/LaTeX). Of course, GPT-4 can only provide textual information and not render the actual image. To see the output, you will need to compile the TiKZ code using a LaTeX editor or an online compiler.
+
+<br>
+
+<img src="/img/Post8/unicorn.png" alt=unicorn style="max-width:85%;height:auto">
+<div align="center">GPT-4 generates a unicorn in TiKZ</div>
+
+<br>
+
+> When I see that, I am personally shocked, because it really understands the concept of a unicorn. It knows what are the key elements. It was able to draw this very abstract unicorn.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Sébastien Bubeck
+
+<br>
+
+I was personally quite shocked as well. To me this meant that GPT-4 was able to develop an internal concept of a unicorn merely from the textual descriptions present in its training data. Moreover, it is capable of reconstructing this representation using a graphics generation tool. It is important to re-emphasize here that the authors did *not* have access to the multi-modal version of GPT-4 that has developed and trained with image input in mind. GPT-4’s ability to reconcile the spatial relationships among abstract notions like "head," "tail," and "body" is genuinely extraordinary.
+
+<br>
+
+For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and this is the result:
+
+<br>
+
+<img src="/img/Post8/unicorn2.png" alt=unicorn2 style="max-width:85%;height:auto">
+<div align="center">GPT-4 generates another unicorn in TiKZ</div>
+
+<br>
 
 <br>
 <div align="center">*   *   *</div>
