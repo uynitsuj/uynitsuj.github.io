@@ -86,18 +86,6 @@ It makes sense to release internet search functionality through Plugins in a con
 
 <br>
 
-Personally, my primary concern for the LLMs of the current day is their occasional penchant for “hallucinating” or giving an outright wrong answer. Having observed ChatGPT’s widespread usage, I have grown concerned that some users won’t know any better and will treat its word as gospel, leading to the possibility of an increase in the spread of misinformation. 
-
-<br>
-
-With respect to code generation, which has become a very popular use case. How long until we encounter people implementing a black-box algorithmic model that they know little about except for the natural language query used to generate it? 
-
-<br>
-
-It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations, which I feel they are doing somewhat adequately, but could be better (it can always be better). It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
-
-<br>
-
 ## Sam Altman’s Blog Post on Planning for AGI and Beyond
 (<a href="https://openai.com/blog/planning-for-agi-and-beyond" target="_blank">Post</a>)<br>
 
