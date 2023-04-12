@@ -38,6 +38,21 @@
       display: none;
     }
   }
+
+  #sidebar-toggle-wrapper.hidden {
+    display: none;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    #sidebar-toggle-wrapper.hidden {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      transform: none;
+      z-index: 3;
+    }
+  }
 </style>
 
 <body style="background-color: #232323;">
@@ -64,12 +79,16 @@
   <script>
     var sidebarWrapper = document.getElementById("sidebar-wrapper");
     var sidebarToggle = document.getElementById("sidebar-toggle");
+    var sidebarToggleWrapper = document.getElementById("sidebar-toggle-wrapper");
+
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
         sidebarWrapper.style.display = "block";
+        sidebarToggleWrapper.classList.remove("hidden");
         sidebarToggle.textContent = "Hide Sidebar";
       } else {
         sidebarWrapper.style.display = "none";
+        sidebarToggleWrapper.classList.add("hidden");
         sidebarToggle.textContent = "Show Sidebar";
       }
     });
