@@ -20,7 +20,9 @@
 
   #sidebar-toggle-wrapper {
     position: fixed;
-    left: 21%;
+    left: 22.5%;
+    background-color: #191919;
+    border-radius: 10px;
     transform: translateY(-50%);
     z-index: 2;
   }
@@ -87,13 +89,13 @@
         sidebarToggleWrapper.style.cssText = "left: 21%;"
         postListingWrapper.classList.remove("full-width");
         postListingWrapper.style.cssText = "width: 75%;"
-        sidebarToggle.textContent = "Hide Sidebar";
+        sidebarToggle.textContent = "Hide";
       } else {
         sidebarWrapper.style.display = "none";
         sidebarToggleWrapper.style.cssText = "left: 0%;"
         postListingWrapper.classList.add("full-width");
         postListingWrapper.style.cssText = "width: 100%;"
-        sidebarToggle.textContent = "Show Sidebar";
+        sidebarToggle.textContent = "Show";
       }
     });
   </script>
