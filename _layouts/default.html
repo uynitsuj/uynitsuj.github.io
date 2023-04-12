@@ -93,13 +93,13 @@
         sidebarToggleWrapper.style.cssText = "left: 24%;"
         postListingWrapper.classList.remove("full-width");
         postListingWrapper.style.cssText = "width: 75%;"
-        toggleImage.id = "{{ site.url }}/images/left.png"
+        toggleImage.src = "{{ site.url }}/images/left.png"
       } else {
         sidebarWrapper.style.display = "none";
         sidebarToggleWrapper.style.cssText = "left: 0.3%;"
         postListingWrapper.classList.add("full-width");
         postListingWrapper.style.cssText = "width: 100%;"
-        toggleImage.id = "{{ site.url }}/images/right.png"
+        toggleImage.src = "{{ site.url }}/images/right.png"
       }
     });
   </script>
