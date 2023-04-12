@@ -25,9 +25,9 @@
 
   #sidebar-toggle-wrapper {
     position: fixed;
-    left: 24%;
+    left: 25%;
     transform: translateY(-50%);
-    transform: translateX(-15px);
+    transform: translateX(-30px);
     z-index: 2;
   }
 
@@ -92,7 +92,7 @@
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
         sidebarWrapper.style.display = "block";
-        sidebarToggleWrapper.style.cssText = "left: 24%;"
+        sidebarToggleWrapper.style.cssText = "left: 25%;"
         postListingWrapper.classList.remove("full-width");
         postListingWrapper.style.cssText = "width: 75%;"
         toggleImage.src = "{{ site.url }}/images/left.png"
