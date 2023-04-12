@@ -13,7 +13,7 @@ image: Post8/RT-1.png
 
 This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting.
 
-### RT-1: Robotics Transformer
+## RT-1: Robotics Transformer
 ([Website](https://robotics-transformer.github.io/))<br>
 ([Publication](https://arxiv.org/pdf/2212.06817.pdf))<br>
 <br>
@@ -23,7 +23,7 @@ It should be no surprise that roboticists are researching ways to leverage the T
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 
-### NeRF: Neural Radiance Fields
+## NeRF: Neural Radiance Fields
 ([Website](https://www.matthewtancik.com/nerf))<br>
 ([Publication](https://arxiv.org/pdf/2003.08934.pdf))<br>
 <br>
@@ -35,11 +35,11 @@ Researchers from UC Berkeley, Google Research, and San Diego developed Neural Ra
 
 <br>
 
-### LERF: Language Embedded Radiance Fields
+## LERF: Language Embedded Radiance Fields
 ([Website](https://www.lerf.io/))<br>
 ([Publication](https://arxiv.org/pdf/2303.09553.pdf))<br>
 <br>
-Following the breakthrough of NeRFs, Researchers from UC Berkeley have developed a new technique called Language Embedded Radiance Fields (LERFs) that allows for open-ended language queries in 3D. LERFs ground language embeddings from off-the-shelf models like CLIP into NeRF to learn a dense, multi-scale language field. After optimization, LERF can extract 3D relevancy maps for a broad range of language prompts interactively in real-time. This has potential use cases in robotics, vision-language models, semantic scene understanding, and interacting with 3D scenes.
+Following the breakthrough of NeRFs, researchers from UC Berkeley have developed a new technique called Language Embedded Radiance Fields (LERFs) that allows for open-ended language queries in 3D scenes. LERFs ground language embeddings from off-the-shelf models like CLIP into NeRF to learn a dense, multi-scale language field. After optimization, LERF can extract 3D relevancy maps for a broad range of language prompts interactively in real-time. This has potential use cases in robotics, vision-language models, semantic scene understanding, and interacting with 3D scenes.
 
 <br>
 
@@ -48,7 +48,7 @@ Following the breakthrough of NeRFs, Researchers from UC Berkeley have developed
 <br>
 
 
-### Generative Agents: Interactive Simulacra of Human Behavior
+## Generative Agents: Interactive Simulacra of Human Behavior
 ([Article](https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society))<br>
 ([Publication](https://arxiv.org/pdf/2304.03442.pdf))<br>
 <br>
@@ -62,7 +62,7 @@ Researchers from Stanford and Google Research ran a small game world simulation 
 
 This paper introduces generative agents, which are computational software agents that simulate believable human behavior. The architecture of generative agents extends a large language model to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behavior. The authors instantiate generative agents to populate an interactive sandbox environment inspired by The Sims, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors. By fusing large language models with computational, interactive agents, this work introduces architectural and interaction patterns for enabling believable simulations of human behavior
 
-### OpenAI Plugins
+## OpenAI Plugins
 This is somewhat of a direct follow-up to my *[GPT-4 Enters the Stone Age](https://uynitsuj.github.io/articles/2023-04/sparks-of-agi#gpt-4-enters-the-stone-age)* section from the Sparks of AGI post. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
 
 <br>
@@ -98,9 +98,9 @@ It is the responsibility of the creators of current and future intelligence mode
 
 <br>
 
-### Sam Altman’s Blog Post on Planning for AGI and Beyond
+## Sam Altman’s Blog Post on Planning for AGI and Beyond
 
-https://openai.com/blog/planning-for-agi-and-beyond
+([Post](https://openai.com/blog/planning-for-agi-and-beyond))
 
 <br>
 
