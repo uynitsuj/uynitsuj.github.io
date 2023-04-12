@@ -55,6 +55,11 @@ The authors argue that GPT-4 could be considered an early, yet incomplete, versi
 ### An Intelligent Consensus on Intelligence
 In order to have any meaningful argument about whether something exhibits intelligence, the definition of intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly, and learn from experience._
 
+<br>
+
+[At the end of the publication](https://arxiv.org/pdf/2303.12712.pdf#page=92&zoom=100,57,472) however, the authors return to this topic and warn that this definition of intelligence is “vague and incomplete,” as it does not specify how one can measure or compare these abilities. In this section, the authors proceed to discuss other definitions proposed in the literature that are also more pertinent to artificial systems.
+
+
 ### Investigative Approach
 The standard approach in evaluating a machine learning model is to test the system against a set of standard benchmark datasets. This approach is designed to separate true learning from mere memorization of training data.
 
@@ -255,6 +260,8 @@ The authors also showcase GPT-4’s ability to manage a user's calendar and emai
 #### Shortcomings
 GPT-4 showcases remarkable abilities in reasoning, content generation, and problem-solving. However, its architecture, based on the next-word prediction paradigm, has notable flaws. One such limitation is the absence of an "inner dialogue" or "scratchpad" for performing multi-step computations or storing intermediate results. 
 
+<br>
+
 For example, consider the following question to which the model gives a wrong answer:
 
 <br>
@@ -275,7 +282,7 @@ Unlike humans, who can use a scratchpad to work through problems step by step, t
 
 <br>
 
-The authors then discuss further limitations of text generation models in tackling *incremental and discontinuous tasks*. Incremental tasks are those that can be solved gradually, by adding one word or sentence at a time, and do not require any major conceptual shifts or insights. Examples of such tasks include summarizing a text, answering factual questions, composing a poem based on a given rhyme scheme, or solving a math problem that follows a standard procedure. Text generation models appear to handle incremental tasks well, relying on existing knowledge and skills to produce content.
+The authors then discuss further limitations of text generation models in tackling *incremental and discontinuous tasks*. Incremental tasks are those that can be solved gradually, by adding one word or sentence at a time, and do not require any major conceptual shifts or insights. Examples of such tasks include answering factual questions or solving a math problem that follows a standard procedure. Text generation models appear to handle incremental tasks well, relying on existing knowledge and skills to produce content.
 
 <br>
 
@@ -283,7 +290,7 @@ However, text generation models face limitations when it comes to discontinuous 
 
 <br>
 
-The content generation process involves discovering or inventing a new way of looking at or framing the problem. Examples of such tasks include solving a math problem that requires a novel application of a formula, writing a joke or a riddle, creating a new genre or style of writing, or developing a scientific hypothesis or a philosophical argument. Text generation models struggle at such tasks, as they *lack the ability* to make creative leaps or think in a controlled and rational manner.
+The content generation process involves discovering or inventing a new way of looking at or framing the problem. Examples of such tasks include solving a math problem that requires a novel application of a formula, writing a joke or a riddle, creating a new genre or style of writing, or developing a scientific hypothesis or a philosophical argument. Text generation models struggle at such tasks, as they *lack the ability* to make these creative leaps.
 
 <br>
 
@@ -313,6 +320,9 @@ In addition, the impressive powers of GPT-4 and future iterations may create an 
 <br>
 
 To inform policy and research on the core technology, specific uses, and applications, deeper and broader analyses of these topics, as well as continuous monitoring and reflection on the benefits and costs, are vital.
+
+#### Conclusion of the Paper
+I invite you to read the actual conclusion of the paper for its insights, given in [section 10](https://arxiv.org/pdf/2303.12712.pdf#page=92&zoom=100,57,57).
 
 <br>
 <div align="center">*   *   *</div>
@@ -344,7 +354,6 @@ It makes sense to release internet search functionality through Plugins in a con
 
 <br>
 
-
 Personally, my primary concern for the LLMs of the current day is their occasional penchant for “hallucinating” or giving an outright wrong answer. Having observed ChatGPT’s widespread usage, I have grown concerned that some users won’t know any better and will treat its word as gospel, leading to the possibility of an increase in the spread of misinformation. 
 
 <br>
@@ -356,6 +365,8 @@ With respect to code generation, which has become a very popular use case. How l
 It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations, which I feel they are doing somewhat adequately, but could be better (it can always be better). It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
 
 <br>
+
+### Sam Altman’s Blog Post on Planning for AGI and Beyond
 
 https://openai.com/blog/planning-for-agi-and-beyond
 
