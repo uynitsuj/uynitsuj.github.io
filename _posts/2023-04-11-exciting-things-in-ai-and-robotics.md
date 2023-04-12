@@ -14,8 +14,9 @@ image: Post8/RT-1.png
 This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting.
 
 ### RT-1: Robotics Transformer
-([Website](https://robotics-transformer.github.io/))
-([Publication](https://arxiv.org/pdf/2212.06817.pdf))
+([Website](https://robotics-transformer.github.io/))<br>
+([Publication](https://arxiv.org/pdf/2212.06817.pdf))<br>
+<br>
 It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called RT-1 that shows promising results. 
 
 <br>
@@ -23,8 +24,8 @@ It should be no surprise that roboticists are researching ways to leverage the T
 <br>
 
 ### NeRF: Neural Radiance Fields
-([Website](https://www.matthewtancik.com/nerf))
-([Publication](https://arxiv.org/pdf/2003.08934.pdf))
+([Website](https://www.matthewtancik.com/nerf))<br>
+([Publication](https://arxiv.org/pdf/2003.08934.pdf))<br>
 <br>
 Researchers from UC Berkeley, Google Research, and San Diego developed Neural Radiance Fields (NeRFs), a technique to generate 3D representations of an object or scene from sparse 2D images by using advanced machine learning. The term “neural radiance field” describes the different elements in the technique. It is “neural” in that it uses a multilayer perceptron, an older neural network architecture, to represent the image. “Radiance” refers to the fact that this neural network models the brightness and color of rays of light from different perspectives. NeRFs can generate novel views of complex 3D scenes based on a partial set of 2D images and are trained to use a rendering loss to reproduce input views of a scene.
 
@@ -35,8 +36,8 @@ Researchers from UC Berkeley, Google Research, and San Diego developed Neural Ra
 <br>
 
 ### LERF: Language Embedded Radiance Fields
-([Website](https://www.lerf.io/))
-([Publication](https://arxiv.org/pdf/2303.09553.pdf))
+([Website](https://www.lerf.io/))<br>
+([Publication](https://arxiv.org/pdf/2303.09553.pdf))<br>
 <br>
 Following the breakthrough of NeRFs, Researchers from UC Berkeley have developed a new technique called Language Embedded Radiance Fields (LERFs) that allows for open-ended language queries in 3D. LERFs ground language embeddings from off-the-shelf models like CLIP into NeRF to learn a dense, multi-scale language field. After optimization, LERF can extract 3D relevancy maps for a broad range of language prompts interactively in real-time. This has potential use cases in robotics, vision-language models, semantic scene understanding, and interacting with 3D scenes.
 
@@ -48,8 +49,8 @@ Following the breakthrough of NeRFs, Researchers from UC Berkeley have developed
 
 
 ### Generative Agents: Interactive Simulacra of Human Behavior
-([Article](https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society))
-([Publication](https://arxiv.org/pdf/2304.03442.pdf))
+([Article](https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society))<br>
+([Publication](https://arxiv.org/pdf/2304.03442.pdf))<br>
 <br>
 Researchers from Stanford and Google Research ran a small game world simulation with GPT planning and controlling the character's actions and lives.
 <br>
