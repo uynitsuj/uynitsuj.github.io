@@ -59,7 +59,7 @@
   @include media-query($medium-screen) {
     text-align: right;
     margin: 0 auto;
-    padding: 58% 0px;
+    padding: 56% 0px;
   }
 }
 
@@ -94,7 +94,7 @@
   list-style: none;
   display: inline-block;
   padding-inline-start: 0px;
-  height: 34px;
+  height: 15px;
 
   .nav-item {
     display: inline-block;
