@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Exciting Things in AI/Robotics Research"
+title:  "Exciting Things in AI and Robotics Research"
 excerpt: "Recent publications and developments worth highlighting"
 categories: [post]
 image: Post8/RT-1.png
@@ -13,34 +13,31 @@ image: Post8/RT-1.png
 
 This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting.
 
-<hr>
-
 ## RT-1: Robotics Transformer
-([Website](https://robotics-transformer.github.io/))<br>
-([Publication](https://arxiv.org/pdf/2212.06817.pdf))<br>
+(<a href="https://robotics-transformer.github.io/" target="_blank">Website</a>)<br>
+(<a href="https://arxiv.org/pdf/2212.06817.pdf" target="_blank">Publication</a>)<br>
 <br>
 It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called RT-1 that shows promising results. 
 
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-
-<hr>
+<br>
 
 ## NeRF: Neural Radiance Fields
-([Website](https://www.matthewtancik.com/nerf))<br>
-([Publication](https://arxiv.org/pdf/2003.08934.pdf))<br>
+(<a href="https://www.matthewtancik.com/nerf" target="_blank">Website</a>)<br>
+(<a href="https://arxiv.org/pdf/2003.08934.pdf" target="_blank">Publication</a>)<br>
 <br>
-Researchers from UC Berkeley, Google Research, and UC San Diego developed Neural Radiance Fields (NeRFs), a technique to generate 3D representations of an object or scene from sparse 2D images by using advanced machine learning. The term “neural radiance field” describes the different elements in the technique. It is “neural” in that it uses a multilayer perceptron, an older neural network architecture, to represent the image. “Radiance” refers to the fact that this neural network models the brightness and color of rays of light from different perspectives. NeRFs can generate novel views of complex 3D scenes based on a partial set of 2D images and are trained to use a rendering loss to reproduce input views of a scene.
+Researchers from UC Berkeley, Google Research, and San Diego developed Neural Radiance Fields (NeRFs), a technique to generate 3D representations of an object or scene from sparse 2D images by using advanced machine learning. The term “neural radiance field” describes the different elements in the technique. It is “neural” in that it uses a multilayer perceptron, an older neural network architecture, to represent the image. “Radiance” refers to the fact that this neural network models the brightness and color of rays of light from different perspectives. NeRFs can generate novel views of complex 3D scenes based on a partial set of 2D images and are trained to use a rendering loss to reproduce input views of a scene.
 
-<hr>
+<br>
 
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/JuH79E8rdKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
 
 ## LERF: Language Embedded Radiance Fields
-([Website](https://www.lerf.io/))<br>
-([Publication](https://arxiv.org/pdf/2303.09553.pdf))<br>
+(<a href="https://www.lerf.io/" target="_blank">Website</a>)<br>
+(<a href="https://arxiv.org/pdf/2303.09553.pdf" target="_blank">Publication</a>)<br>
 <br>
 Following the breakthrough of NeRFs, researchers from UC Berkeley have developed a new technique called Language Embedded Radiance Fields (LERFs) that allows for open-ended language queries in 3D scenes. LERFs ground language embeddings from off-the-shelf models like CLIP into NeRF to learn a dense, multi-scale language field. After optimization, LERF can extract 3D relevancy maps for a broad range of language prompts interactively in real-time. This has potential use cases in robotics, vision-language models, semantic scene understanding, and interacting with 3D scenes.
 
@@ -48,12 +45,12 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/7Z2XqH40L08" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-<hr>
+<br>
 
 
 ## Generative Agents: Interactive Simulacra of Human Behavior
-([Article](https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society))<br>
-([Publication](https://arxiv.org/pdf/2304.03442.pdf))<br>
+(<a href="https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society" target="_blank">Article</a>)<br>
+(<a href="https://arxiv.org/pdf/2304.03442.pdf" target="_blank">Publication</a>)<br>
 <br>
 Researchers from Stanford and Google Research ran a small game world simulation with GPT planning and controlling the character's actions and lives.
 <br>
@@ -64,8 +61,6 @@ Researchers from Stanford and Google Research ran a small game world simulation 
 
 
 This paper introduces generative agents, which are computational software agents that simulate believable human behavior. The architecture of generative agents extends a large language model to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behavior. The authors instantiate generative agents to populate an interactive sandbox environment inspired by The Sims, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors. By fusing large language models with computational, interactive agents, this work introduces architectural and interaction patterns for enabling believable simulations of human behavior
-
-<hr>
 
 ## OpenAI Plugins
 This is somewhat of a direct follow-up to my *[GPT-4 Enters the Stone Age](https://uynitsuj.github.io/articles/2023-04/sparks-of-agi#gpt-4-enters-the-stone-age)* section from the Sparks of AGI post. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
@@ -101,11 +96,10 @@ With respect to code generation, which has become a very popular use case. How l
 
 It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations, which I feel they are doing somewhat adequately, but could be better (it can always be better). It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
 
-<hr>
+<br>
 
 ## Sam Altman’s Blog Post on Planning for AGI and Beyond
-
-([Post](https://openai.com/blog/planning-for-agi-and-beyond))
+(<a href="https://openai.com/blog/planning-for-agi-and-beyond" target="_blank">Post</a>)<br>
 
 <br>
 
