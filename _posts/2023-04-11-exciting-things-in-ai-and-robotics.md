@@ -11,13 +11,13 @@ image: Post8/RT-1.png
 <br>
 <br>
 
-This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting.
+This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting. Hint: All of them involve GPT in some way or another.
 
 ## RT-1: Robotics Transformer
 (<a href="https://robotics-transformer.github.io/" target="_blank">Website</a>)<br>
 (<a href="https://arxiv.org/pdf/2212.06817.pdf" target="_blank">Publication</a>)<br>
 <br>
-It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called RT-1 that shows promising results. 
+It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called RT-1 that shows promising results. RT-1 takes a short sequence of images and a task description in natural language as input and outputs an action for the robot to execute at each time step. The images and text are processed via a pretrained convolutional neural network to extract visual features that are relevant to the requested task. This is followed by a module that computes a set of tokens, processes these tokens with a Transformer model, and generates discretized actions.
 
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
