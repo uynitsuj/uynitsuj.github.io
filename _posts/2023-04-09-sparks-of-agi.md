@@ -5,22 +5,6 @@ excerpt: "Investigating the current state of a GPT implementation of machine int
 categories: [post]
 image: Post8/SOAGI.png
 ---
-> Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Marie Curie
-<br>
-<br>
-
-It has become increasingly evident to me that I am living in the century when humanity is entrusted with the immense responsibility of developing artificial general intelligence systems that exceed human abilities.
-<br>
-<div align="center">-   -   -</div>
-This is the single most important thing our species will have done with our time on this planet.
-<br>
-<div align="center">-   -   -</div>
-The most impactful scientific discoveries, inventions, medical breakthroughs, and our current political systems have come into the world through the birth canal of the human brain. We Homo Sapiens have thus far been the sole architects of our own future.
-
-<br>
-
 A little under three weeks ago, the team at Microsoft Research responsible for investigating OpenAI’s GPT-4 for the development of Bing Chat published their findings in a paper titled _Sparks of Artificial General Intelligence: Early experiments with GPT-4_ ([Bubeck et al., 2023](https://arxiv.org/pdf/2303.12712.pdf)).
 
 <br>
