@@ -26,7 +26,6 @@
   #sidebar-toggle-wrapper {
     position: fixed;
     left: 25%;
-    transform: translateY(-50%);
     transform: translateX(-30px);
     z-index: 2;
   }
@@ -92,13 +91,13 @@
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
         sidebarWrapper.style.display = "block";
-        sidebarToggleWrapper.style.cssText = "left: 25%;"
+        sidebarToggleWrapper.style.cssText = "left: 25%;transform: translateX(-30px)"
         postListingWrapper.classList.remove("full-width");
         postListingWrapper.style.cssText = "width: 75%;"
         toggleImage.src = "{{ site.url }}/images/left.png"
       } else {
         sidebarWrapper.style.display = "none";
-        sidebarToggleWrapper.style.cssText = "left: 0.3%;"
+        sidebarToggleWrapper.style.cssText = "left: 0%; transform: translateX(0px);"
         postListingWrapper.classList.add("full-width");
         postListingWrapper.style.cssText = "width: 100%;"
         toggleImage.src = "{{ site.url }}/images/menu.png"
