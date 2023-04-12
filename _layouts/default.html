@@ -18,6 +18,7 @@
     border-radius: 10px;
     top: 0;
     right: -50px;
+    width: 60px;
     z-index: 1;
   }
 
@@ -59,7 +60,8 @@
 
 <body style="background-color: #232323;">
   <div id="sidebar-toggle-wrapper">
-    <button id="sidebar-toggle"><img src="{{ site.url }}/images/menu.png" alt="buttonpng" height="38px" /></button>
+    <button id="sidebar-toggle"><img src="{{ site.url }}/images/menu.png" alt="buttonpng" height="38px"
+        width="40px" /></button>
   </div>
   <div class="row">
     <div class="col s12 m3" id="sidebar-wrapper">
@@ -92,7 +94,7 @@
         postListingWrapper.style.cssText = "width: 75%;"
       } else {
         sidebarWrapper.style.display = "none";
-        sidebarToggleWrapper.style.cssText = "left: 1%;"
+        sidebarToggleWrapper.style.cssText = "left: 0.3%;"
         postListingWrapper.classList.add("full-width");
         postListingWrapper.style.cssText = "width: 100%;"
       }
