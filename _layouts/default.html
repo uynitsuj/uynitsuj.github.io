@@ -18,13 +18,14 @@
     border-radius: 10px;
     top: 0;
     right: -50px;
-    width: 60px;
+    width: 50px;
+    height: 40px;
     z-index: 1;
   }
 
   #sidebar-toggle-wrapper {
     position: fixed;
-    left: 24%;
+    left: 23%;
     transform: translateY(-50%);
     z-index: 2;
   }
@@ -61,7 +62,7 @@
 <body style="background-color: #232323;">
   <div id="sidebar-toggle-wrapper">
     <button id="sidebar-toggle"><img id="toggle-image" src="{{ site.url }}/images/left.png" alt="buttonpng"
-        height="38px" width="40px" /></button>
+        height="25px" width="25px" /></button>
   </div>
   <div class="row">
     <div class="col s12 m3" id="sidebar-wrapper">
@@ -90,7 +91,7 @@
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
         sidebarWrapper.style.display = "block";
-        sidebarToggleWrapper.style.cssText = "left: 24%;"
+        sidebarToggleWrapper.style.cssText = "left: 23%;"
         postListingWrapper.classList.remove("full-width");
         postListingWrapper.style.cssText = "width: 75%;"
         toggleImage.src = "{{ site.url }}/images/left.png"
