@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sparks of Artificial General Intelligence"
-excerpt: "Investigating the current state of a GPT implementation of machine intelligence"
+excerpt: "A Microsoft Research paper investigating GPT-4"
 categories: [post]
 image: Post8/SOAGI.png
 ---
