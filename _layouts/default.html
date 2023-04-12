@@ -43,13 +43,9 @@
     }
   }
 
-  #sidebar-toggle-wrapper.hidden {
-    display: none;
-  }
 
   @media only screen and (max-width: 1000px) {
     #sidebar-toggle-wrapper.hidden {
-      display: block;
       position: fixed;
       top: 0;
       right: 0;
@@ -93,6 +89,7 @@
         sidebarToggle.textContent = "Hide Sidebar";
       } else {
         sidebarWrapper.style.display = "none";
+        sidebarToggleWrapper.classList.add("hidden");
         postListingWrapper.classList.add("full-width");
         sidebarToggle.textContent = "Show Sidebar";
       }
