@@ -15,17 +15,28 @@
     right: -50px;
     z-index: 1;
   }
+
+  #show-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
 </style>
 
 <body style="background-color: #232323;">
-  <div class="row">
-    <div class="col s12 m3" id="sidebar-wrapper">
+  <div id="sidebar-wrapper" class="row">
+    <div class="col s12 m3">
       <div class="table cover">
         <div class="table-middle row">
           {% include sidebar.html %}
         </div>
       </div>
-      <button id="sidebar-toggle">Hide Sidebar</button>
     </div>
     <div class="col s12 m9">
       <div class="post-listing">
@@ -34,11 +45,14 @@
       </div>
     </div>
   </div>
+  <div id="show-sidebar">Show Sidebar</div>
   {% include js.html %}
   <script src="{{ site.url }}/js/lightbox.js"></script>
   <script>
     var sidebarWrapper = document.getElementById("sidebar-wrapper");
     var sidebarToggle = document.getElementById("sidebar-toggle");
+    var showSidebar = document.getElementById("show-sidebar");
+
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
         sidebarWrapper.style.display = "block";
@@ -47,6 +61,10 @@
         sidebarWrapper.style.display = "none";
         sidebarToggle.textContent = "Show Sidebar";
       }
+    });
+
+    showSidebar.addEventListener("click", function () {
+      sidebarWrapper.style.display = "block";
     });
   </script>
 </body>
