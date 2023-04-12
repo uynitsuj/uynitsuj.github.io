@@ -86,11 +86,13 @@
         sidebarWrapper.style.display = "block";
         sidebarToggleWrapper.style.cssText = "left: 21%;"
         postListingWrapper.classList.remove("full-width");
+        postListingWrapper.style.cssText = "width: 75%;"
         sidebarToggle.textContent = "Hide Sidebar";
       } else {
         sidebarWrapper.style.display = "none";
         sidebarToggleWrapper.style.cssText = "left: 0%;"
         postListingWrapper.classList.add("full-width");
+        postListingWrapper.style.cssText = "width: 100%;"
         sidebarToggle.textContent = "Show Sidebar";
       }
     });
