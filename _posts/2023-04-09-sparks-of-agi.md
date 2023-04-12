@@ -108,7 +108,40 @@ For what it’s worth, I asked GPT-4 to generate a unicorn in TiKZ myself, and t
 
 <br>
 
-An interesting insight that I can offer is that in the generated TiKZ code, GPT-4 provided documentation, sectioning and labeling the graphical objects used to generate the head, body, tail, the eye and the horn. 
+An interesting insight that I can offer is that in the generated TiKZ code, GPT-4 provided documentation, sectioning and labeling the graphical objects used to generate the body, head, eye, legs, tail and the horn.
+
+<br>
+
+```LaTeX
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Body
+\draw[fill=gray!30] (0,0) circle (1);
+
+% Head
+\draw[fill=gray!30] (1.5,0.75) circle (0.5);
+
+% Eye
+\draw[fill=black] (1.7,0.9) circle (0.05);
+
+% Legs
+\draw[thick] (0.3,0) -- (0.3,-1);
+\draw[thick] (-0.3,0) -- (-0.3,-1);
+\draw[thick] (0.7,0) -- (0.7,-1);
+\draw[thick] (-0.7,0) -- (-0.7,-1);
+
+% Tail
+\draw[thick] (-1,0) .. controls (-1.5,0.5) and (-1.5,0) .. (-2,0);
+
+% Horn
+\draw[fill=yellow!70] (1.5,1.25) -- (1.25,1.75) -- (1.75,1.75) -- cycle;
+
+\end{tikzpicture}
+\end{document}
+```
 
 <br>
 
