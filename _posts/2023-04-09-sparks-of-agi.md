@@ -16,8 +16,7 @@ The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT o
 
 <br>
 
-The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. You may take it as a bite-sized alternative to reading the full 155 page publication, with omitted content.
-
+The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. 
 
 ### TL;DR
 In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various disciplines, such as mathematics, coding, vision, music, medicine, law, and psychology. Its performance is close to human level and surpasses prior models.
