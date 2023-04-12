@@ -15,8 +15,6 @@ The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT o
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
-<div align="center">*   *   *</div>
-<br>
 
 The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. You may take it as a bite-sized alternative to reading the full 155 page publication, with omitted content.
 
