@@ -21,7 +21,8 @@ It should be no surprise that roboticists are researching ways to leverage the T
 
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<br>
+
+<hr>
 
 ## NeRF: Neural Radiance Fields
 ([Website](https://www.matthewtancik.com/nerf))<br>
@@ -29,7 +30,7 @@ It should be no surprise that roboticists are researching ways to leverage the T
 <br>
 Researchers from UC Berkeley, Google Research, and UC San Diego developed Neural Radiance Fields (NeRFs), a technique to generate 3D representations of an object or scene from sparse 2D images by using advanced machine learning. The term “neural radiance field” describes the different elements in the technique. It is “neural” in that it uses a multilayer perceptron, an older neural network architecture, to represent the image. “Radiance” refers to the fact that this neural network models the brightness and color of rays of light from different perspectives. NeRFs can generate novel views of complex 3D scenes based on a partial set of 2D images and are trained to use a rendering loss to reproduce input views of a scene.
 
-<br>
+<hr>
 
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/JuH79E8rdKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
@@ -45,7 +46,7 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/7Z2XqH40L08" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-<br>
+<hr>
 
 
 ## Generative Agents: Interactive Simulacra of Human Behavior
@@ -61,6 +62,8 @@ Researchers from Stanford and Google Research ran a small game world simulation 
 
 
 This paper introduces generative agents, which are computational software agents that simulate believable human behavior. The architecture of generative agents extends a large language model to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behavior. The authors instantiate generative agents to populate an interactive sandbox environment inspired by The Sims, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors. By fusing large language models with computational, interactive agents, this work introduces architectural and interaction patterns for enabling believable simulations of human behavior
+
+<hr>
 
 ## OpenAI Plugins
 This is somewhat of a direct follow-up to my *[GPT-4 Enters the Stone Age](https://uynitsuj.github.io/articles/2023-04/sparks-of-agi#gpt-4-enters-the-stone-age)* section from the Sparks of AGI post. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
@@ -96,7 +99,7 @@ With respect to code generation, which has become a very popular use case. How l
 
 It is the responsibility of the creators of current and future intelligence models to properly communicate such limitations, which I feel they are doing somewhat adequately, but could be better (it can always be better). It is also the responsibility of the agents interacting with these intelligence models to perform due diligence in verifying and validating the response of these artificial intelligence agents. It may not be time yet to call these implementations AGI, but it is probably in our best interest to begin treating them as intelligences that have bouts of unintelligence.
 
-<br>
+<hr>
 
 ## Sam Altman’s Blog Post on Planning for AGI and Beyond
 
