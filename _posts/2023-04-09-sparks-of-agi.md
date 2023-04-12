@@ -319,9 +319,7 @@ In addition, the impressive powers of GPT-4 and future iterations may create an 
 
 <br>
 
-To inform policy and research on the core technology, specific uses, and applications, deeper and broader analyses of these topics, as well as continuous monitoring and reflection on the benefits and costs, are vital.
-
 #### Conclusion of the Paper
-I invite you to read the actual conclusion of the paper for its valuable insights, given in [section 10](https://arxiv.org/pdf/2303.12712.pdf#page=92&zoom=100,57,57).
+I invite you to read the actual conclusion of the paper for its valuable insights, given in [section 10](https://arxiv.org/pdf/2303.12712.pdf#page=92&zoom=100,57,57). It is worth reading the full conclusion and not a summary of it.
 
 
