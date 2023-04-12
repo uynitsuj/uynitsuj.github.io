@@ -13,7 +13,8 @@
 
   #sidebar-toggle {
     position: absolute;
-    background-color: #232323;
+    border: none;
+    background-color: #191919;
     border-radius: 10px;
     top: 0;
     right: -50px;
@@ -22,7 +23,7 @@
 
   #sidebar-toggle-wrapper {
     position: fixed;
-    left: 22.5%;
+    left: 23%;
     transform: translateY(-50%);
     z-index: 2;
   }
@@ -86,13 +87,13 @@
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
         sidebarWrapper.style.display = "block";
-        sidebarToggleWrapper.style.cssText = "left: 21%;"
+        sidebarToggleWrapper.style.cssText = "left: 22.5%;"
         postListingWrapper.classList.remove("full-width");
         postListingWrapper.style.cssText = "width: 75%;"
         sidebarToggle.textContent = "Hide";
       } else {
         sidebarWrapper.style.display = "none";
-        sidebarToggleWrapper.style.cssText = "left: 0%;"
+        sidebarToggleWrapper.style.cssText = "left: 23%;"
         postListingWrapper.classList.add("full-width");
         postListingWrapper.style.cssText = "width: 100%;"
         sidebarToggle.textContent = "Show";
