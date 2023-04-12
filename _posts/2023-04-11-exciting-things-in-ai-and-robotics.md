@@ -11,7 +11,7 @@ image: Post8/RT-1.png
 <br>
 <br>
 
-This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting. Hint: All of them involve GPT in some way or another.
+This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting. 
 
 ## RT-1: Robotics Transformer
 (<a href="https://robotics-transformer.github.io/" target="_blank">Website</a>)<br>
@@ -90,4 +90,6 @@ It makes sense to release internet search functionality through Plugins in a con
 (<a href="https://openai.com/blog/planning-for-agi-and-beyond" target="_blank">Post</a>)<br>
 
 <br>
+
+
 
