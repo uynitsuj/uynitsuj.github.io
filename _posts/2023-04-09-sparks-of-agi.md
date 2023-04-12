@@ -36,8 +36,8 @@ The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT o
 
 The next section of this post will be dedicated to exploring and discussing findings from Sébastien's paper that I feel are worth highlighting. You may take it as a bite-sized alternative to reading the full 155 page publication, with omitted content.
 
+<h3 id="tldr">TL;DR</a>
 
-### TL;DR
 In this paper, Bubeck et al. investigate an early version of GPT-4, a large language model developed by OpenAI, which they contend belongs to a new cohort of models exhibiting more general intelligence than previous AI models. The authors demonstrate GPT-4's ability to solve novel and difficult tasks across various disciplines, such as mathematics, coding, vision, music, medicine, law, and psychology. Its performance is close to human level and surpasses prior models.
 
 <br>
@@ -52,15 +52,14 @@ The authors argue that GPT-4 could be considered an early, yet incomplete, versi
 
 <br>
 
-### An Intelligent Consensus on Intelligence
+<h3 id="intelligence">An Intelligent Consensus on Intelligence</a>
 In order to have any meaningful argument about whether something exhibits intelligence, the definition of intelligence must be agreed upon. To this end, the authors appealed to 52 psychologists who signed behind a definition published in a 1994 editorial about the science of intelligence ([Gottfredson, 1994](https://www1.udel.edu/educ/gottfredson/reprints/1997mainstream.pdf)). They assert that intelligence is a very general mental capability that, among other things, involves the ability to _reason, plan, solve problems, think abstractly, comprehend complex ideas, learn quickly, and learn from experience._
 
 <br>
 
 [At the end of the publication](https://arxiv.org/pdf/2303.12712.pdf#page=92&zoom=100,57,472) however, the authors return to this topic and warn that this definition of intelligence is “vague and incomplete,” as it does not specify how one can measure or compare these abilities. In this section, the authors proceed to discuss other definitions proposed in the literature that are also more pertinent to artificial systems.
 
-
-### Investigative Approach
+<h3 id="method">Investigative Approach</a>
 The standard approach in evaluating a machine learning model is to test the system against a set of standard benchmark datasets. This approach is designed to separate true learning from mere memorization of training data.
 
 <br>
@@ -83,7 +82,7 @@ For these reasons, the authors do not test GPT-4 on a quantitative benchmark or 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bubeck et al., 2023
 
-### The Unicorn
+<h3 id="the-unicorn">The Unicorn</a>
 The unicorn generation example is brought up in both Bubeck’s talk and the paper, but it is definitely worth highlighting.
 
 <br>
@@ -170,7 +169,7 @@ Here are some more amazing examples of GPT-4 demonstrating “visual comprehensi
 
 <br>
 
-### Fast-Tracked CS Degree from an Internet Snapshot
+<h3 id="coding">Fast-Tracked CS Degree from an Internet Snapshot</a>
 GPT-4 is able to code at a very high level, both in terms of writing code from instructions and understanding existing code. The model can write and understand code across a wide range of tasks and languages, reason about code execution, simulate instructions, and explain the results using natural language. GPT-4 performs well with focused programs that rely on public libraries, which favorably compares to the average software engineer’s ability.
 
 <br>
@@ -228,8 +227,7 @@ In another example, GPT-4 demonstrates its ability to execute non-trivial Python
 
 <br>
 
-
-### GPT-4 Enters the Stone Age
+<h3 id="using-tools">GPT-4 Enters the Stone Age</a>
 Some of GPT-4’s primary weaknesses include a lack of up-to-date world knowledge, difficulty with symbolic operations such as math, and an inability to execute code in actual compilers. GPT-4 relies on outdated information to answer a question and struggles to perform accurate operations for other questions, similar to the shortcomings observed in ChatGPT.
 
 <br>
@@ -257,7 +255,7 @@ The authors also showcase GPT-4’s ability to manage a user's calendar and emai
 
 <br>
 
-#### Shortcomings
+<h3 id="shortcomings">Shortcomings</a>
 GPT-4 showcases remarkable abilities in reasoning, content generation, and problem-solving. However, its architecture, based on the next-word prediction paradigm, has notable flaws. One such limitation is the absence of an "inner dialogue" or "scratchpad" for performing multi-step computations or storing intermediate results. 
 
 <br>
@@ -298,7 +296,7 @@ One way to understand these limitations is through the analogy of fast and slow 
 
 <br>
 
-#### Societal Consequences
+<h3 id="consequences">Societal Consequences</a>
 The development and use of GPT-4 and its successors will undoubtedly have significant social and societal influences. While the potential positive impacts are vast, uncertainties remain about the negative impacts that may arise due to the uncertain use cases and applications that will be developed, as well as the norms and guardrails that will be established by organizations and individuals.
 
 <br>
@@ -321,7 +319,7 @@ In addition, the impressive powers of GPT-4 and future iterations may create an 
 
 To inform policy and research on the core technology, specific uses, and applications, deeper and broader analyses of these topics, as well as continuous monitoring and reflection on the benefits and costs, are vital.
 
-#### Conclusion of the Paper
+<h3 id="conclusion">Conclusion</a>
 I invite you to read the actual conclusion of the paper for its valuable insights, given in [section 10](https://arxiv.org/pdf/2303.12712.pdf#page=92&zoom=100,57,57).
 
 
