@@ -35,14 +35,14 @@ Researchers from UC Berkeley, Google Research, and San Diego developed Neural Ra
 <br>
 
 ### LERF: Language Embedded Radiance Fields
-([Website](https://www.matthewtancik.com/nerf))
-([Publication](https://arxiv.org/pdf/2003.08934.pdf))
+([Website](https://www.lerf.io/))
+([Publication](https://arxiv.org/pdf/2303.09553.pdf))
 <br>
-Researchers from UC Berkeley, Google Research, and San Diego developed Neural Radiance Fields (NeRFs), a technique to generate 3D representations of an object or scene from sparse 2D images by using advanced machine learning. The term “neural radiance field” describes the different elements in the technique. It is “neural” in that it uses a multilayer perceptron, an older neural network architecture, to represent the image. “Radiance” refers to the fact that this neural network models the brightness and color of rays of light from different perspectives. NeRFs can generate novel views of complex 3D scenes based on a partial set of 2D images and are trained to use a rendering loss to reproduce input views of a scene.
+Following the breakthrough of NeRFs, Researchers from UC Berkeley have developed a new technique called Language Embedded Radiance Fields (LERFs) that allows for open-ended language queries in 3D. LERFs ground language embeddings from off-the-shelf models like CLIP into NeRF to learn a dense, multi-scale language field. After optimization, LERF can extract 3D relevancy maps for a broad range of language prompts interactively in real-time. This has potential use cases in robotics, vision-language models, semantic scene understanding, and interacting with 3D scenes.
 
 <br>
 
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/JuH79E8rdKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/7Z2XqH40L08" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
 
