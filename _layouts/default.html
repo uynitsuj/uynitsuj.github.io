@@ -60,8 +60,8 @@
 
 <body style="background-color: #232323;">
   <div id="sidebar-toggle-wrapper">
-    <button id="sidebar-toggle"><img src="{{ site.url }}/images/menu.png" alt="buttonpng" height="38px"
-        width="40px" /></button>
+    <button id="sidebar-toggle"><img id="toggle-image" src="{{ site.url }}/images/left.png" alt="buttonpng"
+        height="38px" width="40px" /></button>
   </div>
   <div class="row">
     <div class="col s12 m3" id="sidebar-wrapper">
@@ -85,6 +85,7 @@
     var sidebarToggle = document.getElementById("sidebar-toggle");
     var sidebarToggleWrapper = document.getElementById("sidebar-toggle-wrapper");
     var postListingWrapper = document.getElementById("post-listing-wrapper");
+    var toggleImage = document.getElementById("toggle-image");
 
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
@@ -92,11 +93,13 @@
         sidebarToggleWrapper.style.cssText = "left: 23%;"
         postListingWrapper.classList.remove("full-width");
         postListingWrapper.style.cssText = "width: 75%;"
+        toggleImage.id = "{{ site.url }}/images/left.png"
       } else {
         sidebarWrapper.style.display = "none";
         sidebarToggleWrapper.style.cssText = "left: 0.3%;"
         postListingWrapper.classList.add("full-width");
         postListingWrapper.style.cssText = "width: 100%;"
+        toggleImage.id = "{{ site.url }}/images/right.png"
       }
     });
   </script>
