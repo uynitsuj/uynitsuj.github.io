@@ -287,7 +287,7 @@ The development and use of GPT-4 and its successors will undoubtedly have signif
 
 <br>
 
-The authors highlight that GPT-4 and its successors have the potential to revolutionize various sectors, including healthcare, education, engineering, and the arts and sciences. Applications and use cases will be introduced quickly and will be promoted by their creators. While well-matched applications promise to be valuable to people and society, other applications and use cases will be premature or poorly thought out, leading to poor designs, unexplored scenarios, poor considerations of reliability and failure modes, and inadequate consideration of influences and implications of how the applications may be used. Thus, it is important to consider both the potential benefits and the costs associated with this emerging technology, and to work proactively and reactively to mitigate the downsides.
+The authors highlight that GPT-4 and its successors have the potential to revolutionize various sectors, including healthcare, education, engineering, and the arts and sciences. Applications and use cases will be introduced at a rapid rate in the coming years and will be promoted by their creators. While well-matched applications promise to be valuable to people and society, other applications and use cases will be premature or poorly thought out, leading to poor designs, unexplored scenarios, poor considerations of reliability and failure modes, and inadequate consideration of influences and implications of how the applications may be used. 
 
 <br>
 
@@ -299,7 +299,7 @@ Moreover, shortcomings in the reliability of the system and biases that it learn
 
 <br>
 
-In addition, the impressive powers of GPT-4 and future iterations may create an "AI divide" between those who have access to the new powers and learn to leverage the capabilities of these models versus those who do not have access. Issues around privacy and provenance of human versus machine-generated content also need to be addressed.
+In addition, the impressive powers of GPT-4 and future iterations may contribute to an "AI divide" between those who have access to the new powers and can learn to leverage these models versus those who do not have access. Issues around privacy and provenance of human versus machine-generated content also need to be addressed.
 
 <br>
 
