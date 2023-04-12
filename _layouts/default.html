@@ -20,7 +20,7 @@
 
   #sidebar-toggle-wrapper {
     position: fixed;
-    left: 20%;
+    left: 21%;
     transform: translateY(-50%);
     z-index: 2;
   }
@@ -84,12 +84,12 @@
     sidebarToggle.addEventListener("click", function () {
       if (sidebarWrapper.style.display === "none") {
         sidebarWrapper.style.display = "block";
-        sidebarToggleWrapper.classList.remove("hidden");
+        sidebarToggleWrapper.style.cssText = "left: 21%;"
         postListingWrapper.classList.remove("full-width");
         sidebarToggle.textContent = "Hide Sidebar";
       } else {
         sidebarWrapper.style.display = "none";
-        sidebarToggleWrapper.classList.add("hidden");
+        sidebarToggleWrapper.style.cssText = "left: 0%;"
         postListingWrapper.classList.add("full-width");
         sidebarToggle.textContent = "Show Sidebar";
       }
