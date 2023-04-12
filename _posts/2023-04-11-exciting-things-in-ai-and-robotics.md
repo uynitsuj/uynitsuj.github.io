@@ -13,20 +13,45 @@ image: Post8/RT-1.png
 
 This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting.
 
-<br>
-<div align="center">*   *   *</div>
-<br>
-
 ### RT-1: Robotics Transformer
-It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called [RT-1](https://robotics-transformer.github.io/) that shows promising results. 
+([Website](https://robotics-transformer.github.io/))
+([Publication](https://arxiv.org/pdf/2212.06817.pdf))
+It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called RT-1 that shows promising results. 
 
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 
-### Generative Agents: Interactive Simulacra of Human Behavior
-Researchers have run a small game world simulation with GPT planning and controlling the character's actions and lives. Here’s a [Vice article](https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society) about it.
+### NeRF: Neural Radiance Fields
+([Website](https://www.matthewtancik.com/nerf))
+([Publication](https://arxiv.org/pdf/2003.08934.pdf))
+<br>
+Researchers from UC Berkeley, Google Research, and San Diego developed Neural Radiance Fields (NeRFs), a technique to generate 3D representations of an object or scene from sparse 2D images by using advanced machine learning. The term “neural radiance field” describes the different elements in the technique. It is “neural” in that it uses a multilayer perceptron, an older neural network architecture, to represent the image. “Radiance” refers to the fact that this neural network models the brightness and color of rays of light from different perspectives. NeRFs can generate novel views of complex 3D scenes based on a partial set of 2D images and are trained to use a rendering loss to reproduce input views of a scene.
 
+<br>
+
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/JuH79E8rdKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<br>
+
+### LERF: Language Embedded Radiance Fields
+([Website](https://www.matthewtancik.com/nerf))
+([Publication](https://arxiv.org/pdf/2003.08934.pdf))
+<br>
+Researchers from UC Berkeley, Google Research, and San Diego developed Neural Radiance Fields (NeRFs), a technique to generate 3D representations of an object or scene from sparse 2D images by using advanced machine learning. The term “neural radiance field” describes the different elements in the technique. It is “neural” in that it uses a multilayer perceptron, an older neural network architecture, to represent the image. “Radiance” refers to the fact that this neural network models the brightness and color of rays of light from different perspectives. NeRFs can generate novel views of complex 3D scenes based on a partial set of 2D images and are trained to use a rendering loss to reproduce input views of a scene.
+
+<br>
+
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/JuH79E8rdKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<br>
+
+
+### Generative Agents: Interactive Simulacra of Human Behavior
+([Article](https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society))
+([Publication](https://arxiv.org/pdf/2304.03442.pdf))
+<br>
+Researchers from Stanford and Google Research ran a small game world simulation with GPT planning and controlling the character's actions and lives.
 <br>
 
 <img src="/img/Post8/sim.png" alt= sim style="max-width:85%;height:auto">
@@ -34,7 +59,7 @@ Researchers have run a small game world simulation with GPT planning and control
 <br>
 
 
-This [paper](https://arxiv.org/pdf/2304.03442.pdf) by J. S. Park et al. introduces generative agents, which are computational software agents that simulate believable human behavior. The architecture of generative agents extends a large language model to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behavior. The authors instantiate generative agents to populate an interactive sandbox environment inspired by The Sims, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors. By fusing large language models with computational, interactive agents, this work introduces architectural and interaction patterns for enabling believable simulations of human behavior
+This paper introduces generative agents, which are computational software agents that simulate believable human behavior. The architecture of generative agents extends a large language model to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behavior. The authors instantiate generative agents to populate an interactive sandbox environment inspired by The Sims, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors. By fusing large language models with computational, interactive agents, this work introduces architectural and interaction patterns for enabling believable simulations of human behavior
 
 ### OpenAI Plugins
 This is somewhat of a direct follow-up to my *[GPT-4 Enters the Stone Age](https://uynitsuj.github.io/articles/2023-04/sparks-of-agi#gpt-4-enters-the-stone-age)* section from the Sparks of AGI post. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT [Plugins](https://platform.openai.com/docs/plugins/introduction). 
@@ -77,69 +102,4 @@ It is the responsibility of the creators of current and future intelligence mode
 https://openai.com/blog/planning-for-agi-and-beyond
 
 <br>
-
-In closing, I invite you to consider a dialogue generated by GPT-4 for reflection:
-
-<br>
-
-#### Prompt: 
-Plato’s Gorgias is a critique of rhetoric and sophistic oratory, where he makes the point that not only is it not a proper form of art, but the use of rhetoric and oratory can often be harmful and malicious. Can you write a dialogue by Plato where instead he criticizes the use of autoregressive language models?
-
-<br>
-
-#### GPT-4:
-**Socrates:** My friend, I am troubled by the recent rise of these so-called autoregressive
-language models.
-<br>
-
-**Aristotle:** What do you mean, Socrates? 
-<br>
-
-**Socrates:** I mean that these models are being used to generate text that appears to be written by humans, but is in fact produced by machines.
-<br>
-
-**Aristotle:** And what is the problem with that?
-<br>
-
-**Socrates:** The problem is that these models are being used to deceive people, to manipulate
-them, and to control them.
-<br>
-
-**Aristotle:** But surely there are some positive applications of these models as well?
-<br>
-
-**Socrates:** That may be, but I am still troubled by the potential for abuse. After all, a model that can generate text that is indistinguishable from that written by a human can be used to spread fake news, to impersonate others, and to create propaganda.
-<br>
-
-**Aristotle:** But isn’t that just a matter of how these models are used, not a problem with the
-models themselves? 
-<br>
-
-**Socrates:** I disagree. I believe these models are inherently problematic. They are a form
-of artifice, a way of creating the illusion of human thought and interaction. And as such,
-they can be used to deceive and manipulate in ways that are difficult to detect.
-<br>
-
-**Aristotle:** But isn’t that the same argument you made against rhetoric and oratory?
-<br>
-
-**Socrates:** Yes, and I stand by that argument as well. I believe that any form of art or communication that is designed to deceive or manipulate is inherently dangerous.
-<br>
-
-**Aristotle:** I see. Thank you for sharing your thoughts, Socrates.
-
-
-<br>
-
-
-
-
-
-
-
-
-
-
-
-
 
