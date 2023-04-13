@@ -51,7 +51,7 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 (<a href="https://rchalyang.github.io/NVM/" target="_blank">Website</a>)<br>
 (<a href="https://arxiv.org/pdf/2304.01201.pdf" target="_blank">Publication</a>)<br>
 <br>
-Researchers from UC San Diego, Institute of AI and Fundamental Interactions, and MIT CSAIL published a paper about a new approach to legged robot locomotion using a neural volumetric memory architecture (NVM). This approach accounts for the 3D geometry of the world and aggregates feature volumes from multiple camera views. The learned visual-locomotion policy was tested on a physical robot and showed improved performance over prior works on challenging terrains. The representation stored in the neural volumetric memory was also shown to capture sufficient geometric information to reconstruct the scene. 
+Researchers from UC San Diego, Institute of AI and Fundamental Interactions, and MIT CSAIL published a paper about a new approach to legged robot locomotion using a neural volumetric memory architecture (NVM). This approach accounts for the 3D geometry of the world and aggregates feature volumes from multiple camera views. The NVM architecture in this paper does this by applying 3D translations and rotations to the feature volumes from each camera view to bring them back to the ego-centric frame of the robot. This allows the system to create a more accurate and comprehensive representation of the environment. The representation stored in the neural volumetric memory was also shown to capture sufficient geometric information to reconstruct the scene. 
 
 <br>
 
