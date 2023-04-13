@@ -39,7 +39,7 @@ Researchers from UC Berkeley, Google Research, and San Diego developed Neural Ra
 (<a href="https://www.lerf.io/" target="_blank">Website</a>)<br>
 (<a href="https://arxiv.org/pdf/2303.09553.pdf" target="_blank">Publication</a>)<br>
 <br>
-Following the breakthrough of NeRFs, researchers from UC Berkeley have developed a new technique called Language Embedded Radiance Fields (LERFs) that allows for open-ended language queries in 3D scenes. LERFs ground language embeddings from off-the-shelf models like CLIP into NeRF to learn a dense, multi-scale language field. LERF can extract 3D relevancy maps for a broad range of natural language queries interactively in real-time. This has potential use cases in robotics, vision-language models, semantic scene understanding, and interacting with 3D scenes.
+Following the breakthrough of NeRFs, researchers from UC Berkeley have developed a new technique called Language Embedded Radiance Fields (LERFs) that allows for open-ended language queries in 3D scenes. LERFs ground language embeddings from off-the-shelf models like CLIP into NeRF to learn a dense, multi-scale language field. LERF can extract 3D relevancy maps for a broad range of natural language queries interactively in real-time. This provides exciting potential use cases in robotics, vision-language models, semantic scene understanding, and interacting with 3D scenes.
 
 <br>
 
