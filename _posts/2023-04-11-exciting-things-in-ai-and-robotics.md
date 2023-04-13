@@ -47,6 +47,18 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 
 <br>
 
+## Neural Volumetric Memory for Visual Locomotion Control
+(<a href="https://rchalyang.github.io/NVM/" target="_blank">Website</a>)<br>
+(<a href="https://arxiv.org/pdf/2304.01201.pdf" target="_blank">Publication</a>)<br>
+<br>
+Researchers from UC San Diego, Institute of AI and Fundamental Interactions, and MIT CSAIL published a paper about a new approach to legged robot locomotion using a neural volumetric memory architecture (NVM). This approach accounts for the 3D geometry of the world and aggregates feature volumes from multiple camera views. The learned visual-locomotion policy was tested on a physical robot and showed improved performance over prior works on challenging terrains. The representation stored in the neural volumetric memory was also shown to capture sufficient geometric information to reconstruct the scene. 
+
+<br>
+
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/vJdt610GSGk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<br>
+
 ## Generative Agents: Interactive Simulacra of Human Behavior
 (<a href="https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society" target="_blank">Article</a>)<br>
 (<a href="https://arxiv.org/pdf/2304.03442.pdf" target="_blank">Publication</a>)<br>
