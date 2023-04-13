@@ -5,7 +5,8 @@
   <div class="timeline" id="timeline">
     {% for education in site.data.index.education %}
     <div class="archive-title bio">
-      <div class="archive-year"><strong>{{ education.date }}</strong> <a href="{{ education.link }}">{{ education.name
+      <div class="archive-year"><strong>{{ education.date }}</strong> <a href="{{ education.link }}" target="_blank">{{
+          education.name
           }}</a></div>
     </div>
     {% endfor %}
