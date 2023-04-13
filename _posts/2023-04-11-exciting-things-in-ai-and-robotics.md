@@ -13,11 +13,21 @@ image: Post8/RT-1.png
 
 This post will be dedicated to recent developments in the fields of AI and Robotics that I feel are worth highlighting. 
 
+## Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
+(<a href="https://say-can.github.io/" target="_blank">Website</a>)<br>
+(<a href="https://say-can.github.io/assets/palm_saycan.pdf" target="_blank">Publication</a>)<br>
+<br>
+Researchers from Google introduce SayCan, a robot control method that uses a large language model (LLM) to plan a sequence of robotic actions to achieve a user-specified goal. It works by grounding language models in robotic affordances and leveraging few-shot prompting to break down a long-horizon task expressed in natural language into a sequence of low-level skills. Each of the robot’s skills has a textual description that the LLM can use to compute its probability of fulfilling a step, as well as a value function that indicates how likely the skill is to succeed given the current state of the world. SayCan then combines these two probabilities to choose the next action.
+
+<br>
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/ysFav0b472w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<br>
+
 ## RT-1: Robotics Transformer
 (<a href="https://robotics-transformer.github.io/" target="_blank">Website</a>)<br>
 (<a href="https://arxiv.org/pdf/2212.06817.pdf" target="_blank">Publication</a>)<br>
 <br>
-It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called RT-1 that shows promising results. RT-1 takes a short sequence of images and a task description in natural language as input and outputs an action for the robot to execute at each time step. The images and text are processed via a pretrained convolutional neural network to extract visual features that are relevant to the requested task. This is followed by a module that computes a set of tokens, processes these tokens with a Transformer model, and generates a discretized action plan.
+It should be no surprise that roboticists are researching ways to leverage the Transformer models for high-level robot control. Researchers at Google have developed a new model called RT-1 that uses SayCan to enable long-horizon, mobile manipulation tasks. RT-1 takes a short sequence of images and a task description in natural language as input and outputs an action for the robot to execute at each time step. The images and text are processed via a pretrained convolutional neural network to extract visual features that are relevant to the requested task. This is followed by a module that computes a set of tokens, processes these tokens with a Transformer model, and generates a discretized action plan.
 
 <br>
 <div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
