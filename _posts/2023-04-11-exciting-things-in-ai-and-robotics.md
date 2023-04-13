@@ -81,7 +81,7 @@ Researchers from Stanford and Google Research ran a small game world simulation 
 
 <br>
 
-This paper introduces generative agents, which are computational software agents that simulate believable human behavior. The architecture of generative agents extends an LLM to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behaviors. The authors populate an interactive sandbox environment inspired by The Sims with generative agents, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors. By fusing LLMs with computational, interactive agents, this work introduces architectural and interaction patterns for enabling believable simulations of human behavior.
+This paper introduces generative agents, which are computational software agents that simulate believable human behavior. The architecture of generative agents extends an LLM to store a complete record of the agent’s experiences using natural language, synthesize those memories over time into higher-level reflections, and retrieve them dynamically to plan behaviors. The authors populate an interactive sandbox environment inspired by The Sims with generative agents, where end users can interact with a small town of twenty-five agents using natural language. In an evaluation, these generative agents produce believable individual and emergent social behaviors.
 
 ## Vicuna: An Open-Source Chatbot Impressing GPT-4 with 90% ChatGPT Quality
 (<a href="https://vicuna.lmsys.org/" target="_blank">Website</a>)<br>
