@@ -47,7 +47,6 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 
 <br>
 
-
 ## Generative Agents: Interactive Simulacra of Human Behavior
 (<a href="https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society" target="_blank">Article</a>)<br>
 (<a href="https://arxiv.org/pdf/2304.03442.pdf" target="_blank">Publication</a>)<br>
