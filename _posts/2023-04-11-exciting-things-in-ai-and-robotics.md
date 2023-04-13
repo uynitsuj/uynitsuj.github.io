@@ -11,7 +11,7 @@ image: Post8/RT-1.png
 <br>
 <br>
 
-This post will be dedicated to discussing recent developments in the fields of AI and Robotics that I feel are worth highlighting. 
+This post will be dedicated to recent developments in the fields of AI and Robotics that I feel are worth highlighting. 
 
 ## RT-1: Robotics Transformer
 (<a href="https://robotics-transformer.github.io/" target="_blank">Website</a>)<br>
