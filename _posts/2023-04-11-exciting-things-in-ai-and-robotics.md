@@ -64,6 +64,7 @@ Researchers from UC San Diego, Institute of AI and Fundamental Interactions, and
 (<a href="https://arxiv.org/pdf/2304.03442.pdf" target="_blank">Publication</a>)<br>
 <br>
 Researchers from Stanford and Google Research ran a small game world simulation with GPT planning and controlling the character's actions and lives.
+
 <br>
 
 <img src="/img/Post8/sim.png" alt= sim style="max-width:85%;height:auto">
@@ -74,14 +75,9 @@ This paper introduces generative agents, which are computational software agents
 
 ## Vicuna: An Open-Source Chatbot Impressing GPT-4 with 90% ChatGPT Quality
 (<a href="https://vicuna.lmsys.org/" target="_blank">Website</a>)<br>
-(<a href="https://arxiv.org/pdf/2304.01201.pdf" target="_blank">Publication</a>)<br>
 <br>
 
-A team with members from UC Berkeley, CMU, Stanford, and UC San Diego introduce Vicuna-13B, an open-source chatbot trained by fine-tuning [LLaMA](https://ai.facebook.com/blog/large-language-model-llama-meta-ai/) on user-shared conversations collected from ShareGPT. Preliminary evaluation shows that Vicuna-13B achieves high quality compared to other models and the cost of training is around $300. The training and serving code, as well as an online demo, are available for non-commercial use. After fine-tuning with 70K user-shared ChatGPT conversations, Vicuna becomes capable of generating more detailed and well-structured answers compared to Alpaca, with quality on par with ChatGPT.
-
-<br>
-
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/vJdt610GSGk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+A team with members from UC Berkeley, CMU, Stanford, and UC San Diego introduce Vicuna-13B, an open-source chatbot trained by fine-tuning [LLaMA](https://ai.facebook.com/blog/large-language-model-llama-meta-ai/) on user-shared conversations collected from ShareGPT. Preliminary evaluation shows that Vicuna-13B achieves high quality compared to other models and the cost of training is around $300. The training and serving code, as well as an online demo, are available for non-commercial use. After fine-tuning with 70K user-shared ChatGPT conversations, Vicuna becomes capable of generating more detailed and well-structured answers compared to [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html), with quality on par with ChatGPT.
 
 <br>
 
