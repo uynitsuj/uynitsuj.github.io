@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Exciting Things in AI and Robotics Research"
+title:  "Exciting Things in AI/Robotics Research"
 excerpt: "Recent publications and developments worth highlighting"
 categories: [post]
 image: Post8/RT-1.png
@@ -11,7 +11,7 @@ image: Post8/RT-1.png
 <br>
 <br>
 
-This post will be dedicated to recent developments in the fields of AI and Robotics that I feel are worth highlighting. 
+This post will be dedicated to recent developments in the fields of AI and intelligent robotics that I feel are worth highlighting. 
 
 ## Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
 (<a href="https://say-can.github.io/" target="_blank">Website</a>)<br>
