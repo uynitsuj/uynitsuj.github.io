@@ -87,7 +87,7 @@ This paper introduces generative agents, which are computational software agents
 (<a href="https://vicuna.lmsys.org/" target="_blank">Website</a>)<br>
 <br>
 
-A team with members from UC Berkeley, CMU, Stanford, and UC San Diego introduce Vicuna-13B, an open-source chatbot trained by fine-tuning [LLaMA](https://ai.facebook.com/blog/large-language-model-llama-meta-ai/) on user-shared conversations collected from [ShareGPT](https://sharegpt.com/). Preliminary evaluation shows that Vicuna-13B achieves high quality compared to other models and the cost of training is around $300. The training code, as well as an online demo, are available for non-commercial use. After fine-tuning with 70K user-shared ChatGPT conversations, Vicuna becomes capable of generating more detailed and well-structured answers compared to [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html), with quality on par with ChatGPT.
+A team with members from UC Berkeley, CMU, Stanford, and UC San Diego introduce Vicuna-13B, an open-source chatbot trained by fine-tuning [LLaMA](https://ai.facebook.com/blog/large-language-model-llama-meta-ai/) on user-shared conversations collected from [ShareGPT](https://sharegpt.com/). Preliminary evaluation shows that Vicuna-13B achieves high quality compared to other models and the cost of training is around $300. The code and training data are available for non-commercial use. After fine-tuning with 70K user-shared ChatGPT conversations, Vicuna becomes capable of generating more detailed and well-structured answers compared to [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html), with quality on par with ChatGPT.
 
 <br>
 
