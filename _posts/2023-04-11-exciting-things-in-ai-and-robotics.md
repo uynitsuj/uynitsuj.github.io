@@ -57,6 +57,19 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 
 <br>
 
+## DreamFusion: Text-to-3D using 2D Diffusion
+(<a href="https://dreamfusion3d.github.io/" target="_blank">Website</a>)<br>
+(<a href="https://arxiv.org/pdf/2209.14988.pdf" target="_blank">Paper</a>)<br>
+<br>
+Diffusion has come a long way. Researchers from Google and UC Berkeley have developed a new method for turning natural language text prompts into 3D models using existing Diffusion technology designed for 2D images. They use a technique called "probability density distillation" to adapt a pre-trained 2D text-to-image model for creating 3D models. By optimizing a 3D model (a NeRF actually), they can generate 3D models that can be viewed from any angle and lit by various light sources. This approach does not require 3D training data or changes to the original 2D image model, showing the potential of using pre-trained 2D image models for 3D synthesis.
+
+<br>
+
+<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/zWD5ZR5GtJM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<br>
+
+
 ## Neural Volumetric Memory for Visual Locomotion Control
 (<a href="https://rchalyang.github.io/NVM/" target="_blank">Website</a>)<br>
 (<a href="https://arxiv.org/pdf/2304.01201.pdf" target="_blank">Paper</a>)<br>
