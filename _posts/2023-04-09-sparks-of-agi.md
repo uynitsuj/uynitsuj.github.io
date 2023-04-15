@@ -48,7 +48,7 @@ The standard approach in evaluating a machine learning model is to test the syst
 
 For GPT-4 however, the authors identify two primary reasons why this methodology is not suitable: 
 1. The authors lack access to GPT-4's full training data, which means they must assume it has potentially seen every existing benchmark or similar data, and 
-2. GPT-4's intelligence is characterized by its generality and ability to understand and connect any topic, performing tasks beyond the scope of narrow AI systems. Traditional benchmarks struggle to evaluate the intelligence metric adequately. 
+2. GPT-4's intelligence is characterized by its generality and ability to understand and connect any topic, performing tasks beyond the scope of narrow AI systems. Traditional benchmarks struggle to evaluate the intelligence metric adequately. However, this is exactly the metric the authors wish to investigate.
 
 <br>
 
