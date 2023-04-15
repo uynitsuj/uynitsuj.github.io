@@ -296,7 +296,7 @@ Unlike humans, who can use a scratchpad to work through problems step by step, t
 
 <br>
 
-The authors then discuss further limitations of text generation models in tackling *incremental and discontinuous tasks*. Incremental tasks are those that can be solved gradually, by adding one word or sentence at a time, and do not require any major conceptual shifts or insights. Examples of such tasks include answering factual questions or solving a math problem that follows a standard procedure. Text generation models appear to handle incremental tasks well, relying on existing knowledge and skills to produce content.
+The authors then discuss how text generation models achieve relative success in *incremental tasks*, but are less proficient in tackling *discontinuous tasks*. Incremental tasks are those that can be solved gradually, by adding one word or sentence at a time, and do not require any major conceptual shifts or insights. Examples of such tasks include answering factual questions or solving a math problem that follows a standard procedure. Text generation models appear to handle incremental tasks well, relying on existing knowledge and skills to produce content.
 
 <br>
 
