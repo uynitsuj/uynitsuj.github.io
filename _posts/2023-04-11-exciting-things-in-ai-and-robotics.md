@@ -117,7 +117,7 @@ It makes sense to release internet search functionality through Plugins in a con
 
 <br>
 
-## OpenAI's Sam Altman’s Blog Post on Planning for AGI and Beyond
+## OpenAI's Sam Altman Blog Post on Planning for AGI and Beyond
 (<a href="https://openai.com/blog/planning-for-agi-and-beyond" target="_blank">Post</a>)<br>
 
 <br>
