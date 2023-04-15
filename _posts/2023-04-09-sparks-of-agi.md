@@ -300,11 +300,7 @@ The authors then discuss how text generation models achieve relative success in 
 
 <br>
 
-However, text generation models face limitations when it comes to discontinuous tasks, which require a certain "Eureka" moment or creative leap to make progress towards a solution. 
-
-<br>
-
-The content generation process involves discovering or inventing a new way of looking at or framing the problem. Examples of such tasks include solving a math problem that requires a novel application of a formula, writing a joke or a riddle, creating a new genre or style of writing, or developing a scientific hypothesis or a philosophical argument. Text generation models struggle at such tasks, as they *lack the ability* to make these creative leaps.
+However, text generation models face limitations when it comes to discontinuous tasks, which require a certain "Eureka" moment or creative leap to make progress towards a solution. Examples of such tasks include solving a math problem that requires a novel application of a formula, writing a joke or a riddle, creating a new genre or style of writing, or developing a scientific hypothesis or a philosophical argument. Text generation models struggle at such tasks, as they currently *lack the ability* to make these creative leaps.
 
 <br>
 
