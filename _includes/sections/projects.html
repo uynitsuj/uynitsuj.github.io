@@ -9,8 +9,8 @@
                 style="max-height:400px;max-width:80%;border-radius:18px"></p>
 
         {% if project.youtube %}
-        <p align=" center"><iframe style="height:380px;width:80%" src=" {{ project.youtube }}" frameborder="0"
-                allow="autoplay; encrypted-media" allowfullscreen>
+        <p align=" center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px" src=" {{ project.youtube }}"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
             </iframe></p>
         {% endif %}
 
