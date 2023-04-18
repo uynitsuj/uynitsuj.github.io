@@ -12,7 +12,7 @@ A little under three weeks ago, the team at Microsoft Research responsible for i
 The first author, Sébastien Bubeck, gave a talk of the same name at CSAIL MIT on the same day the paper was published (22nd of March). If you have 50 minutes to spare, I highly recommend viewing the recording as an abridged version of the paper's findings.
 
 <br>
-<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:80%;height:400px"  src="https://www.youtube.com/embed/qbIk7-JPB2c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
 
