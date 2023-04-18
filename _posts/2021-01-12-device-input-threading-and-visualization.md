@@ -46,11 +46,11 @@ While I was developing my visualization, I realized that I had a problem. I had 
 <br>
 
 Here's where I am at currently:
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/fkbPEBkFw38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/fkbPEBkFw38" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/RiKDt2fboVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/RiKDt2fboVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/Qadp65k-Nd0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/Qadp65k-Nd0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 <div align="center">
   <img src="{{ site.url }}/img/gallery/QIKstress.gif" alt="IK" width="800px">

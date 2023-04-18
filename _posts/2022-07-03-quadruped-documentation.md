@@ -104,7 +104,7 @@ If you’d like to view the input event stream to verify the connection:
 * Run **sudo jstest \[Joystick Device\]**.
 * The stream should immediately begin populating the terminal. Moving joystick tabs or pressing buttons should cause the stream to update with new values.
 
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/fIgTX0zC1i0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/fIgTX0zC1i0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 Just rebooted and did not achieve a undervoltage warning. Leads me to believe that the issue does lie in some transient behavior upon boot-up. Power supply circuit will be replaced anyway because the replacement seems more robust in all aspects. 
 
@@ -124,4 +124,4 @@ Just found out about a 3A, Synchronous Step-Down Converter IC from (RT8299ZQW) w
 
 Untethered operation achieved!
 
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/M4QWi-B-I3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/M4QWi-B-I3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>

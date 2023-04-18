@@ -20,7 +20,7 @@ This post will be dedicated to recent developments in the fields of AI and intel
 Researchers from Google introduce SayCan, a robot control framework that uses a large language model (LLM) to plan a sequence of robotic actions to achieve a user-specified goal. It works by [grounding](http://www.scholarpedia.org/article/Symbol_grounding_problem) language models in robotic [affordances](https://www.interaction-design.org/literature/topics/affordances) and leveraging [few-shot](https://www.techopedia.com/definition/34949/zero-shot-one-shot-few-shot-learning) prompting to break down a long-horizon task expressed in natural language into a sequence of low-level skills. Each of the robot’s skills has a textual description that the LLM can use to compute its probability of fulfilling a step (language score), as well as a value function that indicates how likely the skill is to succeed given the current state of the world (affordance score). SayCan then combines these two scores for each skill and ranks them to choose the next action.
 
 <br>
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/ysFav0b472w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/ysFav0b472w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 
 ## RT-1: Robotics Transformer
@@ -30,7 +30,7 @@ Researchers from Google introduce SayCan, a robot control framework that uses a 
 It should be no surprise that roboticists are researching ways to leverage the [Transformer models](https://blogs.nvidia.com/blog/2022/03/25/what-is-a-transformer-model/) for high-level robot control. Researchers at Google have developed a new model called RT-1 that uses the SayCan framework to enable long-horizon, mobile manipulation tasks. RT-1 takes a short sequence of images and a task description in natural language as input and outputs an action for the robot to execute at each time step. The images and text are processed via a pretrained convolutional neural network to extract visual features that are relevant to the requested task. This is followed by a module that computes a set of tokens, processes these tokens with a Transformer model, and generates a discretized action plan. In the website, they show an example video showing how ([PaLM](https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html))-SayCan-RT1 can be used to plan and execute ultra-long horizon tasks, with as many as 50 steps. The task "Bring me the rice chips from the drawer" is executed in an office kitchen that the robot has never seen before.
 
 <br>
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/UuKAp9a6wMs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <br>
 
 ## NeRF: Neural Radiance Fields
@@ -41,7 +41,7 @@ Researchers from UC Berkeley, Google Research, and San Diego developed Neural Ra
 
 <br>
 
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/JuH79E8rdKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/JuH79E8rdKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
 
@@ -53,7 +53,7 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 
 <br>
 
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/7Z2XqH40L08" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/7Z2XqH40L08" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
 
@@ -65,7 +65,7 @@ Diffusion has come a long way. Researchers from Google and UC Berkeley have deve
 
 <br>
 
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/zWD5ZR5GtJM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/zWD5ZR5GtJM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
 
@@ -78,7 +78,7 @@ Researchers from UC San Diego, Institute of AI and Fundamental Interactions, and
 
 <br>
 
-<div align="center"><iframe style="height:380px;width:80%" src="https://www.youtube.com/embed/vJdt610GSGk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div align="center"><iframe style="aspect-ratio: 16 / 9; max-width:60%;height:400px"  src="https://www.youtube.com/embed/vJdt610GSGk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <br>
 
