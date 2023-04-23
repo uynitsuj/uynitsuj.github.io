@@ -244,7 +244,7 @@ In another example, GPT-4 demonstrates its ability to execute non-trivial Python
 
 
 ### GPT-4 Enters the Stone Age
-Some of GPT-4’s primary weaknesses include a lack of up-to-date world knowledge, difficulty with symbolic operations such as math, and an inability to execute code in actual compilers. GPT-4 relies on outdated information to answer a question and struggles to perform accurate operations for other questions, similar to the shortcomings observed in ChatGPT.
+Some of GPT-4’s primary weaknesses include a lack of up-to-date world knowledge, difficulty with symbolic operations such as math, and an inability to compile or execute code natively. GPT-4 relies on outdated information to answer a question and struggles to perform accurate operations for other questions, similar to the shortcomings observed in ChatGPT.
 
 <br>
 
