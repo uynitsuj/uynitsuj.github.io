@@ -19,9 +19,8 @@ layout: default
             {% if post.categories.size > 0 %}
             •
             {% for cat in post.categories %}
-            <!--<a class="post-cat" href="{{ site.url }}/categories/#{{ cat }}">{{ cat }}</a>-->
-            <p style="text-transform: uppercase;
-                color: #5dc294e6;display:inline;">{{ cat }}</p>
+            <span class="post-cat"> {{ cat }}
+            </span>
             {% unless forloop.last %}
             <span>/</span>
             {% endunless %}
