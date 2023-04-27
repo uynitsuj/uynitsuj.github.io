@@ -20,11 +20,13 @@
             <!-- LINKS -->
             {% if project.youtube %}
             <a href="{{ project.youtube }} " target="_blank"><i class="fa fa-fw fa-youtube"></i>Video</a>
+            {% if project.website or project.github %} / {% endif %}
             {% endif %}
             {% if project.website %}
             <a href="{{ project.website }} " target="_blank"><i class="fa fa-fw fa-home"></i>Homepage</a>
             {% endif %}
             {% if project.github %}
+            {% if project.youtube or project.website %} / {% endif %}
             <a href="{{ project.github }} " target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
             {% endif %}
             <br>
