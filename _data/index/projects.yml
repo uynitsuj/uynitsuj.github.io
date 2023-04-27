@@ -1,10 +1,3 @@
-- name: "Dead Reckoning for Robotics In Field Time (DRIFT): A Symmetry-Preserving Filter Based Mobile Robot State Estimator Library"
-  descr: "<b>Affiliation/Role: Researcher and Software Developer for Computational Autonomy and Robotics Laboratory</b><br> 
-  Dead Reckoning for Robotics In Field Time (DRIFT) is an open-source C++ software library designed to provide accurate and high-frequency state estimation for a variety of grounded mobile robot architectures, including legged and wheeled platforms. Leveraging symmetry-preserving filters such as Invariant extended Kalman filtering (InEKF), this modular library empowers roboticists and engineers with a robust and adaptable tool to estimate instantaneous local pose and velocity in diverse environments. The software is structured in a modular fashion, allowing users to define their own sensor types, and propagation and correction methods, offering a high degree of customization."
-  image: DRIFT.png
-  github: https://github.com/UMich-CURLY/curly_state_estimator
-  website: https://umich-curly.github.io/DRIFT_Website/
-
 - name: 2023 Michigan Mars Rover - Dahlia
   descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> Dahlia received a System Acceptance Review score of 92.21/100!"
   image: Dahlia.png
@@ -26,13 +19,6 @@
   image: QPRev2.png
   youtube: https://www.youtube.com/embed/zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
-
-- name: Legged Robot State Estimation via Invariant Extended Kalman Filtering and Deep Learning Contact Events
-  descr: "<b>Affiliation/Role: Researcher and Hardware Designer for Computational Autonomy and Robotics Laboratory</b><br> 
-  The deep learning contact estimator takes in proprioceptive measurements from a quadruped robot and estimates the instantaneous ground contact state of the robot with a convolutional neural network (CNN). An additional sensor suite was designed to provide experimental groundtruth using a visual odometry comparison (ORB-SLAM 2), and to generally augment autonomous capabilities of the MIT Minicheetah. It houses and protects a vision system along with the NVIDIA Jetson Xavier used for the experiment's contact estimator. The sensor suite platorm has been made public for all other Minicheetah groups to take advantage of."
-  image: MiniCheetah063021.png
-  github: https://github.com/UMich-CURLY/deep-contact-estimator
-  youtube: https://www.youtube.com/embed/oVbP-Y8xT_E
 
 - name: 3D-Printed 6DoF Robotic Arm
   descr: "<b>Affiliation/Role: System Designer</b><br>
