@@ -1,29 +1,29 @@
 - name: 3D-Printed Quadrupedal Robot
   descr: "Personal project to build a quadrupedal robot from scratch. Work in progress."
   image: QPRev2.png
-  youtube: https://www.youtube.com/embed/zvvzg43DtZo
+  youtube: https://www.youtube.com/watch?v=zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
 
 - name: 3D-Printed 6DoF Robotic Arm
   descr: "Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from scratch."
   image: ezgif-4-f28f910a4123.gif
   github: https://github.com/uynitsuj/Open6R_ARM
-  youtube: https://www.youtube.com/embed/CedyWQmqiJ0
+  youtube: https://www.youtube.com/watch?v=CedyWQmqiJ0
 
 - name: 2023 Michigan Mars Rover - Dahlia
   descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br>Dahlia received a System Acceptance Review score of 92.21/100!"
   image: Dahlia.png
-  youtube: https://www.youtube.com/embed/xKBLp-un0XE
+  youtube: https://www.youtube.com/watch?v=xKBLp-un0XE
 
 - name: 2022 Michigan Mars Rover - Rosie
   descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br>Rosie received a System Acceptance Review score of 90.97/100 and finished FIRST PLACE at the URC and CIRC competitions!"
   image: ROSIE.jpg
-  youtube: https://www.youtube.com/embed/tp6KY05bgjM
+  youtube: https://www.youtube.com/watch?v=tp6KY05bgjM
 
 - name: 2021 Michigan Mars Rover - Blue
   descr: "<b>Affiliation/Role: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br>Though in-person competition was cancelled due to the pandemic, we were still judged on our submission, receiving a System Acceptance Review score of 93.09/100!"
   image: SAR-Blue.jpg
-  youtube: https://www.youtube.com/embed/YMYH7ZxkKZw
+  youtube: https://www.youtube.com/watch?v=YMYH7ZxkKZw
 
 - name: Elevated Robotic Assistive Device
   descr: "<b>Affiliation/Role: Co-Designer and Mechanical Systems Designer</b><br>
@@ -35,13 +35,13 @@
   descr: "<b>Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. </b><br>
   Cheems is a transforming arm robot with a ball shooter at the end of the large arm. Unfortunately, the season was cut short due to the pandemic."
   image: 2020.jpg
-  youtube: https://www.youtube.com/embed/iFeYwJSkDD8
+  youtube: https://www.youtube.com/watch?v=iFeYwJSkDD8
 
 - name: 2019 FRC Robot - Gromit
   descr: "<b>Affiliation/Role: Head of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. </b><br>
   Gromit ranked 1st seed at Monterey Bay Regional and advanced to become an Alliance Captain at the FRC World Championship in Houston."
   image: 2019.png
-  youtube: https://www.youtube.com/embed/Om-zphL8QiI
+  youtube: https://www.youtube.com/watch?v=Om-zphL8QiI
 
 - name: 2018 FRC Robot - Guido
   descr: "<b>Affiliation/Role: Member of Mechanical Design and Fabrication for Team 3128, the Aluminum Narwhals. </b><br>
