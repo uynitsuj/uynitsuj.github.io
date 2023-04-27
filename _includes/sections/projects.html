@@ -1,5 +1,5 @@
 <h1><span data-i18n="skills.my_skills">Projects</span></h1>
-
+<!--
 {% for project in site.data.index.projects %}
 <div class="row">
     <div class="col">
@@ -25,6 +25,46 @@
         <br>
 
 
+    </div>
+</div>
+<hr>
+{% endfor %}-->
+
+{% for project in site.data.index.projects %}
+<div class="row">
+    <div class="col">
+        <div class="col m5" style="float:middle">
+            <img align="middle" class="hidden-md" style="margin:auto;border-radius:9px;display:block"
+                src="{{ site.url }}/img/robots/{{ project.image }}" alt="{{ site.url }}/img/robots/{{ project.image }}"
+                height="260">
+        </div>
+        <div class="col m6">
+            <!-- TITLE -->
+            <h4 style="margin: 0">{{ project.name }}</h4>
+            <!-- AUTHORS -->
+            <br>
+            <!-- <br> -->
+            <!-- CONFERENCE -->
+            <!-- Submitted to <em>ICRA</em> 2023 -->
+            <!-- LINKS -->
+            <p style="margin:10px;"></p>
+            <!--CoRL 2021 - <a href="https://arxiv.org/abs/2106.15713" target="_blank">arXiv</a> / <a
+                href="https://www.youtube.com/watch?v=oVbP-Y8xT_E" target="_blank">Video</a>
+            <p></p>-->
+            <!-- SUMMARY -->
+            <p style="margin: 0">{{ project.descr }}</p>
+
+            {% if project.youtube %}
+            <a href="{{ project.youtube }} " target="_blank"><i class="fa fa-fw fa-youtube"></i>Video</a>
+            {% endif %}
+            {% if project.website %}
+            <a href="{{ project.website }} " target="_blank"><i class="fa fa-fw fa-home"></i>Homepage</a>
+            {% endif %}
+            {% if project.github %}
+            <a href="{{ project.github }} " target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+            {% endif %}
+            <br>
+        </div>
     </div>
 </div>
 <hr>
