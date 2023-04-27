@@ -31,8 +31,8 @@ Researchers from Google introduce SayCan, a robot control framework that uses a 
 
 ## RT-1: Robotics Transformer
 <b><a href="https://robotics-transformer.github.io/" target="_blank"><i
-                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
-                    src="https://arxiv.org/abs/2212.06817" alt="A " style="
+                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2212.06817" target="_blank"><img
+                    src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
                             height: 1em;
                             margin: 0px;
                             vertical-align: middle;
@@ -47,8 +47,8 @@ It should be no surprise that roboticists are researching ways to leverage the [
 
 ## NeRF: Neural Radiance Fields
 <b><a href="https://www.matthewtancik.com/nerf" target="_blank"><i
-                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
-                    src="https://arxiv.org/abs/2003.08934" alt="A " style="
+                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2003.08934" target="_blank"><img
+                    src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
                             height: 1em;
                             margin: 0px;
                             vertical-align: middle;
@@ -65,8 +65,8 @@ Researchers from UC Berkeley, Google Research, and San Diego developed Neural Ra
 
 ## LERF: Language Embedded Radiance Fields
 <b><a href="https://www.lerf.io/" target="_blank"><i
-                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
-                    src="https://arxiv.org/abs/2303.09553" alt="A " style="
+                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2303.09553" target="_blank"><img
+                    src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
                             height: 1em;
                             margin: 0px;
                             vertical-align: middle;
@@ -83,8 +83,8 @@ Following the breakthrough of NeRFs, researchers from UC Berkeley have developed
 
 ## DreamFusion: Text-to-3D using 2D Diffusion
 <b><a href="https://dreamfusion3d.github.io/" target="_blank"><i
-                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
-                    src="https://arxiv.org/abs/2209.14988" alt="A " style="
+                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2209.14988" target="_blank"><img
+                    src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
                             height: 1em;
                             margin: 0px;
                             vertical-align: middle;
@@ -102,8 +102,8 @@ Diffusion has come a long way. Researchers from Google and UC Berkeley have deve
 
 ## Neural Volumetric Memory for Visual Locomotion Control
 <b><a href="https://rchalyang.github.io/NVM/" target="_blank"><i
-                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
-                    src="https://arxiv.org/abs/2304.01201" alt="A " style="
+                    class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2304.01201" target="_blank"><img
+                    src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
                             height: 1em;
                             margin: 0px;
                             vertical-align: middle;
@@ -120,8 +120,8 @@ Researchers from UC San Diego, Institute of AI and Fundamental Interactions, and
 
 ## Generative Agents: Interactive Simulacra of Human Behavior
 <b><a href="https://www.vice.com/en/article/z3mvj3/" target="_blank"><i
-                    class="fa-solid fa-newspaper"></i> Article</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
-                    src="ttps://arxiv.org/abs/2304.03442" alt="A " style="
+                    class="fa-solid fa-newspaper"></i> Article</a> / <a href="https://arxiv.org/abs/2304.03442" target="_blank"><img
+                    src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
                             height: 1em;
                             margin: 0px;
                             vertical-align: middle;
