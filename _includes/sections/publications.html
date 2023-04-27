@@ -1,0 +1,40 @@
+<h1><span data-i18n="skills.my_skills">Publications</span></h1>
+
+<p>⚙️ Under construction ⚙️</p>
+
+{% for pub in site.data.index.publications %}
+<div class="row">
+    <div class="col">
+        <td style="padding:20px;width:25%;vertical-align:middle">
+            <!-- IMAGES -->
+            <div class="one">
+                <div class="two" id="lerf_under" style="opacity: 0;">
+                    <img src="{{ site.url }}/img/{{ pub.image }}" width="180">
+                </div>
+            </div>
+
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+            <!-- TITLE -->
+            <papertitle>{{ pub.title }}</papertitle>
+            <br>
+            <!-- AUTHORS -->
+            {{ pub.authors }}
+            <br>
+            <!-- <br> -->
+            <!-- CONFERENCE -->
+            <!-- Submitted to <em>ICRA</em> 2023 -->
+            <!-- LINKS -->
+            <br>
+            <a href="{{ pub.pub }}">Paper</a> {% if pub.website %} / <a href="{{ pub.website }}">Website</a>{% endif %}
+            <p></p>
+            <!-- SUMMARY -->
+            {% if pub.desc %}
+            {{ pub.desc }}
+            {% endif %}
+        </td>
+
+    </div>
+</div>
+<hr>
+{% endfor %}
