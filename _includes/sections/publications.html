@@ -5,16 +5,14 @@
 {% for pub in site.data.index.publications %}
 <div class="row">
     <div class="col">
-        <td style="padding:20px;width:25%;vertical-align:middle">
-            <!-- IMAGES -->
-            <div class="one">
-                <img src="{{ site.url }}/img/pub/{{ pub.image }}" width="250">
-            </div>
-
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
+        <div class="col m6" style="float:left">{% if pub.image %}
+            <img align="right" class="hidden-md" style="margin-left:10px;border-radius:25px;padding-bottom:3px"
+                src="{{ site.url }}/img/pub/{{ pub.image }}" alt="{{ site.url }}/img/pub/{{ pub.image }}" height="280">
+            {% endif %}
+        </div>
+        <div class="col m6">
             <!-- TITLE -->
-            <papertitle>{{ pub.title }}</papertitle>
+            <h2 style="margin: 0">{{ pub.title }}</h2>
             <br>
             <!-- AUTHORS -->
             {{ pub.authors }}
@@ -23,15 +21,13 @@
             <!-- CONFERENCE -->
             <!-- Submitted to <em>ICRA</em> 2023 -->
             <!-- LINKS -->
-            <br>
             <a href="{{ pub.pub }}">Paper</a> {% if pub.website %} / <a href="{{ pub.website }}">Website</a>{% endif %}
             <p></p>
             <!-- SUMMARY -->
             {% if pub.desc %}
             {{ pub.desc }}
             {% endif %}
-        </td>
-
+        </div>
     </div>
 </div>
 <hr>
