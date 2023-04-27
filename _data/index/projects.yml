@@ -1,13 +1,11 @@
 - name: 3D-Printed Quadrupedal Robot
-  descr: "<b>Affiliation/Role: System Designer</b><br> 
-  Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
+  descr: "<b>Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
   image: QPRev2.png
   youtube: https://www.youtube.com/embed/zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
 
 - name: 3D-Printed 6DoF Robotic Arm
-  descr: "<b>Affiliation/Role: System Designer</b><br>
-  Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from scratch."
+  descr: "Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from scratch."
   image: ezgif-4-f28f910a4123.gif
   github: https://github.com/uynitsuj/Open6R_ARM
   youtube: https://www.youtube.com/embed/CedyWQmqiJ0
@@ -28,7 +26,7 @@
   youtube: https://www.youtube.com/embed/YMYH7ZxkKZw
 
 - name: Elevated Robotic Assistive Device
-  descr: "<b>Affiliation/Role: Lead Mechanical Systems Designer</b><br>
+  descr: "<b>Affiliation/Role: Co-Designer and Mechanical Systems Designer</b><br>
   An elevated robotic system which provides smooth and efficient traversal along an elevated track."
   image: ERAD.JPG
   website: https://uynitsuj.github.io/articles/2020-01/improved-elevated-robotic-system-and-method
