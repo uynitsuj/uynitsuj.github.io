@@ -21,7 +21,7 @@ This post will be dedicated to recent developments in the fields of AI and intel
                             margin: 0px;
                             vertical-align: middle;
                             display: inline;
-                        " class="inline-image"> arXiv</a></b><br>
+                        " class="inline-image"> arXiv</a></b>
 <br>
 Researchers from Google introduce SayCan, a robot control framework that uses a large language model (LLM) to plan a sequence of robotic actions to achieve a user-specified goal. It works by [grounding](http://www.scholarpedia.org/article/Symbol_grounding_problem) language models in robotic [affordances](https://www.interaction-design.org/literature/topics/affordances) and leveraging [few-shot](https://www.techopedia.com/definition/34949/zero-shot-one-shot-few-shot-learning) prompting to break down a long-horizon task expressed in natural language into a sequence of low-level skills. Each of the robot’s skills has a textual description that the LLM can use to compute its probability of fulfilling a step (language score), as well as a value function that indicates how likely the skill is to succeed given the current state of the world (affordance score). SayCan then combines these two scores for each skill and ranks them to choose the next action.
 
