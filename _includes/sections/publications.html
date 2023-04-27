@@ -7,13 +7,12 @@
     <div class="col">
         <div class="col m6" style="float:left">{% if pub.image %}
             <img align="left" class="hidden-md" style="margin-left:10px;border-radius:25px;padding-bottom:3px"
-                src="{{ site.url }}/img/pub/{{ pub.image }}" alt="{{ site.url }}/img/pub/{{ pub.image }}" height="280">
+                src="{{ site.url }}/img/pub/{{ pub.image }}" alt="{{ site.url }}/img/pub/{{ pub.image }}" height="200">
             {% endif %}
         </div>
         <div class="col m6">
             <!-- TITLE -->
-            <h2 style="margin: 0">{{ pub.title }}</h2>
-            <br>
+            <h4 style="margin: 0">{{ pub.title }}</h4>
             <!-- AUTHORS -->
             {{ pub.authors }}
             <br>

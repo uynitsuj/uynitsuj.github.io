@@ -1,3 +1,17 @@
+- name: 3D-Printed Quadrupedal Robot
+  descr: "<b>Affiliation/Role: System Designer</b><br> 
+  Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
+  image: QPRev2.png
+  youtube: https://www.youtube.com/embed/zvvzg43DtZo
+  github: https://github.com/uynitsuj/quadruped
+
+- name: 3D-Printed 6DoF Robotic Arm
+  descr: "<b>Affiliation/Role: System Designer</b><br>
+  Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from complete scratch."
+  image: ezgif-4-f28f910a4123.gif
+  github: https://github.com/uynitsuj/Open6R_ARM
+  youtube: https://www.youtube.com/embed/CedyWQmqiJ0
+
 - name: 2023 Michigan Mars Rover - Dahlia
   descr: "<b>Affiliation/Role: RF Wireless Communications Team Lead for University of Michigan Mars Rover team</b><br> Dahlia received a System Acceptance Review score of 92.21/100!"
   image: Dahlia.png
@@ -12,20 +26,6 @@
   descr: "<b>Affiliation/Role: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br> Logistical challenges presented by this highly-remote school year influenced our rover's design, with an added emphasis on making all systems highly manufacturable and easily serviceable. We switched to a welded-aluminum chassis, and incorporated a rocker-bogie suspension system and 3D-printed wheels to make it more suited to rocky and uneven terrain. <br> Though URC was cancelled this year due to the Covid-19 pandemic, we were still judged on our SAR submission, receiving a System Acceptance Review score of 93.09/100!"
   image: SAR-Blue.jpg
   youtube: https://www.youtube.com/embed/YMYH7ZxkKZw
-
-- name: 3D-Printed Quadrupedal Robot
-  descr: "<b>Affiliation/Role: System Designer</b><br> 
-  Personal project over 2020 winter break and 2021 summer to build a quadrupedal robot from scratch."
-  image: QPRev2.png
-  youtube: https://www.youtube.com/embed/zvvzg43DtZo
-  github: https://github.com/uynitsuj/quadruped
-
-- name: 3D-Printed 6DoF Robotic Arm
-  descr: "<b>Affiliation/Role: System Designer</b><br>
-  Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from complete scratch."
-  image: ezgif-4-f28f910a4123.gif
-  github: https://github.com/uynitsuj/Open6R_ARM
-  youtube: https://www.youtube.com/embed/CedyWQmqiJ0
 
 - name: Elevated Robotic Assistive Device
   descr: "<b>Affiliation/Role: Lead Mechanical Systems Designer</b><br>
