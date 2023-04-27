@@ -119,7 +119,7 @@ Researchers from UC San Diego, Institute of AI and Fundamental Interactions, and
 <br>
 
 ## Generative Agents: Interactive Simulacra of Human Behavior
-<b><a href="https://www.vice.com/en/article/z3mvj3/" target="_blank"><i
+<b><a href="https://www.vice.com/en/article/z3mvj3/google-tells-ai-agents-to-behave-like-believable-humans-to-create-artificial-society" target="_blank"><i
                     class="fa-solid fa-newspaper"></i> Article</a> / <a href="https://arxiv.org/abs/2304.03442" target="_blank"><img
                     src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
                             height: 1em;
