@@ -47,6 +47,13 @@ td {
   vertical-align: bottom;
 }
 
+.inline-image {
+  height: 1em;
+  /* Set the image height to match the text height */
+  vertical-align: middle;
+  /* Align the image vertically in the middle of the text */
+}
+
 table {
   width: 100%;
   display: table;
