@@ -111,8 +111,9 @@
 
     & a {
       margin-top: 1em;
-      text-transform: lowercase;
-      font-size: 85%;
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: 80%;
       color: $secondary;
 
       &:hover,
