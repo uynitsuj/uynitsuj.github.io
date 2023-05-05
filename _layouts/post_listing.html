@@ -26,7 +26,7 @@ layout: default
               {% endfor %}
               {% endif %}
             </p>
-            <h4 class="post-title" title="{{ post.title | escape }}">
+            <h4 class="post-title" title="{{ post.title | escape }}" style="color:#f6f6f6">
               {{ post.title
               }}
               <!--<a href="{{ site.url }}{{ post.url }}" class="post-title" title="{{ post.title | escape }}">{{ post.title
@@ -46,7 +46,7 @@ layout: default
           </header>
 
           {% if post.excerpt %}
-          <div class="post-description">
+          <div class="post-description" style="color:#f6f6f6">
             <p>
               {{ post.excerpt }}
             </p>
