@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Exciting Developments in AI/Robotics Research"
-excerpt: "Recent-ish publications and developments worth highlighting"
+excerpt: "Recent(ish) publications and developments worth highlighting"
 categories: [post]
 image: Post8/RT-1.png
 ---
