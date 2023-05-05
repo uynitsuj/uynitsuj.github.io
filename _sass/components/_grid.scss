@@ -150,12 +150,14 @@
   }
 }
 
-.card-desc {
-  @include media-query($medium-screen) {
+@include media-query($medium-screen) {
+  .card-desc {
     margin-left: 15px;
   }
+}
 
-  @include media-query($large-screen) {
+@include media-query($large-screen) {
+  .card-desc {
     margin-left: 15px;
   }
 }
