@@ -5,61 +5,65 @@ layout: default
 {% for post in site.posts %}
 
 
-
-<section class="post">
-  <div class="row " style="background-color: #191919; border-radius: 15px; padding: 20px;">
-    <div class="col m6">
-      <div class="row">
-        <header class="post-header">
-          <p class="post-meta">
-            <span class="post-date">
-              {{ post.date | date: "%-d %b %Y" | upcase }}
-            </span>
-            {% if post.categories.size > 0 %}
-            •
-            {% for cat in post.categories %}
-            <span class="post-cat"> {{ cat }}
-            </span>
-            {% unless forloop.last %}
-            <span>/</span>
-            {% endunless %}
-            {% endfor %}
-            {% endif %}
-          </p>
-          <h4>
-            <a href="{{ site.url }}{{ post.url }}" class="post-title" title="{{ post.title | escape }}">{{ post.title
-              }}</a>
-            {% if post.link %}
+<a href="{{ site.url }}{{ post.url }}">
+  <section class="post">
+    <div class="row " style="background-color: #191919; border-radius: 15px; padding: 20px;">
+      <div class="col m6">
+        <div class="row">
+          <header class="post-header">
+            <p class="post-meta">
+              <span class="post-date">
+                {{ post.date | date: "%-d %b %Y" | upcase }}
+              </span>
+              {% if post.categories.size > 0 %}
+              •
+              {% for cat in post.categories %}
+              <span class="post-cat"> {{ cat }}
+              </span>
+              {% unless forloop.last %}
+              <span>/</span>
+              {% endunless %}
+              {% endfor %}
+              {% endif %}
+            </p>
+            <h4 class="post-title" title="{{ post.title | escape }}">
+              {{ post.title
+              }}
+              <!--<a href="{{ site.url }}{{ post.url }}" class="post-title" title="{{ post.title | escape }}">{{ post.title
+              }}</a>-->
+              <!--{% if post.link %}
             <a class="post-title-link" href="{{ post.link }}" target="_blank" title="{{ post.title | escape }}"><i
                 class="fa fa-external-link"></i></a>
+            {% endif %}-->
+            </h4>
+
+            {% if post.author %}
+            {% assign author = site.data.authors[post.author] %}
+            {% else %}
+            {% assign author = site.owner %}
             {% endif %}
-          </h4>
 
-          {% if post.author %}
-          {% assign author = site.data.authors[post.author] %}
-          {% else %}
-          {% assign author = site.owner %}
+          </header>
+
+          {% if post.excerpt %}
+          <div class="post-description">
+            <p>
+              {{ post.excerpt }}
+            </p>
+          </div>
           {% endif %}
-
-        </header>
-
-        {% if post.excerpt %}
-        <div class="post-description">
-          <p>
-            {{ post.excerpt }}
-          </p>
         </div>
+      </div>
+
+
+
+      <div class="col m6" style="float:right">{% if post.image %}
+        <img align="right" class="hidden-md" style="margin-left:10px;border-radius:25px;padding-bottom:3px"
+          src="{{ site.url }}/img/{{ post.image }}" alt="{{ site.url }}/img/{{ post.image }}" height="280">
         {% endif %}
       </div>
-    </div>
+  </section>
+</a>
 
-
-
-    <div class="col m6" style="float:right">{% if post.image %}
-      <img align="right" class="hidden-md" style="margin-left:10px;border-radius:25px;padding-bottom:3px"
-        src="{{ site.url }}/img/{{ post.image }}" alt="{{ site.url }}/img/{{ post.image }}" height="280">
-      {% endif %}
-    </div>
-</section>
 <p style="margin:18px;"></p>
 {% endfor %}
