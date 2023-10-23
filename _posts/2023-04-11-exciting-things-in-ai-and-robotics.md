@@ -5,13 +5,7 @@ excerpt: "Recent(ish) publications and developments worth highlighting"
 categories: [post]
 image: Post8/RT-1.png
 ---
-> Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Marie Curie
-<br>
-<br>
-
-This post will be dedicated to recent developments in the fields of AI and intelligent robotics that I feel are worth highlighting. 
 
 ## Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
 <b><a href="https://say-can.github.io/" target="_blank"><i
