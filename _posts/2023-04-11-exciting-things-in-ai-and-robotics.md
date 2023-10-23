@@ -140,33 +140,6 @@ A team with members from UC Berkeley, CMU, Stanford, and UC San Diego introduce 
 
 <br>
 
-## ChatGPT Plugins
-<b><a href="https://openai.com/blog/chatgpt-plugins" target="_blank"><i
-                    class="fa-solid fa-newspaper"></i> Post</a></b>
-                        <br>
-This is somewhat of a direct follow-up to my *[GPT-4 Enters the Stone Age](https://uynitsuj.github.io/articles/2023-04/sparks-of-agi#gpt-4-enters-the-stone-age)* section from the Sparks of AGI post. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT Plugins. 
-
-<br>
-
-<img src="/img/Post8/GPTPluginSearch.jpeg" alt= GPTSearch style="max-width:85%;height:auto">
-<div align="center">ChatGPT plugin for querying the internet</div>
-
-<br>
-
-Upon the launch of ChatGPT, I wondered why it wasn't meaningfully connected to the internet but was instead locked to a static snapshot of its content. GPT’s primary function is as a next-token prediction LLM, so it makes intuitive sense to train on a static “wall of text”, but my wondering came from why it didn’t have the capability to query the internet to search for content to augment its response formulation. As suspected, OpenAI later clarified that this decision was made primarily to address safety concerns.
-
-<br>
-
-> Threat actors may also benefit from combining GPT-4 with internet browsing and open-source tools.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— GPT-4 Technical Report, p52
-
-<br>
-
-It makes sense to release internet search functionality through Plugins in a controlled manner. The [GPT-4 Technical Report](https://cdn.openai.com/papers/gpt-4.pdf) has several sections dedicated to discussing the safety implications of LLMs and harm mitigation methods that they have implemented. They have in essence “fenced” the model to minimize the chance for bad-faith actors to use ChatGPT for harm, or to proliferate information that could promote harm (i.e. weapon-making techniques).
-
-<br>
-
 ## OpenAI's Sam Altman Blog Post on Planning for AGI and Beyond
 <b><a href="https://openai.com/blog/planning-for-agi-and-beyond" target="_blank"><i
                     class="fa-solid fa-newspaper"></i> Post</a></b>
