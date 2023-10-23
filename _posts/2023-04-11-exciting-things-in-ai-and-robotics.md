@@ -7,7 +7,7 @@ image: Post8/RT-1.png
 ---
 
 
-## Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
+## Do As I Can, Not As I Say (SayCan): Grounding Language in Robotic Affordances
 <b><a href="https://say-can.github.io/" target="_blank"><i
                     class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
                     src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
