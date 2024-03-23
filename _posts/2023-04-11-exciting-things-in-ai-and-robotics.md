@@ -5,15 +5,9 @@ excerpt: "Recent(ish) publications and developments worth highlighting"
 categories: [post]
 image: Post8/RT-1.png
 ---
-> Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Marie Curie
-<br>
-<br>
 
-This post will be dedicated to recent developments in the fields of AI and intelligent robotics that I feel are worth highlighting. 
-
-## Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
+## Do As I Can, Not As I Say (SayCan): Grounding Language in Robotic Affordances
 <b><a href="https://say-can.github.io/" target="_blank"><i
                     class="fa fa-fw fa-home"></i> Website</a> / <a href="https://arxiv.org/abs/2204.01691" target="_blank"><img
                     src="https://uynitsuj.github.io/images/arxiv.png" alt="A " style="
@@ -143,33 +137,6 @@ This paper introduces generative agents, which are computational software agents
                     class="fa fa-fw fa-home"></i> Website</a></b>
                         <br>
 A team with members from UC Berkeley, CMU, Stanford, and UC San Diego introduce Vicuna-13B, an open-source chatbot trained by fine-tuning [LLaMA](https://ai.facebook.com/blog/large-language-model-llama-meta-ai/) on user-shared conversations collected from [ShareGPT](https://sharegpt.com/). Preliminary evaluation shows that Vicuna-13B achieves high quality compared to other models and the cost of training is around $300. The code and training data are available for non-commercial use. After fine-tuning with 70K user-shared ChatGPT conversations, Vicuna becomes capable of generating more detailed and well-structured answers compared to [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html), with quality on par with ChatGPT.
-
-<br>
-
-## ChatGPT Plugins
-<b><a href="https://openai.com/blog/chatgpt-plugins" target="_blank"><i
-                    class="fa-solid fa-newspaper"></i> Post</a></b>
-                        <br>
-This is somewhat of a direct follow-up to my *[GPT-4 Enters the Stone Age](https://uynitsuj.github.io/articles/2023-04/sparks-of-agi#gpt-4-enters-the-stone-age)* section from the Sparks of AGI post. OpenAI has begun moving to augment the functionality of GPT-4 by exploring its impressive ability to leverage novel tools with minimal training via ChatGPT Plugins. 
-
-<br>
-
-<img src="/img/Post8/GPTPluginSearch.jpeg" alt= GPTSearch style="max-width:85%;height:auto">
-<div align="center">ChatGPT plugin for querying the internet</div>
-
-<br>
-
-Upon the launch of ChatGPT, I wondered why it wasn't meaningfully connected to the internet but was instead locked to a static snapshot of its content. GPT’s primary function is as a next-token prediction LLM, so it makes intuitive sense to train on a static “wall of text”, but my wondering came from why it didn’t have the capability to query the internet to search for content to augment its response formulation. As suspected, OpenAI later clarified that this decision was made primarily to address safety concerns.
-
-<br>
-
-> Threat actors may also benefit from combining GPT-4 with internet browsing and open-source tools.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— GPT-4 Technical Report, p52
-
-<br>
-
-It makes sense to release internet search functionality through Plugins in a controlled manner. The [GPT-4 Technical Report](https://cdn.openai.com/papers/gpt-4.pdf) has several sections dedicated to discussing the safety implications of LLMs and harm mitigation methods that they have implemented. They have in essence “fenced” the model to minimize the chance for bad-faith actors to use ChatGPT for harm, or to proliferate information that could promote harm (i.e. weapon-making techniques).
 
 <br>
 

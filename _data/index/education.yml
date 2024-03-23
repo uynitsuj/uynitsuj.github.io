@@ -1,10 +1,12 @@
 - name: University of California Berkeley
   link: https://eecs.berkeley.edu/
   date: 2023 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  job: Ph.D. EECS
 
 - name: University of Michigan
   link: https://eecs.engin.umich.edu/
   date: 2020 - 2023
+  job: B.S.E. EE
 
 - name: Canyon Crest Academy
   link: https://cc.sduhsd.net/
