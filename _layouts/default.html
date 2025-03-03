@@ -4,65 +4,12 @@
 {% include analytics.html %}
 {% include head.html %}
 
-<style>
-  #sidebar-wrapper {
-    position: relative;
-    float: left;
-    width: 25%;
-  }
-
-  #sidebar-toggle {
-    position: absolute;
-    border: none;
-    background-color: #191919;
-    border-radius: 10px;
-    top: 0;
-    right: -50px;
-    width: 65px;
-    height: 40px;
-    z-index: 1;
-  }
-
-  #sidebar-toggle-wrapper {
-    position: fixed;
-    left: 25%;
-    transform: translateX(-30px);
-    z-index: 2;
-  }
-
-  @media only screen and (max-width: 1000px) {
-    #sidebar-toggle-wrapper {
-      display: none;
-    }
-
-    #sidebar-wrapper {
-      width: 100%;
-    }
-
-    #sidebar-toggle {
-      display: none;
-    }
-
-    .col.s12.m9.full-width {
-      width: 100%;
-    }
-  }
-
-
-  @media only screen and (max-width: 1000px) {
-    #sidebar-toggle-wrapper.hidden {
-      position: fixed;
-      left: 0%;
-      transform: translateY(-50%);
-      z-index: 2;
-    }
-  }
-</style>
+<link rel="stylesheet" href="{{ site.url }}/css/sidebar.css">
 
 <body style="background-color: #232323;">
   <div id="sidebar-toggle-wrapper">
-    <button id="sidebar-toggle"><img id="toggle-image" src="{{ site.url }}/images/left.png" alt="buttonpng"
-        height="25px" width="25px" style="float:right" /></button>
+    <button id="sidebar-toggle" class="sidebar-toggle-btn"><img id="toggle-image" src="{{ site.url }}/images/left.png" alt="buttonpng"
+        height="25px" width="25px" class="toggle-image" /></button>
   </div>
   <div class="row">
     <div class="col s12 m3" id="sidebar-wrapper">

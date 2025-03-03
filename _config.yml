@@ -3,9 +3,9 @@
 # Site wide configuration
 ####################################
 #
-title: Justin Yu
-email:
-description: Personal Blog + Website.
+title: Justin Yu's Blog
+email: yujustin@berkeley.edu
+description: Personal Blog and Website of Justin Yu.
 url: # the base hostname & protocol for your site
 keywords: ["blog", "jekyll"]
 
@@ -40,35 +40,6 @@ owner:
   job: "PhD Student - AI & Robotics @ UC BERKELEY"
   bio: 
   email: yujustin@berkeley.edu
-  spotify: #username
-  disqus-shortname:
-  twitter: #username
-  facebook: #username
-  google:
-    plus: #username
-    analytics:
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
   github: uynitsuj
-  gitlab: #username
-  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
   linkedin: yu-justin
-  skype: #username
-  xing: #username
-  instagram: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
   youtube: UCoDe-05xncKXjgv2j_TGEmQ
-  soundcloud: #username
-  weibo: #username
-  flickr: #username
-  500px: #username
-  codepen: #username
-  reddit: #username
-  telegram: #username
