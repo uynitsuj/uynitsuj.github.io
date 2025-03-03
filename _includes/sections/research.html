@@ -1,9 +1,9 @@
 <h1>Research</h1>
 
-<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f;">
-    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px;">
+<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f; overflow: hidden;">
+    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px; max-width: 100%; box-sizing: border-box;">
         <!-- Video container - aligned to the left -->
-        <div class="video-container" style="flex: 0 0 auto; max-width: 350px; margin-right: 20px;">
+        <div class="video-container" style="flex: 0 0 auto; width: 100%; max-width: 350px; margin-right: 20px; box-sizing: border-box; overflow: hidden;">
             <video src="{{ site.url }}/img/pub/POGS.mp4" autoplay loop muted playsinline
                 style="width: 100%; height: auto; border-radius: 8px; display: block;" 
                 controlslist="nodownload"></video>
@@ -23,10 +23,10 @@
 </div>
 <p style="margin:18px;"></p>
 
-<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f;">
-    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px;">
+<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f; overflow: hidden;">
+    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px; max-width: 100%; box-sizing: border-box;">
         <!-- Video container - aligned to the left -->
-        <div class="video-container" style="flex: 0 0 auto; max-width: 350px; margin-right: 20px;">
+        <div class="video-container" style="flex: 0 0 auto; width: 100%; max-width: 350px; margin-right: 20px; box-sizing: border-box; overflow: hidden;">
             <video src="{{ site.url }}/img/pub/LEGS_demo.mp4" autoplay loop muted playsinline
                 style="width: 100%; height: auto; border-radius: 8px; display: block;" 
                 controlslist="nodownload"></video>
@@ -50,15 +50,10 @@
 <p style="margin:18px;"></p>
 
 
-<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f;">
-    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px;">
+<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f; overflow: hidden;">
+    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px; max-width: 100%; box-sizing: border-box;">
         <!-- Video container - aligned to the left -->
-        <!-- <div class="video-container" style="flex: 0 0 auto; max-width: 350px; margin-right: 20px; margin-bottom: 15px;">
-            <video src="https://uynitsuj.github.io/img/pub/MANIP.png" autoplay loop muted playsinline
-                style="width: 100%; height: auto; border-radius: 8px; display: block;" 
-                controlslist="nodownload"></video>
-        </div> -->
-        <div class="video-container" style="flex: 0 0 auto; max-width: 350px; margin-right: 20px;">
+        <div class="video-container" style="flex: 0 0 auto; width: 100%; max-width: 350px; margin-right: 20px; box-sizing: border-box; overflow: hidden;">
             <img  src="{{ site.url }}/img/pub/MANIP.png" alt="{{ site.url }}/img/pub/MANIP.png" style="width: 100%; height: auto; border-radius: 8px; display: block;">
         </div>
         
@@ -81,10 +76,10 @@
 </div>
 <p style="margin:18px;"></p>
 
-<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f;">
-    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px;">
+<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f; overflow: hidden;">
+    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px; max-width: 100%; box-sizing: border-box;">
         <!-- Video container - aligned to the left -->
-        <div class="video-container" style="flex: 0 0 auto; max-width: 350px; margin-right: 20px;">
+        <div class="video-container" style="flex: 0 0 auto; width: 100%; max-width: 350px; margin-right: 20px; box-sizing: border-box; overflow: hidden;">
             <video src="{{ site.url }}/img/pub/LRSE.mp4" autoplay loop muted playsinline
                 style="width: 100%; height: auto; border-radius: 8px; display: block;" 
                 controlslist="nodownload"></video>
@@ -115,3 +110,47 @@
     </div>
 </div>
 <p style="margin:18px;"></p>
+
+
+<!-- Add enhanced responsive CSS specifically for research page -->
+<style>
+    /* Global box-sizing reset */
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+    
+    /* Ensure videos never exceed their container */
+    video, img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Fix for video/image containers */
+    .video-container {
+        max-width: 350px;
+        width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+        }
+        
+        .video-container, .image-container {
+            width: 95% !important;
+            max-width: 320px !important;
+            margin-right: 0 !important;
+            margin-bottom: 15px;
+        }
+        
+        .content-container {
+            width: 100%;
+        }
+        
+        .row {
+            padding: 15px !important;
+        }
+    }
+    </style>
