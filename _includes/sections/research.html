@@ -115,22 +115,22 @@
 <!-- Add enhanced responsive CSS specifically for research page -->
 <style>
     /* Global box-sizing reset */
-    *, *:before, *:after {
+    /* *, *:before, *:after {
         box-sizing: border-box;
     }
     
     /* Ensure videos never exceed their container */
-    video, img {
+    /* video, img {
         max-width: 100%;
         height: auto;
-    }
+    } */
     
     /* Fix for video/image containers */
-    .video-container {
+    /* .video-container {
         max-width: 350px;
         width: 100%;
-    }
-    
+    } */
+     
     @media (max-width: 768px) {
         .container {
             flex-direction: column;
@@ -138,8 +138,8 @@
         }
         
         .video-container, .image-container {
-            width: 95% !important;
-            max-width: 320px !important;
+            width: 100% !important;
+            max-width: 100% !important;
             margin-right: 0 !important;
             margin-bottom: 15px;
         }
