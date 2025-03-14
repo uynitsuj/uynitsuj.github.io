@@ -10,7 +10,7 @@
   youtube: https://www.youtube.com/watch?v=zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
 
-- name: 3D-Printed 6DoF Robotic Arm
+- name: 3D-Printed 6DoF Robot Arm
   descr: "Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from scratch."
   image: ezgif-4-f28f910a4123.gif
   github: https://github.com/uynitsuj/Open6R_ARM
