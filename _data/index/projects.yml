@@ -6,7 +6,7 @@
 
 
 - name: YuMi IRB14000 Bimanual Robot Realtime Control Package
-  descr: "Open source software package to control the ABB YuMi IRB14000 bimanual robot in realtime (240Hz) through control interfaces including: interactive websocket GUI, Meta Quest VR Controllers, and autonomous Diffusion Policy (shown)."
+  descr: "Open source software package to control the ABB YuMi IRB14000 bimanual robot in realtime (240Hz) through control interfaces including: interactive websocket GUI, Meta Quest VR Controllers, and autonomous Diffusion Policy (shown), PI0-FAST and NVIDIA-GR00T VLA models."
   image: dp_handoff_yumi.gif
   youtube: https://www.youtube.com/watch?v=aJG0f2TfFcI
   github: https://github.com/uynitsuj/yumi_realtime
