@@ -1,3 +1,10 @@
+- name: PI0-FAST DCT Early Stopping
+  descr: "Objective: Faster PI0-FAST robot VLA inference time; A DCT early stopping trick implementation for FAST (Frequency-Space Action Sequence Tokenization). The idea is to decode only the first few DCT coefficients from the PaLi-Gemma VLM rather than waiting for a full action chunk inference to complete. This can cut down inference to action time by roughly half since around the first 3-4 frequency harmonics of the DCT are typically enough for a coarse action sequence reconstruction."
+  # image: dp_handoff_yumi.gif
+  # youtube: https://www.youtube.com/watch?v=aJG0f2TfFcI
+  github: https://github.com/uynitsuj/FASTer
+
+
 - name: YuMi IRB14000 Bimanual Robot Realtime Control Package
   descr: "Open source software package to control the ABB YuMi IRB14000 bimanual robot in realtime (240Hz) through control interfaces including: interactive websocket GUI, Meta Quest VR Controllers, and autonomous Diffusion Policy (shown)."
   image: dp_handoff_yumi.gif
@@ -5,7 +12,7 @@
   github: https://github.com/uynitsuj/yumi_realtime
 
 - name: 3D-Printed Quadrupedal Robot
-  descr: "Personal project to design (mechanical electrical & software) and build a quadrupedal robot from scratch. Work in progress."
+  descr: "Personal project to design (mechanical electrical & software) and build a quadrupedal robot from scratch."
   image: QPRev2.png
   youtube: https://www.youtube.com/watch?v=zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
