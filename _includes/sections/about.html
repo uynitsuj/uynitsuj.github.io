@@ -11,7 +11,165 @@
 
 </div>
 <!-- <br> -->
-<ol style="padding-inline-start: 10px;"> <img
+<style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Container for vertical content */
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 15px;
+    }
+
+    /* Row for horizontal content */
+    .base-row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: left;
+        align-items: center;
+    }
+
+    /* Heading style */
+    .results-text {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    /* Iframe container */
+    /* .iframe-container {
+        position: relative;
+        width: 100%;
+        max-width: 960px;
+        height: 540px;
+        margin: 0 auto;
+    } */
+
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        height: 490px;
+        margin: 30px auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .iframe-container:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+    }
+
+    .iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: none;
+    }
+
+    .iframe.show {
+        display: block;
+    }
+
+    /* Fullscreen button container */
+    .fullscreen-container {
+        text-align: right;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 960px;
+    }
+
+    .fullscreen-btn {
+        background: none;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 4px;
+    }
+
+    /* Thumbnails */
+    .thumbnail-navigation {
+        display: inline-block;
+        margin-top: 15px;
+    }
+    .thumbnail-container {
+        /* width: 100%; */
+        /* max-width: 960px; */
+        /* margin: 15px auto; */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .thumbnail-row {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        max-width: 800px;
+    }
+
+    .thumbnail-col {
+        flex: 0 0 auto;
+        margin: 0 5px;
+    }
+
+    .thumbnail-btn {
+        background: none;
+        border: 1px solid #ccc;
+        padding: 5px;
+        cursor: pointer;
+        width: 220px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .thumbnail-btn.active-btn {
+        border-color: #2196F3;
+        background-color: #e6f3ff;
+    }
+
+    .thumbnails {
+        width: 200px;
+        height: 120px;
+        object-fit: cover;
+        margin-bottom: 5px;
+        border-radius: 3px;
+    }
+
+    .slide-arrow {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0 10px;
+    }
+</style>
+
+<ol style="padding-inline-start: 10px;"> 
+            <div id="iframe-container" class="iframe-container">
+                <iframe id="r2r2r_coffee_maker" class="iframe show" src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/coffee_maker_recording_20250506_191701.viser&initialCameraPosition=1.050,0.428,0.670&initialCameraLookAt=0.000,0.000,0.000&initialCameraUp=-0.000,-0.000,1.000"></iframe>
+            </div>
+            
+            <img
             style="border-radius:5px;max-width: 700px;width: 90%;"
             src="https://uynitsuj.github.io/img/IMG_1832.jpg">
             <br>
