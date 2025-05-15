@@ -400,7 +400,7 @@
 
     <section id="The Distinction Between Simulation and Rendering">
       <h3>This is often a point of confusion for our project so here's a section dedicated to clearing it up:</h3>
-      <p>When we say <b>simulation</b>, we mean methods that use physics engine to compuationally simulate dynamics in the world. When we say <b>rendering</b>, we refer to methods that use a graphics engine to render the world. In our project, we use IsaacLab, which is a commonly known and used as a physics simulator. However we turn the dynamics simulation off and use it as a rendering engine to generate synthetic visual data along with proprioceptive data from robot kinematicsthat can be used to train imitation learning policies.</p>
+      <p>  When we refer to <b>simulation</b>, we mean the use of a physics engine to computationally model and simulate dynamic interactions in the environment. In contrast, <b>rendering</b> refers to generating visual data from a graphics engine. In our project, we use IsaacLab, which is commonly used as a physics simulator. However, we disable its dynamics simulation capabilities and instead use it solely as a rendering engine. This allows us to generate high-quality synthetic visual observations and robot kinematic data, which can be used to train imitation learning policies.</p>
       <table>
         <tr>
           
