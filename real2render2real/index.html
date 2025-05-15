@@ -398,16 +398,6 @@
         policies.</p>
     </section>
 
-    <section id="The Distinction Between Simulation and Rendering">
-      <h3>This is often a point of confusion for our project so here's a section dedicated to clearing it up:</h3>
-      <p>  When we refer to <b>simulation</b>, we mean the use of a physics engine to computationally model and simulate dynamic interactions in the environment. In contrast, <b>rendering</b> refers to generating visual data from a graphics engine. In our project, we use IsaacLab, which is commonly used as a physics simulator. However, we disable its dynamics simulation capabilities and instead use it solely as a rendering engine. This allows us to generate high-quality synthetic visual observations and robot kinematic data, which can be used to train imitation learning policies.</p>
-      <table>
-        <tr>
-          
-        </tr>
-      </table>
-    </section>
-
     <section id="realrollouts">
         <h2>Real World Demos</h2>
         <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 1rem;">
@@ -452,6 +442,16 @@
       </div> -->
     </section>
 
+    <section id="The Distinction Between Simulation and Rendering">
+      <h3>This is often a point of confusion for our project so here's a section dedicated to clearing it up:</h3>
+      <p>  When we refer to <b>simulation</b>, we mean the use of a physics engine to computationally model and simulate dynamic interactions in the environment. In contrast, <b>rendering</b> refers to generating visual data from a graphics engine. In our project, we use IsaacLab, which is commonly used as a physics simulator. However, we disable its dynamics simulation capabilities and instead use it solely as a rendering engine. This allows us to generate high-quality synthetic visual observations and robot kinematic data, which can be used to train imitation learning policies.</p>
+      <table>
+        <tr>
+          
+        </tr>
+      </table>
+    </section>
+    
     <section id="iframes">
   <h2>Rendering More Embodiments</h2>
   <p>Part trajectories from a single demonstration can be retargeted across different robot embodiments.</p>
