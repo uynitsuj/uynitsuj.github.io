@@ -1,0 +1,1231 @@
+body {
+    min-height: 100%;
+    padding: 2em 2em;
+  
+    background-color: #fff;
+    font-family: 'Noto Sans',sans-serif;
+    color: #333;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+  .video-item {
+    flex: 1;
+    max-width: 50%;
+  }
+  .video-item video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  @media (max-width: 768px) {
+    .video-container {
+        flex-direction: column;
+    }
+    .video-item {
+        max-width: 100%;
+    }
+  }
+  
+  .section {
+    display: block;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+  
+  .carousel-container {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .carousel-container .carousel-item video {
+    width: 320px;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .carousel-item {
+    display: inline-block;
+  }
+  .carousel-item.show {
+    display: block;
+  }
+  
+  .carousel-item:not(.show) {
+  display: none;
+  }
+  .click-and-move-overlay {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none; /* Allows clicking through to the iframe */
+    text-align: center; /* Centers the text horizontally */
+  }
+  
+  .click-and-move-overlay .tldr {
+    margin: 0;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    border-radius: 5px;
+    font-size: 14px; /* Adjust as needed */
+    text-wrap: nowrap;
+  }
+  
+  .click-and-move-overlay .inline-image {
+    height: 20px;
+    vertical-align: middle;
+  }
+  
+  /* New styles for centering and consistency */
+  .video-carousel-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  
+  .container hr {
+    flex-basis: 100%; height: 0; margin: 0; border: 0;
+    page-break-after: always; /* CSS 2.1 syntax */
+    break-after: always; /* CSS 3 syntax */
+    width: 100%;
+  }
+  
+  .iframe-container {
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Uniform shadow in all directions */
+    height: 600px;
+    border-radius: 20px;
+    width: 97%;
+    overflow: hidden;
+    margin: 10px auto; /* Center the container and add vertical space */
+  }
+  @media (max-width: 768px) {
+    .iframe-container {
+        height: 400px;
+    }
+  }
+  
+  .iframe-container .iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  iframe.show {
+    display: block;
+  }
+  
+  iframe:not(.show) {
+  display: none;
+  }
+  
+  .title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'Google Sans',sans-serif;
+    /* color: #4d4d4d; */
+    font-size: 40px;
+    /* line-height: 65px; */
+    font-weight: 700;
+    letter-spacing: 4;
+    text-align: center;
+  }
+  
+  .subheader {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 25px;
+    line-height: 44px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  
+  .tldr {
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  
+  .title-row {
+    margin-top: 20px;
+  }
+  
+  .base-row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .base-col {
+    position: relative;
+    min-height: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+  }
+  
+  .author-text {
+    font-family: 'Open Sans',sans-serif;
+    color: #488af3;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    text-wrap: nowrap;
+    line-height: 32px;
+  }
+  
+  .text-star {
+    position: relative;
+    top: -7px;
+    display: inline-block;
+    margin: 0px;
+    font-size: 10px;
+  }
+  
+  #uc-berkeley {
+    padding-top: 10px;
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+    letter-spacing: 0;
+  }
+  
+  #equal-contrib {
+    padding-top: 10px;
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  
+  .icon-col {
+    width: 33.3%;
+  }
+  
+  .icon-img {
+    margin-right: auto;
+    margin-bottom: 1px;
+    margin-left: auto;
+    padding-top: 0px;
+  }
+  
+  .link-labels {
+    width: 60%;
+    margin-top: 5px;
+  }
+  
+  .link-block {
+    display: inline-block;
+    max-width: 33%;
+  }
+  
+  .link-labels-text {
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  #main-video {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+  }
+  
+  #addtl-video {
+    width: 100%;
+    /* max-width: 750px; */
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+  }
+  
+  #pipeline-img {
+    width: 60%;
+    max-width: 560px;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+  
+  #why-lerf-img {
+    width: 30%;
+    max-width: 560px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }
+  .separator {
+    display: block !important;
+    height: 1px !important;
+    width: 100% !important;
+    /* margin: 1em 0 !important;
+    background-color: #eee !important;
+    clear: both !important; */
+  }
+  #why-lerf{
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #clip-img {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
+  }
+  #main-img {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 00px;
+    margin-bottom: 0px;
+  }
+  #double-img {
+    width: 40%;
+    margin-top: 00px;
+    margin-bottom: 0px;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  #splash-img {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .paragraph {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: left;
+  }
+  
+  .paragraph-center {
+    margin-top: 0px;
+    /* margin-bottom: 20px; */
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  
+  /* ------------------------------------------------------ */
+  /* All teaser-slider things                               */
+  /* ------------------------------------------------------ */
+  .teaser-slide-row {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .teaser-slide-col {
+    flex: 1 0 200px;
+    height: 200px;
+  }
+  
+  .teaser-slide-arrow {
+    display: flex;
+    top: 0;
+    bottom: 0;
+    margin-top: 80px;  /* (200 - 40) / 2 */
+    height: 40px;
+    background-color: #FBE2B1;
+    border: none;
+    width: 5%;
+    font-size: 30px;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1.0;
+    transition: color 100ms;
+    justify-content: center;
+  }
+  
+  .teaser-slide-arrow:hover,
+  .teaser-slide-arrow:focus {
+    background-color: #FBC661;
+    opacity: 1;
+  }
+  
+  #teaser-slide-arrow-prev {
+    left: 0;
+    margin-right: 1%;
+    border-radius: 2rem 2rem 2rem 2rem;
+  }
+  
+  #teaser-slide-arrow-next {
+    right: 0;
+    margin-left: 1%;
+    border-radius: 2rem 2rem 2rem 2rem;
+  }
+  
+  .results-slide-row {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    height: 141px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+  }
+  
+  .results-slide-col {
+    flex: 1 0 140px;
+    height: 140px;
+  }
+  
+  .results-slide-arrow {
+    display: flex;
+    position: absolute;
+    height: 50%;
+    transform: translateY(-50%);
+    top: 50%;
+    height: 40px;
+    background-color: #FBE2B1;
+    border: none;
+    width: 5%;
+    font-size: 30px;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1.0;
+    transition: color 100ms;
+    justify-content: center;
+  }
+  
+  .results-slide-arrow:hover,
+  .results-slide-arrow:focus {
+    background-color: #FBC661;
+    opacity: 1;
+  }
+  
+  #results-slide-arrow-prev {
+    left: 0;
+    margin-right: 1%;
+    border-radius: 2rem 2rem 2rem 2rem;
+  }
+  
+  #results-slide-arrow-next {
+    right: 0;
+    margin-left: 1%;
+    border-radius: 2rem 2rem 2rem 2rem;
+  }
+  .thumbnails {
+    /* width: 100%; */
+    height: 100px;
+    overflow: hidden;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .thumbnail-btn {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: #fff;
+    border-radius: 10px;
+    opacity: 0.6;
+  }
+  
+  .thumbnail-btn:hover   {
+    opacity: 1.0;
+  }
+  
+  .thumbnail_label {
+    font-family: 'Open Sans',sans-serif;
+    color: #333;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  
+  :root {
+    --opacity: 50;
+  }
+  
+  #canvas {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #canvas-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    /* opacity: var(--opacity); */
+    filter: opacity(var(--opacity));
+    transition-property: filter;
+    transition-duration: 0.5s;
+  }
+  
+  #main-results {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+    overflow: hidden;
+  }
+  
+  /* #main-results > div {
+    height: 200px;
+    background-color: red;
+  } */
+  
+  .videos {
+    visibility: hidden;
+    position: absolute;
+    width: 1%;
+  }
+  
+  #opacity {
+    font-family: 'Open Sans',sans-serif;
+    color: #3c3c3c;
+    font-size: 20px;
+    line-height: 20px;
+  }
+  
+  .viewer-bar {
+    width: 33.3333%;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 34px;
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .2s;
+    transition: .2s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .2s;
+    transition: .2s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(36px);
+    -ms-transform: translateX(36px);
+    transform: translateX(36px);
+  }
+  
+  .video-bar {
+    width: 100%;
+    margin-top: -50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    height: 40px;
+    position: relative;
+    z-index: 41;  /* the image-compare bar is 40. */
+  }
+  
+  .video-btn {
+    width: 40px;
+    height: 40px;
+    padding: 8px 6px 8px 6px;
+    margin: 0px 10px 0px 0px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #000;
+    background-color: #FBE2B1;
+    padding-bottom: 8px;
+    border-radius: 10px;
+    box-shadow: 0em 0.1em 0.5em rgba(0, 0, 0, 0.4);
+  }
+  
+  .video-btn:hover {
+    background-color: #FBC661;
+  }
+  
+  .video-export {
+    text-align: right;
+  }
+  
+  #play-btn {
+    border-radius: 20px;
+    padding: 0px;
+  }
+  
+  .switch .labels {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-family: sans-serif;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .switch .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    right: 8px;
+    color: #4d4d4d;
+    opacity: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .switch .labels::before {
+    content: attr(data-on);
+    position: absolute;
+    left: 11px;
+    color: #ffffff;
+    opacity: 0;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .switch input:checked~.labels::after {
+    opacity: 0;
+  }
+  
+  .switch input:checked~.labels::before {
+    opacity: 1;
+  }
+  
+  #opacity-col {
+    text-align: left;
+  }
+  
+  .citation {
+    /* // set background color to gray; */
+    background-color: #eaeaea;
+    text-align: left;
+    border-radius: 10px;
+    padding-top: 3px;
+  }
+  
+  .citation > h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px;
+  }
+  .citation > pre {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px;
+  }
+  
+  .citation > p {
+    margin-left: 20px;
+  }
+  
+  #codecell0 {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    overflow-y: scroll;
+  }
+  
+  .add-top-padding{
+    margin-top: 10px;
+  }
+  
+  @media screen and (max-width: 750px) {
+    .gpt-query {
+        height: 30px;
+        font-size: 2.5vw;
+    }
+  
+    .slide-arrow {
+        margin-top: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 550px) {
+    /* .subheader {
+        font-size: 16px;
+    } */
+  
+    /* .author-text {
+        font-size: 12px;
+    }
+  
+    .author-row {
+        height: 35px;
+    } */
+  
+    /* #uc-berkeley {
+        font-size: 12px;
+    } */
+  
+    #pipeline-img {
+        width: 90%;
+        max-width: 560px;
+        margin-top: 20px;
+        margin-right: 0px;
+    }
+  
+    #why-lerf-img {
+        width: 60%;
+        max-width: 560px;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+  
+    .slide-arrow {
+        margin-top: 15px;
+      }
+  }
+  
+  .video-scroll {
+    width: 88%;
+    max-height: 500px;
+    margin: 0 auto;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+  }
+  
+  .video-scroll-card {
+    display: inline-block;
+    object-fit: cover;
+    flex: 1;
+    max-width: 100%;
+  }
+  
+  .video-scroll-card video{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .video-carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .video-slide-row {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+    }
+    
+    .video-display-container {
+      width: 100%;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    
+    .video-item {
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .video-item.show {
+      display: block;
+    }
+    
+    .thumbnail-btn {
+      flex: 0 0 auto;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      padding: 2px;
+      transition: all 0.3s ease;
+      background: none;
+      opacity: 0.7;
+    }
+    
+    .thumbnail-btn:hover, .thumbnail-btn:focus {
+      opacity: 1;
+      border-color: #0066cc;
+    }
+    
+    .thumbnails {
+      width: 100px;
+      height: 60px;
+      object-fit: cover;
+    }
+    
+    .thumbnail_label {
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    
+    .video-slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    
+    .video-slide-arrow.prev {
+      left: -20px;
+    }
+    
+    .video-slide-arrow.next {
+      right: -20px;
+    }
+  
+  
+  
+    /* Common carousel styles */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 20px auto;
+    }
+    
+    /* Iframe styles */
+    .iframe-container {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    
+    .iframe {
+      display: none;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .iframe.show {
+      display: block;
+    }
+    
+    /* Video styles */
+    .video-carousel-wrapper,
+    .video-display-container {
+      width: 100%;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    
+    .carousel-item,
+    .video-item {
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .carousel-item.show,
+    .video-item.show {
+      display: block;
+    }
+    
+    /* Thumbnail styles */
+    .results-slide-row,
+    .video-slide-row {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+    }
+    
+    .thumbnail-btn {
+      flex: 0 0 auto;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      padding: 2px;
+      transition: all 0.3s ease;
+      background: none;
+      opacity: 0.7;
+    }
+    
+    .thumbnail-btn:hover,
+    .thumbnail-btn:focus,
+    .thumbnail-btn.active {
+      opacity: 1;
+      border-color: #0066cc;
+    }
+    
+    .thumbnails {
+      width: 100px;
+      height: 60px;
+      object-fit: cover;
+    }
+    
+    .thumbnail_label {
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    
+
+.results-slide-arrow,
+.video-slide-arrow {
+  position: absolute;
+  /* Position at the same level as thumbnails */
+  top: auto;
+  bottom: 20px; /* Adjust as needed to align with thumbnails */
+  background-color: #FBE2B1;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-slide-arrow:hover,
+.video-slide-arrow:hover {
+  background-color: #FBC661;
+}
+
+/* Previous button positioning */
+#results-slide-arrow-prev,
+#iframe-slide-arrow-prev,
+#video-slide-arrow-prev-1,
+#video-slide-arrow-prev-2 {
+  left: 0;
+}
+
+/* Next button positioning */
+#results-slide-arrow-next,
+#iframe-slide-arrow-next,
+#video-slide-arrow-next-1,
+#video-slide-arrow-next-2 {
+  right: 0;
+}
+
+/* Adjust margins for arrows to align with thumbnails */
+.results-slide-arrow,
+.video-slide-arrow {
+  margin-bottom: 0; /* Align with thumbnails */
+}
+
+/* Ensure carousel containers have proper positioning context */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 940px;
+  margin: 20px auto;
+  padding: 0 50px; /* Add padding to make room for arrows */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all content */
+}
+
+/* Create a wrapper for thumbnails and arrows to position them together */
+.thumbnail-navigation-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Style for slide rows within the navigation wrapper */
+.thumbnail-navigation-wrapper .results-slide-row,
+.thumbnail-navigation-wrapper .video-slide-row {
+  width: calc(100% - 100px); /* Make room for arrows */
+  margin: 0 10px;
+}
+
+/* Improved thumbnail styling */
+.results-slide-row,
+.video-slide-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.thumbnail-btn {
+  flex: 0 0 auto;
+  margin-right: 15px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 5px;
+  transition: all 0.3s ease;
+  background: none;
+  opacity: 0.7;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thumbnail-btn:hover,
+.thumbnail-btn:focus,
+.thumbnail-btn.active {
+  opacity: 1;
+  border-color: #0066cc;
+}
+
+.thumbnails {
+  width: 120px;
+  height: 80px;
+  object-fit: contain; /* Changed from cover to contain */
+  border-radius: 8px;
+}
+
+.thumbnail_label {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%; /* Ensure label takes full width */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Add these styles to your existing CSS or modify the existing ones */
+
+/* Increase video display container size */
+.video-display-container {
+  width: 100%;
+  max-width: 940px; /* Increased from 800px to use more of the available space */
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+/* Make video items take up more space */
+.video-item video {
+  width: 100%;
+  max-height: 600px; /* Increased from 450px for taller videos */
+  object-fit: contain; /* This ensures the video maintains its aspect ratio */
+  border-radius: 10px;
+  margin: 0 auto;
+  display: block;
+  background-color: #000; /* Optional: adds a black background for videos with transparent parts */
+}
+
+/* Ensure carousel container uses more of the available width */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 940px;
+  margin: 20px auto;
+  padding: 0 20px; /* Reduced padding to give more space to the video */
+}
+
+/* On larger screens, make the videos even bigger */
+@media (min-width: 1200px) {
+  .video-display-container {
+    max-width: 1100px;
+  }
+  
+  .video-item video {
+    max-height: 900px;
+  }
+  
+  .carousel-container {
+    max-width: 1100px;
+  }
+}
+
+/* For smaller screens, adjust the height proportionally */
+@media (max-width: 768px) {
+  .video-item video {
+    max-height: 450px;
+  }
+}
+
+@media (max-width: 576px) {
+  .video-item video {
+    max-height: 350px;
+  }
+}
+
+/* Container for side-by-side iframes */
+.iframe-side-by-side-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px; /* Space between the iframes */
+}
+
+/* Adjust iframe containers when side-by-side */
+.iframe-container.side-by-side {
+  width: 48%; /* Slightly less than 50% to account for gap */
+  height: 400px; /* Increase height from 600px to 800px */
+  margin: 10px 0;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .iframe-side-by-side-container {
+    flex-direction: column;
+  }
+  
+  .iframe-container.side-by-side {
+    width: 97%;
+    height: 600px; /* Keep the mobile height a bit smaller */
+    margin: 10px auto;
+  }
+}
+
+/* Make iframe itself take more space in the container */
+.iframe-container.side-by-side .iframe {
+  width: 100%;
+  height: 100%;
+}
+
+
+.iframe-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.iframe-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Caption styles */
+.iframe-caption {
+  padding: 10px 5px;
+  margin-top: 5px;
+}
+
+.iframe-caption h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: 'Varela Round', sans-serif;
+  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.iframe-caption p {
+  margin-top: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#BibTeX {
+  text-align: left;
+}
+
+#BibTeX pre {
+  text-align: left;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+#BibTeX code {
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+}

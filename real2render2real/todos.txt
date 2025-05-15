@@ -1,0 +1,6 @@
+1. add in supp vid 
+3. shorten abstract 
+4. expand on trajectory interpolation section?
+7. update package real vid to end earlier
+9. fix website adapted from nerfies thing at the bottom
+10. fix the real robot rollouts carousel to be a big image with the slider things

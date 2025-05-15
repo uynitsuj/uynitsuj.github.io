@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Real2Render2Real: Scaling Robotic Manipulation Data Without Simulation or Robot Hardware.">
+  <meta name="keywords" content="NeRF, GS, Gaussian Splatting, Feature Fields, Robotics">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Real2Render2Real: Scaling Robotic Manipulation Data Without Dynamics Simulation or Robot Hardware</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <!-- <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./data/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="script.js" type="text/javascript"></script>
+  <!-- <script src="js/carousel_utils.js" type="text/javascript"></script> -->
+
+  <!-- Stylesheets; tabler icons, fonts, ...-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="margin-bottom: 1.5rem;">Real2Render2Real: Scaling Robotic Manipulation Data Without Dynamics Simulation or Robot Hardware</h1>
+          <div class="is-size-5 publication-authors" style="margin-bottom: 0.5rem;">
+            <span class="author-block">
+              <a href="https://real2render2real.github.io">Anonymous</a>
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors" style="margin-bottom: 1rem;">
+            <span class="author-block">
+              Under Review CoRL 2025
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://real2render2real.github.io" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://real2render2real.github.io"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://real2render2real.github.io" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://real2render2real.github.io"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./media/"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <b>Real2Render2Real</b> scales robotic manipulation data without simulation or robot hardware.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+          <video poster="" id="steve" autoplay muted loop playsinline height="100%">
+            <source src="./media/"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            <span class="dnerf"><b>Real2Render2Real</b></span> scales robotic manipulation data without dynamics simulation or robot hardware. With experiments showing that policies trained on just R2R2R can match those trained on 150 human teleoperated demonstrations.
+          </h2>
+      </div>
+    <!-- </div> -->
+  </div>
+</section>
+
+<!-- TL;DR + Teaser video -->
+<!-- <div class="section base-row add-top-padding">
+  <h1 class="tldr">
+      <b>TL;DR</b>:
+      Real2Render2Real uses a <b>4D</b> <b>D</b>ifferentiable <b>P</b>art <b>M</b>odel (4D-DPM) to visually imitate articulated motions from an object scan and single monocular video.
+  </h1>
+  <video id="main-video" autobuffer muted autoplay loop controls playsinline>
+      <source id="mp4" src="data/r2r2r_teaser.mp4" type="video/mp4">
+  </video>
+</div> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p class="paragraph" style="font-size: 1.3rem; line-height: 1.6;">
+            Scaling robot learning requires vast and diverse datasets. Yet
+            the prevailing data collection paradigm—human teleoperation—remains costly
+            and constrained by manual effort and physical robot access. We introduce
+            <b>Real2Render2Real (R2R2R)</b>, a scalable pipeline for generating robot training
+            data without physics simulation or teleoperation. Using a smartphone-captured
+            scan of one or more objects and a single monocular human demonstration, R2R2R
+            reconstructs detailed 3D object geometry and appearance, tracks 6-DoF object mo-
+            tion, and synthesizes thousands of physically plausible, robot-agnostic demonstra-
+            tions through parallel-environment photorealistic rendering and inverse kinematics.
+            Data generated by R2R2R integrates directly with models that operate on
+            robot proprioceptive states and image observations, such as vision-language-action
+            models (VLA) and imitation learning policies. Physical experiments suggest that
+            models trained on R2R2R data alone can achieve comparable performance to those
+            trained on teleoperated demonstrations, with model performance scaling with the
+            amount and diversity of R2R2R data, while requiring <b>1/27</b> of the time to generate.
+            By decoupling data generation from physical robot constraints, R2R2R enables the
+            computational scaling of robot datasets to support increasingly capable generalist
+            policies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section base-row add-top-padding">
+  <h1 style="font-size: 1.5rem; font-weight: 600; text-align: center;">Physical Robot Policy Performance Scaling </h1>
+  <div style="margin-bottom: 30px;"></div>
+  <img src="data/r2r2r_plot.png" style="max-width: 70%; padding-bottom: 5px" />
+  <p class="paragraph">
+      We train and evaluate two modern robot visuomotor policies (π<sub>0</sub>-FAST and Diffusion Policy) on either <i>only</i> synthetic data generated by <b><span style="color: #003262;">Real2Render2Real</span></b>  or <i>only</i> <b><span style="color: #FDB515;">human teleoperated data</span></b> across 5 manipulation tasks.
+  </p>
+  
+</div>
+<div class="section base-row add-top-padding">
+  <h1 style="font-size: 1.5rem; font-weight: 600; text-align: center;">Scan, Demonstrate, Reconstruct, Track</h1>
+  <!-- TODO: ADJUST WORDING!!! -->
+  <p class="paragraph">
+      R2R2R takes in <b>1) </b>a multi-view object scan and <b>2)</b> a monocular demonstration video.
+      By creating part-aware 3D representations using <a href="https://www.garfield.studio/" class="author-text" target="_blank">GARField</a> (parts, toggle for clusters) and 
+      <a href="https://github.com/facebookresearch/dinov2" class="author-text"target="_blank">DINOv2</a> (tracking SE3 pose),
+      these smartphone-captured inputs can generate these 4D reconstructions:
+  </p>
+  
+  
+  <div id="objs">
+      <h1 class="tldr"><b>Input demonstration video</b></h1>
+  
+      <div class="carousel-container" id="mainCarousel">
+        <!-- Video display -->
+        <div class="video-carousel-wrapper">
+          <div class="carousel-item" id="tiger_video">
+            <video autoplay muted loop playsinline height="400px">
+              <source src="data/demo_vids/tiger_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="carousel-item" id="mug_video">
+            <video autoplay muted loop playsinline height="400px">
+              <source src="data/demo_vids/mug_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="carousel-item" id="package_video">
+            <video autoplay muted loop playsinline height="400px">
+              <source src="data/demo_vids/package_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="carousel-item" id="drawer_video">
+            <video autoplay muted loop playsinline height="400px">
+              <source src="data/demo_vids/drawer_reversed_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="carousel-item" id="faucet_video">
+            <video autoplay muted loop playsinline height="400px">
+              <source src="data/demo_vids/faucet_demo.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      
+        <!-- Iframe container -->
+        <div id="iframe-container" class="iframe-container">
+            <div class="click-and-move-overlay">
+              <h1 class="tldr">
+                  <b>
+                      <img src="data/drag_icon.png" alt="" class="inline-image">
+                      Click and move me!
+                      <img src="data/drag_icon.png" alt="" class="inline-image">
+                  </b>
+              </h1>
+          </div>
+          <iframe id="tiger" class="iframe" data-src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/tiger_pick_r2r2r_recording_20250507_112639.viser&initialCameraPosition=1.027,0.445,0.681&initialCameraLookAt=0.188,-0.113,-0.129&initialCameraUp=-0.000,-0.000,1.000"></iframe>
+          <!-- <iframe id="mug" class="iframe" data-src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/coffee_maker_recording_20250506_191701.viser&initialCameraPosition=1.009,0.430,0.637&initialCameraLookAt=0.240,-0.160,-0.081&initialCameraUp=-0.000,-0.000,1.000"></iframe> -->
+          <iframe id="package" class="iframe" data-src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/cardboard_box_recording_20250507_103622.viser&initialCameraPosition=1.050,0.428,0.670&initialCameraLookAt=0.000,0.000,0.000&initialCameraUp=-0.000,-0.000,1.000"></iframe>  
+          <iframe id="drawer" class="iframe" data-src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/drawer_recording_20250507_104056.viser&initialCameraPosition=1.050,0.428,0.700&initialCameraLookAt=0.000,0.000,-0.100&initialCameraUp=-0.000,-0.000,1.000"></iframe>
+          <iframe id="faucet" class="iframe" data-src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/faucet_recording_20250507_110111.viser&initialCameraPosition=1.026,0.455,0.651&initialCameraLookAt=0.108,-0.143,-0.040&initialCameraUp=-0.000,-0.000,1.000"></iframe>
+        </div>
+        
+        <!-- Thumbnails -->
+        <div class="results-slide-row" id="results-objs-scroll">
+          <div data-img-src="data/thumbnails/tiger.png" data-id="tiger-thumb" data-label="Tiger"></div>
+          <div data-img-src="data/thumbnails/mug.png" data-id="mug-thumb" data-label="Coffee Maker"></div>
+          <div data-img-src="data/thumbnails/package.png" data-id="package-thumb" data-label="Package"></div>
+          <div data-img-src="data/thumbnails/drawer.png" data-id="drawer-thumb" data-label="Drawer"></div>
+          <div data-img-src="data/thumbnails/faucet.png" data-id="faucet-thumb" data-label="Faucet"></div>
+        </div>
+        
+        <!-- Navigation -->
+        <button class="results-slide-arrow" id="results-slide-arrow-prev">&#8249;</button>
+        <button class="results-slide-arrow" id="results-slide-arrow-next">&#8250;</button>
+      </div>
+  <p class="tldr"><b>Note:</b> For the drawer task, the human demonstration was collected by <i>closing</i> the drawer. The video was then replayed backwards as shown above. We also show in the interactive <a href="https://viser.studio/main/">Viser</a> viewer two camera frustrums representing the rendered camera viewpoints in Isaac Lab.</p>
+</div>
+
+<div class="section base-row add-top-padding">
+  <h1 style="font-size: 1.5rem; font-weight: 600; text-align: center;">Trajectory Interpolation</h1>
+  <p class="paragraph">
+      Given a single human demonstration, R2R2R can synthesize a diverse set of physically plausible trajectories.
+  </p>
+  <img src="data/traj_interp.png" style="max-width: 100%; padding-bottom: 30px" />
+
+  <!-- <div id="iframe-container" class="iframe-container">
+      <div class="click-and-move-overlay">
+          <h1 class="tldr">
+              <b>
+                  <img src="data/drag_icon.png" alt="" class="inline-image">
+                  Click and move me!
+                  <img src="data/drag_icon.png" alt="" class="inline-image">
+              </b>
+          </h1>
+      </div>
+      <iframe class="iframe show"
+          src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/traj_interp.viser&initialCameraPosition=-0.093,-0.795,0.870&initialCameraLookAt=-0.338,-0.272,-0.111&initialCameraUp=-0.000,-0.000,1.000"
+      ></iframe>
+  </div> -->
+</div>
+
+
+
+
+<!-- <div class="section base-row add-top-padding">
+  <h1 style="font-size: 1.5rem; font-weight: 600; text-align: center;">Robot Agnostic</h1>
+  <div class="carousel-container" id="iframeCarousel">
+    <div id="iframe-only-container" class="iframe-container">
+      <iframe id="mug" class="iframe" data-src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/coffee_maker_recording_20250506_191701.viser&initialCameraPosition=1.009,0.430,0.637&initialCameraLookAt=0.240,-0.160,-0.081&initialCameraUp=-0.000,-0.000,1.000"></iframe>
+      <iframe id="mug-franka" class="iframe" data-src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/franka_coffee_maker_recording_20250506_210619.viser&initialCameraPosition=0.991,-0.089,0.591&initialCameraLookAt=0.000,0.000,0.000&initialCameraUp=-0.000,-0.000,1.000"></iframe>
+    </div>
+    
+    <div class="results-slide-row" id="iframe-objs-scroll">
+      <div data-img-src="data/thumbnails/mug.png" data-id="mug-thumb" data-label="YuMi IRB 14000"></div>
+      <div data-img-src="data/thumbnails/mug.png" data-id="mug-franka-thumb" data-label="Franka Panda"></div>
+    </div>
+    
+    <button class="results-slide-arrow" id="iframe-slide-arrow-prev">&#8249;</button>
+    <button class="results-slide-arrow" id="iframe-slide-arrow-next">&#8250;</button>
+  </div>
+</div> -->
+
+
+<!-- <div class="section base-row add-top-padding">
+  <h1 style="font-size: 1.5rem; font-weight: 600; text-align: center;">Robot Agnostic</h1>
+  <p class="paragraph">Since R2R2R generates object-centric part trajectories, we can retarget these trajectories to different robot embodiments.</p>
+  <div class="iframe-row">
+    <div class="iframe-column">
+    <div id="iframe-container-1" class="iframe-container">
+      <div class="click-and-move-overlay">
+        <h1 class="tldr">
+          <b>
+            <img src="data/drag_icon.png" alt="" class="inline-image">
+            Click and move me!
+            <img src="data/drag_icon.png" alt="" class="inline-image">
+          </b>
+        </h1>
+      </div>
+      <iframe
+        id="remote_merge_1"
+        class="iframe show"
+        src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/coffee_maker_recording_20250506_191701.viser&initialCameraPosition=1.009,0.430,0.637&initialCameraLookAt=0.240,-0.160,-0.081&initialCameraUp=-0.000,-0.000,1.000"
+      ></iframe>
+    </div>
+    <div class="iframe-caption" style="margin-top: 0;">
+      <h3 style="text-align: center;">YuMi IRB 14000</h3>
+    </div>
+  </div>
+  
+  <div class="iframe-column">
+    <div id="iframe-container-2" class="iframe-container">
+      <div class="click-and-move-overlay">
+        <h1 class="tldr">
+          <b>
+            <img src="data/drag_icon.png" alt="" class="inline-image">
+            Click and move me!
+            <img src="data/drag_icon.png" alt="" class="inline-image">
+          </b>
+        </h1>
+      </div>
+      <iframe
+        id="remote_right"
+        class="iframe show"
+        src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/franka_coffee_maker_recording_20250506_210619.viser&initialCameraPosition=0.991,-0.089,0.591&initialCameraLookAt=0.000,0.000,0.000&initialCameraUp=-0.000,-0.000,1.000"
+      ></iframe>
+    </div>
+    <div class="iframe-caption" style="margin-top: 0;">
+      <h3 style="text-align: center;">Franka Panda</h3>
+    </div>
+  </div>
+</div>
+
+<div class="section base-row add-top-padding">
+  <h1 style="font-size: 1.5rem; font-weight: 600; text-align: center;">Randomization Range</h1>
+  <p class="paragraph">
+    We randomize the starting pose of the objects within the scene for each synthetic trajectory.
+  </p>
+  <div class="carousel-container" id="videoCarousel1">
+    <div id="video-display-1" class="video-display-container"></div>
+    
+    <div class="video-slide-row" id="video-objs-scroll-1">
+      <div data-video-src="data/randomization/tiger_rand_range.mp4" data-id="tiger-video-thumb" data-img-src="data/thumbnails/tiger.png" data-label="Tiger"></div>
+      <div data-video-src="data/randomization/mug_rand_range.mp4" data-id="mug-video-thumb" data-img-src="data/thumbnails/mug.png" data-label="Coffee Maker (YuMi)"></div>
+      <div data-video-src="data/randomization/franka_rand_range.mp4" data-id="franka-video-thumb" data-img-src="data/thumbnails/mug.png" data-label="Coffee Maker (Franka)"></div>
+      <div data-video-src="data/randomization/package_rand_range.mp4" data-id="package-video-thumb" data-img-src="data/thumbnails/package.png" data-label="Package"></div>
+      <div data-video-src="data/randomization/drawer_rand_range.mp4" data-id="drawer-video-thumb" data-img-src="data/thumbnails/drawer.png" data-label="Drawer"></div>
+      <div data-video-src="data/randomization/faucet_rand_range.mp4" data-id="faucet-video-thumb" data-img-src="data/thumbnails/faucet.png" data-label="Faucet"></div>
+    </div>
+
+    <button class="video-slide-arrow" id="video-slide-arrow-prev-1">&#8249;</button>
+    <button class="video-slide-arrow" id="video-slide-arrow-next-1">&#8250;</button>
+  </div>
+</div> -->
+
+
+<div class="section base-row add-top-padding">
+  <h1 style="font-size: 1.5rem; font-weight: 600; text-align: center;">Physical Robot Rollouts</h1>
+  <p class="paragraph">
+    
+  </p>
+  <div class="carousel-container" id="videoCarousel2">
+    <div id="video-display-2" class="video-display-container"></div>
+    
+    <div class="video-slide-row" id="video-objs-scroll-2">
+      <div data-video-src="data/real_vids/tiger_real_5x_side.mp4" data-id="tiger-video-thumb" data-img-src="data/thumbnails/tiger.png" data-label="Tiger"></div>
+      <div data-video-src="data/real_vids/mug_real_5x_side.mp4" data-id="mug-video-thumb" data-img-src="data/thumbnails/mug.png" data-label="Coffee Maker"></div>
+      <div data-video-src="data/real_vids/franka_real_30x_side.mp4" data-id="franka-video-thumb" data-img-src="data/thumbnails/mug.png" data-label="Coffee Maker (Franka)"></div>
+      <div data-video-src="data/real_vids/package_real_5x_side.mp4" data-id="package-video-thumb" data-img-src="data/thumbnails/package.png" data-label="Package"></div>
+      <div data-video-src="data/real_vids/drawer_real_5x_side.mp4" data-id="drawer-video-thumb" data-img-src="data/thumbnails/drawer.png" data-label="Drawer"></div>
+      <div data-video-src="data/real_vids/faucet_real_5x_side.mp4" data-id="faucet-video-thumb" data-img-src="data/thumbnails/faucet.png" data-label="Faucet"></div>
+    </div>
+
+    <button class="video-slide-arrow" id="video-slide-arrow-prev-2">&#8249;</button>
+    <button class="video-slide-arrow" id="video-slide-arrow-next-2">&#8250;</button>
+  </div>
+</div>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{real2render2real,
+  title     = {Real2Render2Real: Scaling Robotic Manipulation Data Without Simulation or Robot Hardware},
+  author = {real2render2real@gmail.com},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<!-- <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://real2render2real.github.io" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The website template is adapted from the <a class="author-text" href="https://www.nerfies.github.io/  ">Nerfies</a> project page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const videoGrid = document.getElementById('video-grid');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  
+  // Calculate scroll amount (width of one video card + gap)
+  const scrollAmount = 380; // 360px card width + 20px gap
+  
+  // Previous button click handler
+  prevBtn.addEventListener('click', () => {
+    videoGrid.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+  
+  // Next button click handler
+  nextBtn.addEventListener('click', () => {
+    videoGrid.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+  
+  // Update arrow visibility based on scroll position
+  videoGrid.addEventListener('scroll', () => {
+    prevBtn.style.opacity = videoGrid.scrollLeft > 0 ? '1' : '0.5';
+    nextBtn.style.opacity = 
+      videoGrid.scrollLeft < (videoGrid.scrollWidth - videoGrid.clientWidth) ? '1' : '0.5';
+  });
+  
+  // Initialize arrow visibility
+  prevBtn.style.opacity = '0.5';
+});
+</script>
+
+</body>
+</html>
