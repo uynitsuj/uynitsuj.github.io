@@ -110,7 +110,7 @@ To control the parameters for my prepareMovement() method in the Arduino sketch,
 
 ### The Kinematics
 
-Forward and inverse kinematics, are the mathematical processes of converting between the joint angle space (theta1, theta2, theta3, ...) and the cartesian coordinate space (x,y,z,p,r,y) relative to the grounded base frame origin, or vice versa.
+Forward and inverse kinematics let you convert between the joint angle space (theta1, theta2, theta3, ...) and the cartesian coordinate space (x,y,z,p,r,y) relative to the grounded base frame origin, or vice versa.
 
 ![FKIK]({{ site.url }}/img/Post3/02_forward_and_inverse_kinematics.jpg){:height="45%" width="45%"}
 
@@ -118,15 +118,13 @@ This allows us to determine a robot's kinematic chain, such as a robot manipulat
 
 ![snek]({{ site.url }}/img/Post3/teslasnake.gif)
 
-My journey through Forward Kinematics is laid out in one of my previous posts and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example), so I won't go into much detail for it here. In short, the Forward Kinematics process is pretty simple, consisting of determining the full kinematic chain as a product of several 4x4 SE(3) transformation matricies while using the joint angle space as input values. During this time I also gained some substantial experience working with matplotlib's mplot3d module for 3-dimensional plots:
+Figuring out the Forward Kinematics for my arm is laid out in one of my previous posts and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example), so I won't go into much detail for it here. In short, the forward kinematics is pretty simple, defining the full kinematic chain as a product of several SE(3) transformation matricies while using joint angles as input values.
 
-![Annotation 2020-05-17 173422]({{ site.url }}/img/Annotation 2020-05-17 173422.png)
-
-The Inverse Kinematics (IK) process is the inverse of the above, and is much more involved. The IK algorithm must produce an output in the joint angle space with only information about a desired pose in the cartesian space. One of the main reasons for why this is more complicated is because the IK joint space solutions are not unique. For every unique cartesian space input, the IK result can consist of multiple joint space solutions. In fact, there may be up to 8 as shown here:
+The Inverse Kinematics (IK) process is the inverse of the above, and is more involved. IK must provide joint angles from the desired pose in cartesian space. One reason why this is more complicated is because depending on the kinematic structure, the IK solution may not be unique. In the case of my arm, for every unique cartesian space input, the IK result can consist of multiple joint space solutions:
 
 ![Annotation 2020-08-07 190630]({{ site.url }}/img/Post3/Annotation 2020-08-07 190630.png)
 
-The goal of IK is to determine arm joint variables (theta1, theta2, theta3, etc.) based on a desired end effector position and orientation. The math here is your average trigonometry, but keeping track of the relevant reference frame definitions becomes very difficult to manage. Some of the resources I used for 6R IK are cited below[^1][^2][^3]. Going through the pertinent literature was very involved and time consuming, taking me roughly 2 weeks in total.
+Some of the resources I used for 6-revolute joint IK are cited below[^1][^2][^3]. Going through the pertinent literature was time consuming, taking roughly 2 weeks in total.
 
 <br>
 
@@ -134,7 +132,7 @@ The next step is about as involved as parsing the literature: translating useful
 
 ![Annotation 2020-08-07 195530]({{ site.url }}/img/Post3/Annotation 2020-08-07 195530.png)
 
-Symmetrical, however not a very beautiful sight to behold in the context of my work. Eventually, I would come across some stray negatives, undotted i's and uncrossed t's scattered around my implementation, and I eventually got there.
+Eventually, I would come across some stray negatives, undotted i's and uncrossed t's scattered around my implementation, and I eventually got there.
 
 ![Annotation 2020-05-29 214041]({{ site.url }}/img/Post3/Annotation 2020-05-29 214041.png)
 
