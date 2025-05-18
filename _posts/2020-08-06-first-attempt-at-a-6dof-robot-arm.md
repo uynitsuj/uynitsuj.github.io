@@ -118,7 +118,7 @@ This allows us to determine a robot's kinematic chain, such as a robot manipulat
 
 ![snek]({{ site.url }}/img/Post3/teslasnake.gif)
 
-Figuring out the Forward Kinematics for my arm is laid out in one of my previous posts and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example), so I won't go into much detail for it here. In short, the forward kinematics is pretty simple, defining the full kinematic chain as a product of several SE(3) transformation matricies while using joint angles as input values.
+Figuring out the Forward Kinematics for my arm is laid out in one of my previous posts and can be found [here](https://uynitsuj.github.io/articles/2020-03/forward-kinematics-denavit-hartenberg-convention-on-a-6r-robotic-arm-example), so I won't go into much detail for it here. In short, the forward kinematics is pretty simple, defining the full kinematic chain as a product of several SE(3) transform matricies while using joint angles as input values.
 
 The Inverse Kinematics (IK) process is the inverse of the above, and is more involved. IK must provide joint angles from the desired pose in cartesian space. One reason why this is more complicated is because depending on the kinematic structure, the IK solution may not be unique. In the case of my arm, for every unique cartesian space input, the IK result can consist of multiple joint space solutions:
 
