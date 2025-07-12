@@ -1,7 +1,12 @@
+- name: I2RT YAM Bimanual Robot Realtime Control Package
+  descr: "Open source software package to control I2RT bimanual yam robot arms in realtime."
+  image: yam_realtime.gif
+  github: https://github.com/uynitsuj/yam_realtime
+
+
 - name: Faster PI0-FAST model inference with a few frequency domain tricks
   descr: "Objective: Faster PI0-FAST robot VLA (Vision-Language-Action) model inference time; A DCT (discrete cosine transform) early stopping trick implementation for FAST (Frequency-Space Action Sequence Tokenization). The idea is to decode only the first few DCT coefficients from the PaLi-Gemma VLM rather than waiting for a full action chunk inference to complete. This can cut down inference to action time by roughly half since around the first 3-4 frequency harmonics of the DCT are typically enough for a coarse action sequence reconstruction."
   image: DCT_early_stopping.png
-  # youtube: https://www.youtube.com/watch?v=aJG0f2TfFcI
   github: https://github.com/uynitsuj/FASTer
 
 
