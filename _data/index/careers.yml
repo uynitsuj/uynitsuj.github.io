@@ -1,5 +1,9 @@
 # careers section data
-# if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: XDOF.AI
+  link: https://xdof.ai/
+  date: Jun 2025 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+  job: AI & Robotics PhD Research Intern
+
 - name: Berkeley Articifial Intelligence Research - AUTOLAB
   link: https://autolab.berkeley.edu/
   date: Aug 2023 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
