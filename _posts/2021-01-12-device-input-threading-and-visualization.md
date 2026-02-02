@@ -3,7 +3,7 @@ layout: post
 title:  "A quick post about my next project"
 excerpt: "Quick updates"
 categories: [project]
-image: gallery/QIKstress.gif
+image: pub/QIKstress.gif
 ---
 
 Recently, I've found some precious time in between courses to make progress towards my next project: a Quadrupedal Robot. This project is highly inspired by the work of Boston Dynamics on Spot, MIT on MiniCheetah (who I have the pleasure of working with at UM), and last but not least, my good friend Adham Elarabawy's work on Open Quadruped with Maurice Rahme. Go check out [their work](https://github.com/adham-elarabawy/open-quadruped)! At the time of writing, Adham is at Berkeley and Maurice at Boston Dynamics, and they will both go on to do many more impressive things, I'm sure.
