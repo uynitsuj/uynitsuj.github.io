@@ -1,5 +1,5 @@
 - name: I2RT YAM Active Leader Arms (In Progress)
-  descr: "Weekend project to develop open source hardware and software for I2RT YAM leader arms (imitation learning teaching devices) to control I2RT YAM leader and follower arms."
+  descr: "Weekend project to develop open source hardware and software for I2RT YAM leader arms (imitation learning teaching devices)."
   image: yam_active_leader.gif
   github: https://github.com/uynitsuj/lerobot_teleoperator_yamactiveleader
 
