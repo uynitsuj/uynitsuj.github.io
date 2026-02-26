@@ -1,7 +1,12 @@
-- name: I2RT YAM Bimanual Robot Realtime Control Package
-  descr: "Open source software package to control I2RT bimanual yam robot arms in realtime."
+- name: I2RT YAM Active Leader Arms (In Progress)
+  descr: "Open source I2RT YAM leader arms (imitation learning teaching devices) hardware and software to control I2RT YAM leader and follower arms."
+  image: yam_active_leader.gif
+  github: https://github.com/uynitsuj/lerobot_teleoperator_yamactiveleader
+
+- name: Realtime Robots Control Package
+  descr: "Open source software package to control real-world robot arms including the I2RT YAMs, Franka Panda."
   image: yam_realtime.gif
-  github: https://github.com/uynitsuj/yam_realtime
+  github: https://github.com/uynitsuj/robots_realtime
 
 
 - name: Faster PI0-FAST model inference with a few frequency domain tricks
