@@ -23,8 +23,8 @@ layout: null
   --border:       rgba(255, 255, 255, 0.07);
   --border-hi:    rgba(141, 126, 220, 0.5);
   --tx:           rgba(210, 210, 218, 0.97);
-  --tx-2:         #8888a2;
-  --tx-muted:     #4e4e68;
+  --tx-2:         #a8a8c2;
+  --tx-muted:     #72728c;
   --accent:       #8d7edc;
   --accent-hi:    #a897e8;
   --accent-dim:   rgba(141, 126, 220, 0.12);
@@ -183,14 +183,13 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
    HERO
    ============================================================================= */
 #hero {
-  min-height: calc(100vh - 60px);
   display: flex; align-items: center;
   border-bottom: 1px solid var(--border);
 }
 
 .hero-inner {
   max-width: 900px; margin: 0 auto;
-  padding: 5rem clamp(1.25rem, 5vw, 2.5rem);
+  padding: 3.5rem clamp(1.25rem, 5vw, 2.5rem) 3rem;
   display: flex; align-items: center; gap: 3.5rem; flex-wrap: wrap;
 }
 
@@ -254,9 +253,15 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
    ============================================================================= */
 .about-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 4rem;
+  grid-template-columns: 1.75fr 1fr;
+  gap: 3rem;
   align-items: start;
+}
+
+/* Sidebar (right col) — de-emphasised, right-justified feel */
+.about-sidebar {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
 }
 
 .bio-text {
@@ -372,17 +377,15 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 }
 
 .pub-thumb {
-  flex-shrink: 0; width: 210px;
+  flex-shrink: 0; width: 230px;
   background: var(--bg-surf); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
 }
 .pub-thumb video,
 .pub-thumb img {
   width: 100%; height: 100%;
-  object-fit: cover; display: block; margin: 0;
-  transition: transform 0.5s ease;
+  object-fit: contain; display: block; margin: 0;
 }
-.pub-card:hover .pub-thumb video,
-.pub-card:hover .pub-thumb img { transform: scale(1.06); }
 
 .pub-body {
   padding: 1.1rem 1.35rem;
@@ -458,14 +461,17 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 }
 
 .proj-img {
-  aspect-ratio: 16 / 9; overflow: hidden;
+  height: 175px; overflow: hidden;
   background: var(--bg-surf);
+  display: flex; align-items: center; justify-content: center;
 }
 .proj-img img {
-  width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;
+  max-width: 100%; max-height: 100%;
+  width: auto; height: auto;
+  object-fit: contain; display: block; margin: 0;
   transition: transform 0.45s ease;
 }
-.proj-card:hover .proj-img img { transform: scale(1.07); }
+.proj-card:hover .proj-img img { transform: scale(1.04); }
 
 .proj-body {
   padding: 1rem 1.2rem 1.2rem;
@@ -653,8 +659,8 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
           </p>
         </div>
 
-        <!-- Right: education + experience timelines -->
-        <div>
+        <!-- Right: education + experience timelines (sidebar) -->
+        <div class="about-sidebar">
           <div class="tl-block">
             <div class="tl-header">Education</div>
             {% for edu in site.data.index.education %}
