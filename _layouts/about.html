@@ -1,24 +1,49 @@
 ---
 layout: default
 ---
-<div class="row">
-    <div class="col l7">
-        <div class="row">
-            <div class="col">
-                {% include sections/about.html %}
-            </div>
+<div style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:4rem; align-items:start; margin-top:2.5rem;">
+
+  <!-- Left: bio + demos -->
+  <div>
+    {% include sections/about.html %}
+  </div>
+
+  <!-- Right: education + experience -->
+  <div>
+    <div class="tl-block">
+      <div class="tl-header">Education</div>
+      {% for edu in site.data.index.education %}
+      <div class="tl-item">
+        <div class="tl-date">{{ edu.date }}</div>
+        <div>
+          <div class="tl-org"><a href="{{ edu.link }}" target="_blank">{{ edu.name }}</a></div>
+          {% if edu.job %}<div class="tl-role">{{ edu.job }}</div>{% endif %}
         </div>
+      </div>
+      {% endfor %}
     </div>
 
-    <div class="col l4 offset-l1">
-        <div class="row">
-            {% include sections/education.html %}
+    <div class="tl-block">
+      <div class="tl-header">Experience</div>
+      {% for career in site.data.index.careers %}
+      <div class="tl-item">
+        <div class="tl-date">{{ career.date }}</div>
+        <div>
+          <div class="tl-org"><a href="{{ career.link }}" target="_blank">{{ career.name }}</a></div>
+          {% if career.job %}<div class="tl-role">{{ career.job }}</div>{% endif %}
         </div>
-        <div class="row">
-            {% include sections/career.html %}
-        </div>
+      </div>
+      {% endfor %}
     </div>
-
+  </div>
 
 </div>
-<p style="margin:25px;"></p>
+
+<style>
+@media (max-width: 768px) {
+  div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+</style>

@@ -1,0 +1,757 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+{% include analytics.html %}
+{% include head.html %}
+
+<style>
+/* =============================================================================
+   HOME LAYOUT — Complete Portfolio Redesign
+   Dark mode default · purple accent · green links · minimal & extensible
+   ============================================================================= */
+
+/* ---------- CSS Custom Properties ---------- */
+:root,
+[data-theme="dark"] {
+  --bg:           #111116;
+  --bg-surf:      #18181f;
+  --bg-card:      #1c1c26;
+  --bg-hover:     #22222e;
+  --border:       rgba(255, 255, 255, 0.07);
+  --border-hi:    rgba(141, 126, 220, 0.5);
+  --tx:           rgba(210, 210, 218, 0.97);
+  --tx-2:         #8888a2;
+  --tx-muted:     #4e4e68;
+  --accent:       #8d7edc;
+  --accent-hi:    #a897e8;
+  --accent-dim:   rgba(141, 126, 220, 0.12);
+  --green:        #42b983;
+  --green-hi:     #60d09d;
+  --red:          #f56565;
+  --nav-bg:       rgba(17, 17, 22, 0.88);
+  --shadow-sm:    0 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg:    0 10px 48px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme="light"] {
+  --bg:           #f3f3f7;
+  --bg-surf:      #ffffff;
+  --bg-card:      #ffffff;
+  --bg-hover:     #f7f7fb;
+  --border:       rgba(0, 0, 0, 0.09);
+  --border-hi:    rgba(107, 90, 210, 0.5);
+  --tx:           #15151e;
+  --tx-2:         #4e4e72;
+  --tx-muted:     #9898b0;
+  --accent:       #6b5acd;
+  --accent-hi:    #7d6bdf;
+  --accent-dim:   rgba(107, 90, 205, 0.1);
+  --green:        #1e9e72;
+  --green-hi:     #28b885;
+  --red:          #e53e3e;
+  --nav-bg:       rgba(243, 243, 247, 0.92);
+  --shadow-sm:    0 2px 10px rgba(0, 0, 0, 0.07);
+  --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg:    0 10px 48px rgba(0, 0, 0, 0.14);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 62px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Override global link styles from compiled CSS */
+a { color: var(--green); text-decoration: none; transition: color 0.2s; }
+a:hover, a:focus { color: var(--green-hi); }
+
+img { display: block; max-width: 100%; }
+
+/* ---------- Navigation ---------- */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.nav-brand {
+  font-size: 1rem; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--tx) !important;
+  transition: color 0.2s;
+}
+.nav-brand:hover { color: var(--accent) !important; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 0.1rem;
+}
+
+.nav-link {
+  position: relative;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--tx-2) !important;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+/* Sliding underline on hover */
+.nav-link::after {
+  content: '';
+  position: absolute; bottom: 3px; left: 50%; right: 50%;
+  height: 1.5px; background: var(--accent); border-radius: 2px;
+  transition: left 0.25s ease, right 0.25s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--tx) !important;
+  background: rgba(255,255,255,0.04);
+}
+.nav-link:hover::after,
+.nav-link.active::after { left: 12%; right: 12%; }
+
+.theme-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--tx-2);
+  cursor: pointer;
+  width: 34px; height: 34px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  margin-left: 0.75rem; font-size: 0.88rem;
+  transition: all 0.2s;
+}
+.theme-btn:hover {
+  background: var(--bg-hover);
+  color: var(--accent);
+  border-color: var(--border-hi);
+  transform: rotate(15deg);
+}
+
+/* ---------- Layout Shell ---------- */
+.page-main { padding-top: 60px; }
+
+.section-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.9rem;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block; width: 16px; height: 2px;
+  background: var(--accent); border-radius: 2px;
+}
+
+.section-h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700; letter-spacing: -0.025em; line-height: 1.2;
+  color: var(--tx); margin-bottom: 2.25rem;
+}
+
+hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* =============================================================================
+   HERO
+   ============================================================================= */
+#hero {
+  min-height: calc(100vh - 60px);
+  display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 5rem clamp(1.25rem, 5vw, 2.5rem);
+  display: flex; align-items: center; gap: 3.5rem; flex-wrap: wrap;
+}
+
+.hero-avatar {
+  width: 144px; height: 144px; border-radius: 50%;
+  object-fit: cover; margin: 0; flex-shrink: 0;
+  border: 2px solid var(--border-hi);
+  box-shadow: 0 0 0 8px var(--accent-dim), var(--shadow-md);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.hero-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 12px var(--accent-dim), var(--shadow-lg);
+}
+
+.hero-copy { flex: 1; min-width: 280px; }
+
+.hero-name {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--tx); margin-bottom: 0.4rem;
+}
+
+.hero-title {
+  font-size: 0.78rem; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.3rem;
+}
+
+.hero-bio {
+  color: var(--tx-2); font-size: 0.975rem; line-height: 1.8;
+  max-width: 580px; margin-bottom: 1.75rem;
+}
+.hero-bio a { color: var(--accent); }
+.hero-bio a:hover { color: var(--accent-hi); }
+
+.hero-ctas {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+}
+
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.45rem 1rem; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--tx-2) !important;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.hero-cta:hover {
+  color: var(--tx) !important;
+  border-color: var(--border-hi);
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.hero-cta i { font-size: 0.88em; }
+
+/* =============================================================================
+   ABOUT
+   ============================================================================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.bio-text {
+  color: var(--tx-2); font-size: 0.975rem; line-height: 1.85;
+  margin-bottom: 0.5rem;
+}
+.bio-text p + p { margin-top: 0.9rem; }
+.bio-text a { color: var(--green); }
+.bio-text a:hover { color: var(--green-hi); }
+
+/* 3-D interactive demos */
+.demos-label {
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--tx-muted); margin: 2rem 0 0.9rem;
+}
+
+.demo-wrap {
+  position: relative; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-surf);
+  aspect-ratio: 16 / 9;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.demo-wrap:hover { border-color: var(--border-hi); box-shadow: var(--shadow-sm); }
+
+.demo-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.demo-wrap:hover .demo-overlay,
+.demo-wrap:focus-within .demo-overlay { opacity: 0; }
+
+.demo-overlay span {
+  color: #fff; font-size: 0.82rem; font-weight: 700;
+  display: flex; align-items: center; gap: 0.4rem;
+  letter-spacing: 0.04em;
+}
+
+.demo-iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: none;
+}
+
+.demo-caption {
+  font-size: 0.77rem; color: var(--tx-muted);
+  text-align: center; padding-bottom: 0.75rem;
+}
+.demo-caption a { color: var(--green); font-weight: 600; }
+
+/* Timeline */
+.tl-block { margin-bottom: 2rem; }
+.tl-block:last-child { margin-bottom: 0; }
+
+.tl-header {
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--tx-muted); margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+
+.tl-item {
+  display: flex; gap: 0.8rem;
+  padding: 0.55rem 0.5rem;
+  margin: 0 -0.5rem;
+  border-radius: 6px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-item:hover { background: var(--bg-hover); }
+
+.tl-date {
+  flex-shrink: 0; width: 88px;
+  font-size: 0.73rem; color: var(--tx-muted);
+  font-variant-numeric: tabular-nums; padding-top: 1px;
+  line-height: 1.4;
+}
+
+.tl-org {
+  font-size: 0.88rem; font-weight: 700; color: var(--tx);
+  line-height: 1.35;
+}
+.tl-org a { color: var(--tx) !important; transition: color 0.2s; }
+.tl-org a:hover { color: var(--accent) !important; }
+
+.tl-role { font-size: 0.78rem; color: var(--tx-2); line-height: 1.45; margin-top: 1px; }
+
+/* =============================================================================
+   RESEARCH — Publication Cards
+   ============================================================================= */
+.pub-list {
+  display: flex; flex-direction: column; gap: 0.85rem;
+}
+
+.pub-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  display: flex; align-items: stretch;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+.pub-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pub-thumb {
+  flex-shrink: 0; width: 210px;
+  background: var(--bg-surf); overflow: hidden;
+}
+.pub-thumb video,
+.pub-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block; margin: 0;
+  transition: transform 0.5s ease;
+}
+.pub-card:hover .pub-thumb video,
+.pub-card:hover .pub-thumb img { transform: scale(1.06); }
+
+.pub-body {
+  padding: 1.1rem 1.35rem;
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+}
+
+.pub-badges {
+  display: flex; flex-wrap: wrap; gap: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.badge {
+  display: inline-flex; align-items: center;
+  font-size: 0.63rem; font-weight: 800;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.15em 0.55em; border-radius: 4px;
+}
+.badge-venue  { color: var(--tx-muted); background: var(--bg-surf); border: 1px solid var(--border); }
+.badge-oral   { color: var(--red);      background: rgba(245,101,101,0.1); border: 1px solid rgba(245,101,101,0.2); }
+.badge-review { color: var(--accent);   background: var(--accent-dim); border: 1px solid rgba(141,126,220,0.25); }
+
+.pub-title {
+  font-size: 0.95rem; font-weight: 700; line-height: 1.35;
+  color: var(--tx); margin-bottom: 0.45rem; letter-spacing: -0.01em;
+}
+
+.pub-authors {
+  font-size: 0.79rem; color: var(--tx-2);
+  margin-bottom: 0.9rem; line-height: 1.55;
+}
+.pub-authors strong { color: var(--tx); font-weight: 700; }
+
+.pub-actions {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+
+.pub-btn {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.73rem; font-weight: 700;
+  color: var(--tx-2) !important;
+  padding: 0.3rem 0.7rem; border-radius: 6px;
+  background: var(--bg); border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.pub-btn:hover {
+  color: var(--accent) !important;
+  border-color: var(--border-hi);
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+}
+.pub-btn i { font-size: 0.85em; }
+
+/* =============================================================================
+   PROJECTS — Card Grid
+   ============================================================================= */
+.proj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.proj-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.proj-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.proj-img {
+  aspect-ratio: 16 / 9; overflow: hidden;
+  background: var(--bg-surf);
+}
+.proj-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;
+  transition: transform 0.45s ease;
+}
+.proj-card:hover .proj-img img { transform: scale(1.07); }
+
+.proj-body {
+  padding: 1rem 1.2rem 1.2rem;
+  flex: 1; display: flex; flex-direction: column;
+}
+
+.proj-name {
+  font-size: 0.9rem; font-weight: 700; color: var(--tx);
+  margin-bottom: 0.4rem; line-height: 1.3; letter-spacing: -0.01em;
+}
+
+.proj-desc {
+  font-size: 0.79rem; color: var(--tx-2); flex: 1;
+  line-height: 1.65; margin-bottom: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.proj-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.proj-btn {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.71rem; font-weight: 700;
+  color: var(--tx-2) !important;
+  padding: 0.25rem 0.6rem; border-radius: 5px;
+  background: var(--bg); border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.proj-btn:hover {
+  color: var(--accent) !important;
+  border-color: var(--border-hi);
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+}
+.proj-btn i { font-size: 0.82em; }
+
+/* =============================================================================
+   FOOTER
+   ============================================================================= */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--tx-muted);
+  font-size: 0.8rem;
+}
+.site-footer a { color: var(--green); }
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+@media (max-width: 768px) {
+  .hero-inner     { flex-direction: column; gap: 1.5rem; }
+  .hero-avatar    { width: 108px; height: 108px; }
+  .about-grid     { grid-template-columns: 1fr; gap: 2.5rem; }
+  .proj-grid      { grid-template-columns: 1fr; }
+  .pub-card       { flex-direction: column; }
+  .pub-thumb      { width: 100%; max-height: 190px; }
+  /* hide most nav links on small screens, show all via hamburger placeholder */
+  .nav-link:not(.always-show) { display: none; }
+}
+
+@media (max-width: 480px) {
+  .section-shell  { padding: 56px 1.1rem; }
+  .hero-inner     { padding: 3.5rem 1.1rem; }
+}
+</style>
+
+<body>
+
+<!-- ═══════════════════════════ NAVIGATION ═══════════════════════════ -->
+<nav class="site-nav">
+  <a href="#hero" class="nav-brand">Justin Yu</a>
+  <div class="nav-links">
+    <a href="#about"    class="nav-link always-show">About</a>
+    <a href="#research" class="nav-link">Research</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <button class="theme-btn" id="theme-btn" title="Toggle light / dark mode">
+      <i id="theme-icon" class="fas fa-sun"></i>
+    </button>
+  </div>
+</nav>
+
+<main class="page-main">
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+      {% if site.owner.avatar %}
+      <img src="{{ site.url }}/img/{{ site.owner.avatar }}" alt="{{ site.owner.name }}" class="hero-avatar">
+      {% endif %}
+
+      <div class="hero-copy">
+        <h1 class="hero-name">{{ site.owner.name }}</h1>
+        <p class="hero-title">PhD Student &middot; AI &amp; Robotics &middot; UC Berkeley</p>
+        <p class="hero-bio">
+          Third-year PhD student in <a href="https://bair.berkeley.edu/" target="_blank">BAIR</a>,
+          researching robot learning for manipulation, interactive perception, and real-to-sim-to-real.
+          Advised by <a href="https://goldberg.berkeley.edu/" target="_blank">Ken Goldberg</a>
+          at the <a href="https://autolab.berkeley.edu/" target="_blank">AUTOLab</a>.
+          NSF GRFP Fellow. B.S.E. EE Summa Cum Laude, University of Michigan 2023.
+        </p>
+        <div class="hero-ctas">
+          {% if site.owner.email %}
+          <a href="mailto:{{ site.owner.email }}" class="hero-cta">
+            <i class="fa fa-fw fa-envelope"></i>Email
+          </a>
+          {% endif %}
+          {% if site.owner.google-scholar %}
+          <a href="https://scholar.google.com/citations?user={{ site.owner.google-scholar }}" class="hero-cta" target="_blank">
+            <i class="fa-brands fa-google-scholar"></i>Scholar
+          </a>
+          {% endif %}
+          {% if site.owner.github %}
+          <a href="https://github.com/{{ site.owner.github }}" class="hero-cta" target="_blank">
+            <i class="fa fa-fw fa-github"></i>GitHub
+          </a>
+          {% endif %}
+          {% if site.owner.twitter %}
+          <a href="https://twitter.com/{{ site.owner.twitter }}" class="hero-cta" target="_blank">
+            <i class="fa fa-fw fa-twitter"></i>Twitter
+          </a>
+          {% endif %}
+          {% if site.owner.linkedin %}
+          <a href="https://linkedin.com/in/{{ site.owner.linkedin }}" class="hero-cta" target="_blank">
+            <i class="fa fa-fw fa-linkedin"></i>LinkedIn
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
+  <hr class="section-rule">
+  <section id="about">
+    <div class="section-shell">
+      <div class="section-eyebrow">About</div>
+      <div class="about-grid">
+
+        <!-- Left: bio + interactive 3D demos -->
+        <div>
+          <div class="bio-text">
+            <p>
+              I am a third-year PhD student in the
+              <a href="https://bair.berkeley.edu/" target="_blank">Berkeley Artificial Intelligence Research (BAIR)</a>
+              group, specializing in Robotics and Artificial Intelligence. My research interests include robot learning
+              for manipulation, interactive perception, and real-to-sim-to-real. Broadly, I focus on developing systems
+              and algorithms that enable real-world robots to learn and perform practical manipulation tasks.
+            </p>
+            <p>
+              I am advised by <a href="https://goldberg.berkeley.edu/" target="_blank">Ken Goldberg</a> in the
+              <a href="https://autolab.berkeley.edu/" target="_blank">AUTOLab</a> and am supported by the National
+              Science Foundation Graduate Research Fellowship Program (<a href="https://www.nsfgrfp.org/" target="_blank">NSF GRFP</a>).
+              I graduated Summa Cum Laude with a B.S.E. in Electrical Engineering from the University of Michigan,
+              Ann Arbor in 2023.
+            </p>
+          </div>
+
+          <!-- Interactive 3D viser scenes -->
+          <div class="demos-label">Interactive 3D Scenes &mdash; click &amp; drag to orbit</div>
+
+          <div class="demo-wrap">
+            <div class="demo-overlay">
+              <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
+            </div>
+            <iframe class="demo-iframe"
+              src="{{ site.url }}/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/egomi/recording_20251022_210201.viser&initialCameraPosition=-0.480,1.004,1.674&initialCameraLookAt=0.212,0.032,0.923&initialCameraUp=0.000,0.000,1.000"
+              loading="lazy" allowfullscreen title="EgoMI 3D Scene"></iframe>
+          </div>
+          <p class="demo-caption">
+            <a href="https://egocentric-manipulation-interface.github.io/" target="_blank">Egocentric Manipulation Interface (EgoMI)</a>
+          </p>
+
+          <div class="demo-wrap">
+            <div class="demo-overlay">
+              <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
+            </div>
+            <iframe class="demo-iframe"
+              src="{{ site.url }}/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/coffee_maker_recording_20250506_191701.viser&initialCameraPosition=0.989,0.425,0.609&initialCameraLookAt=0.233,-0.046,-0.237&initialCameraUp=-0.000,-0.000,1.000"
+              loading="lazy" allowfullscreen title="R2R2R 3D Scene"></iframe>
+          </div>
+          <p class="demo-caption">
+            <a href="https://real2render2real.com/" target="_blank">Real2Render2Real (R2R2R)</a>
+          </p>
+        </div>
+
+        <!-- Right: education + experience timelines -->
+        <div>
+          <div class="tl-block">
+            <div class="tl-header">Education</div>
+            {% for edu in site.data.index.education %}
+            <div class="tl-item">
+              <div class="tl-date">{{ edu.date }}</div>
+              <div>
+                <div class="tl-org"><a href="{{ edu.link }}" target="_blank">{{ edu.name }}</a></div>
+                {% if edu.job %}<div class="tl-role">{{ edu.job }}</div>{% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="tl-block">
+            <div class="tl-header">Experience</div>
+            {% for career in site.data.index.careers %}
+            <div class="tl-item">
+              <div class="tl-date">{{ career.date }}</div>
+              <div>
+                <div class="tl-org"><a href="{{ career.link }}" target="_blank">{{ career.name }}</a></div>
+                {% if career.job %}<div class="tl-role">{{ career.job }}</div>{% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div><!-- /.about-grid -->
+    </div><!-- /.section-shell -->
+  </section>
+
+  <!-- ═══════════════════════════ RESEARCH ═══════════════════════════ -->
+  <hr class="section-rule">
+  <section id="research">
+    <div class="section-shell">
+      <div class="section-eyebrow">Research</div>
+      <h2 class="section-h2">Selected Publications</h2>
+      {% include sections/research.html %}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
+  <hr class="section-rule">
+  <section id="projects">
+    <div class="section-shell">
+      <div class="section-eyebrow">Projects</div>
+      <h2 class="section-h2">Personal &amp; Side Projects</h2>
+      {% include sections/projects.html %}
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  &copy; {{ site.time | date: '%Y' }} {{ site.owner.name }}
+</footer>
+
+{% include js.html %}
+<script src="{{ site.url }}/js/lightbox.js"></script>
+
+<script>
+/* ---------- Theme toggle ---------- */
+const html   = document.documentElement;
+const themeBtn  = document.getElementById('theme-btn');
+const themeIcon = document.getElementById('theme-icon');
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+html.setAttribute('data-theme', savedTheme);
+syncIcon(savedTheme);
+
+themeBtn.addEventListener('click', () => {
+  const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  syncIcon(next);
+});
+
+function syncIcon(t) {
+  themeIcon.className = t === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+/* ---------- Active nav highlight on scroll ---------- */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-60px 0px -45% 0px', threshold: 0 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

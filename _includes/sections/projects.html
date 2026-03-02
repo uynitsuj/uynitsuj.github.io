@@ -1,61 +1,30 @@
-<h1>Projects</h1>
-
+<div class="proj-grid">
 {% for project in site.data.index.projects %}
-<div class="row" style="background-color: #191919; border-radius: 15px; padding: 20px; border: 2.5px solid #4f4f4f; overflow: hidden; box-shadow: 0 0 7px rgba(200, 200, 200, 0.2);">
-    <div class="container" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; padding: 10px; max-width: 100%; box-sizing: border-box; align-items: flex-start; justify-content: flex-start; margin: 0;">
-        <!-- Image container - aligned to the left -->
-        <div class="image-container" style="flex: 0 0 auto; width: 100%; max-width: 350px; margin-right: 20px; box-sizing: border-box; overflow: hidden;">
-            <img src="{{ site.url }}/img/robots/{{ project.image }}" alt="{{ site.url }}/img/robots/{{ project.image }}"
-                style="width: 100%; height: auto; border-radius: 8px; display: block; object-fit: contain;">
-        </div>
-        
-        <!-- Content container - takes remaining space -->
-        <div class="content-container" style="flex: 1 1 300px; font-size: 0.88rem; box-sizing: border-box; text-align: left;">
-            <!-- TITLE -->
-            <h5 style="margin: 0">{{ project.name }}</h5>
-
-            <p style="margin:10px;"></p>
-            <!-- DESCRIPTION -->
-            <p style="margin: 0">{{ project.descr }}</p>
-
-            <!-- LINKS -->
-            <p style="margin:10px;"></p>
-            <b>
-                {% if project.youtube %}
-                <a href="{{ project.youtube }} " target="_blank"><i class="fa-brands fa-youtube"></i> Video</a>
-                {% if project.website or project.github %} / {% endif %}
-                {% endif %}
-                {% if project.website %}
-                <a href="{{ project.website }} " target="_blank"><i class="fa fa-fw fa-home"></i> Homepage</a>
-                {% endif %}
-                {% if project.github %}
-                {% if project.website %} / {% endif %}
-                <a href="{{ project.github }} " target="_blank"><i class="fa fa-fw fa-github"></i> GitHub</a>
-                {% endif %}
-            </b>
-        </div>
+  <div class="proj-card">
+    <div class="proj-img">
+      <img src="{{ site.url }}/img/robots/{{ project.image }}" alt="{{ project.name }}" loading="lazy">
     </div>
-</div>
-<p style="margin:18px;"></p>
+    <div class="proj-body">
+      <h3 class="proj-name">{{ project.name }}</h3>
+      <p class="proj-desc">{{ project.descr }}</p>
+      <div class="proj-actions">
+        {% if project.github %}
+        <a href="{{ project.github }}" class="proj-btn" target="_blank">
+          <i class="fa fa-fw fa-github"></i> GitHub
+        </a>
+        {% endif %}
+        {% if project.youtube %}
+        <a href="{{ project.youtube }}" class="proj-btn" target="_blank">
+          <i class="fa-brands fa-youtube"></i> Video
+        </a>
+        {% endif %}
+        {% if project.website %}
+        <a href="{{ project.website }}" class="proj-btn" target="_blank">
+          <i class="fa fa-fw fa-home"></i> Website
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 {% endfor %}
-
-<!-- Add responsive CSS -->
-<style>
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .image-container {
-        width: 100%;
-        max-width: 100%;
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-    
-    .content-container {
-        width: 100%;
-    }
-}
-</style>
+</div>
