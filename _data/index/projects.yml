@@ -5,7 +5,7 @@
 
 - name: Realtime Robots Control Package
   descr: "Open source software package to control real-world robot arms including the I2RT YAMs, Franka Panda."
-  image: yam_realtime.gif
+  image: drill-teleop.gif
   github: https://github.com/uynitsuj/robots_realtime
 
 
