@@ -34,6 +34,7 @@ layout: null
   --shadow-sm:    0 2px 10px rgba(0, 0, 0, 0.4);
   --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.5);
   --shadow-lg:    0 10px 48px rgba(0, 0, 0, 0.65);
+  --body-weight:  350;
 }
 
 [data-theme="light"] {
@@ -56,6 +57,7 @@ layout: null
   --shadow-sm:    0 2px 10px rgba(0, 0, 0, 0.07);
   --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.1);
   --shadow-lg:    0 10px 48px rgba(0, 0, 0, 0.14);
+  --body-weight:  400;
 }
 
 /* ---------- Base ---------- */
@@ -65,7 +67,7 @@ layout: null
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 62px;
+  scroll-padding-top: calc(62px + env(safe-area-inset-top, 0px));
 }
 
 body {
@@ -73,6 +75,7 @@ body {
   color: var(--tx);
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
+  font-weight: var(--body-weight);
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   transition: background 0.3s cubic-bezier(0.65, 0, 0.35, 1), color 0.3s cubic-bezier(0.65, 0, 0.35, 1);
@@ -87,9 +90,12 @@ img { display: block; max-width: 100%; }
 /* ---------- Navigation ---------- */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-  height: 60px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 clamp(1rem, 5vw, 3rem);
+  height: calc(60px + env(safe-area-inset-top, 0px));
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 0 max(clamp(1rem, 5vw, 3rem), env(safe-area-inset-right, 0px));
+  padding-left: max(clamp(1rem, 5vw, 3rem), env(safe-area-inset-left, 0px));
+  padding-bottom: 0;
+  padding-top: env(safe-area-inset-top, 0px);
   background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -150,7 +156,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* ---------- Layout Shell ---------- */
-.page-main { padding-top: 60px; }
+.page-main { padding-top: calc(60px + env(safe-area-inset-top, 0px)); }
 
 .section-shell {
   max-width: 1200px;
@@ -220,7 +226,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 
 .hero-bio {
   color: var(--tx-2); font-size: 0.975rem; line-height: 1.8;
-  max-width: 580px; margin-bottom: 1.75rem;
+  max-width: 65ch; margin-bottom: 1.75rem;
 }
 .hero-bio a { color: var(--accent); }
 .hero-bio a:hover { color: var(--accent-hi); }
@@ -265,7 +271,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 
 .bio-text {
   color: var(--tx-2); font-size: 0.975rem; line-height: 1.85;
-  margin-bottom: 0.5rem;
+  max-width: 65ch; margin-bottom: 0.5rem;
 }
 .bio-text p + p { margin-top: 0.9rem; }
 .bio-text a { color: var(--green); }
@@ -534,6 +540,43 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 @media (max-width: 480px) {
   .section-shell  { padding: 56px 1.1rem; }
   .hero-inner     { padding: 3.5rem 1.1rem; }
+}
+
+/* ---------- Focus states (keyboard nav) ---------- */
+.nav-link:focus-visible,
+.nav-brand:focus-visible,
+.hero-cta:focus-visible,
+.pub-btn:focus-visible,
+.proj-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.theme-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Touch active states ---------- */
+@media (pointer: coarse) {
+  .pub-card:active {
+    border-color: var(--border-hi);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .proj-card:active {
+    border-color: var(--border-hi);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .hero-cta:active,
+  .pub-btn:active,
+  .proj-btn:active {
+    color: var(--tx) !important;
+    border-color: var(--border-hi);
+    background: var(--accent-dim);
+    transform: translateY(-1px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
