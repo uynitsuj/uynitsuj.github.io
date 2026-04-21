@@ -75,11 +75,11 @@ body {
   font-size: 16px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s cubic-bezier(0.65, 0, 0.35, 1), color 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* Override global link styles from compiled CSS */
-a { color: var(--green); text-decoration: none; transition: color 0.2s; }
+a { color: var(--green); text-decoration: none; transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1); }
 a:hover, a:focus { color: var(--green-hi); }
 
 img { display: block; max-width: 100%; }
@@ -94,7 +94,7 @@ img { display: block; max-width: 100%; }
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  transition: background 0.3s;
+  transition: background 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .nav-brand {
@@ -115,14 +115,14 @@ img { display: block; max-width: 100%; }
   color: var(--tx-2) !important;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
-  transition: color 0.2s, background 0.2s;
+  transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 /* Sliding underline on hover */
 .nav-link::after {
   content: '';
   position: absolute; bottom: 3px; left: 50%; right: 50%;
   height: 1.5px; background: var(--accent); border-radius: 2px;
-  transition: left 0.25s ease, right 0.25s ease;
+  transition: left 0.25s cubic-bezier(0.16, 1, 0.3, 1), right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .nav-link:hover,
 .nav-link.active {
@@ -140,7 +140,7 @@ img { display: block; max-width: 100%; }
   width: 34px; height: 34px; border-radius: 7px;
   display: flex; align-items: center; justify-content: center;
   margin-left: 0.75rem; font-size: 0.88rem;
-  transition: all 0.2s;
+  transition: background 0.15s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .theme-btn:hover {
   background: var(--bg-hover);
@@ -197,7 +197,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   object-fit: cover; margin: 0; flex-shrink: 0;
   border: 2px solid var(--border-hi);
   box-shadow: 0 0 0 8px var(--accent-dim), var(--shadow-md);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hero-avatar:hover {
   transform: scale(1.05);
@@ -236,7 +236,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   color: var(--tx-2) !important;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hero-cta:hover {
   color: var(--tx) !important;
@@ -294,7 +294,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   background: rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   pointer-events: none;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .demo-wrap:hover .demo-overlay,
 .demo-wrap:focus-within .demo-overlay { opacity: 0; }
@@ -349,7 +349,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   font-size: 0.88rem; font-weight: 700; color: var(--tx);
   line-height: 1.35;
 }
-.tl-org a { color: var(--tx) !important; transition: color 0.2s; }
+.tl-org a { color: var(--tx) !important; transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1); }
 .tl-org a:hover { color: var(--accent) !important; }
 
 .tl-role { font-size: 0.78rem; color: var(--tx-2); line-height: 1.45; margin-top: 1px; }
@@ -366,7 +366,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   border: 1px solid var(--border);
   border-radius: 12px; overflow: hidden;
   display: flex; align-items: stretch;
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
 }
 .pub-card:hover {
@@ -427,7 +427,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   color: var(--tx-2) !important;
   padding: 0.3rem 0.7rem; border-radius: 6px;
   background: var(--bg); border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .pub-btn:hover {
   color: var(--accent) !important;
@@ -451,7 +451,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   border: 1px solid var(--border);
   border-radius: 12px; overflow: hidden;
   display: flex; flex-direction: column;
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .proj-card:hover {
   border-color: var(--border-hi);
@@ -468,7 +468,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   max-width: 100%; max-height: 100%;
   width: auto; height: auto;
   object-fit: contain; display: block; margin: 0;
-  transition: transform 0.45s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .proj-card:hover .proj-img img { transform: scale(1.04); }
 
@@ -495,7 +495,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   color: var(--tx-2) !important;
   padding: 0.25rem 0.6rem; border-radius: 5px;
   background: var(--bg); border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .proj-btn:hover {
   color: var(--accent) !important;
@@ -534,6 +534,15 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 @media (max-width: 480px) {
   .section-shell  { padding: 56px 1.1rem; }
   .hero-inner     { padding: 3.5rem 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  html { scroll-behavior: auto; }
 }
 </style>
 
