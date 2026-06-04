@@ -165,21 +165,15 @@ img { display: block; max-width: 100%; }
 }
 
 .section-eyebrow {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.68rem; font-weight: 800;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 0.9rem;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.92rem; font-weight: 800;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 2rem;
 }
 .section-eyebrow::before {
   content: '';
-  display: inline-block; width: 16px; height: 2px;
+  display: inline-block; width: 22px; height: 2px;
   background: var(--accent); border-radius: 2px;
-}
-
-.section-h2 {
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  font-weight: 700; letter-spacing: -0.025em; line-height: 1.2;
-  color: var(--tx); margin-bottom: 2.25rem;
 }
 
 hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; }
@@ -745,8 +739,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   <hr class="section-rule">
   <section id="research">
     <div class="section-shell">
-      <div class="section-eyebrow">Research</div>
-      <h2 class="section-h2">Publications</h2>
+      <div class="section-eyebrow">Research Publications</div>
       {% include sections/research.html %}
     </div>
   </section>
@@ -756,7 +749,6 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   <section id="projects">
     <div class="section-shell">
       <div class="section-eyebrow">Projects</div>
-      <h2 class="section-h2">Projects</h2>
       {% include sections/projects.html %}
     </div>
   </section>
