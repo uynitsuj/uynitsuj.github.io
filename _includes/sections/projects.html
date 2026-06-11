@@ -2,7 +2,12 @@
 {% for project in site.data.index.projects %}
   <div class="proj-card">
     <div class="proj-img">
+      {% assign img_ext = project.image | split: '.' | last | downcase %}
+      {% if img_ext == 'mp4' or img_ext == 'webm' %}
+      <video src="{{ site.url }}/img/robots/{{ project.image }}" autoplay loop muted playsinline preload="metadata" aria-label="{{ project.name }}"></video>
+      {% else %}
       <img src="{{ site.url }}/img/robots/{{ project.image }}" alt="{{ project.name }}" loading="lazy">
+      {% endif %}
     </div>
     <div class="proj-body">
       <h3 class="proj-name">{{ project.name }}</h3>
