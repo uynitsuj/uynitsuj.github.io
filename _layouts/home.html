@@ -437,6 +437,52 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 }
 .pub-btn i { font-size: 0.85em; }
 
+/* "Coming soon" / disabled action — looks like a button but isn't a link */
+.pub-btn-soon {
+  color: var(--tx-muted) !important;
+  background: var(--bg-surf);
+  border-style: dashed;
+  cursor: default;
+}
+.pub-btn-soon:hover {
+  color: var(--tx-muted) !important;
+  background: var(--bg-surf);
+  border-color: var(--border);
+  transform: none;
+}
+
+/* Under-submission "more" meta-card with a stacked-paper look */
+.pub-stack {
+  position: relative;
+  margin-top: 14px;            /* room for the back-layers peeking above */
+}
+.pub-stack::before,
+.pub-stack::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  z-index: 0;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pub-stack::after  { top: -7px;  width: calc(100% - 24px); transform: translateX(-50%); opacity: 0.65; }
+.pub-stack::before { top: -14px; width: calc(100% - 48px); transform: translateX(-50%); opacity: 0.4; }
+.pub-stack > .pub-card { position: relative; z-index: 1; }
+.pub-stack:hover::after  { transform: translateX(-50%) translateY(-2px); }
+.pub-stack:hover::before { transform: translateX(-50%) translateY(-4px); }
+
+.pub-card-more .pub-body { padding-top: 0.95rem; padding-bottom: 0.95rem; }
+.pub-more-title {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.pub-more-title i { color: var(--accent); font-size: 0.9em; }
+.pub-more-sub { margin-bottom: 0 !important; color: var(--tx-muted); }
+
 /* =============================================================================
    PROJECTS — Card Grid
    ============================================================================= */
