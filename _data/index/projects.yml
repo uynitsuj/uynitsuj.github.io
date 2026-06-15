@@ -1,11 +1,11 @@
 - name: I2RT YAM Active Leader Arms (In Progress)
   descr: "Weekend project to develop open source hardware and software for I2RT YAM leader arms (imitation learning teaching devices)."
-  image: yam_active_leader_dagger.gif
+  image: yam_active_leader_dagger.mp4
   github: https://github.com/uynitsuj/lerobot_teleoperator_yamactiveleader
 
 - name: Realtime Robots Control Package
   descr: "Open source software package to control real-world robot arms including the I2RT YAMs, Franka Panda."
-  image: drill-teleop.gif
+  image: drill-teleop.mp4
   github: https://github.com/uynitsuj/robots_realtime
 
 
@@ -17,7 +17,7 @@
 
 - name: YuMi IRB14000 Bimanual Robot Realtime Control Package
   descr: "Open source software package to control the ABB YuMi IRB14000 bimanual robot in realtime (240Hz) through control interfaces including: interactive websocket GUI, Meta Quest VR Controllers, and autonomous Diffusion Policy (shown), PI0-FAST and NVIDIA-GR00T VLA models."
-  image: dp_handoff_yumi.gif
+  image: dp_handoff_yumi.mp4
   youtube: https://www.youtube.com/watch?v=aJG0f2TfFcI
   github: https://github.com/uynitsuj/yumi_realtime
 
@@ -29,7 +29,7 @@
 
 - name: 3D-Printed 6DoF Robot Arm
   descr: "Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from scratch."
-  image: ezgif-4-f28f910a4123.gif
+  image: ezgif-4-f28f910a4123.mp4
   github: https://github.com/uynitsuj/Open6R_ARM
   youtube: https://www.youtube.com/watch?v=CedyWQmqiJ0
 
