@@ -1,1 +1,5 @@
 _site/
+
+# WARP-RM: local reference / agent drop-offs — keep out of the published site
+warp-rm/media/xdof-brand-guidelines/
+warp-rm/media/wordmark-*
