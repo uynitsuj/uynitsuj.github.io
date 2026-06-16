@@ -122,6 +122,8 @@
     }
     .authors a { color: inherit; text-decoration: none; }
     .authors a:hover { text-decoration: underline; }
+    /* keep each name+superscript on one line; only break between authors */
+    .authors .author { white-space: nowrap; }
     .venue {
       font-size: 1rem;
       color: var(--muted);
@@ -554,7 +556,7 @@
       </p>
       <p class="affil-note" style="font-size: 0.92rem; color: var(--muted); margin: 0.15rem 0 0.4rem;">
         <sup>*</sup>Equal contribution. &nbsp;&nbsp;
-        <sup>&dagger;</sup>Corresponding author: <a href="mailto:yujustin@berkeley.edu" style="color: var(--accent);">yujustin@berkeley.edu</a>
+        <sup>&dagger;</sup>Corresponding author: <a href="mailto:yujustin@berkeley.edu" style="color: #111;">yujustin@berkeley.edu</a>
       </p>
 
       <div class="affil-logos">
