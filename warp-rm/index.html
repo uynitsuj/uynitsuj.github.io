@@ -215,28 +215,29 @@
 
     /* Two-video teaser carousel (main + click-to-swap PiP, auto-advances on end) */
     .carousel-stage {
-      display: flex;
-      gap: 14px;
-      align-items: flex-end;
+      position: relative;
       width: 94vw;
       max-width: 1500px;
-      position: relative;
       left: 50%;
       transform: translateX(-50%);
-      margin: 0.5rem 0 1rem;
+      height: min(540px, 36vw);          /* = is-main height (16:9 of its width) */
+      margin: 0.5rem 0 1.25rem;
     }
     .carousel-item {
-      position: relative;
+      position: absolute;
+      bottom: 0;
+      transform: translateX(-50%);
       overflow: hidden;
       border-radius: 8px;
       border: 1px solid #ccc;
       background: #000;
-      transition: flex-basis 0.55s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      transition: left 0.55s var(--ease-out), width 0.55s var(--ease-out), box-shadow 0.3s var(--ease-out);
     }
-    .carousel-item.is-main { flex: 0 0 76%; z-index: 2; box-shadow: 0 6px 26px rgba(0,0,0,0.14); }
-    .carousel-item.is-pip  { flex: 0 0 22%; z-index: 1; cursor: pointer; }
-    .carousel-item.is-pip:hover { box-shadow: 0 6px 20px rgba(124,58,237,0.32); }
     .carousel-item video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    /* maximized video stays centered on the page; the other floats out into the right margin */
+    .carousel-item.is-main { left: 50%; width: min(960px, 64vw); z-index: 2; box-shadow: 0 10px 34px rgba(0,0,0,0.20); }
+    .carousel-item.is-pip  { left: 92%; width: min(220px, 17vw); z-index: 3; cursor: pointer; }
+    .carousel-item.is-pip:hover { box-shadow: 0 6px 22px rgba(124,58,237,0.45); }
     .carousel-cap {
       position: absolute; left: 0; right: 0; bottom: 0;
       padding: 0.5rem 0.7rem;
@@ -254,9 +255,9 @@
     }
     .carousel-item.is-pip .carousel-pip-hint { opacity: 0.95; }
     @media (max-width: 700px) {
-      .carousel-stage { gap: 8px; }
-      .carousel-item.is-main { flex: 0 0 71%; }
-      .carousel-item.is-pip  { flex: 0 0 27%; }
+      .carousel-stage { width: 96vw; height: 49.5vw; }
+      .carousel-item.is-main { width: 88vw; }
+      .carousel-item.is-pip  { width: 30vw; left: 82%; }
       .carousel-cap { font-size: 0.78rem; }
     }
 
