@@ -216,27 +216,29 @@
     /* Two-video teaser carousel (main + click-to-swap PiP, auto-advances on end) */
     .carousel-stage {
       position: relative;
-      width: 94vw;
-      max-width: 1500px;
-      left: 50%;
-      transform: translateX(-50%);
-      height: min(529px, 33.75vw);       /* = is-main height (16:9 of its width) */
-      margin: 0.5rem 0 1.25rem;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0.75rem auto 1.25rem;      /* main spans the content column, exactly centered */
+      aspect-ratio: 16 / 9;              /* reserves the main video's height */
     }
     .carousel-item {
       position: absolute;
       bottom: 0;
-      transform: translateX(-50%);
       overflow: hidden;
       border-radius: 8px;
       border: 1px solid #ccc;
       background: #000;
-      transition: left 0.55s var(--ease-out), width 0.55s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      transition: left 0.5s var(--ease-out), width 0.5s var(--ease-out), box-shadow 0.3s var(--ease-out);
     }
-    .carousel-item video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-    /* maximized video stays centered on the page; the other floats out into the right margin */
-    .carousel-item.is-main { left: 50%; width: min(940px, 60vw); z-index: 2; box-shadow: 0 10px 34px rgba(0,0,0,0.20); }
-    .carousel-item.is-pip  { left: 93%; width: min(190px, 14vw); z-index: 3; cursor: pointer; }
+    .carousel-item video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    /* maximized video fills the centered stage; the other slides out into the right margin */
+    .carousel-item.is-main { left: 0; width: 100%; z-index: 1; box-shadow: 0 10px 34px rgba(0,0,0,0.18); }
+    .carousel-item.is-pip {
+      left: calc(100% + 18px);
+      width: clamp(110px, 13vw, 180px);
+      z-index: 2;
+      cursor: pointer;
+    }
     .carousel-item.is-pip:hover { box-shadow: 0 6px 22px rgba(124,58,237,0.45); }
     .carousel-cap {
       position: absolute; left: 0; right: 0; bottom: 0;
@@ -245,21 +247,21 @@
       background: linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0));
       pointer-events: none;
     }
-    .carousel-item.is-pip .carousel-cap { font-size: 0.72rem; padding: 0.32rem 0.45rem; }
+    .carousel-item.is-pip .carousel-cap { display: none; }
     .carousel-pip-hint {
-      position: absolute; top: 8px; right: 8px;
+      position: absolute; top: 7px; left: 7px;
       background: rgba(17,17,17,0.74); color: #fff;
-      font-size: 0.7rem; font-weight: 600; font-family: var(--body-font);
-      padding: 0.18rem 0.5rem; border-radius: 999px;
+      font-size: 0.64rem; font-weight: 600; font-family: var(--body-font);
+      padding: 0.14rem 0.42rem; border-radius: 999px;
       opacity: 0; transition: opacity 0.25s var(--ease-out); pointer-events: none;
     }
     .carousel-item.is-pip .carousel-pip-hint { opacity: 0.95; }
-    @media (max-width: 700px) {
-      /* narrow screens: stack the PiP below the centered main instead of overlapping */
-      .carousel-stage { position: static; left: auto; transform: none; width: 100%; max-width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0.5rem auto 1rem; }
-      .carousel-item { position: static; transform: none; bottom: auto; }
-      .carousel-item.is-main { width: 100%; order: 0; }
-      .carousel-item.is-pip  { width: 48%; left: auto; align-self: flex-end; order: 1; }
+    @media (max-width: 760px) {
+      /* narrow screens: stack the PiP below the centered main (items stay positioned so the hint stays anchored) */
+      .carousel-stage { width: 100%; aspect-ratio: auto; display: flex; flex-direction: column; gap: 10px; margin: 0.75rem auto 1rem; }
+      .carousel-item { position: relative; bottom: auto; transition: box-shadow 0.3s var(--ease-out); }
+      .carousel-item.is-main { left: auto; width: 100%; order: 0; }
+      .carousel-item.is-pip  { left: auto; width: 48%; align-self: flex-end; order: 1; }
       .carousel-cap { font-size: 0.78rem; }
     }
 
