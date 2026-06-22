@@ -205,6 +205,50 @@
       border: 1px solid #ccc;
     }
 
+    /* Two-video teaser carousel (main + click-to-swap PiP, auto-advances on end) */
+    .carousel-stage {
+      display: flex;
+      gap: 14px;
+      align-items: flex-end;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0.5rem auto 0;
+    }
+    .carousel-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #000;
+      transition: flex-basis 0.55s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    }
+    .carousel-item.is-main { flex: 0 0 76%; z-index: 2; box-shadow: 0 6px 26px rgba(0,0,0,0.14); }
+    .carousel-item.is-pip  { flex: 0 0 22%; z-index: 1; cursor: pointer; }
+    .carousel-item.is-pip:hover { box-shadow: 0 6px 20px rgba(124,58,237,0.32); }
+    .carousel-item video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    .carousel-cap {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0.5rem 0.7rem;
+      font-family: var(--body-font); font-weight: 600; color: #fff; font-size: 0.95rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0));
+      pointer-events: none;
+    }
+    .carousel-item.is-pip .carousel-cap { font-size: 0.72rem; padding: 0.32rem 0.45rem; }
+    .carousel-pip-hint {
+      position: absolute; top: 8px; right: 8px;
+      background: rgba(17,17,17,0.74); color: #fff;
+      font-size: 0.7rem; font-weight: 600; font-family: var(--body-font);
+      padding: 0.18rem 0.5rem; border-radius: 999px;
+      opacity: 0; transition: opacity 0.25s var(--ease-out); pointer-events: none;
+    }
+    .carousel-item.is-pip .carousel-pip-hint { opacity: 0.95; }
+    @media (max-width: 700px) {
+      .carousel-stage { gap: 8px; }
+      .carousel-item.is-main { flex: 0 0 71%; }
+      .carousel-item.is-pip  { flex: 0 0 27%; }
+      .carousel-cap { font-size: 0.78rem; }
+    }
+
     .tldr {
       max-width: 1000px;
       margin: 0 auto 1.5rem auto;
@@ -522,6 +566,7 @@
       <li><a href="#teaser">Overview</a></li>
       <li><a href="#abstract">Abstract</a></li>
       <li><a href="#results">Real-World Results</a></li>
+      <li><a href="#bottle-results">Bottle Task</a></li>
       <!-- <li><a href="#tldr">TL;DR</a></li> -->
       <li><a href="#method">Method</a></li>
       <li><a href="#tables">Quantitative Results</a></li>
@@ -579,8 +624,19 @@
     </section>
 
     <section id="teaser">
-      <div class="hero-video-wrap">
-        <video src="media/teaser_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <div class="carousel" id="teaser-carousel">
+        <div class="carousel-stage">
+          <div class="carousel-item is-main" data-idx="0">
+            <video data-idx="0" src="media/teaser_rollout.mp4" autoplay muted loop playsinline preload="auto"></video>
+            <div class="carousel-cap">T-shirt folding &middot; WARP-BC</div>
+            <div class="carousel-pip-hint">&#9658; Click to view</div>
+          </div>
+          <div class="carousel-item is-pip" data-idx="1">
+            <video data-idx="1" src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="carousel-cap">Bottle-in-bin &middot; WARP-BC</div>
+            <div class="carousel-pip-hint">&#9658; Click to view</div>
+          </div>
+        </div>
       </div>
       <div class="hero-video-wrap">
         <video src="media/teaser.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
@@ -704,6 +760,82 @@
           WARP-BC successful folds complete faster than vanilla BC. As the training corpus admits
           more suboptimal demonstrations (D<sub>1</sub>&rarr;D<sub>3</sub>), vanilla BC's
           success count collapses while WARP-BC stays robust. Solid horizontal bar marks the mean.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="bottle-results">
+      <h1>Second Task: Bottle-in-Bin Placement</h1>
+      <p style="color: var(--muted); max-width: 900px;">
+        To test generality beyond folding, we apply the same recipe &mdash; WARP-RM progress estimates
+        reweighting behavior cloning &mdash; to a <b>bottle-in-bin placement</b> task on the same
+        bimanual robot. Each trial places <b>four bottles</b> into a bin under a 90&thinsp;s timeout
+        (<b>20 trials</b> &rarr; 80 bottles per policy); both policies train on the same demonstrations.
+      </p>
+
+      <p style="text-align: center; font-weight: 600; margin: 0.4rem 0 1.2rem;">
+        Each grid plays all <span style="color: var(--accent);">20 trials at 1&times; speed, fully autonomous</span>.
+      </p>
+
+      <div class="compare-row">
+        <div class="compare-cell">
+          <video autoplay muted loop playsinline>
+            <source src="media/bottle_grid_vanilla.mp4" type="video/mp4">
+          </video>
+          <div class="compare-label vanilla">Vanilla BC</div>
+          <div class="compare-metric">59 / 80 bottles &middot; 15.9s per bottle</div>
+        </div>
+        <div class="compare-cell">
+          <video autoplay muted loop playsinline>
+            <source src="media/bottle_grid_warp.mp4" type="video/mp4">
+          </video>
+          <div class="compare-label warp">WARP-BC (Ours)</div>
+          <div class="compare-metric">74 / 80 bottles &middot; 11.3s per bottle</div>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="max-width: 840px; margin: 1.5rem auto 0.5rem;">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Bottles placed &uarr;</th>
+              <th>Time / bottle (s) &darr;</th>
+              <th>Throughput (/hr) &uarr;</th>
+              <th>Act. Chunks Kept</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="method">Vanilla BC</td>
+              <td>59 / 80</td>
+              <td>15.9</td>
+              <td>147.8</td>
+              <td>100%</td>
+            </tr>
+            <tr class="highlight">
+              <td class="method">WARP-BC (Ours)</td>
+              <td class="best">74 / 80</td>
+              <td class="best">11.3</td>
+              <td class="best">237.8</td>
+              <td>30.6%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin: 0 0 0.5rem;">
+        WARP-BC places more bottles (<span class="pill warp">74/80</span> vs <span class="pill vanilla">59/80</span>),
+        cuts mean per-bottle time from 15.9&rarr;11.3&thinsp;s, and improves throughput <b>1.6&times;</b>
+        &mdash; while keeping only 30.6% of action chunks.
+      </p>
+
+      <figure style="margin: 1.5rem auto 0; max-width: 1000px; text-align: center;">
+        <img src="media/bottle_tpb.png" alt="Per-bottle placement-time distribution: Vanilla BC vs WARP-BC"
+             style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
+        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
+          <b>Per-bottle placement-time distribution.</b> WARP-BC (blue) places more bottles, and does
+          so faster and more consistently than vanilla BC (gray), which carries a heavy slow tail.
+          Solid bars mark the means (11.3&thinsp;s vs 15.9&thinsp;s).
         </figcaption>
       </figure>
     </section>
@@ -1440,6 +1572,43 @@
       curves = INSPECTOR_CURVES;
       switchEp(activeEp);
     })();
+  </script>
+  <script>
+  // Teaser carousel: main video plays once then auto-advances to the other; PiP loops
+  // as a live preview; clicking the PiP promotes it. Only the active video drives advance.
+  (function () {
+    var carousel = document.getElementById('teaser-carousel');
+    if (!carousel) return;
+    var items = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-item'));
+    if (items.length < 2) return;
+    var videos = items.map(function (it) { return it.querySelector('video'); });
+    var mainIdx = 0;
+
+    function safePlay(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+
+    function applyRoles() {
+      items.forEach(function (it, i) {
+        var isMain = (i === mainIdx);
+        it.classList.toggle('is-main', isMain);
+        it.classList.toggle('is-pip', !isMain);
+        var v = videos[i];
+        v.muted = true;          // required for programmatic autoplay
+        v.loop = !isMain;        // main must NOT loop so 'ended' fires; PiP loops as preview
+        safePlay(v);             // autoplay does not re-fire after a swap — play() explicitly
+      });
+    }
+
+    function swap() { mainIdx = mainIdx === 0 ? 1 : 0; applyRoles(); }
+
+    videos.forEach(function (v, i) {
+      v.addEventListener('ended', function () { if (i === mainIdx) swap(); }); // only active advances
+    });
+    items.forEach(function (it, i) {
+      it.addEventListener('click', function () { if (i !== mainIdx) swap(); }); // click PiP to promote
+    });
+
+    applyRoles();
+  })();
   </script>
 </body>
 </html>
