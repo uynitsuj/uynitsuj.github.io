@@ -223,7 +223,8 @@
     }
     .carousel-item {
       position: absolute;
-      bottom: 0;
+      top: 50%;
+      transform: translateY(-50%);       /* vertically center both the main and the floating PiP */
       overflow: hidden;
       border-radius: 8px;
       border: 1px solid #ccc;
@@ -248,12 +249,12 @@
       opacity: 0; transition: opacity 0.25s var(--ease-out); pointer-events: none;
     }
     .carousel-item.is-pip .carousel-pip-hint { opacity: 0.95; }
-    @media (max-width: 760px) {
-      /* narrow screens: stack the PiP below the centered main (items stay positioned so the hint stays anchored) */
-      .carousel-stage { width: 100%; aspect-ratio: auto; display: flex; flex-direction: column; gap: 10px; margin: 0.75rem auto 1rem; }
-      .carousel-item { position: relative; bottom: auto; transition: box-shadow 0.3s var(--ease-out); }
+    @media (max-width: 900px) {
+      /* sidebar hidden / main full-width here: stack the PiP below the main, horizontally centered (avoids it floating off-screen) */
+      .carousel-stage { width: 100%; aspect-ratio: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0.75rem auto 1rem; }
+      .carousel-item { position: relative; top: auto; transform: none; transition: box-shadow 0.3s var(--ease-out); }
       .carousel-item.is-main { left: auto; width: 100%; order: 0; }
-      .carousel-item.is-pip  { left: auto; width: 48%; align-self: flex-end; order: 1; }
+      .carousel-item.is-pip  { left: auto; width: 48%; align-self: center; order: 1; }
     }
 
     .tldr {
