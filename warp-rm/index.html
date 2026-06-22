@@ -240,14 +240,6 @@
       cursor: pointer;
     }
     .carousel-item.is-pip:hover { box-shadow: 0 6px 22px rgba(124,58,237,0.45); }
-    .carousel-cap {
-      position: absolute; left: 0; right: 0; bottom: 0;
-      padding: 0.5rem 0.7rem;
-      font-family: var(--body-font); font-weight: 600; color: #fff; font-size: 0.95rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0));
-      pointer-events: none;
-    }
-    .carousel-item.is-pip .carousel-cap { display: none; }
     .carousel-pip-hint {
       position: absolute; top: 7px; left: 7px;
       background: rgba(17,17,17,0.74); color: #fff;
@@ -262,7 +254,6 @@
       .carousel-item { position: relative; bottom: auto; transition: box-shadow 0.3s var(--ease-out); }
       .carousel-item.is-main { left: auto; width: 100%; order: 0; }
       .carousel-item.is-pip  { left: auto; width: 48%; align-self: flex-end; order: 1; }
-      .carousel-cap { font-size: 0.78rem; }
     }
 
     .tldr {
@@ -669,12 +660,10 @@
         <div class="carousel-stage">
           <div class="carousel-item is-main" data-idx="0">
             <video data-idx="0" src="media/teaser_rollout.mp4" autoplay muted loop playsinline preload="auto"></video>
-            <div class="carousel-cap">T-shirt folding &middot; WARP-BC</div>
             <div class="carousel-pip-hint">&#9658; Click to view</div>
           </div>
           <div class="carousel-item is-pip" data-idx="1">
             <video data-idx="1" src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
-            <div class="carousel-cap">Bottle-in-bin &middot; WARP-BC</div>
             <div class="carousel-pip-hint">&#9658; Click to view</div>
           </div>
         </div>
@@ -881,8 +870,7 @@
       </div>
       <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin: 0 0 0.5rem;">
         WARP-BC places more bottles (<span class="pill warp">74/80</span> vs <span class="pill vanilla">59/80</span>),
-        cuts mean per-bottle time from 15.9&rarr;11.3&thinsp;s, and improves throughput <b>1.6&times;</b>
-        &mdash; while keeping only 30.6% of action chunks.
+        cuts mean per-bottle time from 15.9&rarr;11.3&thinsp;s, and improves throughput <b>1.6&times;</b>.
       </p>
 
       <figure style="margin: 1.5rem auto 0; max-width: 1000px; text-align: center;">
