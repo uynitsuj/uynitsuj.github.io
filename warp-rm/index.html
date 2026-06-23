@@ -693,10 +693,9 @@
 
     <section id="tldr">
       <div class="tldr">
-        <b>TL;DR.</b> WARP is a fully self-supervised method that learns a dense, signed,
+        <b>TL;DR.</b> WARP-RM is a fully self-supervised model that learns a dense, signed,
         <span style="color: var(--accent); font-weight: 700;">relative</span> progress signal from raw
-        demonstrations, trained on time-warped playback. Used to reweight behavior cloning (WARP-BC), it keeps
-        the decisive action chunks and drops the dead time in demonstration data.</span>
+        demonstrations, trained on temporally-warped playback.</span>
       </div>
     </section>
 
@@ -714,10 +713,10 @@
         recovery behavior lives.
       </p>
       <p>
-        One idea is to score progress inside a demonstration, and train only on the segments
-        that move the task forward. Doing so cleanly and effectively comes down to the choice of supervision signal. Most prior frame-level reward models
-        equate progress with elapsed time, how far you are into the demonstration, We conjecture that supervising on elapsed time injects noise into task progress estimation models: two clips at the same
-        point on the clock can be in different states. An alternative is to hand-annotate subtask boundaries or forward progress, stagnation and regression as in SARM and ARM, and is more accurate but human annotations are slow to scale and are potentially inconsistent.
+        One idea is to estimate progress inside a demonstration, and train only on the segments
+        that move the task forward. Training models to estimate progress cleanly and effectively comes down to the choice of supervision signal. Most prior frame-level reward models
+        equate progress with elapsed time, or how far you are into the demonstration, We conjecture that supervising on elapsed time injects noise into task progress estimation models: two clips at the same
+        point on the clock can be in different states. An alternative is to hand-annotate subtask boundaries or forward progress, stagnation and regression as in <a href="https://arxiv.org/abs/2509.25358" target="_blank" rel="noopener" style="color: var(--accent);">SARM</a> and <a href="https://arxiv.org/abs/2604.03037" target="_blank" rel="noopener" style="color: var(--accent);">ARM</a>, and is more accurate but human annotations are slow to scale and are potentially inconsistent.
       </p>
 
       <div class="noise-row">
