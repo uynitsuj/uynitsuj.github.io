@@ -695,7 +695,7 @@
       <div class="tldr">
         <b>TL;DR.</b> WARP-RM is a fully self-supervised model that learns a dense, signed,
         <span style="color: var(--accent); font-weight: 700;">relative</span> progress signal from raw
-        demonstrations, trained on temporally-warped playback.</span>
+        demonstrations, trained on temporally-warped playback. We use these scalar reward estimates to filter and re-weight action chunks during behavior cloning.</span>
       </div>
     </section>
 
@@ -720,9 +720,9 @@
       </p>
 
       <div class="noise-row">
-        <figure><img src="media/noise_d1.jpg" alt="T-shirt fold at 0.5 video progress: flattening"><figcaption><span class="noise-badge">0.5</span> flattening</figcaption></figure>
-        <figure><img src="media/noise_d2.jpg" alt="T-shirt fold at 0.5 video progress: first sleeve fold"><figcaption><span class="noise-badge">0.5</span> first sleeve fold</figcaption></figure>
-        <figure><img src="media/noise_d3.jpg" alt="T-shirt fold at 0.5 video progress: second sleeve fold"><figcaption><span class="noise-badge">0.5</span> second sleeve fold</figcaption></figure>
+        <figure><img src="media/noise_d1.jpg" alt="T-shirt fold halfway through a 53s demo: flattening"><figcaption><span class="noise-badge">26s of 53s</span> flattening</figcaption></figure>
+        <figure><img src="media/noise_d2.jpg" alt="T-shirt fold halfway through a 62s demo: first sleeve fold"><figcaption><span class="noise-badge">31s of 62s</span> first sleeve fold</figcaption></figure>
+        <figure><img src="media/noise_d3.jpg" alt="T-shirt fold halfway through a 54s demo: second sleeve fold"><figcaption><span class="noise-badge">27s of 54s</span> second sleeve fold</figcaption></figure>
       </div>
       <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem;">
         All three frames sit at 50% of their video, yet show different stages of the task. We conjecture that supervising on elapsed time injects noise into task progress estimation models.
@@ -790,9 +790,12 @@
       <div class="method-fig">
         <div class="method-fig-title">1. Time-warp playback &rarr; self-supervised progress labels</div>
         <p>
-          Resample a successful trajectory at smoothly varying playback speeds (AR(1) in log-space), with
-          reversals dropped in at Poisson-sampled points. The signed source-frame displacement from the
-          window's first frame is the per-frame progress label. No annotation needed.
+          Each training example is a window of 32 frames sampled from a successful demonstration. Per-step
+          playback speeds are drawn from an AR(1) process in log-space, so the clip drifts smoothly between
+          slow-motion and fast-forward, and the total span the window covers is itself sampled, anywhere from a
+          short stretch seen in slow motion to most of the demonstration skimmed quickly. Some steps run in
+          reverse (Poisson-sampled), and the whole window is flipped with probability 0.5. Each frame's signed offset from the window's first frame is its
+          progress label, with no annotation.
         </p>
         <div class="sampler-widget" id="ar-sampler">
           <div class="sampler-head">
@@ -809,7 +812,7 @@
             Each draw samples a per-step playback speed from an AR(1) process in log-space (slow-motion to
             fast-forward), with Poisson-placed reversals and a 50% chance the whole clip plays backward.
             Accumulating those signed speeds picks which demo frame to read at each of the 32 steps, and the
-            signed offsets become the free progress labels. <b>Resample</b> to see the variety the model trains on.
+            signed offsets become the progress labels.
           </div>
         </div>
       </div>
