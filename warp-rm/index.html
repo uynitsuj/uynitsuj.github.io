@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WARP-RM: Warp-Augmented Relative Progress Reward Modeling</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <!-- MathJax for inline math (v̂_t, equations, etc.) -->
   <script>
@@ -24,7 +24,7 @@
       --sidebar-bg: #f6f5f2;
       --sidebar-text: #555;
       --sidebar-active: var(--accent);
-      --title-font: 'Inter', system-ui, sans-serif;
+      --title-font: 'Space Grotesk', system-ui, sans-serif;
       --body-font: 'Inter', system-ui, sans-serif;
       --sidebar-width: clamp(180px, 20vw, 240px);
       /* constant gap between the TOC and the centered content column, at any window size */
@@ -96,7 +96,7 @@
       font-weight: 700;
       letter-spacing: -0.5px;
     }
-    h1 { font-size: 2.1rem; margin-bottom: 0.5rem; }
+    h1 { font-size: 2.1rem; margin-bottom: 0.5rem; letter-spacing: -0.8px; }
     h2 { font-size: 1.45rem; font-weight: 600; margin-bottom: 0.8rem; }
 
     .main-title {
@@ -106,7 +106,7 @@
       margin-bottom: 0.2rem;
       margin-top: 0.2rem;
       line-height: 1.15;
-      letter-spacing: -1px;
+      letter-spacing: -1.5px;
       text-align: left;
       color: #111;
     }
@@ -121,6 +121,7 @@
       margin-bottom: 1.1rem;
       line-height: 1.3;
       text-align: left;
+      font-family: var(--title-font);
     }
 
     .authors {
@@ -175,10 +176,10 @@
     .affil-logos a {
       display: inline-flex;
       align-items: center;
-      opacity: 0.92;
+      opacity: 1;
       transition: opacity 0.2s var(--ease-out);
     }
-    .affil-logos a:hover { opacity: 0.6; }
+    .affil-logos a:hover { opacity: 0.7; }
     .affil-logo {
       height: 68px;
       width: auto;
