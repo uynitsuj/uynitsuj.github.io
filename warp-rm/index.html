@@ -738,9 +738,9 @@
       <h1>The progress signal</h1>
       <p>
         The curve under each video is WARP-RM's output: a dense, per-frame signed progress velocity,
-        \(\hat{v}_{t}\). Read it as a speedometer for the task. Around 1 it's moving at expert pace, near 0
-        it's stalled, and below 0 the state is sliding backwards. The model that produced it never saw a label,
-        only playback at different speeds. <b>Click anywhere on the curve to scrub the video.</b>
+        \(\hat{v}_{t}\), calibrated so that \(\hat{v}_t \approx 1\) matches the pace of the average reference
+        demonstrations, \(\hat{v}_t \approx 0\) is stalling progress, and \(\hat{v}_t < 0\) is regressing progress.
+        <b>Click anywhere on the curve to scrub the video.</b>
       </p>
       <div class="inspector-wrap">
         <div class="inspector-box-title">WARP-RM Progress Velocity Signal</div>
@@ -1804,7 +1804,7 @@
       if (vhEl) { vhEl.textContent = 'v\u0302 = ' + (v >= 0 ? '+' : '\u2212') + Math.abs(v).toFixed(1); vhEl.style.color = v >= 0 ? '#3ad07a' : '#ff6363'; }
     }
 
-    function tick(t) { if (!running) return; var dt = Math.min(0.05, (t - last) / 1000); last = t; kf += dt * 7.5; if (kf > (N - 1) + 9) newSample(); draw(); requestAnimationFrame(tick); }
+    function tick(t) { if (!running) return; var dt = Math.min(0.05, (t - last) / 1000); last = t; kf += dt * 15; if (kf > (N - 1) + 9) newSample(); draw(); requestAnimationFrame(tick); }
     newSample(); draw();
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { if (!running) { running = true; last = performance.now(); requestAnimationFrame(tick); } } else { running = false; } }); }, { threshold: 0.12 });
