@@ -616,9 +616,9 @@
   <nav class="sidebar">
     <ul>
       <li><a href="#overview">Overview</a></li>
-      <li><a href="#inspector">What WARP-RM sees</a></li>
-      <li><a href="#results">Real-World Results</a></li>
+      <li><a href="#inspector">Progress signal</a></li>
       <li><a href="#method">Method</a></li>
+      <li><a href="#results">Real-World Results</a></li>
       <li><a href="#tables">Quantitative Results</a></li>
       <li><a href="#bottle-results">Bottle Task</a></li>
       <li><a href="#ablations">Ablations</a></li>
@@ -687,15 +687,24 @@
       </div>
     </section>
 
+    <section id="tldr">
+      <div class="tldr">
+        <b>TL;DR.</b> WARP is a fully self-supervised method that learns a dense, signed,
+        <span style="color: var(--accent); font-weight: 700;">relative</span> progress signal from raw
+        demonstrations, trained on time-warped playback. Used to reweight behavior cloning (WARP-BC), it keeps
+        the decisive action chunks and drops the dead time; the resulting policies fold T-shirts up to
+        <b style="color: var(--accent);">~18&times; faster</b> in throughput than vanilla BC trained on the
+        same data. <span style="color: var(--muted); font-size: 0.92em;">(Failed trials are charged the full 240&thinsp;s timeout.)</span>
+      </div>
+    </section>
+
     <section id="overview">
-      <h1>What goes wrong when you scale teleoperation?</h1>
+      <h1>More data, better policies?</h1>
       <p>
         Imitation learning is supposed to improve with more demonstrations. That only holds if the
         demonstrations are good, and human teleoperation is rarely clean. Collect at scale and hesitations,
-        missed grasps, and clumsy recoveries accumulate next to the smooth executions; a policy trained on all
-        of it imitates the pauses and fumbles along with everything else. Our experiment tiers show this directly: as we
-        admit more low-quality demonstrations into training, a standard policy gets <i>worse</i>, not better.
-        More hours did not help. <b>Quality did.</b>
+        missed grasps, and clumsy behaviors accumulate next to the smooth executions; a policy trained on all
+        of it imitates the pauses and fumbles along with everything else.
       </p>
       <p>
         Throwing out every somewhat-flawed episode is the obvious response, but it fails in both directions: it drops the
@@ -706,8 +715,7 @@
         One idea is to score progress inside a demonstration, and train only on the segments
         that move the task forward. Doing so cleanly and effectively comes down to the choice of supervision signal. Most prior frame-level reward models
         equate progress with elapsed time, how far you are into the clip, which is noisy: two clips at the same
-        point on the clock can be in completely different states. An alternative is to hand-annotate subtask
-        boundaries or forward progress, stagnation and regression as in SARM and ARM, and is more accurate but human annotations are slow to scale and potentially inconsistent.
+        point on the clock can be in completely different states.
       </p>
 
       <div class="noise-row">
@@ -716,7 +724,7 @@
         <figure><img src="media/noise_d3.jpg" alt="T-shirt fold at 0.5 video progress: second sleeve fold"><figcaption><span class="noise-badge">0.5</span> second sleeve fold</figcaption></figure>
       </div>
       <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem;">
-        All three frames sit at 50% of their video, yet show completely different stages of the fold. Elapsed time is a noisy stand-in for progress.
+        All three frames sit at 50% of their video, yet show completely different stages of the fold. We conjecture that supervising on elapsed time injects noise into task progress estimation models.
       </p>
 
       <p style="font-size: 1.12rem; color: #1a1a1a;">
@@ -726,7 +734,7 @@
     </section>
 
     <section id="inspector">
-      <h1>What WARP-RM sees</h1>
+      <h1>The progress signal</h1>
       <p>
         The curve under each video is WARP-RM's output: a dense, per-frame signed progress velocity,
         \(\hat{v}_{t}\). Read it as a speedometer for the task. Around 1 it's moving at expert pace, near 0
@@ -765,70 +773,6 @@
         <b>Click on the curve to scrub through the video.</b>
         <span id="inspector-blurb"></span>
       </p>
-    </section>
-
-    <section id="tldr">
-      <div class="tldr">
-        <b>TL;DR.</b> WARP is a fully self-supervised method that learns a dense, signed,
-        <span style="color: var(--accent); font-weight: 700;">relative</span> progress signal from raw
-        demonstrations, trained on time-warped playback. Used to reweight behavior cloning (WARP-BC), it keeps
-        the decisive action chunks and drops the dead time; the resulting policies fold T-shirts up to
-        <b style="color: var(--accent);">~18&times; faster</b> in throughput than vanilla BC trained on the
-        same data. <span style="color: var(--muted); font-size: 0.92em;">(Failed trials are charged the full 240&thinsp;s timeout.)</span>
-      </div>
-    </section>
-
-    <section id="results">
-      <h1>Real-World Policy Rollouts</h1>
-      <p style="color: var(--muted);">
-        Across <b>380 real-world trials</b> of T-shirt folding from a crumpled start, WARP-BC succeeds more
-        often, and finishes faster when it does, than vanilla BC and the other baselines trained on the same
-        corpus. Each grid below plays all <b>20 evaluation trials</b> for one tier at once, in a 4&times;5
-        layout. Use the selector to switch between the three demonstration tiers.
-      </p>
-
-      <div class="compare-row">
-        <div class="compare-cell">
-          <video id="vanilla-video" autoplay muted loop playsinline>
-            <source src="media/grid_under60s_vanilla_bc.mp4" type="video/mp4">
-          </video>
-          <div class="compare-label vanilla">Vanilla BC</div>
-          <div class="compare-metric" id="vanilla-metric">20/20 successes, 113.8s mean time-to-completion</div>
-        </div>
-        <div class="compare-cell">
-          <video id="warp-video" autoplay muted loop playsinline>
-            <source src="media/grid_under60s_warp_bc.mp4" type="video/mp4">
-          </video>
-          <div class="compare-label warp">WARP-BC</div>
-          <div class="compare-metric" id="warp-metric">20/20 successes, 63.9s mean time-to-completion</div>
-        </div>
-      </div>
-
-      <div class="tier-selector" id="tier-selector">
-        <button class="tier-btn active" data-tier="60">\(\mathcal{D}_{1}\) &mdash; demos &le; 60s (cleanest)</button>
-        <button class="tier-btn" data-tier="90">\(\mathcal{D}_{2}\) &mdash; demos &le; 90s</button>
-        <button class="tier-btn" data-tier="120">\(\mathcal{D}_{3}\) &mdash; demos &le; 120s (noisiest)</button>
-      </div>
-
-      <div class="tier-desc" id="tier-desc">
-        \(\mathcal{D}_{1}\): model trained on demonstrations &le; 60s: the cleanest, fastest tier.
-      </div>
-
-      <p style="text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 0.6rem;">
-        Videos played at 1&times; speed.
-      </p>
-    </section>
-
-    <section id="ttc-plot">
-      <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
-        <img src="media/ttc_distribution.png" alt="Time-to-completion distribution for successful trials across D1, D2, D3" style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
-        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
-          <b>Time-to-completion distribution for successes.</b> Across all three training tiers,
-          WARP-BC completes folds faster than vanilla BC. As the training corpus admits
-          more suboptimal demonstrations (\(\mathcal{D}_{1}\rightarrow\mathcal{D}_{3}\)), vanilla BC's
-          success count collapses while WARP-BC stays robust. Solid horizontal bar marks the mean.
-        </figcaption>
-      </figure>
     </section>
 
     <section id="method">
@@ -949,6 +893,59 @@
           (<span style="color: #2ca02c; font-weight: 600;">&le;&nbsp;60s</span>), \(\mathcal{D}_{2}\)
           (<span style="color: #ff7f0e; font-weight: 600;">&le;&nbsp;90s</span>), and \(\mathcal{D}_{3}\)
           (<span style="color: #d62728; font-weight: 600;">&le;&nbsp;120s</span>).
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="results">
+      <h1>Real-World Policy Rollouts</h1>
+      <p style="color: var(--muted);">
+        Across <b>380 real-world trials</b> of T-shirt folding from a crumpled start, WARP-BC succeeds more
+        often, and finishes faster when it does, than vanilla BC and the other baselines trained on the same
+        corpus. Each grid below plays all <b>20 evaluation trials</b> for one tier at once, in a 4&times;5
+        layout. Use the selector to switch between the three demonstration tiers.
+      </p>
+
+      <div class="compare-row">
+        <div class="compare-cell">
+          <video id="vanilla-video" autoplay muted loop playsinline>
+            <source src="media/grid_under60s_vanilla_bc.mp4" type="video/mp4">
+          </video>
+          <div class="compare-label vanilla">Vanilla BC</div>
+          <div class="compare-metric" id="vanilla-metric">20/20 successes, 113.8s mean time-to-completion</div>
+        </div>
+        <div class="compare-cell">
+          <video id="warp-video" autoplay muted loop playsinline>
+            <source src="media/grid_under60s_warp_bc.mp4" type="video/mp4">
+          </video>
+          <div class="compare-label warp">WARP-BC</div>
+          <div class="compare-metric" id="warp-metric">20/20 successes, 63.9s mean time-to-completion</div>
+        </div>
+      </div>
+
+      <div class="tier-selector" id="tier-selector">
+        <button class="tier-btn active" data-tier="60">\(\mathcal{D}_{1}\) &mdash; demos &le; 60s (cleanest)</button>
+        <button class="tier-btn" data-tier="90">\(\mathcal{D}_{2}\) &mdash; demos &le; 90s</button>
+        <button class="tier-btn" data-tier="120">\(\mathcal{D}_{3}\) &mdash; demos &le; 120s (noisiest)</button>
+      </div>
+
+      <div class="tier-desc" id="tier-desc">
+        \(\mathcal{D}_{1}\): model trained on demonstrations &le; 60s: the cleanest, fastest tier.
+      </div>
+
+      <p style="text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 0.6rem;">
+        Videos played at 1&times; speed.
+      </p>
+    </section>
+
+    <section id="ttc-plot">
+      <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
+        <img src="media/ttc_distribution.png" alt="Time-to-completion distribution for successful trials across D1, D2, D3" style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
+        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
+          <b>Time-to-completion distribution for successes.</b> Across all three training tiers,
+          WARP-BC completes folds faster than vanilla BC. As the training corpus admits
+          more suboptimal demonstrations (\(\mathcal{D}_{1}\rightarrow\mathcal{D}_{3}\)), vanilla BC's
+          success count collapses while WARP-BC stays robust. Solid horizontal bar marks the mean.
         </figcaption>
       </figure>
     </section>
@@ -1326,7 +1323,6 @@
         <video src="media/teaser.mp4" muted loop playsinline controls preload="metadata"></video>
       </div>
     </section>
-    -->
   </main>
 
   <script>
