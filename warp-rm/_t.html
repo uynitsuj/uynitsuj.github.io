@@ -705,21 +705,21 @@
     <section id="overview">
       <h1>More data, better policies?</h1>
       <p>
-        Imitation learning is supposed to improve with more demonstrations. That only holds if the
-        demonstrations are good, and human teleoperation is rarely clean. Collect at scale and hesitations,
+        Imitation learning is supposed to improve with more demonstrations. That only holds in practice if the
+        data is good, and human teleoperation is rarely entirely clean. Collect at scale and hesitations,
         missed grasps, and clumsy behaviors accumulate next to the smooth executions; a policy trained on all
-        of it imitates the pauses and fumbles along with everything else.
+        of it imitates the pauses and fumbles.
       </p>
       <p>
-        Throwing out every somewhat-flawed episode is the obvious response, but it fails in both directions: it drops the
-        good, decisive segments sitting inside otherwise-messy episodes, and it leaves stalls in the episodes you keep. Episodes with mistakes are also where useful
+        Discarding every flawed episode is the obvious response, but it fails in both directions: it drops the
+        good, decisive segments sitting inside otherwise-messy episodes, and it leaves stalls in the episodes you keep. Episodes that end in successes but contain mistakes are also where useful
         recovery behavior lives.
       </p>
       <p>
         One idea is to score progress inside a demonstration, and train only on the segments
         that move the task forward. Doing so cleanly and effectively comes down to the choice of supervision signal. Most prior frame-level reward models
-        equate progress with elapsed time, how far you are into the clip, which is noisy: two clips at the same
-        point on the clock can be in completely different states.
+        equate progress with elapsed time, how far you are into the demonstration, We conjecture that supervising on elapsed time injects noise into task progress estimation models: two clips at the same
+        point on the clock can be in different states. An alternative is to hand-annotate subtask boundaries or forward progress, stagnation and regression as in SARM and ARM, and is more accurate but human annotations are slow to scale and are potentially inconsistent.
       </p>
 
       <div class="noise-row">
@@ -766,6 +766,7 @@
 
       <div class="inspector-tabs" id="inspector-tabs">
         <button class="inspector-tab active" data-ep="ep6974">Episode A &mdash; long, mixed-quality</button>
+        <button class="inspector-tab" data-ep="ep6974_stag">Episode A &mdash; the stall at 167.6s</button>
         <button class="inspector-tab" data-ep="ep6874">Episode B &mdash; fast, decisive</button>
       </div>
 
@@ -786,6 +787,7 @@
         so far. That target is noisy, because the same elapsed fraction in two demonstrations can correspond to
         very different amounts of real progress. WARP-RM learns a relative signal instead, how fast the task is
         moving and in which direction, supervised by replaying successful demonstrations at non-uniform speeds.
+        Because that question is local, it never needs to align two demonstrations on a shared timeline.
       </p>
 
       <div class="method-fig">
@@ -816,17 +818,7 @@
       </div>
 
       <div class="method-fig">
-        <div class="method-fig-title">2. Why relative progress, not absolute time</div>
-        <p>
-          Absolute time is a poor stand-in for progress, as the three 50%-progress frames in the opening make
-          clear: two demonstrations at the same timestamp can be in completely different states. WARP asks a
-          local question instead: did the last moment move the task forward or back, and by how much? That never
-          requires aligning two demonstrations to a shared timeline.
-        </p>
-      </div>
-
-      <div class="method-fig">
-        <div class="method-fig-title">3. Predict per-frame velocity from images</div>
+        <div class="method-fig-title">2. Predict per-frame velocity from images</div>
         <p>
           A frozen <b>DINOv3 ViT-B/16</b> + 12-layer bidirectional transformer head outputs a
           per-frame categorical distribution over cumulative progress. Its temporal derivative
@@ -853,7 +845,7 @@
       </div>
 
       <div class="method-fig">
-        <div class="method-fig-title">4. WARP-BC: reweight action chunks by terminal velocity</div>
+        <div class="method-fig-title">3. WARP-BC: reweight action chunks by terminal velocity</div>
         <p>
           For each training chunk, gate on the predicted velocity at its terminal frame.
           With \(\tau = 1.0\), only chunks ending in faster-than-expert progress are
@@ -887,6 +879,21 @@
         and \(\mathcal{D}_{5} = \mathcal{D}_{2} \cup \mathcal{D}_{A}\); WARP-RM and all other baselines treat \(\mathcal{D}_{A}\)
         as unannotated.
       </p>
+
+      <div class="table-wrap" style="max-width: 760px; margin: 1.25rem auto 0;">
+        <table class="results">
+          <thead>
+            <tr><th>Dataset / tier</th><th>Filter</th><th>Episodes</th><th>Total hours</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="method">\(\mathcal{D}_{1}\)</td><td>policy training, &le;&nbsp;60s</td><td>2,427</td><td>36.1</td></tr>
+            <tr><td class="method">\(\mathcal{D}_{2}\)</td><td>policy training, &le;&nbsp;90s</td><td>4,124</td><td>71.3</td></tr>
+            <tr><td class="method">\(\mathcal{D}_{3}\)</td><td>policy training, &le;&nbsp;120s</td><td>6,473</td><td>139.7</td></tr>
+            <tr><td class="method">\(\mathcal{D}_{A}\)</td><td>annotated supplement (SARM)</td><td>867</td><td>13.9</td></tr>
+            <tr><td class="method">\(\mathcal{D}_{\mathrm{RM}}\)</td><td>WARP-RM reference, &le;&nbsp;59.8s</td><td>1,950</td><td>28.7</td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
         <img src="media/episode_length_histogram.png"
@@ -1292,44 +1299,20 @@
     <section id="limitations">
       <h1>What this doesn't do (yet)</h1>
       <p style="color: var(--muted);">
-        WARP-BC makes a policy more robust to bad data, but it can't invent behavior the demonstrations never
-        showed; the policy is still bounded by its training set. Getting past that bound is the natural next step,
-        through DAgger, offline and online RL, and iterative reward-aligned self-improvement. Two caveats. The
-        negative-progress signal comes only from reversed playback, an approximation we take from ReWiND that can
-        be physically implausible. And on folding in particular, the garment's shrinking 2D footprint may hand the
-        model an easy progress cue, so we'd want to check WARP-RM on tasks that lack that kind of visual structure.
+        WARP-BC makes a policy more robust to bad data, but it can only reweight what the demonstrations already
+        contain. It won't invent behavior that was never shown, so the policy stays bounded by its training set;
+        getting past that bound will take methods that gather new experience, like DAgger or reinforcement
+        learning. The progress signal has rough edges of its own. Its sense of negative progress comes entirely
+        from reversed playback, an idea we borrow from ReWiND that can look physically implausible. And folding
+        may be an easy case: as the garment flattens, its shrinking area is itself a progress cue, so it's still
+        unclear how well WARP-RM reads progress on tasks without that kind of visual structure.
       </p>
-    </section>
-
-    <section id="citation">
-      <h1>Citation</h1>
-      <pre class="bibtex"><code>@article{yu2026warprm,
-  title   = {WARP-RM: A Warp-Augmented Relative Progress Reward Model for Data Curation},
-  author  = {Yu, Justin and Goldberg, Andrew and Kondap, Kavish and El-Refai, Karim and
-             Ransing, Ethan and Chen, Qianzhong and Schwager, Mac and Shentu, Fred and
-             Wu, Philipp and Goldberg, Ken},
-  year    = {2026},
-  journal = {arXiv preprint},
-  url     = {https://uynitsuj.github.io/warp-rm/},
-}</code></pre>
-    </section>
-
-    <section id="interactive">
-      <h1>Interactive 3D Demos</h1>
-      <p style="color: var(--muted);">
-        Interactive viser-based 3D rollouts will be added here for inspection of WARP-RM progress
-        signals and policy trajectories.
-      </p>
-      <div class="iframe-placeholder">
-        <i class="fa-solid fa-cube" style="font-size: 2rem; opacity: 0.5;"></i>
-        <p style="margin-top: 0.75rem;">Interactive viser embeds coming soon.</p>
-      </div>
     </section>
 
     <section id="full-video">
       <h1>Supplemental Video</h1>
       <div class="hero-video-wrap">
-        <video src="media/teaser.mp4" muted loop playsinline controls preload="metadata"></video>
+        <video src="media/teaser.mp4" poster="media/teaser_poster.jpg" muted loop playsinline controls preload="none"></video>
       </div>
     </section>
   </main>
@@ -1419,11 +1402,12 @@
     (function () {
       const VIDEO_SRC = {
         ep6974: 'media/inspector/ep6974.mp4',
+        ep6974_stag: 'media/inspector/ep6974.mp4',
         ep6874: 'media/inspector/ep6874.mp4',
       };
       // Per-episode default start time so the first frame the viewer sees
       // is the one with narrative interest, not the bin-extract setup.
-      const START_T = { ep6974: 30, ep6874: 0 };
+      const START_T = { ep6974: 30, ep6974_stag: 162, ep6874: 0 };
       const PAD = { l: 36, r: 12, t: 10, b: 28 };
 
       const $ = id => document.getElementById(id);
@@ -1725,6 +1709,8 @@
 
       // Bootstrap from inlined data — no network fetch required.
       curves = INSPECTOR_CURVES;
+      // Second Episode A view: same clip and curve, opened on the stall around 167.6 s.
+      curves.ep6974_stag = Object.assign({}, curves.ep6974, { blurb: 'Around 167.6 s the arms fidget and re-grip without advancing the fold, so v̂ sits near zero. The video keeps rolling, but the task is not progressing.' });
       switchEp(activeEp);
     })();
   </script>
@@ -1829,5 +1815,5 @@
     } else { running = true; last = performance.now(); requestAnimationFrame(tick); }
   })();
   </script>
-<script>window.addEventListener("load",function(){setTimeout(function(){var e=document.getElementById("ar-sampler");document.title="Y="+Math.round(e.getBoundingClientRect().top+window.scrollY);},900);});</script></body>
+<script>window.addEventListener("load",function(){setTimeout(function(){var b=document.querySelector(".inspector-tab[data-ep=ep6974_stag]");if(b)b.click();},700);});</script></body>
 </html>
