@@ -762,9 +762,9 @@
       </div>
 
       <div class="inspector-tabs" id="inspector-tabs">
-        <button class="inspector-tab active" data-ep="ep6974">Episode A &mdash; long, mixed-quality</button>
-        <button class="inspector-tab" data-ep="ep6974_stag">Episode A &mdash; the stall at 167.6s</button>
-        <button class="inspector-tab" data-ep="ep6874">Episode B &mdash; fast, decisive</button>
+        <button class="inspector-tab active" data-ep="ep6974">Episode A &mdash; accidental drop</button>
+        <button class="inspector-tab" data-ep="ep6974_stag">Episode A &mdash; stalled progress</button>
+        <button class="inspector-tab" data-ep="ep6874">Episode B &mdash; fast and decisive</button>
       </div>
 
       <p class="inspector-caption-text">
@@ -1404,7 +1404,7 @@
       };
       // Per-episode default start time so the first frame the viewer sees
       // is the one with narrative interest, not the bin-extract setup.
-      const START_T = { ep6974: 30, ep6974_stag: 162, ep6874: 0 };
+      const START_T = { ep6974: 30, ep6974_stag: 167.6, ep6874: 0 };
       const PAD = { l: 36, r: 12, t: 10, b: 28 };
 
       const $ = id => document.getElementById(id);
