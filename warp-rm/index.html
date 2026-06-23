@@ -591,21 +591,37 @@
     .pill.warp { background: #dcfce7; color: #166534; }
     .pill.vanilla { background: #fee2e2; color: #991b1b; }
 
+
+    /* 50%-frame noise row + bibtex */
+    .noise-row { display: flex; gap: 1rem; margin: 1rem 0 0.2rem; }
+    .noise-row figure { flex: 1; margin: 0; text-align: center; }
+    .noise-row img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; border: 1px solid var(--hairline); }
+    .noise-row figcaption { margin-top: 0.45rem; font-size: 0.95rem; color: var(--muted); }
+    .noise-badge { display: inline-block; background: var(--accent); color: #fff; font-family: var(--mono, monospace); font-weight: 700; font-size: 0.8rem; padding: 0.05rem 0.4rem; border-radius: 5px; margin-right: 0.35rem; }
+    @media (max-width: 640px) { .noise-row { flex-direction: column; } }
+    pre.bibtex { background: #f0eee9; border: 1px solid var(--hairline); border-radius: 8px; padding: 1rem 1.1rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.5; max-width: 900px; }
+    pre.bibtex code { font-family: 'Geist Mono', 'IBM Plex Mono', Menlo, monospace; white-space: pre; color: #333; }
+
+    /* Interactive AR(1) time-warp sampler widget */
+    .sampler-widget { max-width: 1000px; margin: 0.5rem 0 0; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface); padding: 0.9rem 1.1rem 1.1rem; }
+    .sampler-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.2rem; flex-wrap: wrap; }
+    .sampler-label { font-family: 'Geist Mono', monospace; font-size: 0.92rem; color: var(--accent); }
+    .sampler-btn { font-family: var(--body-font); font-weight: 600; font-size: 0.88rem; color: #fff; background: #1a1a1a; border: none; border-radius: 999px; padding: 0.38rem 0.9rem; cursor: pointer; transition: background 0.2s var(--ease-out), transform 0.15s var(--ease-out); }
+    .sampler-btn:hover { background: var(--accent); transform: translateY(-1px); }
+    #sampler-svg { width: 100%; height: auto; display: block; margin-top: 0.2rem; }
+    .sampler-caption { margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
   </style>
 </head>
 <body>
   <nav class="sidebar">
     <ul>
-      <li><a href="#teaser">Overview</a></li>
-      <li><a href="#data">Data</a></li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#inspector">What WARP-RM sees</a></li>
       <li><a href="#results">Real-World Results</a></li>
-      <li><a href="#bottle-results">Bottle Task</a></li>
-      <!-- <li><a href="#tldr">TL;DR</a></li> -->
       <li><a href="#method">Method</a></li>
       <li><a href="#tables">Quantitative Results</a></li>
+      <li><a href="#bottle-results">Bottle Task</a></li>
       <li><a href="#ablations">Ablations</a></li>
-      <!-- <li><a href="#interactive">Interactive Demos</a></li> -->
-
     </ul>
   </nav>
 
@@ -669,19 +685,54 @@
           </div>
         </div>
       </div>
-      <div class="hero-video-wrap">
-        <video src="media/teaser.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
+    </section>
+
+    <section id="overview">
+      <h1>What goes wrong when you scale teleoperation?</h1>
+      <p>
+        Imitation learning is supposed to improve with more demonstrations. That only holds if the
+        demonstrations are good, and human teleoperation is rarely clean. Collect at scale and hesitations,
+        missed grasps, and clumsy recoveries accumulate next to the smooth executions; a policy trained on all
+        of it imitates the pauses and fumbles along with everything else. Our experiment tiers show this directly: as we
+        admit more low-quality demonstrations into training, a standard policy gets <i>worse</i>, not better.
+        More hours did not help. <b>Quality did.</b>
+      </p>
+      <p>
+        Throwing out every somewhat-flawed episode is the obvious response, but it fails in both directions: it drops the
+        good, decisive segments sitting inside otherwise-messy episodes, and it leaves stalls in the episodes you keep. Episodes with mistakes are also where useful
+        recovery behavior lives.
+      </p>
+      <p>
+        One idea is to score progress inside a demonstration, and train only on the segments
+        that move the task forward. Doing so cleanly and effectively comes down to the choice of supervision signal. Most prior frame-level reward models
+        equate progress with elapsed time, how far you are into the clip, which is noisy: two clips at the same
+        point on the clock can be in completely different states. An alternative is to hand-annotate subtask
+        boundaries or forward progress, stagnation and regression as in SARM and ARM, and is more accurate but human annotations are slow to scale and potentially inconsistent.
+      </p>
+
+      <div class="noise-row">
+        <figure><img src="media/noise_d1.jpg" alt="T-shirt fold at 0.5 video progress: flattening"><figcaption><span class="noise-badge">0.5</span> flattening</figcaption></figure>
+        <figure><img src="media/noise_d2.jpg" alt="T-shirt fold at 0.5 video progress: first sleeve fold"><figcaption><span class="noise-badge">0.5</span> first sleeve fold</figcaption></figure>
+        <figure><img src="media/noise_d3.jpg" alt="T-shirt fold at 0.5 video progress: second sleeve fold"><figcaption><span class="noise-badge">0.5</span> second sleeve fold</figcaption></figure>
       </div>
-      <div class="tldr">
-        <b>TL;DR:</b> WARP learns a self-supervised, dense, signed
-        <span style="color: var(--accent); font-weight: 700;">relative</span>
-        progress signal from raw demonstrations by training on time-warped playback.
-        Reweighted behavior cloning with WARP-RM produces policies that fold T-shirts up to
-        <b style="color: var(--accent);">18&times; faster</b> in throughput compared to vanilla BC trained on the same data.
-      </div>
+      <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem;">
+        All three frames sit at 50% of their video, yet show completely different stages of the fold. Elapsed time is a noisy stand-in for progress.
+      </p>
+
+      <p style="font-size: 1.12rem; color: #1a1a1a;">
+        <b>WARP produces a dense, signed, per-frame progress velocity signal straight from the demonstrations, with no human
+        annotations required.</b>
+      </p>
     </section>
 
     <section id="inspector">
+      <h1>What WARP-RM sees</h1>
+      <p>
+        The curve under each video is WARP-RM's output: a dense, per-frame signed progress velocity,
+        \(\hat{v}_{t}\). Read it as a speedometer for the task. Around 1 it's moving at expert pace, near 0
+        it's stalled, and below 0 the state is sliding backwards. The model that produced it never saw a label,
+        only playback at different speeds. <b>Click anywhere on the curve to scrub the video.</b>
+      </p>
       <div class="inspector-wrap">
         <div class="inspector-box-title">WARP-RM Progress Velocity Signal</div>
         <div class="inspector-video-center">
@@ -716,54 +767,24 @@
       </p>
     </section>
 
-    <section id="data">
-      <h1>Data</h1>
-      <p style="color: var(--muted);">
-        Our policy-training data is drawn from a single corpus of around 125 hours of successful,
-        unannotated human-teleoperated T-shirt-folding demonstrations. On this task, <b>episode length is a coarse proxy
-        for execution efficiency</b>: longer episodes tend to contain more hesitations, retries, and
-        recoveries. To evaluate robustness as progressively more inefficient behavior is admitted into
-        training, we define <b>three nested, length-filtered tiers</b>: \(\mathcal{D}_{1}\) (&le;&nbsp;60s):
-        1,975 episodes (29.1&nbsp;hours), \(\mathcal{D}_{2}\) (&le;&nbsp;90s): 3,546 episodes
-        (61.5&nbsp;hours), and \(\mathcal{D}_{3}\) (&le;&nbsp;120s): 5,718 episodes (124.7&nbsp;hours).
-        Policies are trained on the same underlying demonstrations, either with uniform weighting
-        (vanilla BC) or WARP-based progress reweighting. A single WARP-RM model is used across all tiers:
-        it is trained <b>once</b> on a fixed reference subset \(\mathcal{D}_{\mathrm{RM}}\) &mdash; the
-        shortest demonstrations (&le;&nbsp;59s, 1,807 episodes) &mdash; providing a clean reference signal
-        for the canonical execution pace (\(\hat{v} = 1\)). For baseline comparisons, SARM requires human
-        annotations, so an <b>annotated supplement</b> \(\mathcal{D}_{A}\) (929 expert demonstrations, 15.8 hours) is
-        added, forming the augmented datasets \(\mathcal{D}_{4} = \mathcal{D}_{1} \cup \mathcal{D}_{A}\)
-        and \(\mathcal{D}_{5} = \mathcal{D}_{2} \cup \mathcal{D}_{A}\); WARP-RM and all other baselines treat \(\mathcal{D}_{A}\)
-        as unannotated.
-      </p>
-
-      <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
-        <img src="media/episode_length_histogram.png"
-             style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1rem;"
-             alt="Stacked histogram of demonstration episode lengths: main corpus and annotated supplement, with tier cutoffs at 60s, 90s and 120s">
-        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
-          <b>Episode-length distribution of the demonstration corpus.</b> The main
-          unannotated corpus (\(\mathcal{D}_{1}\)&ndash;\(\mathcal{D}_{3}\),
-          <span style="color: #1f77b4; font-weight: 600;">blue</span>; 6,473 episodes), with the annotated
-          supplement \(\mathcal{D}_{A}\)
-          (<span style="color: #ff7f0e; font-weight: 600;">orange</span>; 867 episodes) stacked on top.
-          Dashed lines mark the nested tier cutoffs \(\mathcal{D}_{1}\)
-          (<span style="color: #2ca02c; font-weight: 600;">&le;&nbsp;60s</span>), \(\mathcal{D}_{2}\)
-          (<span style="color: #ff7f0e; font-weight: 600;">&le;&nbsp;90s</span>), and \(\mathcal{D}_{3}\)
-          (<span style="color: #d62728; font-weight: 600;">&le;&nbsp;120s</span>).
-        </figcaption>
-      </figure>
+    <section id="tldr">
+      <div class="tldr">
+        <b>TL;DR.</b> WARP is a fully self-supervised method that learns a dense, signed,
+        <span style="color: var(--accent); font-weight: 700;">relative</span> progress signal from raw
+        demonstrations, trained on time-warped playback. Used to reweight behavior cloning (WARP-BC), it keeps
+        the decisive action chunks and drops the dead time; the resulting policies fold T-shirts up to
+        <b style="color: var(--accent);">~18&times; faster</b> in throughput than vanilla BC trained on the
+        same data. <span style="color: var(--muted); font-size: 0.92em;">(Failed trials are charged the full 240&thinsp;s timeout.)</span>
+      </div>
     </section>
 
     <section id="results">
       <h1>Real-World Policy Rollouts</h1>
       <p style="color: var(--muted);">
-        Across <b>380 real-world trials</b> of T-shirt folding from a crumpled start, WARP-BC
-        consistently completes more folds and completes them faster than vanilla BC and other
-        baselines trained on the same demonstration corpus. Each video below shows all
-        <b>20 evaluation trials</b> for a tier, played simultaneously in a 4&times;5 grid. Use the
-        selector to switch between models trained on each of the three demonstration tiers from the
-        paper.
+        Across <b>380 real-world trials</b> of T-shirt folding from a crumpled start, WARP-BC succeeds more
+        often, and finishes faster when it does, than vanilla BC and the other baselines trained on the same
+        corpus. Each grid below plays all <b>20 evaluation trials</b> for one tier at once, in a 4&times;5
+        layout. Use the selector to switch between the three demonstration tiers.
       </p>
 
       <div class="compare-row">
@@ -790,7 +811,7 @@
       </div>
 
       <div class="tier-desc" id="tier-desc">
-        \(\mathcal{D}_{1}\): model trained on demonstrations &le; 60s &mdash; the cleanest, fastest tier.
+        \(\mathcal{D}_{1}\): model trained on demonstrations &le; 60s: the cleanest, fastest tier.
       </div>
 
       <p style="text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 0.6rem;">
@@ -810,104 +831,49 @@
       </figure>
     </section>
 
-    <section id="bottle-results">
-      <h1>Second Task: Bottle-in-Bin Placement</h1>
-      <p style="color: var(--muted);">
-        To test generality beyond folding, we apply the same recipe &mdash; WARP-RM progress estimates
-        reweighting behavior cloning &mdash; to a <b>bottle-in-bin placement</b> task on the same
-        bimanual robot. Each trial places <b>four bottles</b> into a bin under a 90&thinsp;s timeout
-        (<b>20 trials</b> &rarr; 80 bottles per policy); both policies train on the same demonstrations.
-      </p>
-
-      <p style="text-align: center; font-weight: 600; margin: 0.4rem 0 1.2rem;">
-        Each grid plays all <span style="color: var(--accent);">20 trials at 1&times; speed, fully autonomous</span>.
-      </p>
-
-      <div class="compare-row">
-        <div class="compare-cell">
-          <video autoplay muted loop playsinline>
-            <source src="media/bottle_grid_vanilla.mp4" type="video/mp4">
-          </video>
-          <div class="compare-label vanilla">Vanilla BC</div>
-          <div class="compare-metric">59 / 80 bottles &middot; 15.9s per bottle</div>
-        </div>
-        <div class="compare-cell">
-          <video autoplay muted loop playsinline>
-            <source src="media/bottle_grid_warp.mp4" type="video/mp4">
-          </video>
-          <div class="compare-label warp">WARP-BC (Ours)</div>
-          <div class="compare-metric">74 / 80 bottles &middot; 11.3s per bottle</div>
-        </div>
-      </div>
-
-      <div class="table-wrap" style="max-width: 840px; margin: 1.5rem auto 0.5rem;">
-        <table class="results">
-          <thead>
-            <tr>
-              <th>Method</th>
-              <th>Bottles placed &uarr;</th>
-              <th>Time / bottle (s) &darr;</th>
-              <th>Throughput (/hr) &uarr;</th>
-              <th>Act. Chunks Kept</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="method">Vanilla BC</td>
-              <td>59 / 80</td>
-              <td>15.9</td>
-              <td>147.8</td>
-              <td>100%</td>
-            </tr>
-            <tr class="highlight">
-              <td class="method">WARP-BC (Ours)</td>
-              <td class="best">74 / 80</td>
-              <td class="best">11.3</td>
-              <td class="best">237.8</td>
-              <td>30.6%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin: 0 0 0.5rem;">
-        WARP-BC places more bottles (<span class="pill warp">74/80</span> vs <span class="pill vanilla">59/80</span>),
-        cuts mean per-bottle time from 15.9&rarr;11.3&thinsp;s, and improves throughput <b>1.6&times;</b>.
-      </p>
-
-      <figure style="margin: 1.5rem auto 0; max-width: 1000px; text-align: center;">
-        <img src="media/bottle_tpb.png" alt="Per-bottle placement-time distribution: Vanilla BC vs WARP-BC"
-             style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
-        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
-          <b>Per-bottle placement-time distribution.</b> WARP-BC (blue) places more bottles, and does
-          so faster and more consistently than vanilla BC (gray), which carries a heavy slow tail.
-          Solid bars mark the means (11.3&thinsp;s vs 15.9&thinsp;s).
-        </figcaption>
-      </figure>
-    </section>
-
     <section id="method">
       <h1>Method</h1>
       <p>
-        Prior progress models are trained to predict <i>how far along</i> a trajectory is &mdash;
-        the fraction of the demonstration that has elapsed so far. This is a noisy learning target,
-        because the same elapsed fraction in two different demonstrations can correspond to very
-        different amounts of actual task progress. WARP-RM instead learns a <b>relative</b> signal
-        &mdash; how fast, and in which direction, the task is advancing &mdash; using a
-        self-supervised target obtained by replaying successful demonstrations at non-uniform
-        velocities.
+        Most progress models predict how far along a trajectory is: the fraction of the demonstration elapsed
+        so far. That target is noisy, because the same elapsed fraction in two demonstrations can correspond to
+        very different amounts of real progress. WARP-RM learns a relative signal instead, how fast the task is
+        moving and in which direction, supervised by replaying successful demonstrations at non-uniform speeds.
       </p>
 
       <div class="method-fig">
         <div class="method-fig-title">1. Time-warp playback &rarr; self-supervised progress labels</div>
         <p>
-          Resample a successful trajectory with smoothly varying playback speeds (AR(1) in log-space)
-          and Poisson-sampled reversals. The signed source-frame displacement from the window's
-          first frame is the per-frame progress label &mdash; no human annotation required.
+          Resample a successful trajectory at smoothly varying playback speeds (AR(1) in log-space), with
+          reversals dropped in at Poisson-sampled points. The signed source-frame displacement from the
+          window's first frame is the per-frame progress label. No annotation needed.
+        </p>
+        <div class="sampler-widget" id="ar-sampler">
+          <div class="sampler-head">
+            <span class="sampler-label" id="sampler-label">forward &middot; smoothly varying speed</span>
+            <button class="sampler-btn" id="sampler-resample" type="button">&#8635; Resample</button>
+          </div>
+          <svg id="sampler-svg" viewBox="0 0 900 408" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Animated AR(1) time-warp sampler: speed schedule, reversal flips, and the resulting demo-frame walk"></svg>
+          <div class="sampler-caption">
+            Each draw samples a per-step playback speed from an AR(1) process in log-space (slow-motion to
+            fast-forward), with Poisson-placed reversals and a 50% chance the whole clip plays backward.
+            Accumulating those signed speeds picks which demo frame to read at each of the 32 steps, and the
+            signed offsets become the free progress labels. <b>Resample</b> to see the variety the model trains on.
+          </div>
+        </div>
+      </div>
+
+      <div class="method-fig">
+        <div class="method-fig-title">2. Why relative progress, not absolute time</div>
+        <p>
+          Absolute time is a poor stand-in for progress, as the three 50%-progress frames in the opening make
+          clear: two demonstrations at the same timestamp can be in completely different states. WARP asks a
+          local question instead: did the last moment move the task forward or back, and by how much? That never
+          requires aligning two demonstrations to a shared timeline.
         </p>
       </div>
 
       <div class="method-fig">
-        <div class="method-fig-title">2. Predict per-frame velocity from images</div>
+        <div class="method-fig-title">3. Predict per-frame velocity from images</div>
         <p>
           A frozen <b>DINOv3 ViT-B/16</b> + 12-layer bidirectional transformer head outputs a
           per-frame categorical distribution over cumulative progress. Its temporal derivative
@@ -934,7 +900,7 @@
       </div>
 
       <div class="method-fig">
-        <div class="method-fig-title">3. WARP-BC: reweight action chunks by terminal velocity</div>
+        <div class="method-fig-title">4. WARP-BC: reweight action chunks by terminal velocity</div>
         <p>
           For each training chunk, gate on the predicted velocity at its terminal frame.
           With \(\tau = 1.0\), only chunks ending in faster-than-expert progress are
@@ -946,6 +912,45 @@
           </span>
         </p>
       </div>
+    </section>
+
+    <section id="data">
+      <h1>Data</h1>
+      <p style="color: var(--muted);">
+        Our policy-training data is drawn from a single corpus of around 140 hours of successful,
+        unannotated human-teleoperated T-shirt-folding demonstrations. On this task, <b>episode length is a coarse proxy
+        for execution efficiency</b>: longer episodes tend to contain more hesitations, retries, and
+        recoveries. To evaluate robustness as progressively more inefficient behavior is admitted into
+        training, we define <b>three nested, length-filtered tiers</b>: \(\mathcal{D}_{1}\) (&le;&nbsp;60s):
+        2,427 episodes (36.1&nbsp;hours), \(\mathcal{D}_{2}\) (&le;&nbsp;90s): 4,124 episodes
+        (71.3&nbsp;hours), and \(\mathcal{D}_{3}\) (&le;&nbsp;120s): 6,473 episodes (139.7&nbsp;hours).
+        Policies are trained on the same underlying demonstrations, either with uniform weighting
+        (vanilla BC) or WARP-based progress reweighting. A single WARP-RM model is used across all tiers:
+        it is trained <b>once</b> on a fixed reference subset \(\mathcal{D}_{\mathrm{RM}}\) &mdash; the
+        shortest demonstrations (&le;&nbsp;59.8s, 1,950 episodes) &mdash; providing a clean reference signal
+        for the canonical execution pace (\(\hat{v} = 1\)). For baseline comparisons, SARM requires human
+        annotations, so an <b>annotated supplement</b> \(\mathcal{D}_{A}\) (867 expert demonstrations, 13.9 hours) is
+        added, forming the augmented datasets \(\mathcal{D}_{4} = \mathcal{D}_{1} \cup \mathcal{D}_{A}\)
+        and \(\mathcal{D}_{5} = \mathcal{D}_{2} \cup \mathcal{D}_{A}\); WARP-RM and all other baselines treat \(\mathcal{D}_{A}\)
+        as unannotated.
+      </p>
+
+      <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
+        <img src="media/episode_length_histogram.png"
+             style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1rem;"
+             alt="Stacked histogram of demonstration episode lengths: main corpus and annotated supplement, with tier cutoffs at 60s, 90s and 120s">
+        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
+          <b>Episode-length distribution of the demonstration corpus.</b> The main
+          unannotated corpus (\(\mathcal{D}_{1}\)&ndash;\(\mathcal{D}_{3}\),
+          <span style="color: #1f77b4; font-weight: 600;">blue</span>; 6,473 episodes), with the annotated
+          supplement \(\mathcal{D}_{A}\)
+          (<span style="color: #ff7f0e; font-weight: 600;">orange</span>; 867 episodes) stacked on top.
+          Dashed lines mark the nested tier cutoffs \(\mathcal{D}_{1}\)
+          (<span style="color: #2ca02c; font-weight: 600;">&le;&nbsp;60s</span>), \(\mathcal{D}_{2}\)
+          (<span style="color: #ff7f0e; font-weight: 600;">&le;&nbsp;90s</span>), and \(\mathcal{D}_{3}\)
+          (<span style="color: #d62728; font-weight: 600;">&le;&nbsp;120s</span>).
+        </figcaption>
+      </figure>
     </section>
 
     <section id="tables">
@@ -1030,7 +1035,7 @@
         the augmented corpora \(\mathcal{D}_{4} = \mathcal{D}_{1} \cup \mathcal{D}_{A}\) and
         \(\mathcal{D}_{5} = \mathcal{D}_{2} \cup \mathcal{D}_{A}\), where \(\mathcal{D}_{A}\) is the annotated supplement (treated as
         unannotated by every method except SARM). WARP-BC sustains the highest throughput on both
-        tiers and ties or leads on success &mdash; without the human labels SARM needs. SARM and
+        tiers and ties or leads on success, all without the human labels SARM needs. SARM and
         SCIZOR collapse on the noisier \(\mathcal{D}_{5}\), while DemInf stays robust on success but at
         lower throughput.
       </p>
@@ -1132,6 +1137,92 @@
           </tbody>
         </table>
       </div>
+
+      <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
+        <img src="media/ttc_distribution_d4_d5.png"
+             alt="Time-to-completion distribution for WARP-BC vs SARM, DemInf, and SCIZOR on D4 and D5"
+             style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
+        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
+          <b>Time-to-completion vs. curation baselines.</b> On the augmented D<sub>4</sub>/D<sub>5</sub> corpora,
+          WARP-BC completes every trial and stays fast, while SARM and SCIZOR collapse on the noisier
+          D<sub>5</sub> (2/20). Each point is one successful trial; the 240&thinsp;s timeout is marked.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="bottle-results">
+      <h1>Another Task: Bottle-in-Bin Placement</h1>
+      <p style="color: var(--muted);">
+        Beyond folding, we run the same recipe &mdash; WARP-RM progress estimates reweighting behavior cloning
+        &mdash; on a <b>bottle-in-bin placement</b> task with the same bimanual robot. Each trial drops
+        <b>four bottles</b> into a bin under a 90&thinsp;s timeout (<b>20 trials</b>, 80 bottles per policy), and
+        both policies train on the same demonstrations.
+      </p>
+
+      <p style="text-align: center; font-weight: 600; margin: 0.4rem 0 1.2rem;">
+        Each grid plays all <span style="color: var(--accent);">20 trials at 1&times; speed, fully autonomous</span>.
+      </p>
+
+      <div class="compare-row">
+        <div class="compare-cell">
+          <video autoplay muted loop playsinline>
+            <source src="media/bottle_grid_vanilla.mp4" type="video/mp4">
+          </video>
+          <div class="compare-label vanilla">Vanilla BC</div>
+          <div class="compare-metric">59 / 80 bottles &middot; 15.9s per bottle</div>
+        </div>
+        <div class="compare-cell">
+          <video autoplay muted loop playsinline>
+            <source src="media/bottle_grid_warp.mp4" type="video/mp4">
+          </video>
+          <div class="compare-label warp">WARP-BC (Ours)</div>
+          <div class="compare-metric">74 / 80 bottles &middot; 11.3s per bottle</div>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="max-width: 840px; margin: 1.5rem auto 0.5rem;">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Bottles placed &uarr;</th>
+              <th>Time / bottle (s) &darr;</th>
+              <th>Throughput (/hr) &uarr;</th>
+              <th>Act. Chunks Kept</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="method">Vanilla BC</td>
+              <td>59 / 80</td>
+              <td>15.9</td>
+              <td>147.8</td>
+              <td>100%</td>
+            </tr>
+            <tr class="highlight">
+              <td class="method">WARP-BC (Ours)</td>
+              <td class="best">74 / 80</td>
+              <td class="best">11.3</td>
+              <td class="best">237.8</td>
+              <td>30.6%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin: 0 0 0.5rem;">
+        WARP-BC places more bottles (<span class="pill warp">74/80</span> vs <span class="pill vanilla">59/80</span>),
+        cuts mean per-bottle time from 15.9&rarr;11.3&thinsp;s, and improves throughput <b>1.6&times;</b>.
+      </p>
+
+      <figure style="margin: 1.5rem auto 0; max-width: 1000px; text-align: center;">
+        <img src="media/bottle_tpb.png" alt="Per-bottle placement-time distribution: Vanilla BC vs WARP-BC"
+             style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
+        <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
+          <b>Per-bottle placement-time distribution.</b> WARP-BC (blue) places more bottles, and does
+          so faster and more consistently than vanilla BC (gray), which carries a heavy slow tail.
+          Solid bars mark the means (11.3&thinsp;s vs 15.9&thinsp;s).
+        </figcaption>
+      </figure>
     </section>
 
     <section id="ablations">
@@ -1192,7 +1283,31 @@
       </div>
     </section>
 
-    <!-- Interactive 3D Demos section temporarily disabled — may be restored later.
+    <section id="limitations">
+      <h1>What this doesn't do (yet)</h1>
+      <p style="color: var(--muted);">
+        WARP-BC makes a policy more robust to bad data, but it can't invent behavior the demonstrations never
+        showed; the policy is still bounded by its training set. Getting past that bound is the natural next step,
+        through DAgger, offline and online RL, and iterative reward-aligned self-improvement. Two caveats. The
+        negative-progress signal comes only from reversed playback, an approximation we take from ReWiND that can
+        be physically implausible. And on folding in particular, the garment's shrinking 2D footprint may hand the
+        model an easy progress cue, so we'd want to check WARP-RM on tasks that lack that kind of visual structure.
+      </p>
+    </section>
+
+    <section id="citation">
+      <h1>Citation</h1>
+      <pre class="bibtex"><code>@article{yu2026warprm,
+  title   = {WARP-RM: A Warp-Augmented Relative Progress Reward Model for Data Curation},
+  author  = {Yu, Justin and Goldberg, Andrew and Kondap, Kavish and El-Refai, Karim and
+             Ransing, Ethan and Chen, Qianzhong and Schwager, Mac and Shentu, Fred and
+             Wu, Philipp and Goldberg, Ken},
+  year    = {2026},
+  journal = {arXiv preprint},
+  url     = {https://uynitsuj.github.io/warp-rm/},
+}</code></pre>
+    </section>
+
     <section id="interactive">
       <h1>Interactive 3D Demos</h1>
       <p style="color: var(--muted);">
@@ -1202,6 +1317,13 @@
       <div class="iframe-placeholder">
         <i class="fa-solid fa-cube" style="font-size: 2rem; opacity: 0.5;"></i>
         <p style="margin-top: 0.75rem;">Interactive viser embeds coming soon.</p>
+      </div>
+    </section>
+
+    <section id="full-video">
+      <h1>Supplemental Video</h1>
+      <div class="hero-video-wrap">
+        <video src="media/teaser.mp4" muted loop playsinline controls preload="metadata"></video>
       </div>
     </section>
     -->
@@ -1236,21 +1358,21 @@
           warp:    'media/grid_under60s_warp_bc.mp4',
           vMetric: '20/20 successes, 113.8s mean time-to-completion',
           wMetric: '20/20 successes, 63.9s mean time-to-completion',
-          desc:    '\\(\\mathcal{D}_{1}\\): model trained on demonstrations &le; 60s &mdash; the cleanest, fastest tier.'
+          desc:    '\\(\\mathcal{D}_{1}\\): model trained on demonstrations &le; 60s: the cleanest, fastest tier.'
         },
         '90':  {
           vanilla: 'media/grid_under90s_vanilla_bc.mp4',
           warp:    'media/grid_under90s_warp_bc.mp4',
           vMetric: '2/20 successes, 199.0s mean time-to-completion',
           wMetric: '19/20 successes, 118.8s mean time-to-completion',
-          desc:    '\\(\\mathcal{D}_{2}\\): model trained on demonstrations &le; 90s &mdash; more hesitations and recoveries in the corpus. Vanilla BC collapses; WARP-BC stays robust.'
+          desc:    '\\(\\mathcal{D}_{2}\\): model trained on demonstrations &le; 90s: more hesitations and recoveries in the corpus. Vanilla BC collapses; WARP-BC stays robust.'
         },
         '120': {
           vanilla: 'media/grid_under120s_vanilla_bc.mp4',
           warp:    'media/grid_under120s_warp_bc.mp4',
           vMetric: '0/20 successes, never completes in 240s',
           wMetric: '14/20 successes, 117.4s mean time-to-completion',
-          desc:    '\\(\\mathcal{D}_{3}\\): model trained on demonstrations &le; 120s &mdash; the noisiest tier. Vanilla BC fails outright; WARP-BC still folds the majority.'
+          desc:    '\\(\\mathcal{D}_{3}\\): model trained on demonstrations &le; 120s: the noisiest tier. Vanilla BC fails outright; WARP-BC still folds the majority.'
         }
       };
 
@@ -1636,6 +1758,68 @@
     });
 
     applyRoles();
+  })();
+  </script>
+  <script>
+  // Interactive AR(1) time-warp sampler (faithful port of the supplemental's WarpSampler).
+  (function () {
+    var svg = document.getElementById('sampler-svg'); if (!svg) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var N = 32, alpha = 0.5, sigmaInf = Math.log(2), lambdaRev = 1, pathMin = 155, pathMax = 775, nFeat = 720, pFlip = 0.5;
+    var nGaps = N - 1;
+    function gauss() { var u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+    function pois(l) { var L = Math.exp(-l), k = 0, p = 1; do { k++; p *= Math.random(); } while (p > L); return k - 1; }
+    function speeds_() { var z = []; z[0] = sigmaInf * gauss(); var ns = Math.sqrt(1 - alpha * alpha) * sigmaInf; for (var k = 1; k < nGaps; k++) z[k] = alpha * z[k - 1] + ns * gauss(); return z.map(Math.exp); }
+    function signs_() { var sg = new Array(nGaps).fill(1); var R = pois(lambdaRev); if (R === 0) return sg; var pool = []; for (var i = 1; i < nGaps; i++) pool.push(i); R = Math.min(R, pool.length); for (var i = pool.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = pool[i]; pool[i] = pool[j]; pool[j] = t; } var cps = pool.slice(0, R).sort(function (a, b) { return a - b; }); var b = [0].concat(cps, [nGaps]); for (var s2 = 1; s2 < b.length - 1; s2++) { if (s2 % 2 === 1) for (var i = b[s2]; i < b[s2 + 1]; i++) sg[i] = -1; } return sg; }
+    function sampleWindow() { var sp = speeds_(), sg = signs_(), rev = 0; for (var i = 1; i < sg.length; i++) if (sg[i] !== sg[i - 1]) rev++; var ell = Math.round(pathMin + Math.random() * (pathMax - pathMin)); ell = Math.min(ell, nFeat - 1); var sum = sp.reduce(function (a, b) { return a + b; }, 0); var delta = ell / sum; var steps = sp.map(function (x, i) { return sg[i] * delta * x; }); var rel = [0]; for (var i = 0; i < steps.length; i++) rel.push(rel[rel.length - 1] + steps[i]); var rmin = Math.min.apply(null, rel), rmax = Math.max.apply(null, rel), bbox = rmax - rmin; var maxP0 = Math.max(nFeat - 1 - bbox, 0); var p0 = Math.random() * maxP0 - rmin; var pos = rel.map(function (c) { return p0 + c; }); var flip = Math.random() < pFlip; if (flip) pos = pos.slice().reverse(); var idx = pos.map(function (p) { return Math.max(0, Math.min(nFeat - 1, Math.round(p))); }); return { speeds: sp, signs: sg, indices: idx, flipped: flip, rev: rev }; }
+
+    var X0 = 58, X1 = 872;
+    function px(i, n) { return X0 + (i / (n - 1)) * (X1 - X0); }
+    var logMax = Math.log(4.2), sTop = 40, sBot = 150, sC = (sTop + sBot) / 2;
+    function sy(v) { var l = Math.log(v); if (l > logMax) l = logMax; if (l < -logMax) l = -logMax; return sC - (l / logMax) * ((sBot - sTop) / 2); }
+    var barY = 168, barH = 18, wTop = 234, wBot = 398;
+    function el(t, a) { var e = document.createElementNS(NS, t); for (var k in a) e.setAttribute(k, a[k]); return e; }
+    function txt(x, y, str, a) { var e = el('text', a || {}); e.setAttribute('x', x); e.setAttribute('y', y); e.textContent = str; return e; }
+    function add(e) { svg.appendChild(e); }
+    function clear() { while (svg.firstChild) svg.removeChild(svg.firstChild); }
+
+    var sample = null, kf = 0, last = 0, running = false;
+    function relabel() { var L = document.getElementById('sampler-label'); if (!L) return; var t = sample.flipped ? 'full-flip · the whole clip plays in reverse' : (sample.rev === 0 ? 'forward · smoothly varying speed' : 'backtrack · Poisson reversals'); L.textContent = '↻ ' + t; }
+    function newSample() { sample = sampleWindow(); kf = 0; relabel(); }
+
+    function draw() {
+      clear();
+      var kInt = Math.max(1, Math.min(N - 1, Math.floor(kf)));
+      [0.5, 1, 2].forEach(function (v) { var y = sy(v); add(el('line', { x1: X0, y1: y, x2: X1, y2: y, stroke: '#cfcabf', 'stroke-width': v === 1 ? 1.3 : 1, 'stroke-dasharray': v === 1 ? '' : '4 5', opacity: v === 1 ? 0.85 : 0.45 })); add(txt(X0 - 8, y + 4, v + '×', { 'text-anchor': 'end', 'font-size': 12, fill: '#999', 'font-family': 'monospace' })); });
+      add(txt(X0, 30, 'speed · AR(1) in log-space', { 'font-size': 13, fill: '#7c3aed', 'font-family': 'monospace' }));
+      var pts = []; for (var i = 0; i < Math.min(kInt, nGaps); i++) pts.push(px(i, nGaps).toFixed(1) + ',' + sy(sample.speeds[i]).toFixed(1));
+      add(el('polyline', { points: pts.join(' '), fill: 'none', stroke: '#7c3aed', 'stroke-width': 2.2, 'stroke-linejoin': 'round' }));
+      add(txt(X0, barY - 6, 'reversals · Poisson sign flips', { 'font-size': 12, fill: '#cc3333', 'font-family': 'monospace' }));
+      var cw = (X1 - X0) / nGaps;
+      for (var i = 0; i < Math.min(kInt, nGaps); i++) add(el('rect', { x: (X0 + i * cw + 0.5).toFixed(1), y: barY, width: (cw - 1).toFixed(1), height: barH, rx: 2, fill: sample.signs[i] > 0 ? '#059669' : '#cc3333', opacity: 0.85 }));
+      add(txt(X0, wTop - 10, 'accumulate → which demo frame to read at each step', { 'font-size': 13, fill: '#333', 'font-family': 'monospace' }));
+      add(el('line', { x1: X0, y1: wTop, x2: X0, y2: wBot, stroke: '#ddd', 'stroke-width': 1.2 }));
+      add(el('line', { x1: X0, y1: wBot, x2: X1, y2: wBot, stroke: '#ddd', 'stroke-width': 1.2 }));
+      add(txt(X0 - 8, wTop + 5, 'end', { 'text-anchor': 'end', 'font-size': 11, fill: '#aaa', 'font-family': 'monospace' }));
+      add(txt(X0 - 8, wBot, 'start', { 'text-anchor': 'end', 'font-size': 11, fill: '#aaa', 'font-family': 'monospace' }));
+      var wLo = Math.min.apply(null, sample.indices), wHi = Math.max.apply(null, sample.indices), pad = Math.max(8, (wHi - wLo) * 0.14);
+      function wy(idx) { return wBot - ((idx - (wLo - pad)) / ((wHi + pad) - (wLo - pad))) * (wBot - wTop); }
+      function wx(k) { return X0 + (k / (N - 1)) * (X1 - X0); }
+      for (var k = 1; k <= Math.min(kInt, N - 1); k++) { var fwd = sample.indices[k] >= sample.indices[k - 1]; add(el('line', { x1: wx(k - 1).toFixed(1), y1: wy(sample.indices[k - 1]).toFixed(1), x2: wx(k).toFixed(1), y2: wy(sample.indices[k]).toFixed(1), stroke: fwd ? '#059669' : '#cc3333', 'stroke-width': 2.4, 'stroke-linejoin': 'round' })); }
+      var kp = Math.min(kInt, N - 1), hx = wx(kp);
+      add(el('line', { x1: hx.toFixed(1), y1: sTop - 6, x2: hx.toFixed(1), y2: wBot, stroke: '#111', 'stroke-width': 1, 'stroke-dasharray': '3 4', opacity: 0.3 }));
+      add(el('circle', { cx: wx(kp).toFixed(1), cy: wy(sample.indices[kp]).toFixed(1), r: 4.5, fill: '#111' }));
+      var hj = Math.max(0, Math.min(nGaps - 1, kp - 1)); var v = (sample.flipped ? -1 : sample.signs[hj]) * sample.speeds[hj];
+      add(txt(X1, 30, 'v̂ = ' + (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(1), { 'text-anchor': 'end', 'font-size': 16, 'font-weight': 700, fill: v >= 0 ? '#059669' : '#cc3333', 'font-family': 'monospace' }));
+    }
+
+    function tick(t) { if (!running) return; var dt = Math.min(0.05, (t - last) / 1000); last = t; kf += dt * 7.5; if (kf > (N - 1) + 9) newSample(); draw(); requestAnimationFrame(tick); }
+    var btn = document.getElementById('sampler-resample'); if (btn) btn.addEventListener('click', function () { newSample(); draw(); });
+    newSample(); draw();
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { if (!running) { running = true; last = performance.now(); requestAnimationFrame(tick); } } else { running = false; } }); }, { threshold: 0.12 });
+      io.observe(document.getElementById('ar-sampler'));
+    } else { running = true; last = performance.now(); requestAnimationFrame(tick); }
   })();
   </script>
 </body>
