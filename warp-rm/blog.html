@@ -163,8 +163,8 @@
     .duo .clip .vlabel.good { background: rgba(110,75,175,0.82); }
     .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .trio .clip { position: relative; }
-    .trio .clip .lbl { position: absolute; left: 8px; bottom: 8px; font-family: var(--title-font); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.3px; color: #fff; background: rgba(13,14,22,0.72); padding: 3px 7px; border-radius: 5px; line-height: 1.35; }
-    .trio .clip .lbl b { display: block; color: #cdbcf5; font-weight: 600; }
+    .trio .clip .lbl { position: absolute; left: 8px; bottom: 8px; font-family: var(--title-font); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.3px; color: #fff; background: rgba(13,14,22,0.9); padding: 4px 9px; border-radius: 6px; line-height: 1.4; }
+    .trio .clip .lbl b { display: block; color: #c2c4ff; font-weight: 700; font-size: 0.82rem; }
     @media (max-width: 560px) { .trio { grid-template-columns: 1fr; } }
     figcaption {
       margin-top: 0.7rem; font-size: 0.9rem; line-height: 1.55;
@@ -311,7 +311,7 @@
 
       <div class="papers">
         <p class="ptitle">Read the paper</p>
-        <p class="psub">The full method and every number below live in the paper and on the project page.</p>
+        <p class="psub">The full method and detailed results live in the paper and on the project page.</p>
         <div class="pills">
           <a href="https://uynitsuj.github.io/warp-rm/">Project page</a>
           <a class="disabled" href="#">Paper &middot; coming soon</a>
@@ -337,16 +337,16 @@
 
       <p>The other option is to label progress by hand. Methods like <a href="https://arxiv.org/abs/2509.25358" target="_blank" rel="noopener">SARM</a> and <a href="https://arxiv.org/abs/2604.03037" target="_blank" rel="noopener">ARM</a> do this directly, having annotators mark where each subtask begins and ends, or where progress moves forward, stalls, or slips back. The labels are a cleaner supervision signal, but every new task needs its own annotation pass, no two annotators draw the boundaries the same way even working from the same guidelines, and the effort hardly scales to the hundreds of tasks we care about.</p>
 
-      <p>Those two issues set the bar. The wall-clock proxy was free but noisy; hand-labeling offered cleaner signal but scaled poorly. The signal we wanted had to be both at once: self-supervised, with no per-task annotation, and local, reading progress over a short window rather than as a position on a global clock. WARP gets there in two moves, one for each problem.</p>
+      <p>Those two issues set the bar. The wall-clock proxy was free but noisy; hand-labeling offered cleaner signal but scaled poorly. The signal we wanted had to be both at once: self-supervised, with no per-task annotation, and local, reading progress over a short window rather than as a position on a global clock. The method that does both is one we call <a href="https://uynitsuj.github.io/warp-rm/">WARP</a>, for Warp-Augmented Relative Progress. Warped playback supplies the labels with no annotation, and the model reads progress locally instead of as overall completion.</p>
 
       <h3>Getting more data out of our data</h3>
-      <p>Take a single successful demonstration and play it back at warped speeds. Speed a stretch up and the task appears to rush forward. Slow it down and it crawls. The rate is not fixed across a clip either; it drifts smoothly between slow-motion and fast-forward within one model window, so a single demonstration covers a range of progress speeds stochastically sampled. Because we chose the playback, we already know exactly how much of the demonstration went by between any two frames, and that number is a progress label. The labels come from demonstrations we already had and require no additional human labeling.</p>
+      <p>Take a single successful demonstration and play it back at warped speeds. Speed a stretch up and the task appears to rush forward. Slow it down and it crawls. The rate is not fixed across a clip either; it drifts smoothly between slow-motion and fast-forward within one model window, so a single demonstration covers a range of progress speeds stochastically sampled. Because we chose the playback, we already know exactly how much of the demonstration went by between any two frames, and that number is a progress label. The labels come from demonstrations we already had and require no human labeling.</p>
 
       <p>That smooth, non-uniform temporal warping is, as far as we know, new for reward modeling. One demonstration, resampled across the range of speeds, becomes thousands of labeled examples. We also play some clips backward, so the model sees progress being undone, an idea we borrow from <a href="https://arxiv.org/abs/2505.10911" target="_blank" rel="noopener">ReWiND</a>. It is a rough stand-in for a real mistake, but it gives the model a feel for motion heading away from the goal instead of toward it. A standard vision encoder and a small transformer read each clip and predict the progress.</p>
 
       <figure>
         <img src="media/warp_rm_architecture.png" alt="WARP-RM pipeline: a short window of frames sampled from a demonstration at warped playback speeds is encoded and read by a transformer, which predicts how much progress occurred, then stitched across overlapping windows into a signal for the whole video.">
-        <figcaption><b>One demonstration, many labels.</b> A window of frames is sampled at warped speeds, the model predicts how much progress happened across it, and those predictions are stitched across overlapping windows into a reading for the whole video.</figcaption>
+        <figcaption><b>One demonstration, many labels.</b> A window of 32 frames is sampled at warped speeds, the model predicts how much progress happened across it, and those predictions are stitched across overlapping windows into a reading for the whole video.</figcaption>
       </figure>
 
       <h3>What the signal looks like</h3>
@@ -382,7 +382,7 @@
       <p>Once the signal lined up with what we could see the robot doing, using it was straightforward. As the policy trains, every short slice of a demonstration is weighted by how much progress the model assigns it. Slices it scores high count more. Slices it scores as stalled or sliding backward are dropped. The robot still learns by imitation. In the paper we call this step WARP-BC.</p>
 
       <h3>Did it work?</h3>
-      <p>We split a large pool of successful folds into three tiers by length, since the longer demonstrations carried the most hesitation: efficient folds under sixty seconds, a wider set under ninety, and a wider one still under two minutes. One progress model, trained once on the shortest folds, scored all three.</p>
+      <p>We split a large pool of successful folds into three tiers by length, since the longer demonstrations carried the most hesitation: efficient folds under sixty seconds, a wider set under ninety, and the widest one under two minutes. One progress model, trained once on the shortest folds, scored all three.</p>
 
       <p>Plain imitation followed the quality of its data straight down. It folded twenty of twenty shirts on the clean tier, two of twenty once the messier demonstrations were mixed in, and none at all on the widest tier. Weighting by the progress reading held the same policy at twenty, nineteen, and fourteen of twenty on the very same data. On the middle tier that is about eighteen times as many finished folds per hour. On the clean tier, where both finish every trial, the weighted policy still folds about 1.8 times faster.</p>
 
