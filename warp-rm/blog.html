@@ -305,7 +305,7 @@
       <h3>What the failures showed us</h3>
       <p>Watching the robot fail explained it. It kept getting trapped in the same little adjustments, nudging the shirt and re-gripping without ever committing. The policy wasn't stuck because it had never seen a fold. It had seen thousands of folds. It was stuck because it had also seen thousands of small hesitations and mistakes.</p>
 
-      <p>When a teleoperator is actually folding a shirt, they pause, or reposition a sleeve. They change their mind and nudge the fabric a few millimeters. None of that feels like a mistake while you're doing it. To a behavior cloning policy, all of it is training data, and it carries the same weight to the model as the motion that folds shirts successfully.</p>
+      <p>When a teleoperator is actually folding a shirt, they pause, or reposition a sleeve. They change their mind and nudge the fabric a few millimeters. None of that feels like a mistake while you're doing it. Imitation learning assumes it is copying an expert, a premise that holds up better in the theorems than on the two-hundredth fold of the afternoon. To a behavior cloning policy, all of it is training data, and it carries the same weight to the model as the motion that folds shirts successfully.</p>
 
       <p>The longer and messier a demonstration, the more of these low-progress stretches it holds. Our cleanest folds had very little of that; the wider dataset had a lot. The failures looked like a policy copying the stalling as faithfully as the folding, with nothing in the training to tell the two apart.</p>
 
