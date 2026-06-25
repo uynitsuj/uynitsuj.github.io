@@ -351,7 +351,9 @@
       <h3>Getting more data out of our data</h3>
       <p>Take a single successful demonstration and play it back at warped speeds. Speed a stretch up and the task appears to rush forward. Slow it down and it crawls. Within a single clip the speed drifts smoothly from slow-motion to fast-forward. And since we set that speed ourselves, we already know how much progress each clip is showing, so every clip comes with its label attached. One demonstration, replayed at many speeds, turns into a whole spread of fast, slow, and in-between examples.</p>
 
-      <p>That smooth, non-uniform temporal warping is, as far as we know, new for reward modeling. One demonstration, resampled across the range of speeds, becomes thousands of labeled examples. We also play some clips backward, so the model sees progress being undone, an idea we borrow from <a href="https://arxiv.org/abs/2505.10911" target="_blank" rel="noopener">ReWiND</a>. It is a rough stand-in for a real mistake, but it gives the model a feel for motion heading away from the goal instead of toward it. A standard vision encoder and a small transformer read each clip and predict the progress.</p>
+      <p>Instead of asking how far into the task, we ask the model to predict a more local question: did the task move forward, stagnate, or regress? Two demonstrations can disagree about how far along the task is at the same timestamp, yet still agree, over a few seconds, on whether it advanced and by how fast. Going from absolute to relative does not erase the noise, after all we're still using pseudo-labels across real demonstrations that have their own speed variation, but it bounds how far off any one label can be. We call this reading a task progress velocity.</p>
+
+      <p>Smooth, non-uniform temporal warping as a self-supervision signal is, as far as we know, new for reward modeling. One demonstration, resampled across the range of speeds, becomes thousands of labeled examples. We also play some clips backward, so the model sees progress being undone, an idea we borrow from <a href="https://arxiv.org/abs/2505.10911" target="_blank" rel="noopener">ReWiND</a>. It is a rough stand-in for a real mistake, but it gives the model a feel for motion heading away from the goal instead of toward it. A standard vision encoder and a small transformer read each clip and predict the progress.</p>
 
       <figure>
         <div class="sampler">
@@ -365,7 +367,6 @@
       </figure>
 
       <h3>What the signal looks like</h3>
-      <p>Instead of asking how complete the fold is, the model asks a smaller, more local question: did the task move forward, stagnate, or regress? It never scores absolute completion, only how much progress happened across a short window. Two demonstrations can disagree about how far along the task is at the same timestamp, yet still agree, over a few seconds, on whether it advanced and by how fast. Predicting locally does not erase the noise, but it bounds how far off any one label can be. We call this reading a task progress velocity.</p>
 
       <p>The panel below shows the model's predicted progress velocity signal. An episode plays on top while the model's reading is drawn underneath. These are held-out episodes, new runs of the same folding task that the model never saw during training, so the curve is the signal reading footage it was never fit on. Press play, or click anywhere on the curve to scrub.</p>
 
