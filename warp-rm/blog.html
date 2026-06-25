@@ -331,7 +331,7 @@
       <h3>What we actually wanted</h3>
       <p>The obvious move is to throw the messy demonstrations out. But for one, there is no clean line to draw: "messy" is subjective. Moreover, drop an episode and you lose the good, decisive stretches within, along with the recoveries we most want a robot to learn, the regrip after a near-miss, which tend to show up only in that messier footage. Keep a short, clean-looking run and you still take its hesitations and stalls, because even the fastest demonstrations have a few. Either way, episode-level filtering works at the wrong granularity.</p>
 
-      <p>What we wanted was finer than that: look at any single moment in a demonstration and ask whether the task was actually moving forward, then train on the moments that were. Collecting more demonstrations would only add more of the same noise to the mixture. The lever we actually wanted was not more data, but a better signal-to-noise ratio in the data already on disk: amplify the motion that moves the task forward, and quiet the hesitations and stalls.</p>
+      <p>What we wanted was finer than that: look at any single moment in a demonstration and ask whether the task was actually moving forward, then train on the moments that were. Collecting more demonstrations would only add more of the same noise to the mixture. What we actually wanted was not more data, but a better signal-to-noise ratio in the data already on disk: amplify the motion that moves the task forward, and quiet the hesitations and stalls.</p>
 
       <p>We first tried the obvious proxy: train a model to recognize how far you are into a demonstration video as how far along the task is. But elapsed time and real task progress are not the same thing. Freeze a few folding demonstrations at the same halfway point of their run and they sit at clearly different stages of the task, as the frames below show. The clock reads fifty percent for all of them; the task does not. Scoring by elapsed time pins the same label on those different states, and that disagreement enters the model as label noise, exacerbated on long-horizon tasks where pauses and retries pull the clock further out of step with real progress.</p>
 
@@ -361,7 +361,7 @@
             <div class="sd-dot" id="sd-dot"></div>
           </div>
         </div>
-        <figcaption><b>One demonstration, many pseudo-labels.</b> The purple line is a sampled playback schedule. Steep increase is fast-forward, flat is slow-motion, and a decrease means we run it backward. Each loop is a fresh draw.</figcaption>
+        <figcaption><b>One demonstration, many pseudo-labels.</b> The purple line is a sampled playback schedule for one short window, covering a stretch of the demo rather than all of it. Steep increase is fast-forward, flat is slow-motion, and a decrease means we run it backward. Each loop is a fresh draw.</figcaption>
       </figure>
 
       <h3>What the signal looks like</h3>
