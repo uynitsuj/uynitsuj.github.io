@@ -365,7 +365,7 @@
       </figure>
 
       <h3>What the signal looks like</h3>
-      <p>Instead of asking how complete the fold is, the model asks a smaller, more local question: did the task move forward, stagnate, or regress? It never scores absolute completion, only how much progress happened across a short window. That is what keeps the label noise in check: two demonstrations can disagree about how far along the task is at the same timestamp, yet still agree, over a few seconds, on whether it advanced and by how fast. Predicting locally does not erase the noise, but it bounds how far off any one label can be. We call this reading a task progress velocity.</p>
+      <p>Instead of asking how complete the fold is, the model asks a smaller, more local question: did the task move forward, stagnate, or regress? It never scores absolute completion, only how much progress happened across a short window. Two demonstrations can disagree about how far along the task is at the same timestamp, yet still agree, over a few seconds, on whether it advanced and by how fast. Predicting locally does not erase the noise, but it bounds how far off any one label can be. We call this reading a task progress velocity.</p>
 
       <p>The panel below shows that signal at work. An episode plays on top while the model's reading is drawn underneath. These are held-out episodes, new runs of the same folding task that the model never saw during training, so the curve is the signal reading footage it was never fit on. Press play, or click anywhere on the curve to scrub.</p>
 
