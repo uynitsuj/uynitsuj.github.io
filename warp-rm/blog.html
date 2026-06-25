@@ -358,12 +358,10 @@
           <div class="sampler-frame" id="sd-frame"></div>
           <div class="sampler-plot">
             <svg id="sd-svg" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-label="A made-up playback schedule over one demonstration, with the frame it points to"></svg>
-            <span class="sd-ann top">end of the demo</span>
-            <span class="sd-ann bot">start</span>
             <div class="sd-dot" id="sd-dot"></div>
           </div>
         </div>
-        <figcaption><b>One demonstration, many labels.</b> The purple line is a made-up playback schedule: how far into the original fold we jump at each step. Steep is fast-forward, flat is slow-motion, and a dip means we briefly run it backward. We play the frames it points to (left), and since we drew the schedule ourselves, the progress at every step is already known. Each loop is a fresh draw.</figcaption>
+        <figcaption><b>One demonstration, many pseudo-labels.</b> The purple line is a sampled playback schedule. Steep increase is fast-forward, flat is slow-motion, and a decrease means we run it backward. Each loop is a fresh draw.</figcaption>
       </figure>
 
       <h3>What the signal looks like</h3>
