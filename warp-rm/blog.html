@@ -395,7 +395,7 @@
       </div>
 
       <h3>Training on the parts that count</h3>
-      <p>Once the signal lined up with what we could see the robot doing, using it was straightforward. As the policy trains, every short slice of a demonstration is weighted by how much progress the model assigns it. Slices it scores high count more. Slices it scores as stalled or sliding backward are dropped. The robot still learns by imitation. In the paper we call this step WARP-BC.</p>
+      <p>As the policy trains, every short slice of a demonstration is weighted by how much progress the model assigns it. Slices it scores high count more. Slices it scores as stalled or sliding backward are dropped. The robot still learns by imitation. In the paper we call this step WARP-BC.</p>
 
       <h3>Did it work?</h3>
       <p>We split a large pool of successful folds into three tiers by length, since the longer demonstrations carried the most hesitation: efficient folds under sixty seconds, a wider set under ninety, and the widest one under two minutes. One progress model, trained once on the shortest folds, scored all three.</p>
