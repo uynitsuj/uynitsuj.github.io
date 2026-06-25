@@ -166,6 +166,15 @@
     .trio .clip .lbl { position: absolute; left: 8px; bottom: 8px; font-family: var(--title-font); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.3px; color: #fff; background: rgba(13,14,22,0.9); padding: 4px 9px; border-radius: 6px; line-height: 1.4; }
     .trio .clip .lbl b { display: block; color: #c2c4ff; font-weight: 700; font-size: 0.82rem; }
     @media (max-width: 560px) { .trio { grid-template-columns: 1fr; } }
+    /* abstract sampler-draw widget */
+    .sampler { display: flex; gap: 16px; align-items: center; }
+    .sampler-frame { flex: 0 0 210px; aspect-ratio: 4 / 3; border-radius: 10px; border: 1px solid var(--hair); background-image: url('media/demo_sprite.jpg'); background-size: 1200% 800%; background-repeat: no-repeat; background-position: 0% 0%; }
+    .sampler-plot { position: relative; flex: 1 1 auto; min-width: 0; }
+    .sampler-plot svg { width: 100%; height: 220px; display: block; background: #fbfbfe; border: 1px solid var(--hair); border-radius: 10px; }
+    .sd-dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); transform: translate(-50%,-50%); pointer-events: none; transition: left 0.08s linear, top 0.08s linear; }
+    .sd-ann { position: absolute; right: 10px; font-family: var(--title-font); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.3px; color: var(--muted); pointer-events: none; }
+    .sd-ann.top { top: 8px; } .sd-ann.bot { bottom: 8px; }
+    @media (max-width: 600px) { .sampler { flex-direction: column; } .sampler-frame { flex-basis: auto; width: 62%; } }
     figcaption {
       margin-top: 0.7rem; font-size: 0.9rem; line-height: 1.55;
       color: var(--muted); text-align: left;
@@ -345,8 +354,16 @@
       <p>That smooth, non-uniform temporal warping is, as far as we know, new for reward modeling. One demonstration, resampled across the range of speeds, becomes thousands of labeled examples. We also play some clips backward, so the model sees progress being undone, an idea we borrow from <a href="https://arxiv.org/abs/2505.10911" target="_blank" rel="noopener">ReWiND</a>. It is a rough stand-in for a real mistake, but it gives the model a feel for motion heading away from the goal instead of toward it. A standard vision encoder and a small transformer read each clip and predict the progress.</p>
 
       <figure>
-        <img src="media/warp_rm_architecture.png" alt="WARP-RM pipeline: a short window of frames sampled from a demonstration at warped playback speeds is encoded and read by a transformer, which predicts how much progress occurred, then stitched across overlapping windows into a signal for the whole video.">
-        <figcaption><b>One demonstration, many labels.</b> A window of 32 frames is sampled at warped speeds, the model predicts how much progress happened across it, and those predictions are stitched across overlapping windows into a reading for the whole video.</figcaption>
+        <div class="sampler">
+          <div class="sampler-frame" id="sd-frame"></div>
+          <div class="sampler-plot">
+            <svg id="sd-svg" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-label="A made-up playback schedule over one demonstration, with the frame it points to"></svg>
+            <span class="sd-ann top">end of the demo</span>
+            <span class="sd-ann bot">start</span>
+            <div class="sd-dot" id="sd-dot"></div>
+          </div>
+        </div>
+        <figcaption><b>One demonstration, many labels.</b> The purple line is a made-up playback schedule: how far into the original fold we jump at each step. Steep is fast-forward, flat is slow-motion, and a dip means we briefly run it backward. We play the frames it points to (left), and since we drew the schedule ourselves, the progress at every step is already known. Each loop is a fresh draw.</figcaption>
       </figure>
 
       <h3>What the signal looks like</h3>
@@ -557,6 +574,59 @@
     window.addEventListener('resize', placeAnn);
 
     select('drop');
+  })();
+  </script>
+
+  <script>
+  // Abstract sampler-draw widget: a made-up playback schedule (cumulative frame index)
+  // with the demo frame it points to, redrawn each loop.
+  (function () {
+    var svg = document.getElementById('sd-svg');
+    var frame = document.getElementById('sd-frame');
+    var dot = document.getElementById('sd-dot');
+    if (!svg || !frame || !dot) return;
+    var SPC = 12, SPR = 8, NF = 96;
+    var W = 1000, H = 300, PADX = 10, PADT = 16, PADB = 16, N = 44;
+    function rnd() { return Math.random(); }
+    function randn() { var u = 0, v = 0; while (u === 0) u = rnd(); while (v === 0) v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+
+    function newPath() {
+      var a = 0.7, prev = randn(), v = [];
+      for (var k = 0; k < N; k++) { prev = a * prev + Math.sqrt(1 - a * a) * randn(); v.push(Math.abs(prev) + 0.2); }
+      var nrev = rnd() < 0.5 ? 0 : (rnd() < 0.7 ? 1 : 2);
+      for (var r = 0; r < nrev; r++) { var p = 2 + Math.floor(rnd() * (N - 3)); for (var i = p; i < N; i++) v[i] = -v[i]; }
+      if (rnd() < 0.5) { for (var j = 0; j < N; j++) v[j] = -v[j]; }
+      var c = [0]; for (var m = 0; m < N; m++) c.push(c[m] + v[m]);
+      var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c), rng = (hi - lo) || 1;
+      var span = (0.45 + rnd() * 0.5) * (NF - 1);
+      var start = rnd() * ((NF - 1) - span);
+      return c.map(function (x) { return start + (x - lo) / rng * span; });
+    }
+    function xOf(i, n) { return PADX + i / n * (W - 2 * PADX); }
+    function yOf(f) { return PADT + (1 - f / (NF - 1)) * (H - PADT - PADB); }
+
+    var path = newPath(), step = 0, hold = 0;
+    function render() {
+      var n = path.length - 1;
+      var full = 'M' + path.map(function (f, i) { return xOf(i, n).toFixed(1) + ' ' + yOf(f).toFixed(1); }).join(' L');
+      var part = 'M' + path.slice(0, step + 1).map(function (f, i) { return xOf(i, n).toFixed(1) + ' ' + yOf(f).toFixed(1); }).join(' L');
+      svg.innerHTML =
+        '<path d="' + full + '" fill="none" stroke="#dcdbf2" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+        '<path d="' + part + '" fill="none" stroke="#6e4baf" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>';
+      dot.style.left = (xOf(step, n) / W * 100).toFixed(2) + '%';
+      dot.style.top = (yOf(path[step]) / H * 100).toFixed(2) + '%';
+      var f = Math.round(path[step]); if (f < 0) f = 0; if (f > NF - 1) f = NF - 1;
+      var col = f % SPC, row = Math.floor(f / SPC);
+      frame.style.backgroundPosition = (col / (SPC - 1) * 100).toFixed(2) + '% ' + (row / (SPR - 1) * 100).toFixed(2) + '%';
+    }
+    render();
+    setInterval(function () {
+      if (document.hidden) return;
+      if (hold > 0) { hold--; if (hold === 0) { path = newPath(); step = 0; render(); } return; }
+      step++;
+      if (step >= path.length) { step = path.length - 1; hold = 12; return; }
+      render();
+    }, 95);
   })();
   </script>
 
