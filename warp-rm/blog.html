@@ -596,7 +596,7 @@
       if (rnd() < 0.5) { for (var j = 0; j < N; j++) v[j] = -v[j]; }
       var c = [0]; for (var m = 0; m < N; m++) c.push(c[m] + v[m]);
       var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c), rng = (hi - lo) || 1;
-      var span = (0.45 + rnd() * 0.5) * (NF - 1);
+      var span = (0.15 + rnd() * 0.22) * (NF - 1);
       var start = rnd() * ((NF - 1) - span);
       return c.map(function (x) { return start + (x - lo) / rng * span; });
     }
@@ -624,7 +624,7 @@
       step++;
       if (step >= path.length) { step = path.length - 1; hold = 12; return; }
       render();
-    }, 95);
+    }, 63);
   })();
   </script>
 
