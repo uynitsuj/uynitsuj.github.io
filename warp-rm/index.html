@@ -908,10 +908,10 @@
       <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
         <img src="media/episode_length_histogram.png"
              style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1rem;"
-             alt="Stacked histogram of demonstration episode lengths: main corpus and annotated supplement, with tier cutoffs at 60s, 90s and 120s">
+             alt="Stacked histogram of demonstration episode lengths: main dataset and annotated supplement, with tier cutoffs at 60s, 90s and 120s">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
-          <b>Episode-length distribution of the demonstration corpus.</b> The main
-          unannotated corpus (\(\mathcal{D}_{1}\)&ndash;\(\mathcal{D}_{3}\),
+          <b>Episode-length distribution of the demonstration dataset.</b> The main
+          unannotated dataset (\(\mathcal{D}_{1}\)&ndash;\(\mathcal{D}_{3}\),
           <span style="color: #1f77b4; font-weight: 600;">blue</span>; 6,473 episodes), with the annotated
           supplement \(\mathcal{D}_{A}\)
           (<span style="color: #ff7f0e; font-weight: 600;">orange</span>; 867 episodes) stacked on top.
@@ -927,7 +927,7 @@
              style="width: 100%; max-width: 700px; border-radius: 6px; border: 1px solid var(--hairline); display: block; margin: 0 auto;"
              alt="Grid of 30 randomly sampled frames from the T-shirt-folding dataset showing varied garment colors, workspace surfaces, and arm configurations">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
-          <b>Visual diversity of the training corpus.</b> Randomly sampled frames from
+          <b>Visual diversity of the training dataset.</b> Randomly sampled frames from
           \(\mathcal{D}_{3}\) (&le;&nbsp;120s, 6,473 episodes), spanning varied garment colors,
           workspace surfaces, and arm configurations.
         </figcaption>
@@ -939,7 +939,7 @@
       <p style="color: var(--muted);">
         Across <b>380 real-world trials</b> of T-shirt folding from a crumpled start, WARP-BC succeeds more
         often, and finishes faster when it does, than vanilla BC and the other baselines trained on the same
-        corpus. Each grid below plays all <b>20 evaluation trials</b> for one tier at once, in a 4&times;5
+        dataset. Each grid below plays all <b>20 evaluation trials</b> for one tier at once, in a 4&times;5
         layout. Use the selector to switch between the three demonstration tiers.
       </p>
 
@@ -980,7 +980,7 @@
         <img src="media/ttc_distribution.png" alt="Time-to-completion distribution for successful trials across D1, D2, D3" style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
           <b>Time-to-completion distribution for successes.</b> Across all three training tiers,
-          WARP-BC completes folds faster than vanilla BC. As the training corpus admits
+          WARP-BC completes folds faster than vanilla BC. As the training dataset admits
           more suboptimal demonstrations (\(\mathcal{D}_{1}\rightarrow\mathcal{D}_{3}\)), vanilla BC's
           success count collapses while WARP-BC stays robust. Solid horizontal bar marks the mean.
         </figcaption>
@@ -1385,7 +1385,7 @@
           warp:    'media/grid_under90s_warp_bc.mp4',
           vMetric: '2/20 successes, 199.0s mean time-to-completion',
           wMetric: '19/20 successes, 118.8s mean time-to-completion',
-          desc:    '\\(\\mathcal{D}_{2}\\): model trained on demonstrations &le; 90s: more hesitations and recoveries in the corpus. Vanilla BC collapses; WARP-BC stays robust.'
+          desc:    '\\(\\mathcal{D}_{2}\\): model trained on demonstrations &le; 90s: more hesitations and recoveries in the dataset. Vanilla BC collapses; WARP-BC stays robust.'
         },
         '120': {
           vanilla: 'media/grid_under120s_vanilla_bc.mp4',
