@@ -153,14 +153,17 @@
     figure > img { padding: 1.25rem; }
     @media (max-width: 560px) { figure > img { padding: 0.8rem; } }
     .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .duo .clip { position: relative; }
+    .duo .clip { position: relative; display: flex; flex-direction: column; }
+    .duo .clip video { display: block; width: 100%; }
     .duo .clip .vlabel {
-      position: absolute; top: 9px; left: 10px;
+      order: -1; align-self: center; margin: 0 0 7px;
       font-family: var(--title-font); font-size: 0.66rem; font-weight: 600;
       letter-spacing: 0.6px; color: #fff; background: rgba(13,14,22,0.66);
-      padding: 3px 9px; border-radius: 6px; text-transform: uppercase;
+      padding: 3px 11px; border-radius: 6px; text-transform: uppercase; text-align: center;
     }
     .duo .clip .vlabel.good { background: rgba(110,75,175,0.82); }
+    .duo .clip .vlabel small { text-transform: none; font-weight: 500; font-size: 0.64rem; letter-spacing: 0.2px; opacity: 0.92; }
+    .duo .clip .vlabel small::before { content: "·"; margin: 0 6px; opacity: 0.6; }
     .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .trio .clip { position: relative; }
     .trio .clip .lbl { position: absolute; left: 8px; bottom: 8px; font-family: var(--title-font); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.3px; color: #fff; background: rgba(13,14,22,0.9); padding: 4px 9px; border-radius: 6px; line-height: 1.4; }
@@ -171,7 +174,7 @@
     .sampler-frame { flex: 0 0 210px; aspect-ratio: 4 / 3; border-radius: 10px; border: 1px solid var(--hair); background-image: url('media/demo_sprite.jpg'); background-size: 1200% 800%; background-repeat: no-repeat; background-position: 0% 0%; }
     .sampler-plot { position: relative; flex: 1 1 auto; min-width: 0; }
     .sampler-plot svg { width: 100%; height: 220px; display: block; background: #fbfbfe; border: 1px solid var(--hair); border-radius: 10px; }
-    .sd-dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); transform: translate(-50%,-50%); pointer-events: none; transition: left 0.08s linear, top 0.08s linear; }
+    .sd-dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); transform: translate(-50%,-50%); pointer-events: none; }
     .sd-ann { position: absolute; right: 10px; font-family: var(--title-font); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.3px; color: var(--muted); pointer-events: none; }
     .sd-ann.top { top: 8px; } .sd-ann.bot { bottom: 8px; }
     @media (max-width: 600px) { .sampler { flex-direction: column; } .sampler-frame { flex-basis: auto; width: 62%; } }
@@ -365,7 +368,7 @@
             <div class="sd-dot" id="sd-dot"></div>
           </div>
         </div>
-        <figcaption><b>One demonstration, many pseudo-labels.</b> The purple line is a sampled playback schedule for one short window, covering a stretch of the demo rather than all of it. Steep increase is fast-forward, flat is slow-motion, and a decrease means we run it backward. Each loop is a fresh draw.</figcaption>
+        <figcaption><b>One demonstration, many pseudo-labels.</b> The line is a sampled playback schedule for one short window, covering a stretch of the demo rather than all of it. Green runs the task forward, red runs it backward; steep is fast-forward and flat is slow-motion. Each loop is a fresh draw.</figcaption>
       </figure>
 
       <!-- <h3>What the signal looks like</h3> -->
@@ -411,10 +414,10 @@
 
       <figure>
         <div class="duo">
-          <div class="clip"><video src="media/grid_under90s_vanilla_bc.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="vlabel">Plain BC</span></div>
-          <div class="clip"><video src="media/grid_under90s_warp_bc.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="vlabel good">WARP-BC</span></div>
+          <div class="clip"><video src="media/grid_under60s_vanilla_bc.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="vlabel">Plain BC<small>113.8s avg</small></span></div>
+          <div class="clip"><video src="media/grid_under60s_warp_bc.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="vlabel good">WARP-BC<small>63.9s avg</small></span></div>
         </div>
-        <figcaption><b>Same data, two outcomes.</b> Both policies trained on the same demonstrations under ninety seconds. Plain imitation (left) stalls in micro-adjustments; the weighted policy (right) follows the fold through.</figcaption>
+        <figcaption><b>Both finish, one is faster.</b> Same demonstrations, same policy class, on the cleanest data tier. Both fold all 20 shirts; the weighted policy (right) just gets there sooner, about 1.8&times; the throughput.</figcaption>
       </figure>
 
       <figure>
@@ -429,6 +432,14 @@
       <figure>
         <video src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
         <figcaption><b>Bottles into a bin.</b> A different task and a different object, same recipe. More bottles placed, and placed faster.</figcaption>
+      </figure>
+
+      <figure>
+        <div class="duo">
+          <div class="clip"><video src="media/bottle_grid_vanilla.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="vlabel">Plain BC<small>15.9s / bottle</small></span></div>
+          <div class="clip"><video src="media/bottle_grid_warp.mp4" autoplay muted loop playsinline preload="metadata"></video><span class="vlabel good">WARP-BC<small>11.3s / bottle</small></span></div>
+        </div>
+        <figcaption><b>Same head-to-head, new task.</b> All 20 bottle-in-bin trials at once. The weighted policy places more bottles (74/80 vs 59/80) and faster (11.3s vs 15.9s each).</figcaption>
       </figure>
 
       <figure>
@@ -591,12 +602,20 @@
     function rnd() { return Math.random(); }
     function randn() { var u = 0, v = 0; while (u === 0) u = rnd(); while (v === 0) v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
 
+    var lastSig = '';
     function newPath() {
-      var a = 0.7, prev = randn(), v = [];
-      for (var k = 0; k < N; k++) { prev = a * prev + Math.sqrt(1 - a * a) * randn(); v.push(Math.abs(prev) + 0.2); }
-      var nrev = rnd() < 0.5 ? 0 : (rnd() < 0.7 ? 1 : 2);
-      for (var r = 0; r < nrev; r++) { var p = 2 + Math.floor(rnd() * (N - 3)); for (var i = p; i < N; i++) v[i] = -v[i]; }
-      if (rnd() < 0.5) { for (var j = 0; j < N; j++) v[j] = -v[j]; }
+      var a = 0.7, prev, v, nrev, flip, sig, tries = 0;
+      do {
+        prev = randn(); v = [];
+        for (var k = 0; k < N; k++) { prev = a * prev + Math.sqrt(1 - a * a) * randn(); v.push(Math.abs(prev) + 0.2); }
+        // favor at least one reversal so draws don't read as all-forward too often
+        nrev = rnd() < 0.2 ? 0 : (rnd() < 0.5 ? 1 : 2);
+        for (var r = 0; r < nrev; r++) { var p = 2 + Math.floor(rnd() * (N - 3)); for (var i = p; i < N; i++) v[i] = -v[i]; }
+        flip = rnd() < 0.3;
+        if (flip) { for (var j = 0; j < N; j++) v[j] = -v[j]; }
+        sig = nrev === 0 ? (flip ? 'D' : 'U') : 'M';
+      } while (sig !== 'M' && sig === lastSig && ++tries < 4); // no two identical pure-monotonic draws in a row
+      lastSig = sig;
       var c = [0]; for (var m = 0; m < N; m++) c.push(c[m] + v[m]);
       var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c), rng = (hi - lo) || 1;
       var span = (0.15 + rnd() * 0.22) * (NF - 1);
@@ -610,10 +629,15 @@
     function render() {
       var n = path.length - 1;
       var full = 'M' + path.map(function (f, i) { return xOf(i, n).toFixed(1) + ' ' + yOf(f).toFixed(1); }).join(' L');
-      var part = 'M' + path.slice(0, step + 1).map(function (f, i) { return xOf(i, n).toFixed(1) + ' ' + yOf(f).toFixed(1); }).join(' L');
+      var segs = '';
+      for (var s = 1; s <= step; s++) {
+        var up = path[s] >= path[s - 1];
+        segs += '<line x1="' + xOf(s - 1, n).toFixed(1) + '" y1="' + yOf(path[s - 1]).toFixed(1) +
+                '" x2="' + xOf(s, n).toFixed(1) + '" y2="' + yOf(path[s]).toFixed(1) +
+                '" stroke="' + (up ? '#3fae67' : '#e0413f') + '" stroke-width="2.6" stroke-linecap="round" vector-effect="non-scaling-stroke"/>';
+      }
       svg.innerHTML =
-        '<path d="' + full + '" fill="none" stroke="#dcdbf2" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
-        '<path d="' + part + '" fill="none" stroke="#6e4baf" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>';
+        '<path d="' + full + '" fill="none" stroke="#e3e2f0" stroke-width="2" vector-effect="non-scaling-stroke"/>' + segs;
       dot.style.left = (xOf(step, n) / W * 100).toFixed(2) + '%';
       dot.style.top = (yOf(path[step]) / H * 100).toFixed(2) + '%';
       var f = Math.round(path[step]); if (f < 0) f = 0; if (f > NF - 1) f = NF - 1;
@@ -625,9 +649,9 @@
       if (document.hidden) return;
       if (hold > 0) { hold--; if (hold === 0) { path = newPath(); step = 0; render(); } return; }
       step++;
-      if (step >= path.length) { step = path.length - 1; hold = 12; return; }
+      if (step >= path.length) { step = path.length - 1; hold = 5; return; }
       render();
-    }, 63);
+    }, 42);
   })();
   </script>
 

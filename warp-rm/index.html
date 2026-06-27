@@ -1840,7 +1840,7 @@
       if (vhEl) { vhEl.textContent = 'v\u0302 = ' + (v >= 0 ? '+' : '\u2212') + Math.abs(v).toFixed(1); vhEl.style.color = v >= 0 ? '#3ad07a' : '#ff6363'; }
     }
 
-    function tick(t) { if (!running) return; var dt = Math.min(0.05, (t - last) / 1000); last = t; kf += dt * 15; if (kf > (N - 1) + 9) newSample(); draw(); requestAnimationFrame(tick); }
+    function tick(t) { if (!running) return; var dt = Math.min(0.05, (t - last) / 1000); last = t; kf += dt * 18; if (kf > (N - 1) + 6) newSample(); draw(); requestAnimationFrame(tick); }
     newSample(); draw();
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { if (!running) { running = true; last = performance.now(); requestAnimationFrame(tick); } } else { running = false; } }); }, { threshold: 0.12 });
