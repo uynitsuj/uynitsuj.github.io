@@ -779,7 +779,7 @@
 
       <p class="inspector-caption-text">
         Episodes A and B play real teleoperated episodes while the curve shows the dense per-frame
-        predicted signed progress magnitude \(\hat{v}_{t}\) &mdash;
+        predicted signed progress magnitude \(\hat{v}_{t}\):
         <span style="color: #059669; font-weight: 600;">positive</span> for forward task progress and
         <span style="color: #cc3333; font-weight: 600;">negative</span> for regression.
         <b>Click on the curve to scrub through the video.</b>
@@ -881,8 +881,8 @@
         (71.3&nbsp;hours), and \(\mathcal{D}_{3}\) (&le;&nbsp;120s): 6,473 episodes (139.7&nbsp;hours).
         Policies are trained on the same underlying demonstrations, either with uniform weighting
         (vanilla BC) or WARP-based progress reweighting. A single WARP-RM model is used across all tiers:
-        it is trained <b>once</b> on a fixed reference subset \(\mathcal{D}_{\mathrm{RM}}\) &mdash; the
-        shortest demonstrations (&le;&nbsp;59.8s, 1,950 episodes) &mdash; providing a clean reference signal
+        it is trained <b>once</b> on a fixed reference subset \(\mathcal{D}_{\mathrm{RM}}\), the
+        shortest demonstrations (&le;&nbsp;59.8s, 1,950 episodes), providing a clean reference signal
         for the canonical execution pace (\(\hat{v} = 1\)). For baseline comparisons, SARM requires human
         annotations, so an <b>annotated supplement</b> \(\mathcal{D}_{A}\) (867 expert demonstrations, 13.9 hours) is
         added, forming the augmented datasets \(\mathcal{D}_{4} = \mathcal{D}_{1} \cup \mathcal{D}_{A}\)
@@ -1343,8 +1343,8 @@
           Progress reward models that supervise on this signal include
           <a href="https://arxiv.org/abs/2603.02115" target="_blank" rel="noopener" style="color: var(--accent);">Robometer</a>,
           <a href="https://arxiv.org/abs/2505.10911" target="_blank" rel="noopener" style="color: var(--accent);">ReWiND</a>, and
-          <a href="https://arxiv.org/abs/2603.27670" target="_blank" rel="noopener" style="color: var(--accent);">ProgressVLA</a>
-          &mdash; each regresses the normalized timestep \(t/T\) (or frame index \(i/N\)) as the per-frame progress target.
+          <a href="https://arxiv.org/abs/2603.27670" target="_blank" rel="noopener" style="color: var(--accent);">ProgressVLA</a>.
+          Each regresses the normalized timestep \(t/T\) (or frame index \(i/N\)) as its per-frame progress target.
         </li>
       </ol>
     </section>
