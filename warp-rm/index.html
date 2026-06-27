@@ -706,13 +706,13 @@
       <p>
         On long-horizon tasks, collecting high-quality data becomes increasingly difficult. Even skilled
         humans make mistakes on challenging tasks, leaving low-quality segments scattered through
-        otherwise-good demonstrations. This pushes roboticists toward <b>data curation</b>: deciding which
+        otherwise-successful demonstrations. This pushes roboticists toward <b>data curation</b>: deciding which
         data is actually worth imitating.
       </p>
       <p>
         Many approaches curate at the trajectory level, discarding any demonstration that shows
-        mistakes or backward progress. On longer tasks this wastes large amounts of data, and it throws away
-        the <b>recovery segments</b> that teach a policy how to get back on track after a slip.
+        mistakes or progress stagnation and regression. On longer tasks this wastes large amounts of data, and it throws away
+        the <b>recovery segments</b> that crucially teach a policy how to get back on track after a mistake.
       </p>
       <p>
         A finer approach estimates progress <i>inside</i> a demonstration and keeps or down-weights individual
