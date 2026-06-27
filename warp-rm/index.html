@@ -705,28 +705,28 @@
       <h1>Which Data is Worth Imitating?</h1>
       <p>
         On long-horizon tasks, collecting high-quality data becomes increasingly difficult. Even skilled
-        humans make mistakes on challenging tasks, leaving low-quality segments scattered through
+        humans make mistakes on challenging tasks, leaving low-quality segments scattered throughout
         otherwise-successful demonstrations. This pushes roboticists toward <b>data curation</b>: deciding which
         data is actually worth imitating.
       </p>
       <p>
         Many approaches curate at the trajectory level, discarding any demonstration that shows
-        mistakes or progress stagnation and regression. On longer tasks this wastes large amounts of data, and it throws away
+        mistakes or progress stagnation and regression. On longer tasks this strategy wastes large amounts of data, and it throws away
         the <b>recovery segments</b> that crucially teach a policy how to get back on track after a mistake.
       </p>
       <p>
-        Many finer-grained approached estimate progress <i>inside</i> a demonstration and filters or re-weights individual
+        Many finer-grained approaches estimate progress <i>inside</i> a demonstration and filters or re-weights individual
         action chunks by how much they advance the task.
         <a href="https://arxiv.org/abs/2509.25358" target="_blank" rel="noopener" style="color: var(--accent);">SARM</a>
         and <a href="https://arxiv.org/abs/2604.03037" target="_blank" rel="noopener" style="color: var(--accent);">ARM</a>
         learn this from human-annotated labels on long-horizon T-shirt folding.
       </p>
       <p>
-        A common self-supervised signal is the <b>fraction of the trajectory completed so far</b>, the
-        normalized timestep \(t/T\)<sup><a href="#fn-time" style="color: var(--accent); text-decoration: none;">1</a></sup>.
-        But this target is distorted by any mistake that comes before or after a given frame: the same visual
-        state can be labeled with different progress depending on how long the rest of the episode happens
-        to take, as in the example below:
+        A common self-supervised signal in progress reward modeling is the <b>fraction of the trajectory completed so far</b>, the
+        normalized timestep \(t/T\)<sup style="margin-left: 0.12em;"><a href="#fn-time" style="color: var(--accent); text-decoration: none;">1</a></sup>.
+        But elapsed time and task progress are not the same: scoring by the clock supervises one label on
+        different states, and the disagreement grows on long-horizon tasks, where pauses and retries pull the
+        clock further out of step with the task, as the frames below show:
       </p>
 
       <div class="noise-row">
@@ -1340,10 +1340,11 @@
       <hr style="border: none; border-top: 1px solid var(--hairline); margin-bottom: 1rem;">
       <ol style="color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding-left: 1.2rem; margin: 0;">
         <li id="fn-time">
-          Frame-level progress models commonly regress the normalized timestep \(t/T\) on expert
-          demonstrations &mdash; e.g.
+          Progress reward models that supervise on this signal include
           <a href="https://arxiv.org/abs/2603.02115" target="_blank" rel="noopener" style="color: var(--accent);">Robometer</a>,
-          which defines its per-frame progress target as \(p_t = t/T\).
+          <a href="https://arxiv.org/abs/2505.10911" target="_blank" rel="noopener" style="color: var(--accent);">ReWiND</a>, and
+          <a href="https://arxiv.org/abs/2603.27670" target="_blank" rel="noopener" style="color: var(--accent);">ProgressVLA</a>
+          &mdash; each regresses the normalized timestep \(t/T\) (or frame index \(i/N\)) as the per-frame progress target.
         </li>
       </ol>
     </section>
