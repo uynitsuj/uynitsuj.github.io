@@ -315,7 +315,7 @@
       </figure>
 
       <h3>What the failures showed us</h3>
-      <p>Watching the robot fail explained it. It kept getting trapped in the same little adjustments, nudging the shirt and re-gripping without ever committing. The policy wasn't stuck because it had never seen a fold. It had seen thousands of folds. It was stuck because it had also seen thousands of small hesitations and mistakes.</p>
+      <p>Watching the robot fail explained it. It kept getting trapped in the same micro-adjustments, nudging the shirt and re-gripping without committing. The policy wasn't stuck because it had never seen a fold. In fact it had seen thousands of them. It was stuck because it had also seen thousands of small hesitations and mistakes.</p>
 
       <p>When a teleoperator is actually folding a shirt, they pause, or reposition a sleeve. They change their mind and nudge the fabric a few millimeters. None of that feels like a mistake while you're doing it. Imitation learning assumes it is copying an expert, a premise that holds up better in the theorems than on the two-hundredth fold of the afternoon. To a behavior cloning policy, all of it is training data, and it carries the same weight to the model as the motion that folds shirts successfully.</p>
 
@@ -332,11 +332,11 @@
       </div>
 
       <h3>What we actually wanted</h3>
-      <p>The obvious move is to throw the messy demonstrations out. But for one, there is no clean line to draw: "messy" is subjective. Moreover, drop an episode and you lose the good, decisive stretches within, along with the recoveries we most want a robot to learn, the regrip after a near-miss, which tend to show up only in that messier footage. Keep a short, clean-looking run and you still take its hesitations and stalls, because even the fastest demonstrations have a few. Either way, episode-level filtering works at the wrong granularity.</p>
+      <p>One instinct is to throw the messy demonstrations out. But for one, there is no clean line to draw: "messy" is subjective. Moreover, drop an episode and you lose the good, decisive stretches within, along with the recoveries we most want a robot to learn, the regrip after a near-miss, which tend to show up only in that messier footage. Keep a short, clean-looking run and you still take its hesitations and stalls, because even the fastest demonstrations have a few. Either way, episode-level filtering works at the wrong granularity.</p>
 
       <p>We wanted something finer: look at any single moment in a demonstration, ask whether the task is actually moving forward, and train mostly on the moments that are. The lever was not more data but a better signal-to-noise ratio in the data already on disk: amplify the motion that advances the task, quiet the hesitations and stalls.</p>
 
-      <p>We first tried the obvious proxy: treat how far you are into a demonstration as how far along the task is. But elapsed time and task progress are not the same, as the frames below show: three demonstrations at the halfway mark, three different stages of the fold. Scoring by the clock pins one label on different states, and that disagreement injects label noise into reward models, worse on long-horizon tasks where pauses and retries pull the clock further out of step with task progress.</p>
+      <p>We first tried the obvious proxy: label each frame by how far through the demonstration it is, its fraction of the way from the first frame to the last. But that fraction is not task progress, as the frames below show: three demonstrations at the halfway mark, three different stages of the fold. Scoring by that fraction pins one label on different states, and the disagreement injects label noise into reward models, worse on long-horizon tasks where pauses and retries pull a frame's position in the clip further out of step with how much of the task is actually done.</p>
 
       <figure>
         <div class="trio">
