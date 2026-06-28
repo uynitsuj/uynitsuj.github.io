@@ -56,14 +56,14 @@ We gave a folding robot more demonstrations and it got worse. Every extra demo s
 
   <section class="slide">
     <div class="num">3 / 11 · the flaw</div>
-    <div class="body">To find those moments, you need a per-frame progress signal. The usual self-supervised recipe trains a model to predict how far through the demo each frame is (t/T). But elapsed time is not task progress. Three frames all stamped at the 50% mark show three completely different stages of the fold. Time tells you the clock ran. It doesn't tell you the task advanced. Progress reward models built on this signal inherit the noise.</div>
+    <div class="body">To find those moments, you need a per-frame progress signal. The usual self-supervised recipe trains a model to predict each frame's normalized position in the demo, how far it sits from the first frame to the last. But position in the clip is not task progress. Three frames all stamped at the 50% mark show three completely different stages of the fold. Halfway through the recording just means the recording is half over. Progress reward models built on that signal inherit the noise.</div>
     <div class="media"><img src="media/noise_5050.jpg" alt="three frames at ~50% of their demo, different stages"></div>
     <div class="cap">media/noise_5050.jpg · all near 50%, three different stages</div>
   </section>
 
   <section class="slide">
     <div class="num">4 / 11 · WARP</div>
-    <div class="body">WARP gets its labels from the demonstrations themselves. Take a short window of a successful demo and replay it at smoothly varying speeds, sometimes faster, sometimes slower, sometimes briefly in reverse. Because we set the playback, every frame comes with a progress label, with no human annotation. And because the windows and speeds are drawn at random, a single demonstration yields an essentially unlimited stream of self-labeled clips. The model learns relative progress, not absolute time.</div>
+    <div class="body">WARP takes a short window of a successful demo and replays it at smoothly varying speeds, sometimes faster, sometimes slower, sometimes briefly in reverse. Because we set the playback, every frame comes with a progress label, with no human annotation. And because the windows and speeds are drawn at random, a single demonstration yields an essentially unlimited stream of self-labeled clips. The model learns relative progress, not absolute time. That doesn't erase the label noise, but it bounds how far off any single label can be.</div>
     <div class="media"><video src="media/ar1_draws.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/ar1_draws.mp4</div>
   </section>
