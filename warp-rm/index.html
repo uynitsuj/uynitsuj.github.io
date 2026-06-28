@@ -820,7 +820,7 @@
           </div>
           <div class="sampler-caption">
             Each draw samples a per-step playback speed from an AR(1) process in log-space (slow-motion to
-            fast-forward), with Poisson-placed reversals and a 50% chance the whole clip plays backward.
+            fast-forward), with Poisson-placed reversals and a 50% chance the whole clip plays backward. The green/red bars mark the net per-step direction that results, combining both.
             Accumulating those signed speeds picks which demo frame to read at each of the 32 steps, and the
             signed offsets become the progress labels.
           </div>
@@ -1820,9 +1820,9 @@
       add(txt(X0, 30, 'speed · AR(1) in log-space', { 'font-size': 13, fill: '#7c3aed', 'font-family': 'monospace' }));
       var pts = []; for (var i = 0; i < Math.min(kInt, nGaps); i++) pts.push(px(i, nGaps).toFixed(1) + ',' + sy(sample.speeds[i]).toFixed(1));
       add(el('polyline', { points: pts.join(' '), fill: 'none', stroke: '#7c3aed', 'stroke-width': 2.2, 'stroke-linejoin': 'round' }));
-      add(txt(X0, barY - 6, 'reversals · Poisson sign flips', { 'font-size': 12, fill: '#cc3333', 'font-family': 'monospace' }));
+      add(txt(X0, barY - 6, 'reversals · green forward / red back (Poisson × full-clip flip)', { 'font-size': 12, fill: '#cc3333', 'font-family': 'monospace' }));
       var cw = (X1 - X0) / nGaps;
-      for (var i = 0; i < Math.min(kInt, nGaps); i++) add(el('rect', { x: (X0 + i * cw + 0.5).toFixed(1), y: barY, width: (cw - 1).toFixed(1), height: barH, rx: 2, fill: sample.signs[i] > 0 ? '#059669' : '#cc3333', opacity: 0.85 }));
+      for (var i = 0; i < Math.min(kInt, nGaps); i++) add(el('rect', { x: (X0 + i * cw + 0.5).toFixed(1), y: barY, width: (cw - 1).toFixed(1), height: barH, rx: 2, fill: sample.indices[i + 1] >= sample.indices[i] ? '#059669' : '#cc3333', opacity: 0.85 }));
       add(txt(X0, wTop - 10, 'accumulate → which demo frame to read at each step', { 'font-size': 13, fill: '#333', 'font-family': 'monospace' }));
       add(el('line', { x1: X0, y1: wTop, x2: X0, y2: wBot, stroke: '#ddd', 'stroke-width': 1.2 }));
       add(el('line', { x1: X0, y1: wBot, x2: X1, y2: wBot, stroke: '#ddd', 'stroke-width': 1.2 }));
