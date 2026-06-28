@@ -77,14 +77,14 @@ We gave a folding robot more demonstrations and it got worse. Every extra demo s
 
   <section class="slide">
     <div class="num">6 / 11 · WARP-BC</div>
-    <div class="body">During behavior cloning, WARP-BC scores each action chunk by how much it advances the task. Productive motion gets amplified; stalls and regressions are filtered out before training. Same demos, but the policy now learns mostly from the moments that count.</div>
+    <div class="body">During behavior cloning, WARP-BC scores each action chunk by how much it advances the task. Productive motion gets amplified; stalls and regressions are filtered out before training. Same demos, but the policy now learns from the moments that count.</div>
     <div class="media"><video src="media/warp_bc_method.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/warp_bc_method.mp4 · aggregation → reweight + filter</div>
   </section>
 
   <section class="slide">
     <div class="num">7 / 11 · payoff: speed</div>
-    <div class="body">On the cleanest data tier, both methods fold all 20 shirts, so success is tied. But WARP-BC is much faster: 63.9s per fold vs 113.8s for vanilla BC, about 1.8x the throughput. Same demos, just spent on the moments that matter.</div>
+    <div class="body">On the cleanest data tier, WARP-BC is much faster: 63.9s per fold vs 113.8s for vanilla BC, about 1.8x the throughput.</div>
     <div class="media"><video src="media/grid_tshirt_clean.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/grid_tshirt_clean.mp4 · Vanilla BC | WARP-BC, cleanest tier, 2×</div>
   </section>
