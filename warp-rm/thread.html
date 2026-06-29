@@ -63,7 +63,7 @@ We gave our t-shirt folding robot more demonstrations and it got worse. Every ex
 
   <section class="slide">
     <div class="num">4 / 11</div>
-    <div class="body">WARP takes a short window of a successful demo and replays it at smoothly varying speeds, sometimes faster, sometimes slower, sometimes briefly in reverse. Because we set the playback, every frame comes with a progress label, with no human annotation. And because the window spans and speeds are drawn at random, a single demonstration yields an essentially unlimited stream of self-labeled clips. The model learns relative progress, not absolute time. That doesn't erase the label noise, but it bounds how far off any single label can be.</div>
+    <div class="body">WARP takes a short window of a successful demo and replays it at smoothly varying speeds, sometimes faster, sometimes slower, sometimes briefly in reverse. Because we set the playback, every frame comes with a progress label, with no human annotation. And because the window spans and speeds are drawn at random, a single demonstration yields an essentially unlimited stream of self-labeled clips. The model learns relative progress, not absolute time. That doesn't eliminate the label noise, but it bounds how far off any single label can be.</div>
     <div class="media"><video src="media/ar1_draws.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/ar1_draws.mp4</div>
   </section>
@@ -77,7 +77,7 @@ We gave our t-shirt folding robot more demonstrations and it got worse. Every ex
 
   <section class="slide">
     <div class="num">6 / 11</div>
-    <div class="body">During behavior cloning, WARP-BC scores each action chunk by how much it advances the task. Productive motion gets amplified; stalls and regressions are filtered out before training.</div>
+    <div class="body">During behavior cloning, WARP-BC filters or reweights action chunk loss by how much it advances the task. Productive motion gets amplified; stalls and regressions are filtered out before training.</div>
     <div class="media"><video src="media/warp_bc_method.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/warp_bc_method.mp4 · aggregation → reweight + filter</div>
   </section>
