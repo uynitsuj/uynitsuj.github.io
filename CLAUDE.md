@@ -6,7 +6,7 @@ Jekyll site (GitHub Pages, `uynitsuj.github.io`). Built/deployed by GitHub on pu
 
 Media is the heaviest thing on this site. The portfolio/home page once eagerly loaded **~215 MB** of media; it was cut to **~21 MB** by re-encoding. **Any new media asset must be optimized the same way before it is committed.** Do not commit raw screen-recordings, phone videos, or GIFs.
 
-Targets: video clips ≤ ~3 MB, project/blog thumbnails ≤ ~0.5 MB. If a new asset is much larger, re-encode it.
+Targets: video clips ≤ ~5 MB, project/blog thumbnails ≤ ~0.5 MB. If a new asset is much larger, re-encode it. Always re-encode from the **original source**, never from an already-compressed copy (generational loss), and keep the original in `~/portfolio-media-originals/` before overwriting anything in the repo.
 
 ### Display sizes (encode to ~2× these, never the source resolution)
 - **Research videos** (`_includes/sections/research.html`) render in a **320px-wide** `.pub-thumb` → encode **≤ 640px wide**.
