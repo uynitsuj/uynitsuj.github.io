@@ -56,7 +56,7 @@ We gave our t-shirt folding robot more demonstrations and it got worse. Every ex
 
   <section class="slide">
     <div class="num">3 / 11</div>
-    <div class="body">To label progress without humans, the usual proxy is a frame's position in the clip: a frame halfway through the recording calls the task halfway done. But robots don't make steady progress. These three frames are all at the 50% mark, and they're at different stages of the fold. A model trained on those labels inherits the label noise.</div>
+    <div class="body">To label dense progress without human annotation, the usual proxy is a frame's position in the clip: a frame halfway through the recording calls the task halfway done. But robots don't make steady progress. These three frames are all at the 50% mark, and they're at different stages of the fold. Supervising on that fraction pins one label on different states, and the disagreement injects label noise into reward models, worse on long-horizon tasks where pauses and retries pull a frame's position in the clip further out of step with how much of the task is actually done.</div>
     <div class="media"><img src="media/noise_5050.jpg" alt="three frames at ~50% of their demo, different stages"></div>
     <div class="cap">media/noise_5050.jpg · all near 50%, three different stages</div>
   </section>
