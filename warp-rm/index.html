@@ -714,7 +714,7 @@
         the <b>recovery segments</b> that crucially teach a policy how to get back on track after a mistake.
       </p>
       <p>
-        Many finer-grained approaches estimate progress <i>inside</i> a demonstration and filters or re-weights individual
+        Many finer-grained approaches estimate progress <i>inside</i> a demonstration and filter or re-weight individual
         action chunks by how much they advance the task.
         <a href="https://arxiv.org/abs/2509.25358" target="_blank" rel="noopener" style="color: var(--accent);">SARM</a>
         and <a href="https://arxiv.org/abs/2604.03037" target="_blank" rel="noopener" style="color: var(--accent);">ARM</a>
@@ -723,9 +723,9 @@
       <p>
         A common self-supervised signal in progress reward modeling is the <b>fraction of the trajectory completed so far</b>, the
         normalized timestep \(t/T\)<sup style="margin-left: 0.12em;"><a href="#fn-time" style="color: var(--accent); text-decoration: none;">1</a></sup>.
-        But elapsed time and task progress are not the same: scoring by the clock supervises one label on
-        different states, and the disagreement grows on long-horizon tasks, where pauses and retries pull the
-        clock further out of step with the task, as the frames below show:
+        But elapsed time and task progress are not the same: scoring by the clock implicitly assumes that
+        different demonstrations progress at the same rate, but in long-horizon tasks, demonstrations can
+        often be at different progresses for the same temporal label:
       </p>
 
       <div class="noise-row">
@@ -738,7 +738,7 @@
       </p>
 
       <p style="font-size: 1.12rem; color: #1a1a1a;">
-        <b>WARP produces a dense, signed, per-frame progress velocity signal straight from the demonstrations, with no human
+        <b>WARP-RM produces a dense, signed, per-frame progress velocity signal straight from the demonstrations, with no human
         annotations required.</b>
       </p>
     </section>
@@ -752,7 +752,7 @@
         <b>Click anywhere on the curve to scrub the video.</b>
       </p>
       <div class="inspector-wrap">
-        <div class="inspector-box-title">WARP-RM Progress Velocity Signal</div>
+        <div class="inspector-box-title">Progress Velocity Signal Predicted by WARP Reward Model</div>
         <div class="inspector-video-center">
           <video id="inspector-video" muted playsinline preload="auto"
                  src="media/inspector/ep6974.mp4#t=30"></video>
@@ -771,9 +771,9 @@
       </div>
 
       <div class="inspector-tabs" id="inspector-tabs">
-        <button class="inspector-tab active" data-ep="ep6974">Episode A &mdash; accidental drop</button>
-        <button class="inspector-tab" data-ep="ep6974_stag">Episode A &mdash; stalled progress</button>
-        <button class="inspector-tab" data-ep="ep6874">Episode B &mdash; fast and decisive</button>
+        <button class="inspector-tab active" data-ep="ep6974">Episode A: accidental drop</button>
+        <button class="inspector-tab" data-ep="ep6974_stag">Episode A: stalled progress</button>
+        <button class="inspector-tab" data-ep="ep6874">Episode B: fast and decisive</button>
       </div>
 
       <p class="inspector-caption-text">
@@ -1767,6 +1767,7 @@
         var v = videos[i];
         v.muted = true;          // required for programmatic autoplay
         v.loop = !isMain;        // main must NOT loop so 'ended' fires; PiP loops as preview
+        if (isMain) { try { v.currentTime = 0; } catch (e) {} }  // promoted video restarts from the start of the episode
         safePlay(v);             // autoplay does not re-fire after a swap — play() explicitly
       });
     }
