@@ -722,7 +722,7 @@
       </p>
       <p>
         A common self-supervised signal in progress reward modeling is the <b>fraction of the trajectory completed so far</b>, the
-        normalized timestep \(t/T\)<sup style="margin-left: 0.12em;"><a href="#fn-time" style="color: var(--accent); text-decoration: none;">1</a></sup>.
+        normalized frame index<sup style="margin-left: 0.12em;"><a href="#fn-time" style="color: var(--accent); text-decoration: none;">1</a></sup>.
         But elapsed time and task progress are not the same: scoring by the clock implicitly assumes that
         different demonstrations progress at the same rate, but in long-horizon tasks, demonstrations can
         often be at different progresses for the same temporal label:
@@ -1343,7 +1343,7 @@
           <a href="https://arxiv.org/abs/2603.02115" target="_blank" rel="noopener" style="color: var(--accent);">Robometer</a>,
           <a href="https://arxiv.org/abs/2505.10911" target="_blank" rel="noopener" style="color: var(--accent);">ReWiND</a>, and
           <a href="https://arxiv.org/abs/2603.27670" target="_blank" rel="noopener" style="color: var(--accent);">ProgressVLA</a>.
-          Each regresses the normalized timestep \(t/T\) (or frame index \(i/N\)) as its per-frame progress target.
+          Each regresses a frame's normalized position in the trajectory, from the first frame to the last, as its per-frame progress target.
         </li>
       </ol>
     </section>
