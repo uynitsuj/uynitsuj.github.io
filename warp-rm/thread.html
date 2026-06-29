@@ -63,7 +63,7 @@ We gave a folding robot more demonstrations and it got worse. Every extra demo s
 
   <section class="slide">
     <div class="num">4 / 11</div>
-    <div class="body">WARP takes a short window of a successful demo and replays it at smoothly varying speeds, sometimes faster, sometimes slower, sometimes briefly in reverse. Because we set the playback, every frame comes with a progress label, with no human annotation. And because the windows and speeds are drawn at random, a single demonstration yields an essentially unlimited stream of self-labeled clips. The model learns relative progress, not absolute time. That doesn't erase the label noise, but it bounds how far off any single label can be.</div>
+    <div class="body">WARP takes a short window of a successful demo and replays it at smoothly varying speeds, sometimes faster, sometimes slower, sometimes briefly in reverse. Because we set the playback, every frame comes with a progress label, with no human annotation. And because the window spans and speeds are drawn at random, a single demonstration yields an essentially unlimited stream of self-labeled clips. The model learns relative progress, not absolute time. That doesn't erase the label noise, but it bounds how far off any single label can be.</div>
     <div class="media"><video src="media/ar1_draws.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/ar1_draws.mp4</div>
   </section>
