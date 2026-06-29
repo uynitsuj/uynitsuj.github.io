@@ -91,28 +91,27 @@ We gave a folding robot more demonstrations and it got worse. Every extra demo s
 
   <section class="slide">
     <div class="num">8 / 11 · payoff: robustness</div>
-    <div class="body">As we admit messier, longer demos into training, vanilla BC's throughput craters. WARP-BC holds on the exact same data, training on just ~22% of the action chunks.
+    <div class="body">We sorted the folds into tiers by length and fed progressively messier demos into training. Plain imitation follows the quality of its data straight down. 
 
-Successful folds per hour, as the data gets noisier:
+Folds finished per hour, as the data gets noisier:
 • Vanilla BC: 32 → 1.5 → 0
 • WARP-BC: 56 → 27 → 16  (~18x on the middle tier)
-(success rate falls the same way: vanilla 20/20 → 2/20 → 0/20, WARP-BC 20/20 → 19/20 → 14/20)
 
-It also outlasts prior curation methods on the noisiest tier (full comparison in the paper). The dataset was never bad. WARP-BC just learns which moments deserve to shape the policy.</div>
+It holds up against prior curation methods on the noisiest tier too (full table in the paper). The dataset was never bad. WARP-BC just learns which moments are worth imitating.</div>
     <div class="media"><img src="media/ttc_distribution_padded.png" alt="time-to-completion across tiers"></div>
     <div class="cap">media/ttc_distribution_padded.png</div>
   </section>
 
   <section class="slide">
     <div class="num">9 / 11 · it generalizes</div>
-    <div class="body">It isn't specific to shirts. Same method, new task: we pointed WARP-BC at bottle-in-bin, retraining the reward model once on bottle demos (task generalization, not zero-shot). Across both tasks, 420 real-world trials.</div>
+    <div class="body">Same method, new task: we pointed WARP-BC at bottle-in-bin, with reward model hyperparameters untuned. 420 real-world trials across both tasks.</div>
     <div class="media"><video src="media/bottles_rollout.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/bottles_rollout.mp4</div>
   </section>
 
   <section class="slide">
     <div class="num">10 / 11 · bottles, head-to-head</div>
-    <div class="body">On bottles, the same pattern holds: WARP-BC averages 11.3s per bottle vs 15.9s, about 1.6x the throughput, and places 74 of 80 vs 59 of 80. Keep the productive moments, and the policy gets both faster and more reliable.</div>
+    <div class="body">On bottles, WARP-BC averages 11.3s per bottle vs 15.9s, and places 74 of 80 vs 59 of 80. Keep the productive moments, and the policy gets both faster and better.</div>
     <div class="media"><video src="media/grid_bottles_vanilla_vs_warp.mp4" controls muted loop playsinline preload="metadata"></video></div>
     <div class="cap">media/grid_bottles_vanilla_vs_warp.mp4 · Vanilla BC | WARP-BC</div>
   </section>
