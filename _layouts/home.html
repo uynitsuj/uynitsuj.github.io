@@ -30,6 +30,9 @@ layout: null
   --green:        #42b983;
   --green-hi:     #60d09d;
   --red:          #f56565;
+  --gold:         #eab945;
+  --gold-hi:      #f6cf6a;
+  --gold-dim:     rgba(234, 185, 69, 0.12);
   --nav-bg:       rgba(17, 17, 22, 0.88);
   --shadow-sm:    0 2px 10px rgba(0, 0, 0, 0.4);
   --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.5);
@@ -53,6 +56,9 @@ layout: null
   --green:        #1e9e72;
   --green-hi:     #28b885;
   --red:          #e53e3e;
+  --gold:         #b8860b;
+  --gold-hi:      #a06f00;
+  --gold-dim:     rgba(198, 148, 30, 0.12);
   --nav-bg:       rgba(243, 243, 247, 0.92);
   --shadow-sm:    0 2px 10px rgba(0, 0, 0, 0.07);
   --shadow-md:    0 4px 24px rgba(0, 0, 0, 0.1);
@@ -373,6 +379,30 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   border-color: var(--border-hi);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+/* =============================================================================
+   FEATURED / HIGHLIGHTED CARDS — shimmering gold gradient border
+   Applied to the key projects (WARP-RM, CaP-X, EgoMI, R2R2R, LEGS) via the
+   .featured-gradient class on their .pub-card in _includes/sections/research.html
+   ============================================================================= */
+.pub-card.featured-gradient {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+    linear-gradient(115deg, var(--gold), var(--gold-hi), var(--gold-dim), var(--gold)) border-box;
+  background-size: 100% 100%, 250% 100%;
+  animation: gold-shimmer 6s linear infinite;
+}
+.pub-card.featured-gradient:hover {
+  box-shadow: var(--shadow-md);
+}
+@keyframes gold-shimmer {
+  to { background-position: 0 0, 250% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pub-card.featured-gradient { animation: none; }
 }
 
 .pub-thumb {
