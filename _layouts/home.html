@@ -575,8 +575,8 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
    OPEN SOURCE — GitHub repo cards (live star counts)
    ============================================================================= */
 /* Trim the shell's default 80px vertical padding for this compact section */
-#repos .section-shell { padding-top: 52px; padding-bottom: 52px; }
-#repos .section-eyebrow { margin-bottom: 1.35rem; }
+#repos .section-shell { padding-top: 40px; padding-bottom: 40px; }
+#repos .section-eyebrow { margin-bottom: 1rem; }
 
 .repo-grid {
   display: grid;
@@ -589,7 +589,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 0.95rem;
   display: flex; flex-direction: column;
   color: var(--tx) !important;
   transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -603,7 +603,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .repo-name {
   display: flex; align-items: center; gap: 0.45rem;
   font-size: 0.86rem; font-weight: 700; letter-spacing: -0.01em;
-  line-height: 1.25; margin-bottom: 0.4rem;
+  line-height: 1.25; margin-bottom: 0.3rem;
   word-break: break-word;
 }
 .repo-name .repo-gh { color: var(--tx-muted); font-size: 1.05em; flex-shrink: 0; }
@@ -611,10 +611,10 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .repo-card:hover .repo-name { color: var(--accent); }
 
 .repo-desc {
-  font-size: 0.76rem; color: var(--tx-2); line-height: 1.5;
-  flex: 1; margin-bottom: 0.7rem;
+  font-size: 0.76rem; color: var(--tx-2); line-height: 1.45;
+  flex: 1; margin-bottom: 0.6rem;
   /* clamp to keep every card the same short height */
-  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
   overflow: hidden;
 }
 
