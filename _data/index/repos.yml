@@ -1,0 +1,34 @@
+# GitHub repositories shown as cards on the home page (#repos section).
+# `stars`/`forks` are fallback values baked into the HTML — the live counts are
+# fetched client-side from the GitHub API on page load (see the repo-stars script
+# in _layouts/home.html) and overwrite these when the request succeeds. Keep them
+# roughly current so the cards look right before/if the fetch fails or is rate-limited.
+# `lang_color` is the language dot color (GitHub's Python blue by default).
+- name: cap-x
+  owner: capgym
+  descr: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation
+  language: Python
+  lang_color: "#3572A5"
+  stars: 650
+  forks: 102
+- name: real2render2real
+  owner: uynitsuj
+  descr: "Real2Render2Real: Scaling Robot Data Without Dynamics Simulation or Robot Hardware"
+  language: Python
+  lang_color: "#3572A5"
+  stars: 365
+  forks: 19
+- name: WARP-RM
+  owner: uynitsuj
+  descr: "WARP-RM: A Warp-Augmented Relative Progress Reward Model for Data Curation"
+  language: Python
+  lang_color: "#3572A5"
+  stars: 37
+  forks: 3
+- name: robots_realtime
+  owner: uynitsuj
+  descr: Realtime &amp; high-frequency control interfaces for various robot arms including bi-manual I2RT YAM, Franka Panda, with manual tele-operation control or autonomous policy control
+  language: Python
+  lang_color: "#3572A5"
+  stars: 64
+  forks: 22

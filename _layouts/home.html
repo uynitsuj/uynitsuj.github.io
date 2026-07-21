@@ -572,6 +572,64 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .proj-btn i { font-size: 0.82em; }
 
 /* =============================================================================
+   OPEN SOURCE — GitHub repo cards (live star counts)
+   ============================================================================= */
+.repo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.repo-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.15rem 1.35rem;
+  display: flex; flex-direction: column;
+  color: var(--tx) !important;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.repo-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.repo-name {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.92rem; font-weight: 700; letter-spacing: -0.01em;
+  line-height: 1.3; margin-bottom: 0.55rem;
+  word-break: break-word;
+}
+.repo-name .repo-gh { color: var(--tx-muted); font-size: 1.05em; flex-shrink: 0; }
+.repo-name .repo-owner { color: var(--tx-muted); font-weight: 600; }
+.repo-card:hover .repo-name { color: var(--accent); }
+
+.repo-desc {
+  font-size: 0.79rem; color: var(--tx-2); line-height: 1.6;
+  flex: 1; margin-bottom: 1rem;
+}
+
+.repo-meta {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 1.1rem;
+  font-size: 0.77rem; color: var(--tx-2);
+}
+.repo-lang { display: inline-flex; align-items: center; gap: 0.4rem; }
+.repo-lang-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  display: inline-block; flex-shrink: 0;
+}
+.repo-stat { display: inline-flex; align-items: center; gap: 0.35rem; }
+.repo-stat i { font-size: 0.9em; }
+.repo-stat .fa-star { color: var(--gold); }
+.repo-stat-num {
+  font-variant-numeric: tabular-nums; font-weight: 700; color: var(--tx);
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* brief highlight when a live count replaces the fallback */
+.repo-stat-num.repo-stat-live { color: var(--accent-hi); }
+
+/* =============================================================================
    FOOTER
    ============================================================================= */
 .site-footer {
@@ -591,6 +649,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   .hero-avatar    { width: 108px; height: 108px; }
   .about-grid     { grid-template-columns: 1fr; gap: 2.5rem; }
   .proj-grid      { grid-template-columns: 1fr; }
+  .repo-grid      { grid-template-columns: 1fr; }
   .pub-card       { flex-direction: column; }
   .pub-thumb      { width: 100%; max-height: 190px; }
   /* hide most nav links on small screens, show all via hamburger placeholder */
@@ -607,7 +666,8 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .nav-brand:focus-visible,
 .hero-cta:focus-visible,
 .pub-btn:focus-visible,
-.proj-btn:focus-visible {
+.proj-btn:focus-visible,
+.repo-card:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
@@ -624,7 +684,8 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
-  .proj-card:active {
+  .proj-card:active,
+  .repo-card:active {
     border-color: var(--border-hi);
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
@@ -656,6 +717,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   <a href="#hero" class="nav-brand">Justin Yu</a>
   <div class="nav-links">
     <a href="#about"    class="nav-link always-show">About</a>
+    <a href="#repos"    class="nav-link">Code</a>
     <a href="#research" class="nav-link">Research</a>
     <a href="#projects" class="nav-link">Projects</a>
     <button class="theme-btn" id="theme-btn" title="Toggle light / dark mode">
@@ -710,6 +772,43 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
           </a>
           {% endif %}
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ OPEN SOURCE ═══════════════════════════ -->
+  <hr class="section-rule">
+  <section id="repos">
+    <div class="section-shell">
+      <div class="section-eyebrow">Open Source</div>
+      <div class="repo-grid">
+      {% for repo in site.data.index.repos %}
+        <a class="repo-card"
+           href="https://github.com/{{ repo.owner }}/{{ repo.name }}"
+           target="_blank" rel="noopener"
+           data-repo="{{ repo.owner }}/{{ repo.name }}">
+          <span class="repo-name">
+            <i class="fa fa-fw fa-github repo-gh"></i>
+            <span><span class="repo-owner">{{ repo.owner }}/</span>{{ repo.name }}</span>
+          </span>
+          <p class="repo-desc">{{ repo.descr }}</p>
+          <div class="repo-meta">
+            {% if repo.language %}
+            <span class="repo-lang">
+              <span class="repo-lang-dot" style="background: {{ repo.lang_color | default: '#3572A5' }};"></span>{{ repo.language }}
+            </span>
+            {% endif %}
+            <span class="repo-stat" title="Stars">
+              <i class="fas fa-star"></i>
+              <span class="repo-stat-num" data-stars>{{ repo.stars }}</span>
+            </span>
+            <span class="repo-stat" title="Forks">
+              <i class="fas fa-code-branch"></i>
+              <span class="repo-stat-num" data-forks>{{ repo.forks }}</span>
+            </span>
+          </div>
+        </a>
+      {% endfor %}
       </div>
     </div>
   </section>
@@ -864,6 +963,39 @@ const observer = new IntersectionObserver(entries => {
 }, { rootMargin: '-60px 0px -45% 0px', threshold: 0 });
 
 sections.forEach(s => observer.observe(s));
+
+/* ---------- Live GitHub repo stats ----------
+   Overwrites the baked-in fallback star/fork counts (from _data/index/repos.yml)
+   with live values from the GitHub API. On any error (offline, rate-limited 403,
+   malformed payload) the fallback numbers are left untouched. */
+(function () {
+  function fmt(n) {
+    if (n < 1000) return String(n);
+    return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+  }
+  function set(card, sel, value) {
+    if (typeof value !== 'number' || isNaN(value)) return;
+    const el = card.querySelector(sel);
+    if (!el) return;
+    const next = fmt(value);
+    if (el.textContent.trim() !== next) {
+      el.textContent = next;
+      el.classList.add('repo-stat-live');
+      setTimeout(() => el.classList.remove('repo-stat-live'), 1200);
+    }
+  }
+  document.querySelectorAll('.repo-card[data-repo]').forEach(card => {
+    fetch('https://api.github.com/repos/' + card.getAttribute('data-repo'), {
+      headers: { 'Accept': 'application/vnd.github+json' }
+    })
+      .then(res => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+      .then(data => {
+        set(card, '[data-stars]', data.stargazers_count);
+        set(card, '[data-forks]', data.forks_count);
+      })
+      .catch(() => { /* keep baked-in fallback numbers */ });
+  });
+})();
 </script>
 
 </body>
