@@ -267,13 +267,13 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   border-left: 1px solid var(--border);
 }
 
-.bio-text {
+.bio-text, .about-bio {
   color: var(--tx-2); font-size: 0.975rem; line-height: 1.85;
   margin-bottom: 0.5rem;
 }
-.bio-text p + p { margin-top: 0.9rem; }
-.bio-text a { color: var(--green); }
-.bio-text a:hover { color: var(--green-hi); }
+.bio-text p + p, .about-bio p + p { margin-top: 0.9rem; }
+.bio-text a, .about-bio a { color: var(--green); }
+.bio-text a:hover, .about-bio a:hover { color: var(--green-hi); }
 
 /* 3-D interactive demos */
 .demos-label {
@@ -391,6 +391,33 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .pub-card.featured-outline:hover {
   border-color: var(--gold-hi);
   box-shadow: 0 0 0 1px var(--gold-hi), var(--shadow-md);
+}
+
+/* Highlighted / View All toggle */
+.pub-toggle {
+  display: inline-flex; gap: 0.3rem; padding: 0.25rem;
+  margin-bottom: 1.1rem;
+  background: var(--bg-surf); border: 1px solid var(--border); border-radius: 9px;
+}
+.pub-toggle-btn {
+  font-size: 0.78rem; font-weight: 700; color: var(--tx-2);
+  background: transparent; border: none; border-radius: 6px;
+  padding: 0.4rem 0.9rem; cursor: pointer;
+  transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pub-toggle-btn:hover { color: var(--tx); }
+.pub-toggle-btn.active { color: var(--tx); background: var(--bg-card); box-shadow: 0 0 0 1px var(--border); }
+
+/* In "highlighted" view, only featured cards show and lose their gold outline
+   (redundant when every visible card is highlighted). Gold returns in "all" view. */
+.pub-list[data-view="highlighted"] .pub-card:not(.featured-outline) { display: none; }
+.pub-list[data-view="highlighted"] .pub-card.featured-outline {
+  border-color: var(--border);
+  box-shadow: none;
+}
+.pub-list[data-view="highlighted"] .pub-card.featured-outline:hover {
+  border-color: var(--border-hi);
+  box-shadow: var(--shadow-md);
 }
 
 .pub-thumb {
@@ -827,51 +854,9 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
       <div class="section-eyebrow">About</div>
       <div class="about-grid">
 
-        <!-- Left: bio + interactive 3D demos -->
+        <!-- Left: bio + interactive 3D demos (shared with the standalone /about/ page) -->
         <div>
-          <div class="bio-text">
-            <p>
-              I am a third-year PhD student in the
-              <a href="https://bair.berkeley.edu/" target="_blank">Berkeley Artificial Intelligence Research (BAIR)</a>
-              group, specializing in Robotics and Artificial Intelligence. My research interests include robot learning
-              for manipulation, code-as-policy, real-to-sim-to-real, and reward function learning. Broadly, I focus on developing systems
-              and algorithms that enable real-world robots to learn and improve on practical manipulation tasks.
-            </p>
-            <p>
-              I am advised by <a href="https://goldberg.berkeley.edu/" target="_blank">Ken Goldberg</a> in the
-              <a href="https://autolab.berkeley.edu/" target="_blank">AUTOLab</a> and am supported by the National
-              Science Foundation Graduate Research Fellowship Program (<a href="https://www.nsfgrfp.org/" target="_blank">NSF GRFP</a>).
-              I graduated Summa Cum Laude with a B.S.E. in Electrical Engineering from the University of Michigan,
-              Ann Arbor in 2023.
-            </p>
-          </div>
-
-          <!-- Interactive 3D viser scenes -->
-          <div class="demos-label">Interactive 3D Scenes &mdash; click &amp; drag to orbit</div>
-
-          <div class="demo-wrap">
-            <div class="demo-overlay">
-              <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
-            </div>
-            <iframe class="demo-iframe"
-              src="{{ site.url }}/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/egomi/recording_20251022_210201.viser&initialCameraPosition=-0.480,1.004,1.674&initialCameraLookAt=0.212,0.032,0.923&initialCameraUp=0.000,0.000,1.000"
-              loading="lazy" allowfullscreen title="EgoMI 3D Scene"></iframe>
-          </div>
-          <p class="demo-caption">
-            <a href="https://egocentric-manipulation-interface.github.io/" target="_blank">Egocentric Manipulation Interface (EgoMI)</a>
-          </p>
-
-          <div class="demo-wrap">
-            <div class="demo-overlay">
-              <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
-            </div>
-            <iframe class="demo-iframe"
-              src="{{ site.url }}/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/coffee_maker_recording_20250506_191701.viser&initialCameraPosition=0.989,0.425,0.609&initialCameraLookAt=0.233,-0.046,-0.237&initialCameraUp=-0.000,-0.000,1.000"
-              loading="lazy" allowfullscreen title="R2R2R 3D Scene"></iframe>
-          </div>
-          <p class="demo-caption">
-            <a href="https://real2render2real.com/" target="_blank">Real2Render2Real (R2R2R)</a>
-          </p>
+          {% include sections/about.html %}
         </div>
 
         <!-- Right: education + experience timelines (sidebar) -->

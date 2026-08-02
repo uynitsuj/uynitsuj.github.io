@@ -26,6 +26,8 @@
   --green:       #42b983;
   --green-hi:    #60d09d;
   --red:         #f56565;
+  --gold:        #eab945;
+  --gold-hi:     #f6cf6a;
   --nav-bg:      rgba(17, 17, 22, 0.88);
   --shadow-sm:   0 2px 10px rgba(0,0,0,0.4);
   --shadow-md:   0 4px 24px rgba(0,0,0,0.5);
@@ -48,6 +50,8 @@
   --green:       #1e9e72;
   --green-hi:    #28b885;
   --red:         #e53e3e;
+  --gold:        #b8860b;
+  --gold-hi:     #a06f00;
   --nav-bg:      rgba(243,243,247,0.92);
   --shadow-sm:   0 2px 10px rgba(0,0,0,0.07);
   --shadow-md:   0 4px 24px rgba(0,0,0,0.1);
@@ -181,6 +185,17 @@ img { display: block; max-width: 100%; }
 }
 .pub-btn:hover { color: var(--accent) !important; border-color: var(--border-hi); background: var(--accent-dim); transform: translateY(-1px); }
 .pub-btn i { font-size: 0.85em; }
+
+.pub-card.featured-outline { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+.pub-card.featured-outline:hover { border-color: var(--gold-hi); box-shadow: 0 0 0 1px var(--gold-hi), var(--shadow-md); }
+
+.pub-toggle { display: inline-flex; gap: 0.3rem; padding: 0.25rem; margin-bottom: 1.1rem; background: var(--bg-surf); border: 1px solid var(--border); border-radius: 9px; }
+.pub-toggle-btn { font-size: 0.78rem; font-weight: 700; color: var(--tx-2); background: transparent; border: none; border-radius: 6px; padding: 0.4rem 0.9rem; cursor: pointer; transition: color 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s cubic-bezier(0.16, 1, 0.3, 1); }
+.pub-toggle-btn:hover { color: var(--tx); }
+.pub-toggle-btn.active { color: var(--tx); background: var(--bg-card); box-shadow: 0 0 0 1px var(--border); }
+.pub-list[data-view="highlighted"] .pub-card:not(.featured-outline) { display: none; }
+.pub-list[data-view="highlighted"] .pub-card.featured-outline { border-color: var(--border); box-shadow: none; }
+.pub-list[data-view="highlighted"] .pub-card.featured-outline:hover { border-color: var(--border-hi); box-shadow: var(--shadow-md); }
 
 .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .proj-card {

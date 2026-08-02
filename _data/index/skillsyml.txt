@@ -1,6 +1,0 @@
-# skills section data
-
-label: Skills
-id : cs
-aspects: Motivation, Leadership, Solidworks, MATLAB, C++, Python
-percentage: 100, 85, 75, 70, 80, 85
