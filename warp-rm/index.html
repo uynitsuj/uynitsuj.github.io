@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WARP-RM learns progress from robot videos. Explore real-world results, 512-scene simulation comparisons, and an end-to-end reproduction release with open data, code, checkpoints, and traces.">
   <title>WARP-RM: Warp-Augmented Relative Progress Reward Modeling</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -615,6 +616,25 @@
     .sampler-vhat { position: absolute; left: 10px; bottom: 8px; font-family: 'Geist Mono', monospace; font-weight: 700; font-size: 1.05rem; text-shadow: 0 2px 6px #000, 0 0 2px #000; }
     #sampler-svg { flex: 2 1 430px; width: 100%; height: auto; display: block; min-width: 0; }
     .sampler-caption { margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+    /* Public simulation release */
+    .release-callout { margin: 1.5rem 0 0; padding: 1.35rem 1.5rem; text-align: left; background: #ede7fb; border: 1px solid #d7c7f5; border-radius: 12px; }
+    .release-kicker { margin: 0 0 .35rem; color: #6230ad; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .release-callout h2 { margin: 0 0 .55rem; font-size: 1.45rem; }
+    .release-callout p { margin: .4rem 0; }
+    .release-links { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin-top: .85rem; }
+    .release-links a { color: #6230ad; font-weight: 600; text-underline-offset: 3px; }
+    .sim-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.4rem 0; }
+    .sim-metric { padding: 1.1rem; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface); }
+    .sim-metric strong { display: block; color: var(--accent); font-family: var(--title-font); font-size: 2rem; line-height: 1.2; }
+    .sim-metric span { display: block; margin-top: .4rem; font-size: .9rem; }
+    .sim-note { color: var(--muted); font-size: .92rem; }
+    .repro-steps { padding-left: 1.4rem; }
+    .repro-steps li { margin: .65rem 0; }
+    @media (max-width: 600px) {
+      .sim-metrics { grid-template-columns: 1fr; gap: .65rem; }
+      .release-callout { padding: 1.1rem; }
+    }
   </style>
 </head>
 <body>
@@ -626,6 +646,8 @@
       <li><a href="#results">Real-World Results</a></li>
       <li><a href="#tables">Quantitative Results</a></li>
       <li><a href="#bottle-results">Bottle Task</a></li>
+      <li><a href="#simulation">Simulation (n=512)</a></li>
+      <li><a href="#reproduce">Reproduce the Results</a></li>
       <li><a href="#ablations">Ablations</a></li>
     </ul>
   </nav>
@@ -674,7 +696,20 @@
         <a href="https://arxiv.org/abs/2606.28320" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> Paper</a>
         <a href="https://github.com/uynitsuj/WARP-RM" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
         <a href="#results"><i class="fa-solid fa-video"></i> Real-World Rollouts</a>
+        <a href="#simulation"><i class="fa-solid fa-chart-column"></i> Simulation Results</a>
       </div>
+      <aside class="release-callout" aria-labelledby="release-title">
+        <p class="release-kicker">Open simulation release &middot; 512 paired scenes</p>
+        <h2 id="release-title">Open data. Open code. Reproduce end to end.</h2>
+        <p>Train the reward model, curate demonstrations, train a &pi;<sub>0</sub> policy,
+          and evaluate it in MuJoCo-Warp. We release the simulation data, WARP training
+          and evaluation code, model checkpoints, and rollout traces, with a step-by-step recipe.</p>
+        <div class="release-links">
+          <a href="#simulation">See the n=512 results &rarr;</a>
+          <a href="https://github.com/uynitsuj/WARP-RM/blob/main/docs/reproduce_sim.md">Reproduce the experiments &rarr;</a>
+          <a href="https://huggingface.co/datasets/uynitsuj/sim-bottles-mjwarp-v1">Get the dataset &rarr;</a>
+        </div>
+      </aside>
     </section>
 
     <section id="teaser">
@@ -696,7 +731,7 @@
       <div class="tldr">
         <b>TL;DR.</b> WARP-RM is a self-supervised model that learns a dense, signed,
         <span style="color: var(--accent); font-weight: 700;">relative</span> progress signal from raw
-        demonstrations by training on a temporally-warped playback augmentation. For T-shirt folding, curating data with WARP-RM increased throughput from 31.6 shirts folded per hour to 56.3 per hour, a 78% increase. For placing bottles in a bin, curating data with WARP-RM increased throughtput from 147.8 bottles per hour to 237.8 per hour, a 60% increase.
+        demonstrations by training on a temporally-warped playback augmentation. For T-shirt folding, curating data with WARP-RM increased throughput from 31.6 shirts folded per hour to 56.3 per hour, a 78% increase. For placing bottles in a bin, curating data with WARP-RM increased throughput from 147.8 bottles per hour to 237.8 per hour, a 60% increase.
       </div>
     </section>
 
@@ -1257,6 +1292,57 @@
       </figure>
     </section>
 
+    <section id="simulation">
+      <h1>Simulation: 512 Paired Scenes</h1>
+      <p>On simulated bottles-in-bin, WARP-BC places more bottles and achieves higher throughput
+        than every baseline in the comparison, while training on just <b>31.5% of action chunks</b>.</p>
+      <div class="sim-metrics" aria-label="WARP-BC compared with vanilla BC in simulation">
+        <div class="sim-metric"><strong>+22%</strong><span>Bottle throughput<br>237 &rarr; 290 bottles/hour</span></div>
+        <div class="sim-metric"><strong>4.533</strong><span>Bottles placed per scene<br>vs. 3.885 with vanilla BC</span></div>
+        <div class="sim-metric"><strong>25.0%</strong><span>Scenes with all six bottles cleared<br>vs. 9.4% with vanilla BC</span></div>
+      </div>
+      <p id="sim-protocol">Each method is evaluated on the <b>same 512 scene seeds, with six bottles
+        per scene and a nominal 60-second horizon</b>. Curation methods share demonstrations,
+        policy architecture, training-step budget, and a 31.5% retention budget; vanilla BC uses all the data.</p>
+      <div class="table-wrap">
+        <table class="results" aria-describedby="sim-protocol">
+          <caption>Simulated bottles-in-bin &middot; n=512 per method</caption>
+          <thead><tr><th scope="col">Method</th><th scope="col">Data kept</th><th scope="col">Bottles/scene &uarr;</th><th scope="col">Throughput (/hr) &uarr;</th><th scope="col">All 6 cleared &uarr;</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="method">Vanilla BC</th><td>100%</td><td>3.885</td><td>237</td><td>9.4%</td></tr>
+            <tr><th scope="row" class="method">Random</th><td>31.5%</td><td>3.770</td><td>230</td><td>10.9%</td></tr>
+            <tr><th scope="row" class="method">ReWiND</th><td>31.5%</td><td>3.781</td><td>231</td><td>9.4%</td></tr>
+            <tr><th scope="row" class="method">SARM (oracle)</th><td>31.5%</td><td>4.191</td><td>265</td><td>20.5%</td></tr>
+            <tr><th scope="row" class="method">WARP-BC (IID)</th><td>31.5%</td><td>4.285</td><td>269</td><td>18.9%</td></tr>
+            <tr><th scope="row" class="method">SCIZOR</th><td>31.5%</td><td>4.299</td><td>270</td><td>19.1%</td></tr>
+            <tr><th scope="row" class="method">DemInf</th><td>31.5%</td><td>4.332</td><td>271</td><td>18.8%</td></tr>
+            <tr class="highlight"><th scope="row" class="method">WARP-BC</th><td>31.5%</td><td class="best">4.533</td><td class="best">290</td><td class="best">25.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sim-note">SARM (oracle) uses stage boundaries from simulator state.
+        The rollout executes 1,800 control steps (61.2 seconds at the configured timestep).
+        Values are from the <a href="https://github.com/uynitsuj/WARP-RM#paper-simulation-results">published simulation table</a>;
+        <a href="https://huggingface.co/datasets/uynitsuj/paper-sim-n512-traces">paired n=512 traces for vanilla BC and WARP-BC</a> are public.</p>
+    </section>
+
+    <section id="reproduce">
+      <h1>Reproduce the Simulation Experiments</h1>
+      <p><b>The WARP simulation pipeline is reproducible end to end from public artifacts.</b>
+        Start from the released demonstrations, train your own reward model and policy,
+        then run the simulator and scorer using the documented recipe and pinned companion repositories.</p>
+      <ol class="repro-steps">
+        <li><b>Get the data.</b> Download the <a href="https://huggingface.co/datasets/uynitsuj/sim-bottles-mjwarp-v1">LeRobot demonstrations, scene assets, and full-state supplement</a>.</li>
+        <li><b>Train and score with WARP-RM.</b> Use the <a href="https://github.com/uynitsuj/WARP-RM">reward-model code</a> to learn progress and inject per-frame rewards, or start with the <a href="https://huggingface.co/uynitsuj/warp-rm-sim-bottles-sss15">released reward-model checkpoint</a>.</li>
+        <li><b>Curate and train the policy.</b> Apply the WARP chunk gate and train &pi;<sub>0</sub> with <a href="https://github.com/uynitsuj/openpi/tree/9c8e7b75483edd5c2dd5f403109d3b0f16549d60">the companion OpenPI code</a>. <a href="https://huggingface.co/uynitsuj/paper-sim-policy-checkpoints">Released policy checkpoints</a> also support evaluation without retraining.</li>
+        <li><b>Roll out and score.</b> Run <a href="https://github.com/uynitsuj/abc-rabc/tree/59db543d">the MuJoCo-Warp evaluator</a> on paired scenes and inspect the <a href="https://huggingface.co/datasets/uynitsuj/paper-sim-n512-traces">published n=512 rollout traces</a>.</li>
+      </ol>
+      <div class="release-links"><a href="https://github.com/uynitsuj/WARP-RM/blob/main/docs/reproduce_sim.md">Follow the full reproduction guide &rarr;</a></div>
+      <p class="sim-note">Fresh training and rollouts are stochastic; compare aggregate results.
+        The separate n=128 trace self-test verifies the scorer against a fixed replay set.
+        The guide documents baseline-specific reproduction limits and pretrained-model access terms.</p>
+    </section>
+
     <section id="ablations">
       <h1>Ablations</h1>
       <p style="color: var(--muted);">
@@ -1327,13 +1413,6 @@
         unclear how well WARP-RM reads progress on tasks without that kind of visual structure.
       </p>
     </section> -->
-
-    <section id="full-video">
-      <h1>Project Video</h1>
-      <div class="hero-video-wrap">
-        <video src="media/teaser.mp4" poster="media/teaser_poster.jpg" muted loop playsinline controls preload="none"></video>
-      </div>
-    </section>
 
     <section id="notes" style="margin-top: 2.5rem;">
       <hr style="border: none; border-top: 1px solid var(--hairline); margin-bottom: 1rem;">
