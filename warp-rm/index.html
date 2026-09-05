@@ -618,23 +618,15 @@
     .sampler-caption { margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
 
     /* Public simulation release */
-    .release-callout { margin: 1.5rem 0 0; padding: 1.35rem 1.5rem; text-align: left; background: #ede7fb; border: 1px solid #d7c7f5; border-radius: 12px; }
-    .release-kicker { margin: 0 0 .35rem; color: #6230ad; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .release-callout { margin: 1.5rem 0 0; padding: 1.2rem 0 0; text-align: left; border-top: 1px solid var(--hairline); }
+    .release-kicker { margin: 0 0 .35rem; color: var(--muted); font-size: .9rem; }
     .release-callout h2 { margin: 0 0 .55rem; font-size: 1.45rem; }
     .release-callout p { margin: .4rem 0; }
     .release-links { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin-top: .85rem; }
     .release-links a { color: #6230ad; font-weight: 600; text-underline-offset: 3px; }
-    .sim-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.4rem 0; }
-    .sim-metric { padding: 1.1rem; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface); }
-    .sim-metric strong { display: block; color: var(--accent); font-family: var(--title-font); font-size: 2rem; line-height: 1.2; }
-    .sim-metric span { display: block; margin-top: .4rem; font-size: .9rem; }
     .sim-note { color: var(--muted); font-size: .92rem; }
     .repro-steps { padding-left: 1.4rem; }
     .repro-steps li { margin: .65rem 0; }
-    @media (max-width: 600px) {
-      .sim-metrics { grid-template-columns: 1fr; gap: .65rem; }
-      .release-callout { padding: 1.1rem; }
-    }
   </style>
 </head>
 <body>
@@ -1294,13 +1286,9 @@
 
     <section id="simulation">
       <h1>Simulation: 512 Paired Scenes</h1>
-      <p>On simulated bottles-in-bin, WARP-BC places more bottles and achieves higher throughput
-        than every baseline in the comparison, while training on just <b>31.5% of action chunks</b>.</p>
-      <div class="sim-metrics" aria-label="WARP-BC compared with vanilla BC in simulation">
-        <div class="sim-metric"><strong>+22%</strong><span>Bottle throughput<br>237 &rarr; 290 bottles/hour</span></div>
-        <div class="sim-metric"><strong>4.533</strong><span>Bottles placed per scene<br>vs. 3.885 with vanilla BC</span></div>
-        <div class="sim-metric"><strong>25.0%</strong><span>Scenes with all six bottles cleared<br>vs. 9.4% with vanilla BC</span></div>
-      </div>
+      <p>On simulated bottles-in-bin, WARP-BC increases throughput from 237 to 290 bottles/hour
+        (<b>22%</b>) while retaining 31.5% of action chunks. It places 4.533 bottles per scene
+        versus 3.885 for vanilla BC, and clears all six bottles in 25.0% of scenes versus 9.4%.</p>
       <p id="sim-protocol">Each method is evaluated on the <b>same 512 scene seeds, with six bottles
         per scene and a nominal 60-second horizon</b>. Curation methods share demonstrations,
         policy architecture, training-step budget, and a 31.5% retention budget; vanilla BC uses all the data.</p>
