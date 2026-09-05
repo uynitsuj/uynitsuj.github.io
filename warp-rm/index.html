@@ -735,12 +735,7 @@
         data is actually worth imitating.
       </p>
       <p>
-        Many approaches curate at the trajectory level, discarding any demonstration that shows
-        mistakes or progress stagnation and regression. On longer tasks this strategy wastes large amounts of data, and it throws away
-        the <b>recovery segments</b> that crucially teach a policy how to get back on track after a mistake.
-      </p>
-      <p>
-        Many finer-grained approaches estimate progress <i>inside</i> a demonstration and filter or re-weight individual
+        Frame-level curation methods estimate progress <i>inside</i> a demonstration and filter or re-weight individual
         action chunks by how much they advance the task.
         <a href="https://arxiv.org/abs/2509.25358" target="_blank" rel="noopener" style="color: var(--accent);">SARM</a>
         and <a href="https://arxiv.org/abs/2604.03037" target="_blank" rel="noopener" style="color: var(--accent);">ARM</a>
@@ -774,8 +769,8 @@
       <h1>The progress signal</h1>
       <p>
         The curve under each video is WARP-RM's output: a dense, per-frame signed progress velocity,
-        \(\hat{v}_{t}\), calibrated so that \(\hat{v}_t \approx 1\) matches the pace of the average reference
-        demonstrations, \(\hat{v}_t \approx 0\) is stalling progress, and \(\hat{v}_t < 0\) is regressing progress.
+        \(\hat{v}_{t}\). A value near one represents the reference pace defined by the training labels;
+        values near zero suggest stagnation, and negative values suggest regression.
         <b>Click anywhere on the curve to scrub the video.</b>
       </p>
       <div class="inspector-wrap">
@@ -830,8 +825,9 @@
           playback speeds are drawn from an AR(1) process in log-space, so the clip drifts smoothly between
           slow-motion and fast-forward, and the total span the window covers is itself sampled, anywhere from a
           short stretch seen in slow motion to most of the demonstration skimmed quickly. Some steps run in
-          reverse (Poisson-sampled), and the whole window is flipped with probability 0.5. Each frame's signed offset from the window's first frame is its
-          progress label, with no annotation.
+          reverse (Poisson-sampled), and the whole window is flipped with probability 0.5.
+          Each sampled frame's signed temporal offset from the window's first frame, normalized by
+          the reference stride and window length, supplies a self-supervised relative-progress target.
         </p>
         <div class="sampler-widget" id="ar-sampler">
           <div class="sampler-head">
@@ -848,7 +844,8 @@
             Each draw samples a per-step playback speed from an AR(1) process in log-space (slow-motion to
             fast-forward), with Poisson-placed reversals and a 50% chance the whole clip plays backward. The green/red bars mark the net per-step direction that results, combining both.
             Accumulating those signed speeds picks which demo frame to read at each of the 32 steps, and the
-            signed offsets become the progress labels.
+            signed temporal offsets, normalized by the reference stride and window length,
+            provide the relative-progress targets.
           </div>
         </div>
       </div>
@@ -861,7 +858,7 @@
           gives the velocity \(\hat{v}_{t}\):
         </p>
         <p style="margin: 0 0 0.9rem 0; color: var(--muted); text-align: center;">
-          \(\hat{v}\)&nbsp;&asymp;&nbsp;1 &rarr; expert pace,
+          \(\hat{v}\)&nbsp;&asymp;&nbsp;1 &rarr; reference pace,
           \(\hat{v}\)&nbsp;&asymp;&nbsp;0 &rarr; stagnating,
           \(\hat{v}\)&nbsp;&lt;&nbsp;0 &rarr; regressing
         </p>
@@ -884,8 +881,8 @@
         <div class="method-fig-title">3. WARP-BC: reweight action chunks by terminal velocity</div>
         <p>
           For each training chunk, gate on the predicted velocity at its terminal frame.
-          With \(\tau = 1.0\), only chunks ending in faster-than-expert progress are
-          kept, and each is weighted continuously by its velocity:
+          With \(\tau = 1.0\), only chunks whose predicted terminal progress velocity exceeds
+          the reference pace are kept, and each is weighted continuously by its velocity:
         </p>
         <p style="text-align: center; font-size: 1.1rem; margin: 0;">
           <span style="background: #f0eee9; padding: 0.35rem 0.7rem; border-radius: 4px; display: inline-block;">
@@ -1005,10 +1002,10 @@
       <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
         <img src="media/ttc_distribution.png" alt="Time-to-completion distribution for successful trials across D1, D2, D3" style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
-          <b>Time-to-completion distribution for successes.</b> Across all three training tiers,
-          WARP-BC completes folds faster than vanilla BC. As the training dataset admits
-          more suboptimal demonstrations (\(\mathcal{D}_{1}\rightarrow\mathcal{D}_{3}\)), vanilla BC's
-          success count collapses while WARP-BC stays robust. Solid horizontal bar marks the mean.
+          <b>Time-to-completion distribution for successful trials.</b> WARP-BC has lower mean
+          completion time among successful trials on \(\mathcal{D}_{1}\) and \(\mathcal{D}_{2}\).
+          On \(\mathcal{D}_{3}\), it succeeds in 14/20 trials, while vanilla BC succeeds in none.
+          Solid horizontal bars mark the means.
         </figcaption>
       </figure>
     </section>
