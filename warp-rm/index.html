@@ -1312,6 +1312,18 @@
         The rollout executes 1,800 control steps (61.2 seconds at the configured timestep).
         Values are from the <a href="https://github.com/uynitsuj/WARP-RM#paper-simulation-results">published simulation table</a>;
         <a href="https://huggingface.co/datasets/uynitsuj/paper-sim-n512-traces">paired n=512 traces for vanilla BC and WARP-BC</a> are public.</p>
+      <figure style="margin: 1.5rem 0 0;">
+        <video src="media/rollout_s20260906_vanilla_vs_warp.mp4"
+               aria-label="Paired simulation rollout: vanilla BC places two bottles; WARP-BC clears all six"
+               width="902" height="382" controls muted loop playsinline preload="metadata"
+               style="display: block; width: 100%; height: auto;">
+          <a href="media/rollout_s20260906_vanilla_vs_warp.mp4">Download the side-by-side simulation rollout.</a>
+        </video>
+        <figcaption class="sim-note" style="margin-top: 0.6rem;">
+          <b>Example paired rollout (seed 20260906).</b> Vanilla BC places two bottles;
+          WARP-BC clears all six. Both policies start from the same scene.
+        </figcaption>
+      </figure>
     </section>
 
     <section id="reproduce">
