@@ -749,9 +749,10 @@
       <p>
         A common self-supervised signal in progress reward modeling is the <b>fraction of the trajectory completed so far</b>, the
         normalized frame index<sup style="margin-left: 0.12em;"><a href="#fn-time" style="color: var(--accent); text-decoration: none;">1</a></sup>.
-        But elapsed time and task progress are not the same: scoring by the clock implicitly assumes that
-        different demonstrations progress at the same rate, but in long-horizon tasks, demonstrations can
-        often be at different progresses for the same temporal label:
+        Normalized elapsed time can be a useful proxy for task progress when progress is approximately
+        linear within each demonstration&mdash;even if some demonstrations are faster than others.
+        But pauses, retries, and uneven pacing break this correspondence: halfway through one
+        demonstration may represent a very different task stage than halfway through another.
       </p>
 
       <div class="noise-row">
