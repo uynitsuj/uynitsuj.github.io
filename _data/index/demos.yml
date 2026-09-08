@@ -42,7 +42,7 @@
   size: 21 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
-  camera: "initialCameraPosition=0.170,0.000,1.970&initialCameraLookAt=0.378,-0.005,0.941&initialCameraUp=-0.000,0.000,1.000&initialCameraFov=1.3090&initialCameraNear=0.01&initialCameraFar=1000"
+  camera: "initialCameraPosition=-0.071,-0.003,1.654&initialCameraLookAt=0.510,-0.006,1.132&initialCameraUp=-0.000,0.000,1.000&initialCameraFov=1.3090&initialCameraNear=0.01&initialCameraFar=1000"
 
 - title: WARP-RM — Bottle Into Bin
   file: bottles_episode.viser
@@ -50,4 +50,4 @@
   size: 15 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
-  camera: "initialCameraPosition=0.170,0.000,1.970&initialCameraLookAt=0.378,-0.005,0.941&initialCameraUp=-0.000,0.000,1.000&initialCameraFov=1.3090&initialCameraNear=0.01&initialCameraFar=1000"
+  camera: "initialCameraPosition=-0.071,-0.003,1.654&initialCameraLookAt=0.510,-0.006,1.132&initialCameraUp=-0.000,0.000,1.000&initialCameraFov=1.3090&initialCameraNear=0.01&initialCameraFar=1000"
