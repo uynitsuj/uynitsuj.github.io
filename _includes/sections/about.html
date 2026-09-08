@@ -52,9 +52,9 @@
       {%- if demo.tag -%}
         {%- assign tag_text = demo.tag -%}
       {%- elsif demo.kind == 'real' -%}
-        {%- assign tag_text = 'Real-world &middot; 1&times; speed &middot; autonomous' -%}
+        {%- assign tag_text = 'Real-world &middot; autonomous' -%}
       {%- elsif demo.kind == 'synthetic' -%}
-        {%- assign tag_text = 'Synthetic &middot; rendered' -%}
+        {%- assign tag_text = 'Synthetic &middot; rendered data' -%}
       {%- endif -%}
       {% if tag_text != '' %}
         <span class="demo-tag demo-tag-{{ demo.kind | default: 'real' }}">{{ tag_text }}</span>
