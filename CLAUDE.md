@@ -46,6 +46,26 @@ Tiles are **click-to-load** — the iframe is created by a click handler in the 
 zero `.viser` bytes are fetched on page load. Keep it that way: the four scenes total
 ~147 MB, which is far and away the heaviest thing on the site.
 
+### ⚠️ `.viser` files are NOT cross-version compatible
+Two container formats are in play, and each client reads only its own:
+
+| container | magic bytes | client dir |
+|---|---|---|
+| legacy gzip | starts `1f 8b` | `viser-client/` (uses `DecompressionStream("gzip")`) |
+| zstd, 8-byte size header | `28 b5 2f fd` at offset 8 | `viser-client-1.0.22/` |
+
+Mismatches fail at load with a blank viewer: legacy client on a zstd file logs
+`TypeError: The compressed data was not valid: incorrect header check`; the 1.0.22 client
+on a gzip file logs `RangeError: Offset is outside the bounds of the DataView`.
+
+So **both clients are hosted**, and every entry in `demos.yml` sets `client:` to the one
+matching its file. When you add a recording, check its magic bytes and wire it to the right
+client — do not "upgrade" `viser-client/`, that would break the 12 legacy recordings.
+Regenerate the client with `viser-build-client --out-dir <dir>` (note: `--out-dir`, not
+`--output-dir`). The newer client also supports `initialCameraFov/Near/Far`, which the
+legacy one does not; both support `playbackPath`, `initialCameraPosition/LookAt/Up`,
+and `logCamera`.
+
 ## Known remaining heavy media (optimize opportunistically, not yet done)
 - `recordings/*.viser` (~639 MB) — no longer fetched on page load (click-to-load), but
   still the bulk of the published bytes. **Publishable size is now ~893 MB against

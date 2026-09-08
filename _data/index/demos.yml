@@ -11,12 +11,19 @@
 #   link     optional project page for the caption
 #   camera   optional "posX,posY,posZ|lookX,lookY,lookZ|upX,upY,upZ" override.
 #            Omit to use the initial camera baked into the .viser file.
+#   client   which hosted viser client to play it in. REQUIRED and not cosmetic:
+#            .viser containers are NOT cross-version compatible. The legacy
+#            `viser-client` uses DecompressionStream("gzip"); viser >= ~1.0 writes
+#            zstd with an 8-byte size header. Mixing them fails at load time
+#            ("incorrect header check" / "Offset is outside the bounds of the
+#            DataView"). Check which one a new recording needs before shipping.
 
 - title: Egocentric Manipulation Interface (EgoMI)
   file: egomi/recording_20251022_210201.viser
   size: 40 MB
   caption: Egocentric Manipulation Interface (EgoMI)
   link: https://egocentric-manipulation-interface.github.io/
+  client: viser-client
   camera: "-0.480,1.004,1.674|0.212,0.032,0.923|0.000,0.000,1.000"
 
 - title: Real2Render2Real (R2R2R)
@@ -24,16 +31,19 @@
   size: 71 MB
   caption: Real2Render2Real (R2R2R)
   link: https://real2render2real.com/
+  client: viser-client
   camera: "0.989,0.425,0.609|0.233,-0.046,-0.237|-0.000,-0.000,1.000"
 
 - title: WARP-RM — T-Shirt Folding
   file: tshirt_episode.viser
+  client: viser-client-1.0.22
   size: 21 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
 
 - title: WARP-RM — Bottle Into Bin
   file: bottles_episode.viser
+  client: viser-client-1.0.22
   size: 15 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/

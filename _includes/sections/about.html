@@ -22,10 +22,12 @@
   {%- comment -%}
     Camera override is stored as "pos|lookAt|up"; split it so each demo can
     frame itself without repeating the query string four times.
+    `demo.client` matters: .viser files are not cross-version compatible
+    (legacy gzip vs zstd), so each recording plays in the client that wrote it.
   {%- endcomment -%}
   {%- assign cam = demo.camera | split: "|" -%}
   {%- capture demo_src -%}
-    https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}
+    https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}
     {%- if cam.size == 3 -%}
       &initialCameraPosition={{ cam[0] }}&initialCameraLookAt={{ cam[1] }}&initialCameraUp={{ cam[2] }}
     {%- endif -%}
