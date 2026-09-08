@@ -1,15 +1,17 @@
 # Interactive 3D viser demos (rendered by _includes/sections/about.html)
 #
-# Each entry becomes one tile in the 2x2 .demo-grid. Tiles are click-to-load:
-# nothing is fetched until the visitor clicks, because these recordings are
-# tens of MB each and four eager iframes would be ~150 MB on page load.
+# Each entry becomes one tile in the 2x2 .demo-grid. The iframes load directly
+# (lazily on scroll), so the four scenes are ~147 MB of page weight.
 #
 #   title    tile label + iframe title (required)
 #   file     path under /recordings/ (required)
-#   size     shown on the load button; keep in sync with the file (required)
+#   size     rough download weight, for reference when budgeting the page
 #   caption  text under the tile; falls back to title
 #   link     optional project page for the caption
-#   camera   optional "posX,posY,posZ|lookX,lookY,lookZ|upX,upY,upZ" override.
+#   camera   optional raw query fragment (NO leading &) appended to the client URL.
+#            Grab one by opening a scene with &logCamera, orbiting to the view you
+#            want, and copying the params the console prints.
+#            initialCameraFov / Near / Far only work in viser-client-1.0.22.
 #            Omit to use the initial camera baked into the .viser file.
 #   client   which hosted viser client to play it in. REQUIRED and not cosmetic:
 #            .viser containers are NOT cross-version compatible. The legacy
@@ -21,18 +23,18 @@
 - title: Egocentric Manipulation Interface (EgoMI)
   file: egomi/recording_20251022_210201.viser
   size: 40 MB
-  caption: Egocentric Manipulation Interface (EgoMI)
+  caption: Egocentric Manipulation Interface
   link: https://egocentric-manipulation-interface.github.io/
   client: viser-client
-  camera: "-0.480,1.004,1.674|0.212,0.032,0.923|0.000,0.000,1.000"
+  camera: "initialCameraPosition=-0.480,1.004,1.674&initialCameraLookAt=0.212,0.032,0.923&initialCameraUp=0.000,0.000,1.000"
 
 - title: Real2Render2Real (R2R2R)
   file: coffee_maker_recording_20250506_191701.viser
   size: 71 MB
-  caption: Real2Render2Real (R2R2R)
+  caption: Real2Render2Real
   link: https://real2render2real.com/
   client: viser-client
-  camera: "0.989,0.425,0.609|0.233,-0.046,-0.237|-0.000,-0.000,1.000"
+  camera: "initialCameraPosition=0.989,0.425,0.609&initialCameraLookAt=0.233,-0.046,-0.237&initialCameraUp=-0.000,-0.000,1.000"
 
 - title: WARP-RM — T-Shirt Folding
   file: tshirt_episode.viser
@@ -40,6 +42,7 @@
   size: 21 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
+  camera: "initialCameraPosition=0.170,0.000,1.970&initialCameraLookAt=0.378,-0.005,0.941&initialCameraUp=-0.000,0.000,1.000&initialCameraFov=1.3090&initialCameraNear=0.01&initialCameraFar=1000"
 
 - title: WARP-RM — Bottle Into Bin
   file: bottles_episode.viser
@@ -47,3 +50,4 @@
   size: 15 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
+  camera: "initialCameraPosition=0.170,0.000,1.970&initialCameraLookAt=0.378,-0.005,0.941&initialCameraUp=-0.000,0.000,1.000&initialCameraFov=1.3090&initialCameraNear=0.01&initialCameraFar=1000"

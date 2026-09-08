@@ -42,9 +42,14 @@ Four scenes in a 2×2 `.demo-grid`, driven by `_data/index/demos.yml` and render
 the CSS is duplicated in both those layouts). To add a scene: drop the `.viser` in
 `recordings/`, add a YAML entry with its real `size:`, done.
 
-Tiles are **click-to-load** — the iframe is created by a click handler in the include, so
-zero `.viser` bytes are fetched on page load. Keep it that way: the four scenes total
-~147 MB, which is far and away the heaviest thing on the site.
+Tiles embed the client **directly** in `<iframe loading="lazy">`. Because a 2×2 grid puts
+all four in the viewport at once, they load together: **~147 MB of `.viser` on scroll**,
+far and away the heaviest thing on the site. This is a deliberate choice (click-to-load was
+tried and removed); if page weight becomes a problem again, click-to-load is the fix —
+swap the iframe for a button and create the iframe in a click handler.
+
+Per-demo camera framing is a raw query fragment in `camera:`. To capture one: open the
+scene with `&logCamera`, orbit to the view you want, copy what the console prints.
 
 ### ⚠️ `.viser` files are NOT cross-version compatible
 Two container formats are in play, and each client reads only its own:

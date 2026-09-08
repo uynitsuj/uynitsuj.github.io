@@ -15,35 +15,28 @@
   </p>
 </div>
 
-<div class="demos-label">Interactive 3D Scenes &mdash; click to load, then drag to orbit</div>
+<div class="demos-label">Interactive 3D Scenes &mdash; click &amp; drag to orbit</div>
 
 <div class="demo-grid">
   {% for demo in site.data.index.demos %}
   {%- comment -%}
-    Camera override is stored as "pos|lookAt|up"; split it so each demo can
-    frame itself without repeating the query string four times.
+    `demo.camera` is a raw query fragment (no leading &) so a demo can pass any
+    client-supported param, including initialCameraFov/Near/Far — which exist
+    only in viser-client-1.0.22, not the legacy client.
     `demo.client` matters: .viser files are not cross-version compatible
     (legacy gzip vs zstd), so each recording plays in the client that wrote it.
   {%- endcomment -%}
-  {%- assign cam = demo.camera | split: "|" -%}
   {%- capture demo_src -%}
     https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}
-    {%- if cam.size == 3 -%}
-      &initialCameraPosition={{ cam[0] }}&initialCameraLookAt={{ cam[1] }}&initialCameraUp={{ cam[2] }}
-    {%- endif -%}
+    {%- if demo.camera -%}&{{ demo.camera }}{%- endif -%}
   {%- endcapture -%}
   <figure class="demo-card">
     <div class="demo-wrap">
-      <button class="demo-load" type="button"
-              data-demo-src="{{ demo_src | strip }}"
-              data-demo-title="{{ demo.title | escape }}">
-        {%- comment -%} No title here on purpose: the caption below already names it. {%- endcomment -%}
-        <span class="demo-load-icon"><i class="fas fa-cube"></i></span>
-        <span class="demo-load-cta">
-          Load 3D scene
-          <span class="demo-load-size">{{ demo.size }}</span>
-        </span>
-      </button>
+      <div class="demo-overlay">
+        <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
+      </div>
+      <iframe class="demo-iframe" src="{{ demo_src | strip }}"
+              loading="lazy" allowfullscreen title="{{ demo.title | escape }}"></iframe>
     </div>
     <figcaption class="demo-caption">
       {% if demo.link %}
@@ -55,22 +48,3 @@
   </figure>
   {% endfor %}
 </div>
-
-<script>
-  // Click-to-load: swap the placeholder button for a real iframe on demand.
-  // Four eager iframes would pull ~150 MB of .viser data on page load.
-  (function () {
-    document.querySelectorAll('.demo-load').forEach(function (button) {
-      button.addEventListener('click', function () {
-        var wrap = button.parentNode;
-        var iframe = document.createElement('iframe');
-        iframe.className = 'demo-iframe';
-        iframe.src = button.dataset.demoSrc;
-        iframe.title = button.dataset.demoTitle;
-        iframe.setAttribute('allowfullscreen', '');
-        wrap.appendChild(iframe);
-        button.remove();
-      }, { once: true });
-    });
-  })();
-</script>
