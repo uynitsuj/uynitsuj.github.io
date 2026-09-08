@@ -36,6 +36,20 @@ After encoding, verify: `ffprobe out.mp4` (expect h264, capped width, no audio) 
 ### Don't ship a broken deploy
 When you delete/rename a media file or convert a GIF, `git add` the **new** files (e.g. `git add img/robots/*.mp4`). `git commit -am` stages tracked deletions/edits but **not** untracked new assets — committing without adding them ships a site that 404s on the new media.
 
+## Interactive viser demos
+Four scenes in a 2×2 `.demo-grid`, driven by `_data/index/demos.yml` and rendered by
+`_includes/sections/about.html` (shared by `_layouts/home.html` and `_layouts/about.html`;
+the CSS is duplicated in both those layouts). To add a scene: drop the `.viser` in
+`recordings/`, add a YAML entry with its real `size:`, done.
+
+Tiles are **click-to-load** — the iframe is created by a click handler in the include, so
+zero `.viser` bytes are fetched on page load. Keep it that way: the four scenes total
+~147 MB, which is far and away the heaviest thing on the site.
+
 ## Known remaining heavy media (optimize opportunistically, not yet done)
-- `recordings/*.viser` (~605 MB) — loaded by the two viser iframes in `_layouts/home.html` (~158 MB on scroll). Largest data on the page. Consider click-to-load.
+- `recordings/*.viser` (~639 MB) — no longer fetched on page load (click-to-load), but
+  still the bulk of the published bytes. **Publishable size is now ~893 MB against
+  GitHub Pages' 1 GB soft cap**; prune unused recordings before adding more large ones.
+  9 of the 14 `.viser` files in `recordings/` (~523 MB) are referenced by no template —
+  they may still be deep-linked externally, so check before deleting.
 

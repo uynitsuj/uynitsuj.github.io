@@ -1,0 +1,39 @@
+# Interactive 3D viser demos (rendered by _includes/sections/about.html)
+#
+# Each entry becomes one tile in the 2x2 .demo-grid. Tiles are click-to-load:
+# nothing is fetched until the visitor clicks, because these recordings are
+# tens of MB each and four eager iframes would be ~150 MB on page load.
+#
+#   title    tile label + iframe title (required)
+#   file     path under /recordings/ (required)
+#   size     shown on the load button; keep in sync with the file (required)
+#   caption  text under the tile; falls back to title
+#   link     optional project page for the caption
+#   camera   optional "posX,posY,posZ|lookX,lookY,lookZ|upX,upY,upZ" override.
+#            Omit to use the initial camera baked into the .viser file.
+
+- title: Egocentric Manipulation Interface (EgoMI)
+  file: egomi/recording_20251022_210201.viser
+  size: 40 MB
+  caption: Egocentric Manipulation Interface (EgoMI)
+  link: https://egocentric-manipulation-interface.github.io/
+  camera: "-0.480,1.004,1.674|0.212,0.032,0.923|0.000,0.000,1.000"
+
+- title: Real2Render2Real (R2R2R)
+  file: coffee_maker_recording_20250506_191701.viser
+  size: 71 MB
+  caption: Real2Render2Real (R2R2R)
+  link: https://real2render2real.com/
+  camera: "0.989,0.425,0.609|0.233,-0.046,-0.237|-0.000,-0.000,1.000"
+
+- title: WARP-RM — T-Shirt Folding
+  file: tshirt_episode.viser
+  size: 21 MB
+  caption: WARP-RM
+  link: https://uynitsuj.github.io/warp-rm/
+
+- title: WARP-RM — Bottle Into Bin
+  file: bottles_episode.viser
+  size: 15 MB
+  caption: WARP-RM
+  link: https://uynitsuj.github.io/warp-rm/

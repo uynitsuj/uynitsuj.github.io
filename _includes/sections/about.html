@@ -15,28 +15,60 @@
   </p>
 </div>
 
-<div class="demos-label">Interactive 3D Scenes &mdash; click &amp; drag to orbit</div>
+<div class="demos-label">Interactive 3D Scenes &mdash; click to load, then drag to orbit</div>
 
-<div class="demo-wrap">
-  <div class="demo-overlay">
-    <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
-  </div>
-  <iframe class="demo-iframe"
-    src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/egomi/recording_20251022_210201.viser&initialCameraPosition=-0.480,1.004,1.674&initialCameraLookAt=0.212,0.032,0.923&initialCameraUp=0.000,0.000,1.000"
-    loading="lazy" allowfullscreen title="EgoMI 3D Scene"></iframe>
+<div class="demo-grid">
+  {% for demo in site.data.index.demos %}
+  {%- comment -%}
+    Camera override is stored as "pos|lookAt|up"; split it so each demo can
+    frame itself without repeating the query string four times.
+  {%- endcomment -%}
+  {%- assign cam = demo.camera | split: "|" -%}
+  {%- capture demo_src -%}
+    https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}
+    {%- if cam.size == 3 -%}
+      &initialCameraPosition={{ cam[0] }}&initialCameraLookAt={{ cam[1] }}&initialCameraUp={{ cam[2] }}
+    {%- endif -%}
+  {%- endcapture -%}
+  <figure class="demo-card">
+    <div class="demo-wrap">
+      <button class="demo-load" type="button"
+              data-demo-src="{{ demo_src | strip }}"
+              data-demo-title="{{ demo.title | escape }}">
+        {%- comment -%} No title here on purpose: the caption below already names it. {%- endcomment -%}
+        <span class="demo-load-icon"><i class="fas fa-cube"></i></span>
+        <span class="demo-load-cta">
+          Load 3D scene
+          <span class="demo-load-size">{{ demo.size }}</span>
+        </span>
+      </button>
+    </div>
+    <figcaption class="demo-caption">
+      {% if demo.link %}
+        <a href="{{ demo.link }}" target="_blank">{{ demo.caption | default: demo.title }}</a>
+      {% else %}
+        {{ demo.caption | default: demo.title }}
+      {% endif %}
+    </figcaption>
+  </figure>
+  {% endfor %}
 </div>
-<p class="demo-caption">
-  <a href="https://egocentric-manipulation-interface.github.io/" target="_blank">Egocentric Manipulation Interface (EgoMI)</a>
-</p>
 
-<div class="demo-wrap">
-  <div class="demo-overlay">
-    <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
-  </div>
-  <iframe class="demo-iframe"
-    src="https://uynitsuj.github.io/viser-client/?playbackPath=https://uynitsuj.github.io/recordings/coffee_maker_recording_20250506_191701.viser&initialCameraPosition=0.989,0.425,0.609&initialCameraLookAt=0.233,-0.046,-0.237&initialCameraUp=-0.000,-0.000,1.000"
-    loading="lazy" allowfullscreen title="R2R2R 3D Scene"></iframe>
-</div>
-<p class="demo-caption">
-  <a href="https://real2render2real.com/" target="_blank">Real2Render2Real (R2R2R)</a>
-</p>
+<script>
+  // Click-to-load: swap the placeholder button for a real iframe on demand.
+  // Four eager iframes would pull ~150 MB of .viser data on page load.
+  (function () {
+    document.querySelectorAll('.demo-load').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var wrap = button.parentNode;
+        var iframe = document.createElement('iframe');
+        iframe.className = 'demo-iframe';
+        iframe.src = button.dataset.demoSrc;
+        iframe.title = button.dataset.demoTitle;
+        iframe.setAttribute('allowfullscreen', '');
+        wrap.appendChild(iframe);
+        button.remove();
+      }, { once: true });
+    });
+  })();
+</script>
