@@ -1,5 +1,5 @@
-- name: I2RT YAM Active Leader Arms
-  descr: "Weekend project to develop open source hardware and software for I2RT YAM leader arms (imitation learning teaching devices)."
+- name: Low Cost I2RT YAM Robot Teaching Devices
+  descr: "Weekend project - Open source hardware and software for I2RT YAM leader arms."
   image: yam_active_leader_dagger.mp4
   github: https://github.com/uynitsuj/lerobot_teleoperator_yamactiveleader
 
@@ -9,56 +9,56 @@
   github: https://github.com/uynitsuj/robots_realtime
 
 - name: YuMi IRB14000 Bimanual Robot Realtime Control Package
-  descr: "Open source software package to control the ABB YuMi IRB14000 bimanual robot in realtime (240Hz) through control interfaces including: interactive websocket GUI, Meta Quest VR Controllers, and autonomous Diffusion Policy (shown), PI0-FAST and NVIDIA-GR00T VLA models."
+  descr: "Open source software package to control the ABB YuMi IRB14000 bimanual robot through control interfaces including: interactive websocket GUI, Meta Quest VR Controllers, and autonomous policy models."
   image: dp_handoff_yumi.mp4
   youtube: https://www.youtube.com/watch?v=aJG0f2TfFcI
   github: https://github.com/uynitsuj/yumi_realtime
 
 - name: 3D-Printed Quadrupedal Robot
-  descr: "Personal project to design (mechanical electrical & software) and build a quadrupedal robot from scratch."
+  descr: "Personal project to design, build, and code a quadrupedal robot from scratch."
   image: QPRev2.png
   youtube: https://www.youtube.com/watch?v=zvvzg43DtZo
   github: https://github.com/uynitsuj/quadruped
 
 - name: 3D-Printed 6DoF Robot Arm
-  descr: "Personal project over the covid-19 quarantine to build a 6DoF robot arm platform from scratch."
+  descr: "Personal project to design, build, and code a 6DoF robot arm from scratch."
   image: ezgif-4-f28f910a4123.mp4
   github: https://github.com/uynitsuj/Open6R_ARM
   youtube: https://www.youtube.com/watch?v=CedyWQmqiJ0
 
 - name: 2023 Michigan Mars Rover - Dahlia
-  descr: "<b>Affiliation: Team Lead - RF Wireless Communications for University of Michigan Mars Rover team</b><br>Dahlia received a System Acceptance Review score of 92.21/100!"
+  descr: "<b>Affiliation: Team Lead - RF Wireless Communications for University of Michigan Mars Rover team</b><br>Dahlia received a System Acceptance Review score of 92.21/100."
   image: Dahlia.png
   youtube: https://www.youtube.com/watch?v=xKBLp-un0XE
 
 - name: 2022 Michigan Mars Rover - Rosie
-  descr: "<b>Affiliation: Team Lead - RF Wireless Communications for University of Michigan Mars Rover team</b><br>Rosie received a System Acceptance Review score of 90.97/100 and finished FIRST PLACE at the URC and CIRC competitions!"
+  descr: "<b>Affiliation: Team Lead - RF Wireless Communications for University of Michigan Mars Rover team</b><br>Rosie received a System Acceptance Review score of 90.97/100 and finished 1st place at the URC and CIRC competitions."
   image: ROSIE.jpg
   youtube: https://www.youtube.com/watch?v=tp6KY05bgjM
 
 - name: 2021 Michigan Mars Rover - Blue
-  descr: "<b>Affiliation: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br>Though in-person competition was cancelled due to the pandemic, we were still judged on our submission, receiving a System Acceptance Review score of 93.09/100!"
+  descr: "<b>Affiliation: Robotic Arm Hardware Designer for University of Michigan Mars Rover team</b><br>Though in-person competition was cancelled due to the pandemic, Blue received a System Acceptance Review score of 93.09/100."
   image: SAR-Blue.jpg
   youtube: https://www.youtube.com/watch?v=YMYH7ZxkKZw
 
 - name: 2020 FRC Robot - Cheems
   descr: "<b>Affiliation: Team Lead - Mechanical Design and Fabrication for 3128 Aluminum Narwhals. </b><br>
-  Cheems is a transforming arm robot with a ball shooter at the end of the large arm. Unfortunately, the season was cut short due to the pandemic."
+  Season cut short due to the pandemic."
   image: 2020.jpg
   youtube: https://www.youtube.com/watch?v=iFeYwJSkDD8
 
 - name: 2019 FRC Robot - Gromit
   descr: "<b>Affiliation: Team Lead - Mechanical Design and Fabrication for 3128 Aluminum Narwhals. </b><br>
-  Gromit ranked 1st seed at Monterey Bay Regional and advanced to become an Alliance Captain at the FRC World Championship in Houston."
+  Ranked 1st seed at Monterey Bay Regional - Alliance Captain at the FRC World Championship in Houston."
   image: 2019.png
   youtube: https://www.youtube.com/watch?v=Om-zphL8QiI
 
 - name: 2018 FRC Robot - Guido
   descr: "<b>Affiliation: Member of Mechanical Design and Fabrication for 3128 Aluminum Narwhals. </b><br>
-  Guido joined the first seeded team in the World Championship event, but was unfortunately eliminated in finals matches."
+  Joined the first seeded team in World Championship - eliminated in finals matches."
   image: 2018.png
 
 - name: 2017 FRC Robot - Ferb
   descr: "<b>Affiliation: Member of Mechanical Design and Fabrication for 3128  Aluminum Narwhals. </b><br>
-  Ferb became the Finalist Alliance Captain at the San Diego Regional, securing a spot at the FRC World Championship in Houston."
+  Finalist Alliance Captain at San Diego Regional - Advanced to FRC World Championship in Houston."
   image: 2017.png
