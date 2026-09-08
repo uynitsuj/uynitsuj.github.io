@@ -329,6 +329,23 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 }
 .demo-caption a { color: var(--green); font-weight: 600; }
 
+/* Provenance badge: real-robot rollout vs. rendered/synthetic data. */
+.demo-tag {
+  display: block; width: fit-content; margin: 0.3rem auto 0;
+  font-size: 0.6rem; font-weight: 800;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.15em 0.55em; border-radius: 4px;
+  white-space: nowrap;
+}
+.demo-tag-real {
+  color: var(--green); background: rgba(66, 185, 131, 0.12);
+  border: 1px solid rgba(66, 185, 131, 0.25);
+}
+.demo-tag-synthetic {
+  color: var(--accent); background: var(--accent-dim);
+  border: 1px solid rgba(141, 126, 220, 0.25);
+}
+
 /* One column once the tiles would get too small to orbit in. */
 @media (max-width: 560px) {
   .demo-grid { grid-template-columns: 1fr; }

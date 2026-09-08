@@ -263,6 +263,14 @@ img { display: block; max-width: 100%; }
 .demo-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 .demo-caption { font-size: 0.74rem; color: var(--tx-muted); text-align: center; padding-bottom: 0.25rem; line-height: 1.4; }
 .demo-caption a { color: var(--green); font-weight: 600; }
+/* Provenance badge: real-robot rollout vs. rendered/synthetic data. */
+.demo-tag {
+  display: block; width: fit-content; margin: 0.3rem auto 0;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.15em 0.55em; border-radius: 4px; white-space: nowrap;
+}
+.demo-tag-real { color: var(--green); background: rgba(66,185,131,0.12); border: 1px solid rgba(66,185,131,0.25); }
+.demo-tag-synthetic { color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(141,126,220,0.25); }
 .demos-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tx-muted); margin: 2rem 0 0.9rem; }
 @media (max-width: 560px) { .demo-grid { grid-template-columns: 1fr; } }
 

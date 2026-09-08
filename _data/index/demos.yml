@@ -13,6 +13,8 @@
 #            want, and copying the params the console prints.
 #            initialCameraFov / Near / Far only work in viser-client-1.0.22.
 #            Omit to use the initial camera baked into the .viser file.
+#   kind     `real` (real-world, 1x speed, autonomous) or `synthetic` (rendered).
+#            Drives the badge under the tile; `tag:` overrides the badge text.
 #   client   which hosted viser client to play it in. REQUIRED and not cosmetic:
 #            .viser containers are NOT cross-version compatible. The legacy
 #            `viser-client` uses DecompressionStream("gzip"); viser >= ~1.0 writes
@@ -22,6 +24,7 @@
 
 - title: Egocentric Manipulation Interface (EgoMI)
   file: egomi/recording_20251022_210201.viser
+  kind: real
   size: 40 MB
   caption: Egocentric Manipulation Interface
   link: https://egocentric-manipulation-interface.github.io/
@@ -30,6 +33,7 @@
 
 - title: Real2Render2Real (R2R2R)
   file: coffee_maker_recording_20250506_191701.viser
+  kind: synthetic
   size: 71 MB
   caption: Real2Render2Real
   link: https://real2render2real.com/
@@ -38,6 +42,7 @@
 
 - title: WARP-RM — T-Shirt Folding
   file: tshirt_episode.viser
+  kind: real
   client: viser-client-1.0.22
   size: 21 MB
   caption: WARP-RM
@@ -46,6 +51,7 @@
 
 - title: WARP-RM — Bottle Into Bin
   file: bottles_episode.viser
+  kind: real
   client: viser-client-1.0.22
   size: 15 MB
   caption: WARP-RM

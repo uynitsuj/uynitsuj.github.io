@@ -51,6 +51,10 @@ swap the iframe for a button and create the iframe in a click handler.
 Per-demo camera framing is a raw query fragment in `camera:`. To capture one: open the
 scene with `&logCamera`, orbit to the view you want, copy what the console prints.
 
+`kind:` sets the provenance badge under each tile — `real` (green: "Real-world · 1× speed ·
+autonomous") or `synthetic` (purple: "Synthetic · rendered"). Set it on every new demo so
+viewers can tell a robot rollout from rendered data; `tag:` overrides the badge text.
+
 ### ⚠️ `.viser` files are NOT cross-version compatible
 Two container formats are in play, and each client reads only its own:
 

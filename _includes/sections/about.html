@@ -44,6 +44,21 @@
       {% else %}
         {{ demo.caption | default: demo.title }}
       {% endif %}
+      {%- comment -%}
+        Reset first: Liquid `assign` leaks across loop iterations, so an entry
+        with no kind/tag would otherwise inherit the previous tile's badge.
+      {%- endcomment -%}
+      {%- assign tag_text = '' -%}
+      {%- if demo.tag -%}
+        {%- assign tag_text = demo.tag -%}
+      {%- elsif demo.kind == 'real' -%}
+        {%- assign tag_text = 'Real-world &middot; 1&times; speed &middot; autonomous' -%}
+      {%- elsif demo.kind == 'synthetic' -%}
+        {%- assign tag_text = 'Synthetic &middot; rendered' -%}
+      {%- endif -%}
+      {% if tag_text != '' %}
+        <span class="demo-tag demo-tag-{{ demo.kind | default: 'real' }}">{{ tag_text }}</span>
+      {% endif %}
     </figcaption>
   </figure>
   {% endfor %}
