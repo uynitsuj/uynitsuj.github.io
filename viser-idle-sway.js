@@ -30,7 +30,8 @@
 // before the client bundle.
 //
 // `hideLines=<hex>[,<hex>...]` hides line objects (e.g. camera-frustum wireframes) whose
-// material colour matches; the frustum's image plane is a mesh and stays.
+// material colour matches, or every line object with `hideLines=all`; the frustum's image
+// plane is a mesh and stays.
 //
 // And `pinDpr[=<ratio>]` pins the render resolution (default min(devicePixelRatio, 2)).
 // Both clients use drei's PerformanceMonitor, which drops the pixel ratio whenever the
@@ -72,7 +73,7 @@
     scenes.forEach(function (scene) {
       scene.traverse(function (m) {
         if (hideLines.length && (m.isLine || m.isLineSegments || m.isLine2 || m.isLineSegments2) &&
-            m.material && m.material.color && hideLines.indexOf(m.material.color.getHexString()) >= 0) {
+            (hideLines[0] === 'all' || (m.material && m.material.color && hideLines.indexOf(m.material.color.getHexString()) >= 0))) {
           m.visible = false;
           return;
         }
@@ -95,11 +96,12 @@
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var r = Math.random, TAU = 2 * Math.PI, IDLE = 4;
+  var SPEEDUP = 1.75;                    // sway tempo; the glide home scales with it
   var P = {
     azAmp: scale * (0.18 + 0.12 * r()),    // rad
     polAmp: scale * (0.035 + 0.035 * r()), // rad
-    azT: 17 + 7 * r(),                   // s
-    polT: 10 + 5 * r(),                  // s
+    azT: (17 + 7 * r()) / SPEEDUP,       // s  (~9.7-13.7 s)
+    polT: (10 + 5 * r()) / SPEEDUP,      // s  (~5.7-8.6 s)
     azDir: r() < 0.5 ? -1 : 1,
     polDir: r() < 0.5 ? -1 : 1
   };

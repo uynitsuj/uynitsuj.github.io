@@ -28,8 +28,9 @@
 #            /viser-idle-sway.js. `clipAbove=<h>,<hex>` cuts meshes of material colour <hex>
 #            above height <h> m; the YAM cell tiles use it to drop the top 8020 rails
 #            (the frame is one #999ead mesh; its top rails sit at 1.64-1.68 m).
-#            `hideLines=<hex>` hides line objects of that colour (the YAM tiles hide the
-#            yellow #ffaa3c overhead-camera frustum wireframe).
+#            `hideLines=<hex>[,<hex>]` hides line objects of that colour, `hideLines=all`
+#            every line object; in these scenes the only lines are camera-frustum
+#            wireframes (the image planes are meshes and stay).
 
 - title: Egocentric Manipulation Interface (EgoMI)
   file: egomi/recording_20251022_210201.viser
@@ -49,6 +50,7 @@
   client: viser-client
   sway: 0.025   # tiny: the camera frustum right in front of the camera is part of the
                 #   composition, and any orbit parallaxes it a lot
+  scene: "hideLines=all"   # frustum wireframes off (image planes stay); EgoMI keeps its wireframes
   camera: "initialCameraPosition=0.989,0.425,0.609&initialCameraLookAt=0.233,-0.046,-0.237&initialCameraUp=-0.000,-0.000,1.000"
 
 - title: WARP-RM — T-Shirt Folding
@@ -56,7 +58,7 @@
   kind: real
   client: viser-client-1.0.22
   sway: 0.35
-  scene: "clipAbove=1.62,999ead&hideLines=ffaa3c"   # drop top 8020 rails + yellow frustum wireframes
+  scene: "clipAbove=1.62,999ead&hideLines=all"   # drop top 8020 rails + frustum wireframes
   size: 21 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
@@ -67,7 +69,7 @@
   kind: real
   client: viser-client-1.0.22
   sway: 0.35
-  scene: "clipAbove=1.62,999ead&hideLines=ffaa3c"   # drop top 8020 rails + yellow frustum wireframes
+  scene: "clipAbove=1.62,999ead&hideLines=all"   # drop top 8020 rails + frustum wireframes
   size: 15 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
