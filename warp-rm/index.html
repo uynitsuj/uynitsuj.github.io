@@ -215,33 +215,97 @@
       border: 1px solid #ccc;
     }
 
-    /* Two-video teaser carousel (main + click-to-swap PiP, auto-advances on end) */
+    /* Teaser carousel: 3D replay + two videos. One item is maximized; the others float as
+       click-to-promote PiPs stacked in the right margin. Videos auto-advance on end. */
     .carousel-stage {
       position: relative;
       width: 100%;
       max-width: 1000px;
       margin: 0.75rem auto 1.25rem;      /* main spans the content column, exactly centered */
-      aspect-ratio: 16 / 9;              /* reserves the main video's height */
+      aspect-ratio: 16 / 9;              /* reserves the main item's height */
+      --pip-w: clamp(110px, 13vw, 180px);
     }
     .carousel-item {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);       /* vertically center both the main and the floating PiP */
+      transform: translateY(-50%);       /* vertically center the main and the PiP stack */
       overflow: hidden;
       border-radius: 8px;
       border: 1px solid #ccc;
       background: #000;
-      transition: left 0.5s var(--ease-out), width 0.5s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      transition: left 0.5s var(--ease-out), top 0.5s var(--ease-out), width 0.5s var(--ease-out), box-shadow 0.3s var(--ease-out);
     }
     .carousel-item video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-    /* maximized video fills the centered stage; the other slides out into the right margin */
+    /* maximized item fills the centered stage; the others slide out into the right margin */
     .carousel-item.is-main { left: 0; width: 100%; z-index: 1; box-shadow: 0 10px 34px rgba(0,0,0,0.18); }
     .carousel-item.is-pip {
       left: calc(100% + 18px);
-      width: clamp(110px, 13vw, 180px);
+      width: var(--pip-w);
+      /* --slot is set by JS: -0.5 / +0.5 for two PiPs, centered on the stage midline */
+      top: calc(50% + var(--slot, 0) * (var(--pip-w) * 0.5625 + 14px));
       z-index: 2;
       cursor: pointer;
     }
+
+    /* 3D replay item */
+    .carousel-scene { background: #d8d9e9; }
+    .scene-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+    .scene-mount, .scene-mount iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+    /* interactive whenever maximized; as a PiP, clicks fall through to promote it */
+    .carousel-scene.is-pip .scene-mount { pointer-events: none; }
+    .scene-loading {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      background: #d8d9e9; color: #34314e; font-family: var(--body-font); text-align: center; padding: 1rem;
+    }
+    .scene-loading[hidden] { display: none; }
+    .scene-loading p { margin: 0; font-size: 0.9rem; }
+    .scene-loading progress { appearance: none; -webkit-appearance: none; width: 160px; height: 3px; border: 0; border-radius: 3px; overflow: hidden; background: #b9bad0; }
+    .scene-loading progress::-webkit-progress-bar { background: #b9bad0; }
+    .scene-loading progress::-webkit-progress-value { background: var(--accent); }
+    .scene-loading progress::-moz-progress-bar { background: var(--accent); }
+    .scene-loading-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .scene-loading-actions[hidden] { display: none; }
+    .scene-loading-actions button, .scene-bar button {
+      font-family: var(--body-font); cursor: pointer; border: 0;
+    }
+    .scene-loading-actions button {
+      font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 999px;
+      background: #fff; color: #34314e; box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+    /* instructions only: never intercepts input, fades once the viewer has used the scene */
+    .scene-hint {
+      position: absolute; left: 50%; bottom: 58px; transform: translateX(-50%); z-index: 2; pointer-events: none;
+      font-family: var(--body-font); font-size: 0.78rem; font-weight: 600; padding: 0.42rem 0.9rem; border-radius: 999px;
+      background: rgba(17,17,17,0.6); color: #fff; white-space: nowrap;
+      transition: opacity 0.6s var(--ease-out);
+    }
+    .carousel-scene.has-interacted .scene-hint { opacity: 0; }
+    /* matches the caption burned into the rollout videos */
+    .scene-tag {
+      position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 2; pointer-events: none;
+      font-family: var(--body-font); font-size: 0.95rem; font-weight: 500; white-space: nowrap;
+      color: #fff; background: rgba(20,20,30,0.42); padding: 0.2rem 0.7rem; border-radius: 6px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    }
+    .scene-bar {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+      display: flex; align-items: center; gap: 10px; padding: 18px 12px 9px;
+      background: linear-gradient(to top, rgba(20,20,30,0.55), rgba(20,20,30,0));
+      color: #fff; font-family: var(--body-font); font-size: 0.74rem; font-variant-numeric: tabular-nums;
+    }
+    .scene-bar button {
+      width: 30px; height: 30px; flex: none; border-radius: 50%;
+      background: rgba(255,255,255,0.16); color: #fff; font-size: 0.8rem;
+    }
+    .scene-bar button:hover:not(:disabled) { background: rgba(255,255,255,0.3); }
+    .scene-bar button:disabled { opacity: 0.45; cursor: wait; }
+    .scene-bar input[type="range"] { flex: 1; min-width: 40px; accent-color: var(--accent); cursor: pointer; }
+    /* chrome belongs to the maximized view only; a PiP is a live, click-to-promote preview */
+    .carousel-scene.is-pip .scene-bar, .carousel-scene.is-pip .scene-hint,
+    .carousel-scene.is-pip .scene-tag { display: none; }
+    .carousel-scene:fullscreen { top: 0; left: 0; width: 100%; height: 100%; transform: none; border: 0; border-radius: 0; }
+    .carousel-scene:fullscreen .scene-frame { aspect-ratio: auto; height: 100%; }
     .carousel-item.is-pip:hover { box-shadow: 0 6px 22px rgba(124,58,237,0.45); }
     .carousel-pip-hint {
       position: absolute; bottom: 7px; left: 7px;
@@ -253,10 +317,68 @@
     .carousel-item.is-pip .carousel-pip-hint { opacity: 0.95; }
     @media (max-width: 900px) {
       /* sidebar hidden / main full-width here: stack the PiP below the main, horizontally centered (avoids it floating off-screen) */
-      .carousel-stage { width: 100%; aspect-ratio: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0.75rem auto 1rem; }
+      .carousel-stage { width: 100%; aspect-ratio: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0.75rem auto 1rem; }
       .carousel-item { position: relative; top: auto; transform: none; transition: box-shadow 0.3s var(--ease-out); }
       .carousel-item.is-main { left: auto; width: 100%; order: 0; }
-      .carousel-item.is-pip  { left: auto; width: 48%; align-self: center; order: 1; }
+      .carousel-item.is-pip  { left: auto; top: auto; width: calc(50% - 5px); order: 1; }
+      .scene-hint { bottom: 52px; font-size: 0.72rem; }
+      .scene-hint-more { display: none; }
+      .scene-tag { font-size: 0.66rem; top: 8px; }
+    }
+
+    /* Animated results charts (built by the "results charts" script from its DATA block).
+       Each card replaces a table visually; the exact table stays below in a <details>. */
+    .bar-card {
+      margin: 1.25rem 0 0.75rem; padding: 1.6rem 1.75rem 1.4rem;
+      background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px;
+      font-family: var(--body-font);
+      --bar-neutral: #a9a6b4; --bar-track: #eceae4; --label-w: 190px; --value-w: 64px;
+    }
+    .bar-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.25rem; }
+    .bar-kicker { display: block; font-size: 0.74rem; color: var(--muted); }
+    .bar-title { font-family: var(--title-font); font-size: 1.35rem; line-height: 1.25; margin: 0.35rem 0 0; color: var(--ink); }
+    .bar-tabs { display: flex; flex-wrap: wrap; gap: 3px; padding: 3px; border: 1px solid var(--hairline); border-radius: 9px; flex: none; background: #f3f1ec; }
+    .bar-tabs button {
+      font: inherit; font-size: 0.74rem; padding: 0.4rem 0.7rem; border: 0; border-radius: 6px;
+      background: transparent; color: var(--muted); cursor: pointer; white-space: nowrap;
+    }
+    .bar-tabs button.selected { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .bar-note { font-size: 0.84rem; color: var(--muted); line-height: 1.6; margin: 0.9rem 0 1.1rem; max-width: 720px; }
+    .bar-rows { display: flex; flex-direction: column; gap: 10px; }
+    .bar-row { display: grid; grid-template-columns: var(--label-w) minmax(0, 1fr) var(--value-w); gap: 18px; align-items: center; min-height: 34px; }
+    .bar-group { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; color: var(--muted); text-transform: uppercase; margin-top: 8px; }
+    .bar-group:first-child { margin-top: 0; }
+    .bar-label { font-size: 0.84rem; line-height: 1.35; color: var(--ink); }
+    .bar-label small { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+    .bar-track { height: 18px; border-radius: 4px; background: var(--bar-track); overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 4px; background: var(--bar-neutral); transform-origin: left center; transition: width 0.8s var(--ease-out); }
+    /* collapsed until the card has scrolled far enough in to play its grow-in */
+    .bar-card.bar-pending .bar-fill { transform: scaleX(0.02); }
+    .bar-value { font-size: 1.05rem; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; color: var(--ink); }
+    .bar-value.na { font-size: 0.78rem; color: var(--muted); }
+    .bar-row.hl .bar-label { font-weight: 700; }
+    .bar-row.hl .bar-fill { background: var(--accent); }
+    .bar-row.hl .bar-value { font-weight: 700; color: var(--accent); }
+    .bar-axis { min-height: 0; margin-top: 6px; }
+    .bar-axis-scale { display: flex; justify-content: space-between; gap: 10px; font-size: 0.7rem; color: var(--muted); }
+    .bar-more {
+      margin-top: 1rem; font: inherit; font-size: 0.78rem; padding: 0.45rem 0.8rem; cursor: pointer;
+      border: 1px solid var(--hairline); border-radius: 8px; background: #fff; color: var(--ink);
+    }
+    .bar-more:hover { background: #f3f1ec; }
+    .bar-takeaway { font-size: 0.88rem; line-height: 1.65; color: var(--ink); margin: 1.1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--hairline); }
+    .table-details { margin: 0.25rem 0 1rem; }
+    .table-details > summary { cursor: pointer; font-family: var(--body-font); font-size: 0.8rem; color: var(--muted); padding: 0.3rem 0; }
+    .table-details > summary:hover { color: var(--ink); }
+    @media (max-width: 700px) {
+      .bar-card { padding: 1.2rem 1rem 1rem; }
+      .bar-card-head { flex-direction: column; gap: 0.8rem; }
+      .bar-title { font-size: 1.15rem; }
+      /* label + value on one line, full-width bar beneath */
+      .bar-row { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; }
+      .bar-track { grid-column: 1 / -1; grid-row: 2; }
+      .bar-axis { grid-template-columns: 1fr; }
+      .bar-axis > span { display: none; }
     }
 
     .tldr {
@@ -706,13 +828,42 @@
     <section id="teaser">
       <div class="carousel" id="teaser-carousel">
         <div class="carousel-stage">
-          <div class="carousel-item is-main" data-idx="0">
-            <video data-idx="0" src="media/teaser_rollout.mp4" autoplay muted loop playsinline preload="auto"></video>
-            <div class="carousel-pip-hint">&#9658; Click to view</div>
+          <!-- Interactive replay of the recorded T-shirt fold, played by the patched viser
+               client in ./viser/ (studio lighting, reconstructed cell, in-scene camera feeds).
+               It talks to this page over same-origin postMessage: see the teaser script. -->
+          <div class="carousel-item is-main carousel-scene" data-idx="0" id="teaser-scene">
+            <div class="scene-frame">
+              <div class="scene-mount" id="scene-mount"></div>
+              <div class="scene-loading" id="scene-loading">
+                <p id="scene-status" role="status">Loading the 3D replay&hellip;</p>
+                <progress id="scene-progress" max="100" value="0" aria-label="3D replay download progress"></progress>
+                <div class="scene-loading-actions" id="scene-fallback" hidden>
+                  <button type="button" id="scene-retry">Try again</button>
+                  <button type="button" id="scene-watch">Watch the video instead</button>
+                </div>
+              </div>
+              <div class="scene-hint" id="scene-hint" aria-hidden="true">
+                <i class="fas fa-hand-pointer"></i>&nbsp;Drag to orbit<span class="scene-hint-more"> &middot; scroll to zoom</span>
+              </div>
+              <div class="scene-tag">1x speed, autonomous, trained with WARP-BC</div>
+              <div class="scene-bar" id="scene-bar">
+                <button type="button" id="scene-play" disabled aria-label="Pause replay"><i class="fas fa-pause"></i></button>
+                <span id="scene-time">0:00</span>
+                <input id="scene-scrub" type="range" min="0" max="1" value="0" step="0.05" disabled aria-label="Scrub the 3D replay">
+                <span id="scene-duration">0:00</span>
+                <button type="button" id="scene-reset" disabled aria-label="Reset view" title="Reset view"><i class="fas fa-rotate-left"></i></button>
+                <button type="button" id="scene-fullscreen" aria-label="Full screen" title="Full screen"><i class="fas fa-expand"></i></button>
+              </div>
+            </div>
+            <div class="carousel-pip-hint">&#9658; 3D replay</div>
           </div>
           <div class="carousel-item is-pip" data-idx="1">
-            <video data-idx="1" src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
-            <div class="carousel-pip-hint">&#9658; Click to view</div>
+            <video data-idx="1" src="media/teaser_rollout.mp4" poster="media/teaser_poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="carousel-pip-hint">&#9658; T-shirt video</div>
+          </div>
+          <div class="carousel-item is-pip" data-idx="2">
+            <video data-idx="2" src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="carousel-pip-hint">&#9658; Bottles video</div>
           </div>
         </div>
       </div>
@@ -1020,71 +1171,75 @@
         pool admits more suboptimal demonstrations, vanilla BC degrades sharply while WARP-BC stays
         robust.
       </p>
-      <div class="table-wrap">
-        <table class="results">
-          <thead>
-            <tr>
-              <th rowspan="2">Method</th>
-              <th rowspan="2">Metric</th>
-              <th>\(\mathcal{D}_{1}\) (&le;60s)</th>
-              <th>\(\mathcal{D}_{2}\) (&le;90s)</th>
-              <th>\(\mathcal{D}_{3}\) (&le;120s)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="method" rowspan="4">Vanilla BC</td>
-              <td class="metric-name">Success &uarr;</td>
-              <td>20/20</td>
-              <td>2/20</td>
-              <td>0/20</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Mean TTC (s) &darr;</td>
-              <td>113.8</td>
-              <td>199.0</td>
-              <td>N/A</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Throughput (/hr) &uarr;</td>
-              <td>31.6</td>
-              <td>1.5</td>
-              <td>0.0</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Action Chunks Kept</td>
-              <td>100%</td>
-              <td>100%</td>
-              <td>100%</td>
-            </tr>
-            <tr class="highlight">
-              <td class="method" rowspan="4">WARP-BC</td>
-              <td class="metric-name">Success &uarr;</td>
-              <td class="best">20/20</td>
-              <td class="best">19/20</td>
-              <td class="best">14/20</td>
-            </tr>
-            <tr class="highlight">
-              <td class="metric-name">Mean TTC (s) &darr;</td>
-              <td class="best">63.9</td>
-              <td class="best">118.8</td>
-              <td class="best">117.4</td>
-            </tr>
-            <tr class="highlight">
-              <td class="metric-name">Throughput (/hr) &uarr;</td>
-              <td class="best">56.3</td>
-              <td class="best">27.4</td>
-              <td class="best">16.3</td>
-            </tr>
-            <tr class="highlight">
-              <td class="metric-name">Action Chunks Kept</td>
-              <td>35.7%</td>
-              <td>34.4%</td>
-              <td>22.5%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="bar-card" data-chart="tiers"></div>
+      <details class="table-details">
+        <summary>Full table</summary>
+        <div class="table-wrap">
+          <table class="results">
+            <thead>
+              <tr>
+                <th rowspan="2">Method</th>
+                <th rowspan="2">Metric</th>
+                <th>\(\mathcal{D}_{1}\) (&le;60s)</th>
+                <th>\(\mathcal{D}_{2}\) (&le;90s)</th>
+                <th>\(\mathcal{D}_{3}\) (&le;120s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="method" rowspan="4">Vanilla BC</td>
+                <td class="metric-name">Success &uarr;</td>
+                <td>20/20</td>
+                <td>2/20</td>
+                <td>0/20</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Mean TTC (s) &darr;</td>
+                <td>113.8</td>
+                <td>199.0</td>
+                <td>N/A</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Throughput (/hr) &uarr;</td>
+                <td>31.6</td>
+                <td>1.5</td>
+                <td>0.0</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Action Chunks Kept</td>
+                <td>100%</td>
+                <td>100%</td>
+                <td>100%</td>
+              </tr>
+              <tr class="highlight">
+                <td class="method" rowspan="4">WARP-BC</td>
+                <td class="metric-name">Success &uarr;</td>
+                <td class="best">20/20</td>
+                <td class="best">19/20</td>
+                <td class="best">14/20</td>
+              </tr>
+              <tr class="highlight">
+                <td class="metric-name">Mean TTC (s) &darr;</td>
+                <td class="best">63.9</td>
+                <td class="best">118.8</td>
+                <td class="best">117.4</td>
+              </tr>
+              <tr class="highlight">
+                <td class="metric-name">Throughput (/hr) &uarr;</td>
+                <td class="best">56.3</td>
+                <td class="best">27.4</td>
+                <td class="best">16.3</td>
+              </tr>
+              <tr class="highlight">
+                <td class="metric-name">Action Chunks Kept</td>
+                <td>35.7%</td>
+                <td>34.4%</td>
+                <td>22.5%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
 
       <h2 style="margin-top: 2rem;">Matched baseline comparisons</h2>
       <p style="color: var(--muted);">
@@ -1096,104 +1251,108 @@
         SCIZOR collapse on the noisier \(\mathcal{D}_{5}\), while DemInf stays robust on success but at
         lower throughput.
       </p>
-      <div class="table-wrap">
-        <table class="results">
-          <thead>
-            <tr>
-              <th rowspan="2">Method</th>
-              <th rowspan="2">Metric</th>
-              <th>\(\mathcal{D}_{4}\)</th>
-              <th>\(\mathcal{D}_{5}\)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="method" rowspan="4">SARM</td>
-              <td class="metric-name">Success &uarr;</td>
-              <td>19/20</td>
-              <td>2/20</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Mean TTC (s) &darr;</td>
-              <td>90.5</td>
-              <td>156.0</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Throughput (/hr) &uarr;</td>
-              <td>34.9</td>
-              <td>1.55</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Action Chunks Kept</td>
-              <td>78.5%</td>
-              <td>66.6%</td>
-            </tr>
-            <tr>
-              <td class="method" rowspan="4">DemInf</td>
-              <td class="metric-name">Success &uarr;</td>
-              <td>19/20</td>
-              <td>18/20</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Mean TTC (s) &darr;</td>
-              <td>89.6</td>
-              <td>115.8</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Throughput (/hr) &uarr;</td>
-              <td>35.2</td>
-              <td>25.3</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Action Chunks Kept</td>
-              <td>45.6%</td>
-              <td>33.7%</td>
-            </tr>
-            <tr>
-              <td class="method" rowspan="4">SCIZOR</td>
-              <td class="metric-name">Success &uarr;</td>
-              <td>19/20</td>
-              <td>2/20</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Mean TTC (s) &darr;</td>
-              <td>98.4</td>
-              <td>206.2</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Throughput (/hr) &uarr;</td>
-              <td>32.4</td>
-              <td>1.5</td>
-            </tr>
-            <tr>
-              <td class="metric-name">Action Chunks Kept</td>
-              <td>77.9%</td>
-              <td>66.7%</td>
-            </tr>
-            <tr class="highlight">
-              <td class="method" rowspan="4">WARP-BC</td>
-              <td class="metric-name">Success &uarr;</td>
-              <td class="best">20/20</td>
-              <td class="best">20/20</td>
-            </tr>
-            <tr class="highlight">
-              <td class="metric-name">Mean TTC (s) &darr;</td>
-              <td class="best">71.2</td>
-              <td class="best">80.7</td>
-            </tr>
-            <tr class="highlight">
-              <td class="metric-name">Throughput (/hr) &uarr;</td>
-              <td class="best">50.6</td>
-              <td class="best">44.6</td>
-            </tr>
-            <tr class="highlight">
-              <td class="metric-name">Action Chunks Kept</td>
-              <td>45.6%</td>
-              <td>33.7%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="bar-card" data-chart="baselines"></div>
+      <details class="table-details">
+        <summary>Full table</summary>
+        <div class="table-wrap">
+          <table class="results">
+            <thead>
+              <tr>
+                <th rowspan="2">Method</th>
+                <th rowspan="2">Metric</th>
+                <th>\(\mathcal{D}_{4}\)</th>
+                <th>\(\mathcal{D}_{5}\)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="method" rowspan="4">SARM</td>
+                <td class="metric-name">Success &uarr;</td>
+                <td>19/20</td>
+                <td>2/20</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Mean TTC (s) &darr;</td>
+                <td>90.5</td>
+                <td>156.0</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Throughput (/hr) &uarr;</td>
+                <td>34.9</td>
+                <td>1.55</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Action Chunks Kept</td>
+                <td>78.5%</td>
+                <td>66.6%</td>
+              </tr>
+              <tr>
+                <td class="method" rowspan="4">DemInf</td>
+                <td class="metric-name">Success &uarr;</td>
+                <td>19/20</td>
+                <td>18/20</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Mean TTC (s) &darr;</td>
+                <td>89.6</td>
+                <td>115.8</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Throughput (/hr) &uarr;</td>
+                <td>35.2</td>
+                <td>25.3</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Action Chunks Kept</td>
+                <td>45.6%</td>
+                <td>33.7%</td>
+              </tr>
+              <tr>
+                <td class="method" rowspan="4">SCIZOR</td>
+                <td class="metric-name">Success &uarr;</td>
+                <td>19/20</td>
+                <td>2/20</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Mean TTC (s) &darr;</td>
+                <td>98.4</td>
+                <td>206.2</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Throughput (/hr) &uarr;</td>
+                <td>32.4</td>
+                <td>1.5</td>
+              </tr>
+              <tr>
+                <td class="metric-name">Action Chunks Kept</td>
+                <td>77.9%</td>
+                <td>66.7%</td>
+              </tr>
+              <tr class="highlight">
+                <td class="method" rowspan="4">WARP-BC</td>
+                <td class="metric-name">Success &uarr;</td>
+                <td class="best">20/20</td>
+                <td class="best">20/20</td>
+              </tr>
+              <tr class="highlight">
+                <td class="metric-name">Mean TTC (s) &darr;</td>
+                <td class="best">71.2</td>
+                <td class="best">80.7</td>
+              </tr>
+              <tr class="highlight">
+                <td class="metric-name">Throughput (/hr) &uarr;</td>
+                <td class="best">50.6</td>
+                <td class="best">44.6</td>
+              </tr>
+              <tr class="highlight">
+                <td class="metric-name">Action Chunks Kept</td>
+                <td>45.6%</td>
+                <td>33.7%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
 
       <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
         <img src="media/ttc_distribution_d4_d5.png"
@@ -1236,35 +1395,39 @@
         </div>
       </div>
 
-      <div class="table-wrap" style="max-width: 840px; margin: 1.5rem auto 0.5rem;">
-        <table class="results">
-          <thead>
-            <tr>
-              <th>Method</th>
-              <th>Bottles placed &uarr;</th>
-              <th>Time / bottle (s) &darr;</th>
-              <th>Throughput (/hr) &uarr;</th>
-              <th>Act. Chunks Kept</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="method">Vanilla BC</td>
-              <td>59 / 80</td>
-              <td>15.9</td>
-              <td>147.8</td>
-              <td>100%</td>
-            </tr>
-            <tr class="highlight">
-              <td class="method">WARP-BC (Ours)</td>
-              <td class="best">74 / 80</td>
-              <td class="best">11.3</td>
-              <td class="best">237.8</td>
-              <td>30.6%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="bar-card" data-chart="bottles"></div>
+      <details class="table-details">
+        <summary>Full table</summary>
+        <div class="table-wrap" style="max-width: 840px; margin: 1.5rem auto 0.5rem;">
+          <table class="results">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Bottles placed &uarr;</th>
+                <th>Time / bottle (s) &darr;</th>
+                <th>Throughput (/hr) &uarr;</th>
+                <th>Act. Chunks Kept</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="method">Vanilla BC</td>
+                <td>59 / 80</td>
+                <td>15.9</td>
+                <td>147.8</td>
+                <td>100%</td>
+              </tr>
+              <tr class="highlight">
+                <td class="method">WARP-BC (Ours)</td>
+                <td class="best">74 / 80</td>
+                <td class="best">11.3</td>
+                <td class="best">237.8</td>
+                <td>30.6%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
       <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin: 0 0 0.5rem;">
         WARP-BC places more bottles (<span class="pill warp">74/80</span> vs <span class="pill vanilla">59/80</span>),
         cuts mean per-bottle time from 15.9&rarr;11.3&thinsp;s, and improves throughput <b>1.6&times;</b>.
@@ -1289,22 +1452,26 @@
       <p id="sim-protocol">Each method is evaluated on the <b>same 512 scene seeds, with six bottles
         per scene and a nominal 60-second horizon</b>. Curation methods share demonstrations,
         policy architecture, training-step budget, and a 31.5% retention budget; vanilla BC uses all the data.</p>
-      <div class="table-wrap">
-        <table class="results" aria-describedby="sim-protocol">
-          <caption>Simulated bottles-in-bin &middot; n=512 per method</caption>
-          <thead><tr><th scope="col">Method</th><th scope="col">Data kept</th><th scope="col">Bottles/scene &uarr;</th><th scope="col">Throughput (/hr) &uarr;</th><th scope="col">All 6 cleared &uarr;</th></tr></thead>
-          <tbody>
-            <tr><th scope="row" class="method">Vanilla BC</th><td>100%</td><td>3.885</td><td>237</td><td>9.4%</td></tr>
-            <tr><th scope="row" class="method">Random</th><td>31.5%</td><td>3.770</td><td>230</td><td>10.9%</td></tr>
-            <tr><th scope="row" class="method">ReWiND</th><td>31.5%</td><td>3.781</td><td>231</td><td>9.4%</td></tr>
-            <tr><th scope="row" class="method">SARM (oracle)</th><td>31.5%</td><td>4.191</td><td>265</td><td>20.5%</td></tr>
-            <tr><th scope="row" class="method">WARP-BC (IID)</th><td>31.5%</td><td>4.285</td><td>269</td><td>18.9%</td></tr>
-            <tr><th scope="row" class="method">SCIZOR</th><td>31.5%</td><td>4.299</td><td>270</td><td>19.1%</td></tr>
-            <tr><th scope="row" class="method">DemInf</th><td>31.5%</td><td>4.332</td><td>271</td><td>18.8%</td></tr>
-            <tr class="highlight"><th scope="row" class="method">WARP-BC</th><td>31.5%</td><td class="best">4.533</td><td class="best">290</td><td class="best">25.0%</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="bar-card" data-chart="sim"></div>
+      <details class="table-details">
+        <summary>Full table</summary>
+        <div class="table-wrap">
+          <table class="results" aria-describedby="sim-protocol">
+            <caption>Simulated bottles-in-bin &middot; n=512 per method</caption>
+            <thead><tr><th scope="col">Method</th><th scope="col">Data kept</th><th scope="col">Bottles/scene &uarr;</th><th scope="col">Throughput (/hr) &uarr;</th><th scope="col">All 6 cleared &uarr;</th></tr></thead>
+            <tbody>
+              <tr><th scope="row" class="method">Vanilla BC</th><td>100%</td><td>3.885</td><td>237</td><td>9.4%</td></tr>
+              <tr><th scope="row" class="method">Random</th><td>31.5%</td><td>3.770</td><td>230</td><td>10.9%</td></tr>
+              <tr><th scope="row" class="method">ReWiND</th><td>31.5%</td><td>3.781</td><td>231</td><td>9.4%</td></tr>
+              <tr><th scope="row" class="method">SARM (oracle)</th><td>31.5%</td><td>4.191</td><td>265</td><td>20.5%</td></tr>
+              <tr><th scope="row" class="method">WARP-BC (IID)</th><td>31.5%</td><td>4.285</td><td>269</td><td>18.9%</td></tr>
+              <tr><th scope="row" class="method">SCIZOR</th><td>31.5%</td><td>4.299</td><td>270</td><td>19.1%</td></tr>
+              <tr><th scope="row" class="method">DemInf</th><td>31.5%</td><td>4.332</td><td>271</td><td>18.8%</td></tr>
+              <tr class="highlight"><th scope="row" class="method">WARP-BC</th><td>31.5%</td><td class="best">4.533</td><td class="best">290</td><td class="best">25.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
       <p class="sim-note">SARM (oracle) uses stage boundaries from simulator state.
         The rollout executes 1,800 control steps (61.2 seconds at the configured timestep).
         Values are from the <a href="https://github.com/uynitsuj/WARP-RM#paper-simulation-results">published simulation table</a>;
@@ -1346,56 +1513,60 @@
         All ablations are run on dataset \(\mathcal{D}_{2}\). Kept-train-samples reports the fraction
         of action chunks that survive the weighting filter.
       </p>
-      <div class="table-wrap">
-        <table class="results">
-          <thead>
-            <tr>
-              <th>Variant</th>
-              <th>Success &uarr;</th>
-              <th>Mean TTC (s) &darr;</th>
-              <th>Throughput (/hr) &uarr;</th>
-              <th>Action Chunks Kept</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="background:#f7f5ef; text-align:left; font-weight:700; padding-left:1rem;">Weighting function</td></tr>
-            <tr>
-              <td class="method">\(\tau = 0\)</td>
-              <td>3/20</td><td>201.4</td><td>2.3</td><td>97.0%</td>
-            </tr>
-            <tr>
-              <td class="method">\(\tau = 1\), max = 1 (binary)</td>
-              <td>16/20</td><td>139.6</td><td>18.0</td><td>34.4%</td>
-            </tr>
-            <tr class="highlight">
-              <td class="method">\(\tau = 1\), continuous &mdash; <b>WARP</b></td>
-              <td class="best">19/20</td><td class="best">118.8</td><td class="best">27.4</td><td>34.4%</td>
-            </tr>
-            <tr><td colspan="5" style="background:#f7f5ef; text-align:left; font-weight:700; padding-left:1rem;">RA-BC aggregation strategy</td></tr>
-            <tr>
-              <td class="method">Mean over 1s action chunk</td>
-              <td>15/20</td><td>127.0</td><td>17.4</td><td>34.0%</td>
-            </tr>
-            <tr>
-              <td class="method">Mean over 1s, one-chunk offset</td>
-              <td>14/20</td><td>124.2</td><td>15.9</td><td>34.3%</td>
-            </tr>
-            <tr class="highlight">
-              <td class="method">Terminal \(\hat{v}_{end}\) &mdash; <b>WARP</b></td>
-              <td class="best">19/20</td><td class="best">118.8</td><td class="best">27.4</td><td>34.4%</td>
-            </tr>
-            <tr><td colspan="5" style="background:#f7f5ef; text-align:left; font-weight:700; padding-left:1rem;">WARP sampler</td></tr>
-            <tr>
-              <td class="method">IID log-normal</td>
-              <td>18/20</td><td>131.0</td><td>22.8</td><td>28.7%</td>
-            </tr>
-            <tr class="highlight">
-              <td class="method">AR(1) process &mdash; <b>WARP</b></td>
-              <td class="best">19/20</td><td class="best">118.8</td><td class="best">27.4</td><td>34.4%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="bar-card" data-chart="ablations"></div>
+      <details class="table-details">
+        <summary>Full table</summary>
+        <div class="table-wrap">
+          <table class="results">
+            <thead>
+              <tr>
+                <th>Variant</th>
+                <th>Success &uarr;</th>
+                <th>Mean TTC (s) &darr;</th>
+                <th>Throughput (/hr) &uarr;</th>
+                <th>Action Chunks Kept</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5" style="background:#f7f5ef; text-align:left; font-weight:700; padding-left:1rem;">Weighting function</td></tr>
+              <tr>
+                <td class="method">\(\tau = 0\)</td>
+                <td>3/20</td><td>201.4</td><td>2.3</td><td>97.0%</td>
+              </tr>
+              <tr>
+                <td class="method">\(\tau = 1\), max = 1 (binary)</td>
+                <td>16/20</td><td>139.6</td><td>18.0</td><td>34.4%</td>
+              </tr>
+              <tr class="highlight">
+                <td class="method">\(\tau = 1\), continuous &mdash; <b>WARP</b></td>
+                <td class="best">19/20</td><td class="best">118.8</td><td class="best">27.4</td><td>34.4%</td>
+              </tr>
+              <tr><td colspan="5" style="background:#f7f5ef; text-align:left; font-weight:700; padding-left:1rem;">RA-BC aggregation strategy</td></tr>
+              <tr>
+                <td class="method">Mean over 1s action chunk</td>
+                <td>15/20</td><td>127.0</td><td>17.4</td><td>34.0%</td>
+              </tr>
+              <tr>
+                <td class="method">Mean over 1s, one-chunk offset</td>
+                <td>14/20</td><td>124.2</td><td>15.9</td><td>34.3%</td>
+              </tr>
+              <tr class="highlight">
+                <td class="method">Terminal \(\hat{v}_{end}\) &mdash; <b>WARP</b></td>
+                <td class="best">19/20</td><td class="best">118.8</td><td class="best">27.4</td><td>34.4%</td>
+              </tr>
+              <tr><td colspan="5" style="background:#f7f5ef; text-align:left; font-weight:700; padding-left:1rem;">WARP sampler</td></tr>
+              <tr>
+                <td class="method">IID log-normal</td>
+                <td>18/20</td><td>131.0</td><td>22.8</td><td>28.7%</td>
+              </tr>
+              <tr class="highlight">
+                <td class="method">AR(1) process &mdash; <b>WARP</b></td>
+                <td class="best">19/20</td><td class="best">118.8</td><td class="best">27.4</td><td>34.4%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
     </section>
 
     <!-- <section id="limitations">
@@ -1833,41 +2004,412 @@
     })();
   </script>
   <script>
-  // Teaser carousel: main video plays once then auto-advances to the other; PiP loops
-  // as a live preview; clicking the PiP promotes it. Only the active video drives advance.
+  // Teaser carousel: item 0 is the interactive 3D replay, items 1..n are videos. One item is
+  // maximized, the rest loop as PiP previews; clicking a PiP promotes it. A maximized video
+  // plays once then advances to the next item; the 3D replay never auto-advances.
+  //
+  // The replay runs in ./viser/ (a patched viser client). Protocol, same-origin postMessage:
+  //   page -> iframe {source:'xdof-story', type:'play'|'pause'|'seek'{time}|'reset-view'{instant}
+  //                                        |'scene-visibility'{visible}}
+  //   iframe -> page {source:'xdof-viser', type:'loading'{progress 0..1}|'ready'{duration}
+  //                                        |'studio-ready'|'state'{time,paused}|'error'}
   (function () {
     var carousel = document.getElementById('teaser-carousel');
     if (!carousel) return;
     var items = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-item'));
-    if (items.length < 2) return;
     var videos = items.map(function (it) { return it.querySelector('video'); });
+    var sceneItem = document.getElementById('teaser-scene');
+    var SCENE = items.indexOf(sceneItem);
     var mainIdx = 0;
 
+    function $(id) { return document.getElementById(id); }
     function safePlay(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
 
+    // ---- 3D replay -------------------------------------------------------------------
+    var iframe = null, loaded = false, studioReady = false, ready = false, timer = 0;
+    var paused = false, userPaused = false, onScreen = false, lastPct = -1;
+    var playBtn = $('scene-play'), scrub = $('scene-scrub'), resetBtn = $('scene-reset');
+    var cover = $('scene-loading'), status = $('scene-status'), progress = $('scene-progress');
+
+    function send(type, extra) {
+      if (!iframe || !iframe.contentWindow) return;
+      var msg = { source: 'xdof-story', type: type };
+      for (var k in extra) msg[k] = extra[k];
+      iframe.contentWindow.postMessage(msg, location.origin);
+    }
+    function fmt(t) { t = Math.max(0, t || 0); var s = Math.floor(t % 60); return Math.floor(t / 60) + ':' + (s < 10 ? '0' : '') + s; }
+    function sceneLive() { return onScreen && !document.hidden; }
+    function syncScene() {
+      // rendering stops entirely while off-screen or in a background tab
+      send('scene-visibility', { visible: sceneLive() });
+      if (!ready) return;
+      if (sceneLive() && !userPaused) send('play'); else send('pause');
+    }
+    function setPlayIcon() {
+      playBtn.innerHTML = paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+      playBtn.setAttribute('aria-label', paused ? 'Play replay' : 'Pause replay');
+    }
+    function enableControls(on) { [playBtn, scrub, resetBtn].forEach(function (b) { b.disabled = !on; }); }
+    function fail() {
+      clearTimeout(timer);
+      enableControls(false);
+      cover.hidden = false;
+      progress.hidden = true;
+      status.textContent = 'The 3D replay could not load in this browser.';
+      $('scene-fallback').hidden = false;
+    }
+    function maybeReady() {
+      if (!loaded || !studioReady || ready) return;
+      ready = true;
+      clearTimeout(timer);
+      enableControls(true);
+      cover.hidden = true;
+      syncScene();
+    }
+    function loadScene() {
+      if (iframe) return;
+      loaded = studioReady = ready = false; lastPct = -1;
+      enableControls(false);
+      cover.hidden = false; progress.hidden = false; progress.value = 0;
+      $('scene-fallback').hidden = true;
+      status.textContent = 'Loading the 3D replay…';
+      var frame = sceneItem.querySelector('.scene-frame');
+      var aspect = frame.clientWidth / Math.max(1, frame.clientHeight);
+      var params = new URLSearchParams({
+        playbackPath: new URL('/recordings/tshirt_episode.viser', location.href).href,
+        initialCameraPosition: '-1.249,0,1.95',   // straight-on to the cell (y = 0), same distance/height as the xdof framing
+        initialCameraLookAt: '0.55,0,1.0',
+        initialCameraUp: '0,0,1',
+        // widen on narrow screens so the whole work cell stays in frame (radians)
+        initialCameraFov: String(2 * Math.atan(Math.tan(0.61 / 2) * Math.max(1, 1.55 / aspect))),
+        initialCameraNear: '0.1',
+        initialCameraFar: '40'
+      });
+      iframe = document.createElement('iframe');
+      iframe.title = 'Interactive 3D replay of a recorded T-shirt fold';
+      iframe.allowFullscreen = true;
+      iframe.addEventListener('load', function () { syncScene(); });
+      iframe.src = new URL('viser/index.html?' + params.toString(), location.href).href;
+      $('scene-mount').appendChild(iframe);
+      timer = setTimeout(function () { if (!ready) fail(); }, 60000);
+    }
+
+    window.addEventListener('message', function (e) {
+      if (e.origin !== location.origin || !iframe || e.source !== iframe.contentWindow) return;
+      var d = e.data;
+      if (!d || d.source !== 'xdof-viser') return;
+      if (d.type === 'error') { fail(); return; }
+      if (d.type === 'loading' && !ready) {
+        var pct = Math.round((d.progress || 0) * 100);
+        progress.value = pct;
+        var step = Math.floor(pct / 10) * 10;
+        if (step !== lastPct) { lastPct = step; status.textContent = pct >= 100 ? 'Preparing the 3D scene…' : 'Loading the 3D replay… ' + step + '%'; }
+      }
+      if (d.type === 'ready') {
+        loaded = true;
+        scrub.max = String(Math.max(0.001, d.duration - 0.001));
+        $('scene-duration').textContent = fmt(d.duration);
+        maybeReady();
+      }
+      if (d.type === 'studio-ready') { studioReady = true; maybeReady(); }
+      if (d.type === 'state') {
+        if (paused !== d.paused) { paused = d.paused; setPlayIcon(); }
+        if (document.activeElement !== scrub) scrub.value = d.time;
+        $('scene-time').textContent = fmt(d.time);
+      }
+    });
+
+    playBtn.addEventListener('click', function () { userPaused = !paused; send(paused ? 'play' : 'pause'); });
+    scrub.addEventListener('input', function () {
+      userPaused = true;
+      send('seek', { time: Number(scrub.value) });
+      $('scene-time').textContent = fmt(Number(scrub.value));
+    });
+    resetBtn.addEventListener('click', function () { send('reset-view', { instant: false }); });
+    $('scene-retry').addEventListener('click', function () { if (iframe) iframe.remove(); iframe = null; loadScene(); });
+    $('scene-watch').addEventListener('click', function () { promote(SCENE === 0 ? 1 : 0); });
+
+    var fsBtn = $('scene-fullscreen');
+    fsBtn.hidden = !document.fullscreenEnabled;
+    fsBtn.addEventListener('click', function () {
+      if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+      else sceneItem.requestFullscreen().catch(function () {});
+    });
+    document.addEventListener('fullscreenchange', function () {
+      var fs = document.fullscreenElement === sceneItem;
+      fsBtn.innerHTML = fs ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+      fsBtn.setAttribute('aria-label', fs ? 'Exit full screen' : 'Full screen');
+    });
+
+    // Pointer input inside the iframe never reaches this page, but the first press moves focus
+    // into it and blurs this window: use that to retire the "drag to orbit" hint.
+    window.addEventListener('blur', function () {
+      if (iframe && document.activeElement === iframe) sceneItem.classList.add('has-interacted');
+    });
+
+    new IntersectionObserver(function (entries) {
+      onScreen = entries[0].isIntersecting;
+      syncScene();
+      videos.forEach(function (v) { if (v) { if (onScreen) safePlay(v); else v.pause(); } });
+    }, { threshold: 0 }).observe(carousel);
+    document.addEventListener('visibilitychange', syncScene);
+
+    // ---- carousel roles --------------------------------------------------------------
     function applyRoles() {
+      var slot = 0, pips = items.length - 1;
       items.forEach(function (it, i) {
         var isMain = (i === mainIdx);
         it.classList.toggle('is-main', isMain);
         it.classList.toggle('is-pip', !isMain);
+        it.style.setProperty('--slot', isMain ? 0 : (slot++ - (pips - 1) / 2));
         var v = videos[i];
+        if (!v) return;
         v.muted = true;          // required for programmatic autoplay
-        v.loop = !isMain;        // main must NOT loop so 'ended' fires; PiP loops as preview
-        if (isMain) { try { v.currentTime = 0; } catch (e) {} }  // promoted video restarts from the start of the episode
-        safePlay(v);             // autoplay does not re-fire after a swap — play() explicitly
+        v.loop = !isMain;        // main must NOT loop so 'ended' fires; PiPs loop as previews
+        if (isMain) { try { v.currentTime = 0; } catch (e) {} }  // promoted video restarts from the top
+        if (onScreen) safePlay(v);   // autoplay does not re-fire after a swap: play() explicitly
       });
     }
-
-    function swap() { mainIdx = mainIdx === 0 ? 1 : 0; applyRoles(); }
+    function promote(i) {
+      if (i === mainIdx) return;
+      if (document.fullscreenElement === sceneItem) document.exitFullscreen().catch(function () {});
+      mainIdx = i;
+      applyRoles();
+    }
 
     videos.forEach(function (v, i) {
-      v.addEventListener('ended', function () { if (i === mainIdx) swap(); }); // only active advances
+      if (v) v.addEventListener('ended', function () { if (i === mainIdx) promote((i + 1) % items.length); });
     });
     items.forEach(function (it, i) {
-      it.addEventListener('click', function () { if (i !== mainIdx) swap(); }); // click PiP to promote
+      it.addEventListener('click', function () { if (i !== mainIdx) promote(i); });
     });
 
     applyRoles();
+    loadScene();
+  })();
+  </script>
+  <script>
+  // Results charts: each [data-chart] card is built from DATA below (numbers copied from the
+  // tables under each card, which remain the source of record). Bars grow in when scrolled
+  // into view and again on every tab switch.
+  (function () {
+    var cards = document.querySelectorAll('.bar-card[data-chart]');
+    if (!cards.length) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function row(name, detail, v, hl) { return { name: name, detail: detail, v: v, hl: !!hl }; }
+    var fmt1 = function (x) { return x.toFixed(1); };
+    var of20 = function (x) { return x + '/20'; };
+    var sec = function (x) { return x.toFixed(1) + ' s'; };
+
+    // v arrays follow each chart's `metrics` order. null = not defined (e.g. no successes).
+    var DATA = {
+      tiers: {
+        kicker: 'T-shirt folding · 20 real-world trials per bar · 240 s timeout',
+        metrics: [
+          { label: 'Throughput', axis: 'Shirts folded per hour', fmt: fmt1,
+            title: 'More shirts folded per hour, at every tier.',
+            note: 'Successful folds divided by total evaluation time; time spent on failed trials counts too.',
+            takeaway: 'As noisier demonstrations enter the training pool, vanilla BC falls from 31.6 to 0 shirts per hour. WARP-BC goes 56.3 → 27.4 → 16.3.' },
+          { label: 'Success', axis: 'Successful trials (of 20)', fmt: of20, max: 20,
+            title: 'WARP-BC keeps succeeding as the data gets noisier.',
+            note: 'Trials that finish the fold before the 240 s timeout.',
+            takeaway: 'On the noisiest tier, WARP-BC succeeds in 14 of 20 trials. Vanilla BC succeeds in none.' },
+          { label: 'Time to fold', axis: 'Mean time-to-completion (s) · shorter is better', fmt: sec, max: 240,
+            title: 'And it finishes faster.',
+            note: 'Mean over successful trials only. Vanilla BC has no successful trials on ≤120 s demos.',
+            takeaway: 'On the cleanest tier, WARP-BC folds in 63.9 s on average versus 113.8 s for vanilla BC.' }
+        ],
+        groups: [
+          { label: 'Demos ≤ 60 s (cleanest)', rows: [row('Vanilla BC', '100% of chunks kept', [31.6, 20, 113.8]), row('WARP-BC', '35.7% kept', [56.3, 20, 63.9], 1)] },
+          { label: 'Demos ≤ 90 s', rows: [row('Vanilla BC', '100% kept', [1.5, 2, 199.0]), row('WARP-BC', '34.4% kept', [27.4, 19, 118.8], 1)] },
+          { label: 'Demos ≤ 120 s (noisiest)', rows: [row('Vanilla BC', '100% kept', [0.0, 0, null]), row('WARP-BC', '22.5% kept', [16.3, 14, 117.4], 1)] }
+        ]
+      },
+      baselines: {
+        kicker: 'T-shirt folding · augmented corpora D₄ and D₅ · 20 trials per bar',
+        metrics: [
+          { label: 'Throughput', axis: 'Shirts folded per hour', fmt: fmt1,
+            title: 'Highest throughput on both tiers, without human labels.',
+            note: 'SARM uses human-annotated subtask boundaries; every other method treats the data as unannotated.',
+            takeaway: 'On the noisier D₅, WARP-BC reaches 44.6 shirts per hour. The next best, DemInf, reaches 25.3. SARM and SCIZOR drop to about 1.5.' },
+          { label: 'Success', axis: 'Successful trials (of 20)', fmt: of20, max: 20,
+            title: 'The only method at 20/20 on both tiers.',
+            note: 'Trials that finish the fold before the 240 s timeout.',
+            takeaway: 'SARM and SCIZOR succeed in 2 of 20 trials on D₅. DemInf holds 18 of 20; WARP-BC holds 20 of 20.' },
+          { label: 'Time to fold', axis: 'Mean time-to-completion (s) · shorter is better', fmt: sec, max: 240,
+            title: 'Fastest on both tiers.',
+            note: 'Mean over successful trials only.',
+            takeaway: 'WARP-BC folds in 71.2 s on D₄ and 80.7 s on D₅. The next fastest takes 89.6 s and 115.8 s.' }
+        ],
+        groups: [
+          { label: 'D₄ = demos ≤ 60 s + annotated set', rows: [
+            row('SARM', 'Human stage labels · 78.5% kept', [34.9, 19, 90.5]), row('DemInf', '45.6% kept', [35.2, 19, 89.6]),
+            row('SCIZOR', '77.9% kept', [32.4, 19, 98.4]), row('WARP-BC', '45.6% kept', [50.6, 20, 71.2], 1)] },
+          { label: 'D₅ = demos ≤ 90 s + annotated set', rows: [
+            row('SARM', 'Human stage labels · 66.6% kept', [1.55, 2, 156.0]), row('DemInf', '33.7% kept', [25.3, 18, 115.8]),
+            row('SCIZOR', '66.7% kept', [1.5, 2, 206.2]), row('WARP-BC', '33.7% kept', [44.6, 20, 80.7], 1)] }
+        ]
+      },
+      bottles: {
+        kicker: 'Bottle-in-bin · 20 real-world trials · 80 bottles per policy · 90 s timeout',
+        metrics: [
+          { label: 'Throughput', axis: 'Bottles placed per hour', fmt: fmt1,
+            title: '1.6× more bottles placed per hour.',
+            note: 'Bottles placed divided by total evaluation time.',
+            takeaway: 'WARP-BC: 237.8 bottles per hour. Vanilla BC: 147.8. Both train on the same demonstrations.' },
+          { label: 'Bottles placed', axis: 'Bottles placed (of 80)', fmt: function (x) { return x + '/80'; }, max: 80,
+            title: 'More bottles in the bin.',
+            note: 'Four bottles per trial across 20 trials.',
+            takeaway: 'WARP-BC places 74 of 80 bottles. Vanilla BC places 59.' },
+          { label: 'Time per bottle', axis: 'Mean time per bottle (s) · shorter is better', fmt: sec, max: 20,
+            title: 'Faster on every bottle.',
+            note: 'Mean placement time per bottle.',
+            takeaway: 'WARP-BC takes 11.3 s per bottle on average. Vanilla BC takes 15.9 s.' }
+        ],
+        rows: [row('Vanilla BC', '100% of chunks kept', [147.8, 59, 15.9]), row('WARP-BC', '30.6% kept', [237.8, 74, 11.3], 1)]
+      },
+      sim: {
+        kicker: 'Simulated bottles-in-bin · the same 512 scenes per method',
+        metrics: [
+          { label: 'Throughput', axis: 'Bottles placed per hour', fmt: String, max: 320,
+            title: 'More bottles placed per hour.',
+            note: 'Bottles placed divided by total test time. Time spent on failed attempts counts too.',
+            takeaway: 'WARP-BC: 290 bottles per hour. Vanilla BC: 237. Random selection at the same 31.5% budget: 230.' },
+          { label: 'All six cleared', axis: 'Scenes with all six bottles placed', fmt: function (x) { return x.toFixed(1) + '%'; }, max: 30,
+            title: 'More scenes cleared completely.',
+            note: 'The share of scenes where every bottle is placed before the time limit.',
+            takeaway: 'WARP-BC clears all six bottles in 25.0% of scenes. Vanilla BC does so in 9.4%.' },
+          { label: 'Bottles / scene', axis: 'Mean bottles placed per scene (of 6)', fmt: function (x) { return x.toFixed(2); }, max: 6,
+            title: 'More bottles placed per scene.',
+            note: 'Six bottles per scene, nominal 60 s horizon.',
+            takeaway: 'WARP-BC places 4.53 bottles per scene on average. Vanilla BC places 3.89.' }
+        ],
+        rows: [
+          row('Vanilla BC', 'All data', [237, 9.4, 3.885]), row('Random', '31.5% kept', [230, 10.9, 3.770]),
+          row('ReWiND', '31.5% kept', [231, 9.4, 3.781]), row('SARM (oracle)', '31.5% kept · simulator stage labels', [265, 20.5, 4.191]),
+          row('WARP-BC (IID)', '31.5% kept', [269, 18.9, 4.285]), row('SCIZOR', '31.5% kept', [270, 19.1, 4.299]),
+          row('DemInf', '31.5% kept', [271, 18.8, 4.332]), row('WARP-BC', '31.5% kept', [290, 25.0, 4.533], 1)
+        ],
+        compact: [0, 1, 7], more: ['Compare all eight methods', 'Show the main comparison']
+      },
+      ablations: {
+        kicker: 'Ablations · T-shirt folding on demos ≤ 90 s · 20 trials per bar',
+        metrics: [
+          { label: 'Throughput', axis: 'Shirts folded per hour', fmt: fmt1,
+            title: 'Every WARP design choice beats its alternative.',
+            note: 'Each group changes one component; the highlighted row is the full WARP recipe.',
+            takeaway: 'The full recipe reaches 27.4 shirts per hour. Binary weighting drops it to 18.0, and IID speed sampling to 22.8.' },
+          { label: 'Success', axis: 'Successful trials (of 20)', fmt: of20, max: 20,
+            title: 'The full recipe succeeds most often.',
+            note: 'Trials that finish the fold before the 240 s timeout.',
+            takeaway: 'WARP succeeds in 19 of 20 trials. Keeping every positively scored chunk (τ = 0) succeeds in 3.' },
+          { label: 'Time to fold', axis: 'Mean time-to-completion (s) · shorter is better', fmt: sec, max: 240,
+            title: 'And it folds fastest.',
+            note: 'Mean over successful trials only.',
+            takeaway: 'WARP folds in 118.8 s on average. Every alternative is slower, from 124.2 s to 201.4 s.' }
+        ],
+        groups: [
+          { label: 'Weighting function', rows: [
+            row('τ = 0', '97.0% kept', [2.3, 3, 201.4]), row('τ = 1, binary', '34.4% kept', [18.0, 16, 139.6]),
+            row('τ = 1, continuous', 'WARP · 34.4% kept', [27.4, 19, 118.8], 1)] },
+          { label: 'RA-BC aggregation', rows: [
+            row('Mean over 1 s chunk', '34.0% kept', [17.4, 15, 127.0]), row('Mean, one-chunk offset', '34.3% kept', [15.9, 14, 124.2]),
+            row('Terminal score at chunk end', 'WARP · 34.4% kept', [27.4, 19, 118.8], 1)] },
+          { label: 'Speed sampler', rows: [
+            row('IID log-normal', '28.7% kept', [22.8, 18, 131.0]),
+            row('AR(1) process', 'WARP · 34.4% kept', [27.4, 19, 118.8], 1)] }
+        ]
+      }
+    };
+
+    function niceMax(x) {
+      var p = Math.pow(10, Math.floor(Math.log10(x || 1)));
+      var steps = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10];
+      for (var i = 0; i < steps.length; i++) if (steps[i] * p >= x * 1.04) return steps[i] * p;
+      return 10 * p;
+    }
+    function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+    function build(card, cfg) {
+      var metric = 0, expanded = false, visible = false, dirty = true, anims = [];
+      card.innerHTML =
+        '<div class="bar-card-head"><div><span class="bar-kicker">' + esc(cfg.kicker) + '</span><h3 class="bar-title"></h3></div>' +
+        '<div class="bar-tabs" role="group" aria-label="Metric">' +
+        cfg.metrics.map(function (m, i) { return '<button type="button" data-i="' + i + '">' + esc(m.label) + '</button>'; }).join('') +
+        '</div></div><p class="bar-note"></p><div class="bar-rows" role="img"></div>' +
+        '<div class="bar-row bar-axis" aria-hidden="true"><span></span><div class="bar-axis-scale"><span>0</span><span class="ax-label"></span><span class="ax-max"></span></div><span></span></div>' +
+        (cfg.compact ? '<button type="button" class="bar-more" aria-expanded="false"></button>' : '') +
+        '<p class="bar-takeaway"></p>';
+      var q = function (sel) { return card.querySelector(sel); };
+      var rowsEl = q('.bar-rows'), more = q('.bar-more');
+
+      function render() {
+        var m = cfg.metrics[metric];
+        var groups = cfg.groups || [{ rows: expanded || !cfg.compact ? cfg.rows : cfg.compact.map(function (i) { return cfg.rows[i]; }) }];
+        var all = [].concat.apply([], groups.map(function (g) { return g.rows; }));
+        var max = m.max || niceMax(Math.max.apply(null, all.map(function (r) { return r.v[metric] || 0; })));
+        var html = '';
+        groups.forEach(function (g) {
+          if (g.label) html += '<div class="bar-group">' + esc(g.label) + '</div>';
+          g.rows.forEach(function (r) {
+            var v = r.v[metric], na = v === null || v === undefined;
+            html += '<div class="bar-row' + (r.hl ? ' hl' : '') + '"><div class="bar-label">' + esc(r.name) + '<small>' + esc(r.detail) + '</small></div>' +
+              '<div class="bar-track"><div class="bar-fill" style="width:' + (na ? 0 : Math.max(0.4, v / max * 100)) + '%"></div></div>' +
+              '<strong class="bar-value' + (na ? ' na' : '') + '">' + (na ? 'no successes' : esc(m.fmt(v))) + '</strong></div>';
+          });
+        });
+        rowsEl.innerHTML = html;
+        rowsEl.setAttribute('aria-label', m.axis + ': ' + all.map(function (r) {
+          var v = r.v[metric]; return r.name + ' ' + (v === null ? 'no successes' : m.fmt(v));
+        }).join('; '));
+        q('.bar-title').textContent = m.title;
+        q('.bar-note').textContent = m.note;
+        q('.ax-label').textContent = m.axis;
+        q('.ax-max').textContent = String(max);
+        q('.bar-takeaway').textContent = m.takeaway;
+        card.querySelectorAll('.bar-tabs button').forEach(function (b, i) {
+          b.classList.toggle('selected', i === metric); b.setAttribute('aria-pressed', String(i === metric));
+        });
+        if (more) { more.textContent = cfg.more[expanded ? 1 : 0]; more.setAttribute('aria-expanded', String(expanded)); }
+        dirty = true; animate(0);
+      }
+      // lead = extra delay before the first bar moves (a beat after scrolling in; none on clicks)
+      function animate(lead) {
+        if (!visible || !dirty) return;
+        dirty = false;
+        anims.forEach(function (a) { a.cancel(); }); anims = [];
+        var motion = !reduced.matches && !!Element.prototype.animate;
+        var fills = rowsEl.querySelectorAll('.bar-fill');
+        var gap = Math.min(45, 280 / Math.max(1, fills.length - 1));
+        if (motion) fills.forEach(function (f, i) {
+          // fill:'backwards' holds each bar collapsed through its delay, so dropping
+          // .bar-pending in the same frame never flashes full-width bars
+          anims.push(f.animate([{ transform: 'scaleX(0.02)' }, { transform: 'scaleX(1)' }],
+            { duration: 720, delay: lead + i * gap, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }));
+        });
+        card.classList.remove('bar-pending');
+      }
+      card.querySelectorAll('.bar-tabs button').forEach(function (b) {
+        b.addEventListener('click', function () { metric = Number(b.dataset.i); render(); });
+      });
+      if (more) more.addEventListener('click', function () { expanded = !expanded; render(); });
+      // Play once the card's top has cleared the bottom quarter of the viewport. A margin, not
+      // a visibility ratio, because on phones some cards are taller than the screen.
+      new IntersectionObserver(function (es) {
+        visible = es[0].isIntersecting;
+        if (visible) animate(200);
+      }, { rootMargin: '0px 0px -25% 0px' }).observe(card);
+      // Re-arm (collapse again) only once the card is fully off-screen, so it never visibly
+      // snaps back to zero; the next scroll-in replays the grow-in.
+      new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) { dirty = true; card.classList.add('bar-pending'); }
+      }).observe(card);
+      card.classList.add('bar-pending');
+      render();
+    }
+
+    cards.forEach(function (card) { var cfg = DATA[card.dataset.chart]; if (cfg) build(card, cfg); });
   })();
   </script>
   <script>

@@ -75,6 +75,15 @@ Regenerate the client with `viser-build-client --out-dir <dir>` (note: `--out-di
 legacy one does not; both support `playbackPath`, `initialCameraPosition/LookAt/Up`,
 and `logCamera`.
 
+### `warp-rm/viser/` is a hand-patched client — do not regenerate it
+The WARP-RM teaser (`warp-rm/index.html`, `#teaser`) embeds `warp-rm/viser/`, a viser 1.0.x
+bundle copied from the XDOF WARP site with a scene-specific "studio" component (lighting,
+rebuilt cell, reconstructed cloth, in-scene camera feeds) that only fits
+`recordings/tshirt_episode.viser`. It has no source here; edits are made directly in
+`client.js` (e.g. the idle camera sway, marked "uynitsuj.github.io patch"). The page drives
+it via same-origin `postMessage` (protocol documented in the teaser script). After editing
+`client.js`, bump the `?v=` in `warp-rm/viser/index.html` to bust caches.
+
 ## Known remaining heavy media (optimize opportunistically, not yet done)
 - `recordings/*.viser` (~639 MB) — no longer fetched on page load (click-to-load), but
   still the bulk of the published bytes. **Publishable size is now ~893 MB against
