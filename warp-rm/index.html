@@ -291,7 +291,8 @@
       position: absolute; top: 22px; left: 26px; right: 22px; z-index: 2;
       display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; pointer-events: none;
     }
-    .hero-top > * { pointer-events: auto; }
+    /* only real controls take the pointer; everything else lets drags reach the scene */
+    .hero-top .hero-btn { pointer-events: auto; }
     .hero-kicker { font-family: var(--title-font); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em; color: #34314e; }
     .hero-hook { font-family: var(--title-font); font-weight: 700; font-size: clamp(1.7rem, 3.4vw, 2.9rem); line-height: 1.08; margin: 0.3rem 0 0.7rem; color: #17181c; }
     /* matches the caption burned into the rollout videos */
@@ -309,7 +310,7 @@
     .hero-btn[aria-pressed="true"] { background: #17181c; color: #fff; border-color: #17181c; }
     /* clears the sheet's peeking top edge (main starts 58px above the viewport bottom) */
     .hero-bottom { position: absolute; left: 18px; right: 18px; bottom: 62px; z-index: 2; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
-    .hero-bottom > * { pointer-events: auto; }
+    .hero-bottom .scene-bar, .hero-bottom .hero-btn { pointer-events: auto; }
     /* just reset view + full screen: the replay loops, and pauses itself when covered */
     .scene-bar {
       display: flex; align-items: center; gap: 6px; padding: 5px; border-radius: 999px; align-self: flex-end;
