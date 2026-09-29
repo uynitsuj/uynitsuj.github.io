@@ -29,6 +29,9 @@
 // three.js's `__THREE_DEVTOOLS__` "observe" events, which is why this file must load
 // before the client bundle.
 //
+// `hideLines=<hex>[,<hex>...]` hides line objects (e.g. camera-frustum wireframes) whose
+// material colour matches; the frustum's image plane is a mesh and stays.
+//
 // And `pinDpr[=<ratio>]` pins the render resolution (default min(devicePixelRatio, 2)).
 // Both clients use drei's PerformanceMonitor, which drops the pixel ratio whenever the
 // frame rate dips, so several tiles on one page go blocky. We wrap the renderer's
@@ -36,7 +39,8 @@
 (function () {
   var query = new URLSearchParams(location.search);
   var spec = query.get('clipAbove'), pin = query.has('pinDpr');
-  if (!spec && !pin) return;
+  var hideLines = (query.get('hideLines') || '').toLowerCase().replace(/#/g, '').split(',').filter(Boolean);
+  if (!spec && !pin && !hideLines.length) return;
   var dpr = parseFloat(query.get('pinDpr'));
   if (!(dpr > 0)) dpr = Math.min(window.devicePixelRatio || 1, 2);
   var parts = (spec || '').split(','), height = parseFloat(parts[0]), color = (parts[1] || '').toLowerCase().replace('#', '');
@@ -57,7 +61,7 @@
       }
     }
   });
-  if (!clip) return;
+  if (!clip && !hideLines.length) return;
   // three.js only ever copies .normal (x,y,z) and .constant out of a clipping plane, so a
   // plain object works; THREE.Plane itself isn't reachable from outside the bundle.
   // Fragments with normal.p + constant < 0 are clipped: here, world y (file z) > height.
@@ -67,6 +71,12 @@
   setInterval(function () {
     scenes.forEach(function (scene) {
       scene.traverse(function (m) {
+        if (hideLines.length && (m.isLine || m.isLineSegments || m.isLine2 || m.isLineSegments2) &&
+            m.material && m.material.color && hideLines.indexOf(m.material.color.getHexString()) >= 0) {
+          m.visible = false;
+          return;
+        }
+        if (!clip) return;
         var mat = m.isMesh && m.material;
         if (!mat || !mat.color || mat.color.getHexString() !== color) return;
         if (mat.clippingPlanes && mat.clippingPlanes.length) return;

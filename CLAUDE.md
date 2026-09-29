@@ -57,6 +57,8 @@ one-line patch at the top of camera-controls' `update(dt)` calling
 in their `index.html`. For `viser-client-1.0.22/` the JS lives zstd-compressed + base64 in
 the loader's `data-c` attribute (with its byte length in `data-cs`): decompress, patch,
 `zstd -19`, re-encode, update `data-cs`. **Regenerating either client drops the patch.**
+After editing the legacy bundle, bump the `?v=` on its `<script src="./assets/index-…js">` in
+`viser-client/index.html`: the hashed filename never changes, so browsers keep the old copy.
 
 Per-demo camera framing is a raw query fragment in `camera:`. To capture one: open the
 scene with `&logCamera`, orbit to the view you want, copy what the console prints.
