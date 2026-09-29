@@ -43,10 +43,20 @@ the CSS is duplicated in both those layouts). To add a scene: drop the `.viser` 
 `recordings/`, add a YAML entry with its real `size:`, done.
 
 Tiles embed the client **directly** in `<iframe loading="lazy">`. Because a 2×2 grid puts
-all four in the viewport at once, they load together: **~147 MB of `.viser` on scroll**,
+all four in the viewport at once, they load together: **~65 MB of `.viser` on scroll**
+(was ~147 MB before the EgoMI/R2R2R camera frames were re-encoded PNG -> JPEG, see below),
 far and away the heaviest thing on the site. This is a deliberate choice (click-to-load was
 tried and removed); if page weight becomes a problem again, click-to-load is the fix —
 swap the iframe for a button and create the iframe in a click handler.
+
+Tiles drift on a slow, per-tile randomized idle camera sway (pauses on input, glides back
+and resumes after 4 s idle). It is opt-in via `&idleSway`, which `about.html` appends to
+every tile URL, and implemented in `/viser-idle-sway.js`. Both hosted clients carry a
+one-line patch at the top of camera-controls' `update(dt)` calling
+`window.__viserIdleSway` (grep the bundle for it) plus a `<script src="/viser-idle-sway.js">`
+in their `index.html`. For `viser-client-1.0.22/` the JS lives zstd-compressed + base64 in
+the loader's `data-c` attribute (with its byte length in `data-cs`): decompress, patch,
+`zstd -19`, re-encode, update `data-cs`. **Regenerating either client drops the patch.**
 
 Per-demo camera framing is a raw query fragment in `camera:`. To capture one: open the
 scene with `&logCamera`, orbit to the view you want, copy what the console prints.
@@ -83,6 +93,14 @@ rebuilt cell, reconstructed cloth, in-scene camera feeds) that only fits
 `client.js` (e.g. the idle camera sway, marked "uynitsuj.github.io patch"). The page drives
 it via same-origin `postMessage` (protocol documented in the teaser script). After editing
 `client.js`, bump the `?v=` in `warp-rm/viser/index.html` to bust caches.
+
+### Shrinking legacy `.viser` recordings (PNG camera frames -> JPEG)
+Most of a legacy recording's bytes are usually camera-frustum frames stored as **PNG** in
+`SceneNodeUpdateMessage.updates._image_data`, not meshes. EgoMI and R2R2R were re-encoded
+to JPEG q85 at full resolution (40 -> 8.5 MB, 71 -> 21 MB), originals kept in
+`~/portfolio-media-originals/recordings/`. Recipe: gunzip, `msgpack.unpackb` (round-trips
+byte-identically), re-encode each PNG `_image_data` as JPEG and set `image_media_type` to
+`image/jpeg`, `msgpack.packb(use_bin_type=True)`, gzip -9. The viewer needs no change.
 
 ## Known remaining heavy media (optimize opportunistically, not yet done)
 - `recordings/*.viser` (~639 MB) — no longer fetched on page load (click-to-load), but

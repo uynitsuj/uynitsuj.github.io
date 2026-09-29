@@ -25,16 +25,19 @@
     only in viser-client-1.0.22, not the legacy client.
     `demo.client` matters: .viser files are not cross-version compatible
     (legacy gzip vs zstd), so each recording plays in the client that wrote it.
+    `idleSway` turns on the slow, per-tile randomized idle camera drift
+    (/viser-idle-sway.js); it pauses on input and resumes after 4 s idle.
+    `pinDpr` stops the clients' adaptive resolution from going blocky when four tiles
+    share the GPU. `demo.sway` scales its swing (default 1). `demo.scene` is a raw query fragment of
+    scene tweaks handled by the same script (e.g. clipAbove=<h>,<hex>).
   {%- endcomment -%}
   {%- capture demo_src -%}
-    https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}
+    https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}&idleSway{%- if demo.sway -%}={{ demo.sway }}{%- endif -%}&pinDpr
     {%- if demo.camera -%}&{{ demo.camera }}{%- endif -%}
+    {%- if demo.scene -%}&{{ demo.scene }}{%- endif -%}
   {%- endcapture -%}
   <figure class="demo-card">
     <div class="demo-wrap">
-      <div class="demo-overlay">
-        <span><i class="fas fa-hand-pointer"></i>&nbsp;Click &amp; drag to explore</span>
-      </div>
       <iframe class="demo-iframe" src="{{ demo_src | strip }}"
               loading="lazy" allowfullscreen title="{{ demo.title | escape }}"></iframe>
     </div>

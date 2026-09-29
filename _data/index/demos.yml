@@ -1,7 +1,7 @@
 # Interactive 3D viser demos (rendered by _includes/sections/about.html)
 #
 # Each entry becomes one tile in the 2x2 .demo-grid. The iframes load directly
-# (lazily on scroll), so the four scenes are ~147 MB of page weight.
+# (lazily on scroll), so the four scenes are ~65 MB of page weight.
 #
 #   title    tile label + iframe title (required)
 #   file     path under /recordings/ (required)
@@ -21,11 +21,18 @@
 #            zstd with an 8-byte size header. Mixing them fails at load time
 #            ("incorrect header check" / "Offset is outside the bounds of the
 #            DataView"). Check which one a new recording needs before shipping.
+#   sway     optional idle camera-sway scale (default 1 = +/-10-17 deg azimuth). Use a small
+#            value for tight, close-in framings (e.g. a camera inside the robot cell), or the
+#            sway swings the view onto the cell walls.
+#   scene    optional raw query fragment (NO leading &) of scene tweaks from
+#            /viser-idle-sway.js. `clipAbove=<h>,<hex>` cuts meshes of material colour <hex>
+#            above height <h> m; the YAM cell tiles use it to drop the top 8020 rails
+#            (the frame is one #999ead mesh; its top rails sit at 1.64-1.68 m).
 
 - title: Egocentric Manipulation Interface (EgoMI)
   file: egomi/recording_20251022_210201.viser
   kind: real
-  size: 40 MB
+  size: 8.5 MB   # camera frames re-encoded PNG -> JPEG q85 (was 40 MB)
   caption: Egocentric Manipulation Interface
   link: https://egocentric-manipulation-interface.github.io/
   client: viser-client
@@ -34,7 +41,7 @@
 - title: Real2Render2Real (R2R2R)
   file: coffee_maker_recording_20250506_191701.viser
   kind: synthetic
-  size: 71 MB
+  size: 21 MB    # camera frames re-encoded PNG -> JPEG q85 (was 71 MB)
   caption: Real2Render2Real
   link: https://real2render2real.com/
   client: viser-client
@@ -44,6 +51,8 @@
   file: tshirt_episode.viser
   kind: real
   client: viser-client-1.0.22
+  sway: 0.35
+  scene: "clipAbove=1.62,999ead"
   size: 21 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/
@@ -53,6 +62,8 @@
   file: bottles_episode.viser
   kind: real
   client: viser-client-1.0.22
+  sway: 0.35
+  scene: "clipAbove=1.62,999ead"
   size: 15 MB
   caption: WARP-RM
   link: https://uynitsuj.github.io/warp-rm/

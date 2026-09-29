@@ -215,97 +215,33 @@
       border: 1px solid #ccc;
     }
 
-    /* Teaser carousel: 3D replay + two videos. One item is maximized; the others float as
-       click-to-promote PiPs stacked in the right margin. Videos auto-advance on end. */
+    /* Two-video teaser carousel (main + click-to-swap PiP, auto-advances on end) */
     .carousel-stage {
       position: relative;
       width: 100%;
       max-width: 1000px;
       margin: 0.75rem auto 1.25rem;      /* main spans the content column, exactly centered */
-      aspect-ratio: 16 / 9;              /* reserves the main item's height */
-      --pip-w: clamp(110px, 13vw, 180px);
+      aspect-ratio: 16 / 9;              /* reserves the main video's height */
     }
     .carousel-item {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);       /* vertically center the main and the PiP stack */
+      transform: translateY(-50%);       /* vertically center both the main and the floating PiP */
       overflow: hidden;
       border-radius: 8px;
       border: 1px solid #ccc;
       background: #000;
-      transition: left 0.5s var(--ease-out), top 0.5s var(--ease-out), width 0.5s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      transition: left 0.5s var(--ease-out), width 0.5s var(--ease-out), box-shadow 0.3s var(--ease-out);
     }
     .carousel-item video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-    /* maximized item fills the centered stage; the others slide out into the right margin */
+    /* maximized video fills the centered stage; the other slides out into the right margin */
     .carousel-item.is-main { left: 0; width: 100%; z-index: 1; box-shadow: 0 10px 34px rgba(0,0,0,0.18); }
     .carousel-item.is-pip {
       left: calc(100% + 18px);
-      width: var(--pip-w);
-      /* --slot is set by JS: -0.5 / +0.5 for two PiPs, centered on the stage midline */
-      top: calc(50% + var(--slot, 0) * (var(--pip-w) * 0.5625 + 14px));
+      width: clamp(110px, 13vw, 180px);
       z-index: 2;
       cursor: pointer;
     }
-
-    /* 3D replay item */
-    .carousel-scene { background: #d8d9e9; }
-    .scene-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; }
-    .scene-mount, .scene-mount iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-    /* interactive whenever maximized; as a PiP, clicks fall through to promote it */
-    .carousel-scene.is-pip .scene-mount { pointer-events: none; }
-    .scene-loading {
-      position: absolute; inset: 0; z-index: 3;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
-      background: #d8d9e9; color: #34314e; font-family: var(--body-font); text-align: center; padding: 1rem;
-    }
-    .scene-loading[hidden] { display: none; }
-    .scene-loading p { margin: 0; font-size: 0.9rem; }
-    .scene-loading progress { appearance: none; -webkit-appearance: none; width: 160px; height: 3px; border: 0; border-radius: 3px; overflow: hidden; background: #b9bad0; }
-    .scene-loading progress::-webkit-progress-bar { background: #b9bad0; }
-    .scene-loading progress::-webkit-progress-value { background: var(--accent); }
-    .scene-loading progress::-moz-progress-bar { background: var(--accent); }
-    .scene-loading-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-    .scene-loading-actions[hidden] { display: none; }
-    .scene-loading-actions button, .scene-bar button {
-      font-family: var(--body-font); cursor: pointer; border: 0;
-    }
-    .scene-loading-actions button {
-      font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 999px;
-      background: #fff; color: #34314e; box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-    }
-    /* instructions only: never intercepts input, fades once the viewer has used the scene */
-    .scene-hint {
-      position: absolute; left: 50%; bottom: 58px; transform: translateX(-50%); z-index: 2; pointer-events: none;
-      font-family: var(--body-font); font-size: 0.78rem; font-weight: 600; padding: 0.42rem 0.9rem; border-radius: 999px;
-      background: rgba(17,17,17,0.6); color: #fff; white-space: nowrap;
-      transition: opacity 0.6s var(--ease-out);
-    }
-    .carousel-scene.has-interacted .scene-hint { opacity: 0; }
-    /* matches the caption burned into the rollout videos */
-    .scene-tag {
-      position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 2; pointer-events: none;
-      font-family: var(--body-font); font-size: 0.95rem; font-weight: 500; white-space: nowrap;
-      color: #fff; background: rgba(20,20,30,0.42); padding: 0.2rem 0.7rem; border-radius: 6px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.35);
-    }
-    .scene-bar {
-      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-      display: flex; align-items: center; gap: 10px; padding: 18px 12px 9px;
-      background: linear-gradient(to top, rgba(20,20,30,0.55), rgba(20,20,30,0));
-      color: #fff; font-family: var(--body-font); font-size: 0.74rem; font-variant-numeric: tabular-nums;
-    }
-    .scene-bar button {
-      width: 30px; height: 30px; flex: none; border-radius: 50%;
-      background: rgba(255,255,255,0.16); color: #fff; font-size: 0.8rem;
-    }
-    .scene-bar button:hover:not(:disabled) { background: rgba(255,255,255,0.3); }
-    .scene-bar button:disabled { opacity: 0.45; cursor: wait; }
-    .scene-bar input[type="range"] { flex: 1; min-width: 40px; accent-color: var(--accent); cursor: pointer; }
-    /* chrome belongs to the maximized view only; a PiP is a live, click-to-promote preview */
-    .carousel-scene.is-pip .scene-bar, .carousel-scene.is-pip .scene-hint,
-    .carousel-scene.is-pip .scene-tag { display: none; }
-    .carousel-scene:fullscreen { top: 0; left: 0; width: 100%; height: 100%; transform: none; border: 0; border-radius: 0; }
-    .carousel-scene:fullscreen .scene-frame { aspect-ratio: auto; height: 100%; }
     .carousel-item.is-pip:hover { box-shadow: 0 6px 22px rgba(124,58,237,0.45); }
     .carousel-pip-hint {
       position: absolute; bottom: 7px; left: 7px;
@@ -317,13 +253,102 @@
     .carousel-item.is-pip .carousel-pip-hint { opacity: 0.95; }
     @media (max-width: 900px) {
       /* sidebar hidden / main full-width here: stack the PiP below the main, horizontally centered (avoids it floating off-screen) */
-      .carousel-stage { width: 100%; aspect-ratio: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0.75rem auto 1rem; }
+      .carousel-stage { width: 100%; aspect-ratio: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0.75rem auto 1rem; }
       .carousel-item { position: relative; top: auto; transform: none; transition: box-shadow 0.3s var(--ease-out); }
       .carousel-item.is-main { left: auto; width: 100%; order: 0; }
-      .carousel-item.is-pip  { left: auto; top: auto; width: calc(50% - 5px); order: 1; }
-      .scene-hint { bottom: 52px; font-size: 0.72rem; }
-      .scene-hint-more { display: none; }
-      .scene-tag { font-size: 0.66rem; top: 8px; }
+      .carousel-item.is-pip  { left: auto; width: 48%; align-self: center; order: 1; }
+    }
+
+    /* ---- Full-screen 3D hero -------------------------------------------------------
+       The replay is fixed behind the page; <main> starts one screen down and scrolls up
+       over it as a full-width sheet. The scene ignores the pointer (so the wheel scrolls
+       the page) until "Explore scene" is pressed. Driven by the "3D hero" script. */
+    body { overflow-x: clip; }           /* the sheet's 100vw backdrop must not add a scrollbar */
+    .hero-stage {
+      position: fixed; inset: 12px; z-index: 0; margin: 0;
+      border-radius: 22px; overflow: hidden; background: #d8d9e9;
+      font-family: var(--body-font); color: #17181c;
+      transition: transform 0.7s var(--ease-out), filter 0.7s var(--ease-out);
+    }
+    body.is-reading .hero-stage { transform: scale(0.975); filter: brightness(0.94); }
+    .hero-stage:fullscreen { inset: 0; border-radius: 0; transform: none; filter: none; }
+    .scene-mount, .scene-mount iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+    .scene-mount { pointer-events: none; }
+    .hero-stage.is-exploring .scene-mount { pointer-events: auto; }
+    .scene-loading {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      background: #d8d9e9; color: #34314e; text-align: center; padding: 1rem;
+    }
+    .scene-loading[hidden], .scene-loading-actions[hidden] { display: none; }
+    .scene-loading p { margin: 0; font-size: 0.9rem; }
+    .scene-loading progress { appearance: none; -webkit-appearance: none; width: 160px; height: 3px; border: 0; border-radius: 3px; overflow: hidden; background: #b9bad0; }
+    .scene-loading progress::-webkit-progress-bar { background: #b9bad0; }
+    .scene-loading progress::-webkit-progress-value { background: var(--accent); }
+    .scene-loading progress::-moz-progress-bar { background: var(--accent); }
+    .scene-loading-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .hero-top {
+      position: absolute; top: 22px; left: 26px; right: 22px; z-index: 2;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; pointer-events: none;
+    }
+    .hero-top > * { pointer-events: auto; }
+    .hero-kicker { font-family: var(--title-font); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em; color: #34314e; }
+    .hero-hook { font-family: var(--title-font); font-weight: 700; font-size: clamp(1.7rem, 3.4vw, 2.9rem); line-height: 1.08; margin: 0.3rem 0 0.7rem; color: #17181c; }
+    /* matches the caption burned into the rollout videos */
+    .scene-tag {
+      display: inline-block; font-size: 0.8rem; font-weight: 500; color: #fff;
+      background: rgba(20,20,30,0.42); padding: 0.2rem 0.65rem; border-radius: 6px; text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    }
+    .hero-btn {
+      font: inherit; font-size: 0.82rem; font-weight: 600; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.55rem 1rem;
+      border-radius: 999px; border: 1px solid rgba(52,49,78,0.16); background: rgba(255,255,255,0.74);
+      color: #17181c; cursor: pointer; text-decoration: none; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+    .hero-btn:hover { background: #fff; }
+    .hero-btn[aria-pressed="true"] { background: #17181c; color: #fff; border-color: #17181c; }
+    /* clears the sheet's peeking top edge (main starts 58px above the viewport bottom) */
+    .hero-bottom { position: absolute; left: 18px; right: 18px; bottom: 62px; z-index: 2; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+    .hero-bottom > * { pointer-events: auto; }
+    .scene-bar {
+      display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 999px;
+      background: rgba(20,20,30,0.42); color: #fff; font-size: 0.74rem; font-variant-numeric: tabular-nums;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+    .scene-bar button, .scene-loading-actions button { font-family: var(--body-font); cursor: pointer; border: 0; }
+    .scene-bar button { width: 30px; height: 30px; flex: none; border-radius: 50%; background: rgba(255,255,255,0.16); color: #fff; font-size: 0.8rem; }
+    .scene-bar button:hover:not(:disabled) { background: rgba(255,255,255,0.3); }
+    .scene-bar button:disabled { opacity: 0.45; cursor: wait; }
+    .scene-bar input[type="range"] { flex: 1; min-width: 40px; accent-color: var(--accent); cursor: pointer; }
+    .scene-loading-actions button { font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 999px; background: #fff; color: #34314e; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+    /* TEMP preview (?nobar): no play/scrub, keep reset + full screen as a small pill */
+    .hero-stage.no-bar .scene-bar > :not(#scene-reset):not(#scene-fullscreen) { display: none; }
+    .hero-stage.no-bar .scene-bar { align-self: flex-end; gap: 6px; padding: 5px; }
+    .hero-invite { display: flex; justify-content: space-between; align-items: center; gap: 1rem; color: #34314e; font-size: 0.85rem; padding: 0 4px; }
+    .hero-invite .fa-arrow-down { font-size: 0.75rem; }
+    /* the sheet: <main> begins one screen down, on an opaque full-width backdrop */
+    body > main { position: relative; z-index: 1; margin-top: calc(100svh - 58px); }
+    body > main::before {
+      content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%);
+      background: var(--bg); border-radius: 26px 26px 0 0; box-shadow: 0 -10px 36px rgba(20,20,40,0.13);
+    }
+    .sheet-handle {
+      display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 12px 0 18px;
+      color: var(--muted); font-size: 0.8rem; font-weight: 600; text-decoration: none;
+    }
+    .sheet-handle::before { content: ''; width: 44px; height: 4px; border-radius: 2px; background: #cfccc4; }
+    .sheet-handle:hover { color: var(--ink); }
+    .sidebar { z-index: 2; transition: opacity 0.4s var(--ease-out); }
+    /* the sidebar's opaque panel would sit on top of the hero: show it once the sheet covers it */
+    body:not(.is-covered) .sidebar { opacity: 0; pointer-events: none; }
+    @media (max-width: 700px) {
+      .hero-stage { inset: 8px; border-radius: 16px; }
+      .hero-top { top: 16px; left: 16px; right: 14px; flex-direction: column; }
+      .hero-hook { font-size: 1.6rem; }
+      .scene-tag { font-size: 0.68rem; }
+      .hero-bottom { left: 10px; right: 10px; bottom: 60px; }
+      .hero-hint { display: none; }
+      .hero-invite { justify-content: flex-end; }
     }
 
     /* Animated results charts (built by the "results charts" script from its DATA block).
@@ -752,6 +777,45 @@
   </style>
 </head>
 <body>
+  <!-- Full-screen interactive hero: a replay of a recorded T-shirt fold, played by the
+       patched viser client in ./viser/ (studio lighting, reconstructed cell, in-scene camera
+       feeds). It sits fixed behind the page; <main> scrolls up over it. See "3D hero" script. -->
+  <figure class="hero-stage" id="hero-stage" aria-label="Interactive 3D replay of a recorded T-shirt fold">
+    <div class="scene-mount" id="scene-mount"></div>
+    <div class="scene-loading" id="scene-loading">
+      <p id="scene-status" role="status">Loading the 3D replay&hellip;</p>
+      <progress id="scene-progress" max="100" value="0" aria-label="3D replay download progress"></progress>
+      <div class="scene-loading-actions" id="scene-fallback" hidden>
+        <button type="button" id="scene-retry">Try again</button>
+        <button type="button" data-read-more>Skip to the research</button>
+      </div>
+    </div>
+    <div class="hero-top">
+      <div>
+        <span class="hero-kicker">WARP-RM</span>
+        <p class="hero-hook">Which data is<br>worth imitating?</p>
+        <span class="scene-tag">1x speed, autonomous, trained with WARP-BC</span>
+      </div>
+      <button type="button" class="hero-btn" id="scene-explore" aria-pressed="false" aria-controls="scene-mount">
+        <i class="fas fa-cube"></i><span>Explore scene</span>
+      </button>
+    </div>
+    <div class="hero-bottom">
+      <div class="scene-bar" id="scene-bar">
+        <button type="button" id="scene-play" disabled aria-label="Pause replay"><i class="fas fa-pause"></i></button>
+        <span id="scene-time">0:00</span>
+        <input id="scene-scrub" type="range" min="0" max="1" value="0" step="0.05" disabled aria-label="Scrub the 3D replay">
+        <span id="scene-duration">0:00</span>
+        <button type="button" id="scene-reset" disabled aria-label="Reset view" title="Reset view"><i class="fas fa-rotate-left"></i></button>
+        <button type="button" id="scene-fullscreen" aria-label="Full screen" title="Full screen"><i class="fas fa-expand"></i></button>
+      </div>
+      <div class="hero-invite">
+        <span class="hero-hint" id="hero-hint">Scroll to discover the research.</span>
+        <a href="#title-block" class="hero-btn" data-read-more>Read the research <i class="fas fa-arrow-down"></i></a>
+      </div>
+    </div>
+  </figure>
+
   <nav class="sidebar">
     <ul>
       <li><a href="#overview">Overview</a></li>
@@ -767,6 +831,7 @@
   </nav>
 
   <main>
+    <a class="sheet-handle" href="#title-block" data-read-more>The research behind the replay</a>
     <section id="title-block">
       <div style="margin-top: 20px;"></div>
       <!-- <div class="anon-notice">Anonymous Submission &middot; Double-Blind Review</div> -->
@@ -828,42 +893,13 @@
     <section id="teaser">
       <div class="carousel" id="teaser-carousel">
         <div class="carousel-stage">
-          <!-- Interactive replay of the recorded T-shirt fold, played by the patched viser
-               client in ./viser/ (studio lighting, reconstructed cell, in-scene camera feeds).
-               It talks to this page over same-origin postMessage: see the teaser script. -->
-          <div class="carousel-item is-main carousel-scene" data-idx="0" id="teaser-scene">
-            <div class="scene-frame">
-              <div class="scene-mount" id="scene-mount"></div>
-              <div class="scene-loading" id="scene-loading">
-                <p id="scene-status" role="status">Loading the 3D replay&hellip;</p>
-                <progress id="scene-progress" max="100" value="0" aria-label="3D replay download progress"></progress>
-                <div class="scene-loading-actions" id="scene-fallback" hidden>
-                  <button type="button" id="scene-retry">Try again</button>
-                  <button type="button" id="scene-watch">Watch the video instead</button>
-                </div>
-              </div>
-              <div class="scene-hint" id="scene-hint" aria-hidden="true">
-                <i class="fas fa-hand-pointer"></i>&nbsp;Drag to orbit<span class="scene-hint-more"> &middot; scroll to zoom</span>
-              </div>
-              <div class="scene-tag">1x speed, autonomous, trained with WARP-BC</div>
-              <div class="scene-bar" id="scene-bar">
-                <button type="button" id="scene-play" disabled aria-label="Pause replay"><i class="fas fa-pause"></i></button>
-                <span id="scene-time">0:00</span>
-                <input id="scene-scrub" type="range" min="0" max="1" value="0" step="0.05" disabled aria-label="Scrub the 3D replay">
-                <span id="scene-duration">0:00</span>
-                <button type="button" id="scene-reset" disabled aria-label="Reset view" title="Reset view"><i class="fas fa-rotate-left"></i></button>
-                <button type="button" id="scene-fullscreen" aria-label="Full screen" title="Full screen"><i class="fas fa-expand"></i></button>
-              </div>
-            </div>
-            <div class="carousel-pip-hint">&#9658; 3D replay</div>
+          <div class="carousel-item is-main" data-idx="0">
+            <video data-idx="0" src="media/teaser_rollout.mp4" autoplay muted loop playsinline preload="auto"></video>
+            <div class="carousel-pip-hint">&#9658; Click to view</div>
           </div>
           <div class="carousel-item is-pip" data-idx="1">
-            <video data-idx="1" src="media/teaser_rollout.mp4" poster="media/teaser_poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
-            <div class="carousel-pip-hint">&#9658; T-shirt video</div>
-          </div>
-          <div class="carousel-item is-pip" data-idx="2">
-            <video data-idx="2" src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
-            <div class="carousel-pip-hint">&#9658; Bottles video</div>
+            <video data-idx="1" src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="carousel-pip-hint">&#9658; Click to view</div>
           </div>
         </div>
       </div>
@@ -2004,9 +2040,48 @@
     })();
   </script>
   <script>
-  // Teaser carousel: item 0 is the interactive 3D replay, items 1..n are videos. One item is
-  // maximized, the rest loop as PiP previews; clicking a PiP promotes it. A maximized video
-  // plays once then advances to the next item; the 3D replay never auto-advances.
+  // Teaser carousel: main video plays once then auto-advances to the other; PiP loops
+  // as a live preview; clicking the PiP promotes it. Only the active video drives advance.
+  (function () {
+    var carousel = document.getElementById('teaser-carousel');
+    if (!carousel) return;
+    var items = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-item'));
+    if (items.length < 2) return;
+    var videos = items.map(function (it) { return it.querySelector('video'); });
+    var mainIdx = 0;
+
+    function safePlay(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+
+    function applyRoles() {
+      items.forEach(function (it, i) {
+        var isMain = (i === mainIdx);
+        it.classList.toggle('is-main', isMain);
+        it.classList.toggle('is-pip', !isMain);
+        var v = videos[i];
+        v.muted = true;          // required for programmatic autoplay
+        v.loop = !isMain;        // main must NOT loop so 'ended' fires; PiP loops as preview
+        if (isMain) { try { v.currentTime = 0; } catch (e) {} }  // promoted video restarts from the start of the episode
+        safePlay(v);             // autoplay does not re-fire after a swap — play() explicitly
+      });
+    }
+
+    function swap() { mainIdx = mainIdx === 0 ? 1 : 0; applyRoles(); }
+
+    videos.forEach(function (v, i) {
+      v.addEventListener('ended', function () { if (i === mainIdx) swap(); }); // only active advances
+    });
+    items.forEach(function (it, i) {
+      it.addEventListener('click', function () { if (i !== mainIdx) swap(); }); // click PiP to promote
+    });
+
+    applyRoles();
+  })();
+  </script>
+  <script>
+  // 3D hero: a full-screen replay fixed behind the page, which <main> scrolls up over.
+  // The scene ignores the pointer (so scrolling works) until "Explore scene" is pressed;
+  // scrolling, Esc or pressing it again ends exploring. Once the sheet covers the hero the
+  // replay pauses and stops rendering.
   //
   // The replay runs in ./viser/ (a patched viser client). Protocol, same-origin postMessage:
   //   page -> iframe {source:'xdof-story', type:'play'|'pause'|'seek'{time}|'reset-view'{instant}
@@ -2014,21 +2089,13 @@
   //   iframe -> page {source:'xdof-viser', type:'loading'{progress 0..1}|'ready'{duration}
   //                                        |'studio-ready'|'state'{time,paused}|'error'}
   (function () {
-    var carousel = document.getElementById('teaser-carousel');
-    if (!carousel) return;
-    var items = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-item'));
-    var videos = items.map(function (it) { return it.querySelector('video'); });
-    var sceneItem = document.getElementById('teaser-scene');
-    var SCENE = items.indexOf(sceneItem);
-    var mainIdx = 0;
-
+    var stage = document.getElementById('hero-stage');
+    if (!stage) return;
     function $(id) { return document.getElementById(id); }
-    function safePlay(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-
-    // ---- 3D replay -------------------------------------------------------------------
+    var main = document.querySelector('body > main');
     var iframe = null, loaded = false, studioReady = false, ready = false, timer = 0;
-    var paused = false, userPaused = false, onScreen = false, lastPct = -1;
-    var playBtn = $('scene-play'), scrub = $('scene-scrub'), resetBtn = $('scene-reset');
+    var paused = false, userPaused = false, covered = false, exploring = false, lastPct = -1;
+    var playBtn = $('scene-play'), scrub = $('scene-scrub'), resetBtn = $('scene-reset'), exploreBtn = $('scene-explore');
     var cover = $('scene-loading'), status = $('scene-status'), progress = $('scene-progress');
 
     function send(type, extra) {
@@ -2038,12 +2105,11 @@
       iframe.contentWindow.postMessage(msg, location.origin);
     }
     function fmt(t) { t = Math.max(0, t || 0); var s = Math.floor(t % 60); return Math.floor(t / 60) + ':' + (s < 10 ? '0' : '') + s; }
-    function sceneLive() { return onScreen && !document.hidden; }
+    function live() { return !covered && !document.hidden; }
     function syncScene() {
-      // rendering stops entirely while off-screen or in a background tab
-      send('scene-visibility', { visible: sceneLive() });
+      send('scene-visibility', { visible: live() });
       if (!ready) return;
-      if (sceneLive() && !userPaused) send('play'); else send('pause');
+      if (live() && !userPaused) send('play'); else send('pause');
     }
     function setPlayIcon() {
       playBtn.innerHTML = paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
@@ -2051,20 +2117,14 @@
     }
     function enableControls(on) { [playBtn, scrub, resetBtn].forEach(function (b) { b.disabled = !on; }); }
     function fail() {
-      clearTimeout(timer);
-      enableControls(false);
-      cover.hidden = false;
-      progress.hidden = true;
+      clearTimeout(timer); enableControls(false);
+      cover.hidden = false; progress.hidden = true;
       status.textContent = 'The 3D replay could not load in this browser.';
       $('scene-fallback').hidden = false;
     }
     function maybeReady() {
       if (!loaded || !studioReady || ready) return;
-      ready = true;
-      clearTimeout(timer);
-      enableControls(true);
-      cover.hidden = true;
-      syncScene();
+      ready = true; clearTimeout(timer); enableControls(true); cover.hidden = true; syncScene();
     }
     function loadScene() {
       if (iframe) return;
@@ -2073,11 +2133,10 @@
       cover.hidden = false; progress.hidden = false; progress.value = 0;
       $('scene-fallback').hidden = true;
       status.textContent = 'Loading the 3D replay…';
-      var frame = sceneItem.querySelector('.scene-frame');
-      var aspect = frame.clientWidth / Math.max(1, frame.clientHeight);
+      var aspect = stage.clientWidth / Math.max(1, stage.clientHeight);
       var params = new URLSearchParams({
         playbackPath: new URL('/recordings/tshirt_episode.viser', location.href).href,
-        initialCameraPosition: '-1.249,0,1.95',   // straight-on to the cell (y = 0), same distance/height as the xdof framing
+        initialCameraPosition: '-1.249,0,1.95',   // straight-on to the cell (y = 0)
         initialCameraLookAt: '0.55,0,1.0',
         initialCameraUp: '0,0,1',
         // widen on narrow screens so the whole work cell stays in frame (radians)
@@ -2088,7 +2147,12 @@
       iframe = document.createElement('iframe');
       iframe.title = 'Interactive 3D replay of a recorded T-shirt fold';
       iframe.allowFullscreen = true;
-      iframe.addEventListener('load', function () { syncScene(); });
+      iframe.tabIndex = -1;
+      iframe.addEventListener('load', function () {
+        syncScene();
+        // while exploring, focus is inside the iframe: listen for Esc there too (same origin)
+        try { iframe.contentWindow.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setExploring(false); exploreBtn.focus(); } }); } catch (err) {}
+      });
       iframe.src = new URL('viser/index.html?' + params.toString(), location.href).href;
       $('scene-mount').appendChild(iframe);
       timer = setTimeout(function () { if (!ready) fail(); }, 60000);
@@ -2100,9 +2164,8 @@
       if (!d || d.source !== 'xdof-viser') return;
       if (d.type === 'error') { fail(); return; }
       if (d.type === 'loading' && !ready) {
-        var pct = Math.round((d.progress || 0) * 100);
+        var pct = Math.round((d.progress || 0) * 100), step = Math.floor(pct / 10) * 10;
         progress.value = pct;
-        var step = Math.floor(pct / 10) * 10;
         if (step !== lastPct) { lastPct = step; status.textContent = pct >= 100 ? 'Preparing the 3D scene…' : 'Loading the 3D replay… ' + step + '%'; }
       }
       if (d.type === 'ready') {
@@ -2127,64 +2190,66 @@
     });
     resetBtn.addEventListener('click', function () { send('reset-view', { instant: false }); });
     $('scene-retry').addEventListener('click', function () { if (iframe) iframe.remove(); iframe = null; loadScene(); });
-    $('scene-watch').addEventListener('click', function () { promote(SCENE === 0 ? 1 : 0); });
+
+    // ---- explore mode ----------------------------------------------------------------
+    function setExploring(on) {
+      on = !!on && !covered;
+      if (on === exploring) return;
+      exploring = on;
+      stage.classList.toggle('is-exploring', on);
+      exploreBtn.setAttribute('aria-pressed', String(on));
+      exploreBtn.querySelector('span').textContent = on ? 'Finish exploring' : 'Explore scene';
+      exploreBtn.querySelector('i').className = on ? 'fas fa-check' : 'fas fa-cube';
+      $('hero-hint').textContent = on ? 'Drag to orbit. Scroll or pinch to zoom.' : 'Scroll to discover the research.';
+      if (iframe) { iframe.tabIndex = on ? 0 : -1; if (on) iframe.focus({ preventScroll: true }); }
+    }
+    exploreBtn.addEventListener('click', function () { setExploring(!exploring); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && exploring && !document.fullscreenElement) { setExploring(false); exploreBtn.focus(); }
+    });
 
     var fsBtn = $('scene-fullscreen');
     fsBtn.hidden = !document.fullscreenEnabled;
     fsBtn.addEventListener('click', function () {
       if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
-      else sceneItem.requestFullscreen().catch(function () {});
+      else stage.requestFullscreen().catch(function () {});
     });
     document.addEventListener('fullscreenchange', function () {
-      var fs = document.fullscreenElement === sceneItem;
+      var fs = document.fullscreenElement === stage;
       fsBtn.innerHTML = fs ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
       fsBtn.setAttribute('aria-label', fs ? 'Exit full screen' : 'Full screen');
+      setExploring(fs);   // in full screen there is no page to scroll, so orbit directly
     });
 
-    // Pointer input inside the iframe never reaches this page, but the first press moves focus
-    // into it and blurs this window: use that to retire the "drag to orbit" hint.
-    window.addEventListener('blur', function () {
-      if (iframe && document.activeElement === iframe) sceneItem.classList.add('has-interacted');
-    });
-
-    new IntersectionObserver(function (entries) {
-      onScreen = entries[0].isIntersecting;
-      syncScene();
-      videos.forEach(function (v) { if (v) { if (onScreen) safePlay(v); else v.pause(); } });
-    }, { threshold: 0 }).observe(carousel);
+    // ---- scroll: reading state, sheet coverage -----------------------------------------
+    function readMore(e) {
+      if (e) e.preventDefault();
+      if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+      setExploring(false);
+      window.scrollTo({ top: main.getBoundingClientRect().top + scrollY, behavior: 'smooth' });
+    }
+    document.querySelectorAll('[data-read-more]').forEach(function (a) { a.addEventListener('click', readMore); });
+    var frame = 0;
+    function onScroll() {
+      frame = 0;
+      document.body.classList.toggle('is-reading', scrollY > 24);
+      if (scrollY > 24) setExploring(false);
+      var nowCovered = main.getBoundingClientRect().top <= 14;
+      if (nowCovered !== covered) {
+        covered = nowCovered;
+        document.body.classList.toggle('is-covered', covered);
+        stage.inert = covered;              // no tabbing into a hidden scene
+        stage.setAttribute('aria-hidden', String(covered));
+        syncScene();
+      }
+    }
+    window.addEventListener('scroll', function () { if (!frame) frame = requestAnimationFrame(onScroll); }, { passive: true });
+    window.addEventListener('resize', onScroll);
     document.addEventListener('visibilitychange', syncScene);
 
-    // ---- carousel roles --------------------------------------------------------------
-    function applyRoles() {
-      var slot = 0, pips = items.length - 1;
-      items.forEach(function (it, i) {
-        var isMain = (i === mainIdx);
-        it.classList.toggle('is-main', isMain);
-        it.classList.toggle('is-pip', !isMain);
-        it.style.setProperty('--slot', isMain ? 0 : (slot++ - (pips - 1) / 2));
-        var v = videos[i];
-        if (!v) return;
-        v.muted = true;          // required for programmatic autoplay
-        v.loop = !isMain;        // main must NOT loop so 'ended' fires; PiPs loop as previews
-        if (isMain) { try { v.currentTime = 0; } catch (e) {} }  // promoted video restarts from the top
-        if (onScreen) safePlay(v);   // autoplay does not re-fire after a swap: play() explicitly
-      });
-    }
-    function promote(i) {
-      if (i === mainIdx) return;
-      if (document.fullscreenElement === sceneItem) document.exitFullscreen().catch(function () {});
-      mainIdx = i;
-      applyRoles();
-    }
-
-    videos.forEach(function (v, i) {
-      if (v) v.addEventListener('ended', function () { if (i === mainIdx) promote((i + 1) % items.length); });
-    });
-    items.forEach(function (it, i) {
-      it.addEventListener('click', function () { if (i !== mainIdx) promote(i); });
-    });
-
-    applyRoles();
+    // TEMP preview: ?nobar hides the playback bar (see .no-bar CSS)
+    if (new URLSearchParams(location.search).has('nobar')) stage.classList.add('no-bar');
+    onScroll();
     loadScene();
   })();
   </script>
