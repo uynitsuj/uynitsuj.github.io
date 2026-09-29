@@ -310,20 +310,17 @@
     /* clears the sheet's peeking top edge (main starts 58px above the viewport bottom) */
     .hero-bottom { position: absolute; left: 18px; right: 18px; bottom: 62px; z-index: 2; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
     .hero-bottom > * { pointer-events: auto; }
+    /* just reset view + full screen: the replay loops, and pauses itself when covered */
     .scene-bar {
-      display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 999px;
-      background: rgba(20,20,30,0.42); color: #fff; font-size: 0.74rem; font-variant-numeric: tabular-nums;
+      display: flex; align-items: center; gap: 6px; padding: 5px; border-radius: 999px; align-self: flex-end;
+      background: rgba(20,20,30,0.42); color: #fff;
       -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
     }
     .scene-bar button, .scene-loading-actions button { font-family: var(--body-font); cursor: pointer; border: 0; }
     .scene-bar button { width: 30px; height: 30px; flex: none; border-radius: 50%; background: rgba(255,255,255,0.16); color: #fff; font-size: 0.8rem; }
     .scene-bar button:hover:not(:disabled) { background: rgba(255,255,255,0.3); }
     .scene-bar button:disabled { opacity: 0.45; cursor: wait; }
-    .scene-bar input[type="range"] { flex: 1; min-width: 40px; accent-color: var(--accent); cursor: pointer; }
     .scene-loading-actions button { font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 999px; background: #fff; color: #34314e; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
-    /* TEMP preview (?nobar): no play/scrub, keep reset + full screen as a small pill */
-    .hero-stage.no-bar .scene-bar > :not(#scene-reset):not(#scene-fullscreen) { display: none; }
-    .hero-stage.no-bar .scene-bar { align-self: flex-end; gap: 6px; padding: 5px; }
     .hero-invite { display: flex; justify-content: space-between; align-items: center; gap: 1rem; color: #34314e; font-size: 0.85rem; padding: 0 4px; }
     .hero-invite .fa-arrow-down { font-size: 0.75rem; }
     /* the sheet: <main> begins one screen down, on an opaque full-width backdrop */
@@ -333,7 +330,7 @@
       background: var(--bg); border-radius: 26px 26px 0 0; box-shadow: 0 -10px 36px rgba(20,20,40,0.13);
     }
     .sheet-handle {
-      display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 12px 0 18px;
+      display: flex; flex-direction: column; align-items: center; padding: 14px 0 22px;
       color: var(--muted); font-size: 0.8rem; font-weight: 600; text-decoration: none;
     }
     .sheet-handle::before { content: ''; width: 44px; height: 4px; border-radius: 2px; background: #cfccc4; }
@@ -347,7 +344,6 @@
       .hero-hook { font-size: 1.6rem; }
       .scene-tag { font-size: 0.68rem; }
       .hero-bottom { left: 10px; right: 10px; bottom: 60px; }
-      .hero-hint { display: none; }
       .hero-invite { justify-content: flex-end; }
     }
 
@@ -802,16 +798,12 @@
     </div>
     <div class="hero-bottom">
       <div class="scene-bar" id="scene-bar">
-        <button type="button" id="scene-play" disabled aria-label="Pause replay"><i class="fas fa-pause"></i></button>
-        <span id="scene-time">0:00</span>
-        <input id="scene-scrub" type="range" min="0" max="1" value="0" step="0.05" disabled aria-label="Scrub the 3D replay">
-        <span id="scene-duration">0:00</span>
         <button type="button" id="scene-reset" disabled aria-label="Reset view" title="Reset view"><i class="fas fa-rotate-left"></i></button>
         <button type="button" id="scene-fullscreen" aria-label="Full screen" title="Full screen"><i class="fas fa-expand"></i></button>
       </div>
       <div class="hero-invite">
-        <span class="hero-hint" id="hero-hint">Scroll to discover the research.</span>
-        <a href="#title-block" class="hero-btn" data-read-more>Read the research <i class="fas fa-arrow-down"></i></a>
+        <span class="hero-hint" id="hero-hint" aria-live="polite"></span>
+        <a href="#title-block" class="hero-btn" data-read-more>Read more <i class="fas fa-arrow-down"></i></a>
       </div>
     </div>
   </figure>
@@ -831,7 +823,7 @@
   </nav>
 
   <main>
-    <a class="sheet-handle" href="#title-block" data-read-more>The research behind the replay</a>
+    <a class="sheet-handle" href="#title-block" data-read-more aria-label="Read more"></a>
     <section id="title-block">
       <div style="margin-top: 20px;"></div>
       <!-- <div class="anon-notice">Anonymous Submission &middot; Double-Blind Review</div> -->
@@ -2079,6 +2071,7 @@
   </script>
   <script>
   // 3D hero: a full-screen replay fixed behind the page, which <main> scrolls up over.
+  // It loops with no playback UI (just reset view + full screen).
   // The scene ignores the pointer (so scrolling works) until "Explore scene" is pressed;
   // scrolling, Esc or pressing it again ends exploring. Once the sheet covers the hero the
   // replay pauses and stops rendering.
@@ -2094,8 +2087,8 @@
     function $(id) { return document.getElementById(id); }
     var main = document.querySelector('body > main');
     var iframe = null, loaded = false, studioReady = false, ready = false, timer = 0;
-    var paused = false, userPaused = false, covered = false, exploring = false, lastPct = -1;
-    var playBtn = $('scene-play'), scrub = $('scene-scrub'), resetBtn = $('scene-reset'), exploreBtn = $('scene-explore');
+    var covered = false, exploring = false, lastPct = -1;
+    var resetBtn = $('scene-reset'), exploreBtn = $('scene-explore');
     var cover = $('scene-loading'), status = $('scene-status'), progress = $('scene-progress');
 
     function send(type, extra) {
@@ -2104,18 +2097,13 @@
       for (var k in extra) msg[k] = extra[k];
       iframe.contentWindow.postMessage(msg, location.origin);
     }
-    function fmt(t) { t = Math.max(0, t || 0); var s = Math.floor(t % 60); return Math.floor(t / 60) + ':' + (s < 10 ? '0' : '') + s; }
     function live() { return !covered && !document.hidden; }
     function syncScene() {
       send('scene-visibility', { visible: live() });
       if (!ready) return;
-      if (live() && !userPaused) send('play'); else send('pause');
+      send(live() ? 'play' : 'pause');
     }
-    function setPlayIcon() {
-      playBtn.innerHTML = paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
-      playBtn.setAttribute('aria-label', paused ? 'Play replay' : 'Pause replay');
-    }
-    function enableControls(on) { [playBtn, scrub, resetBtn].forEach(function (b) { b.disabled = !on; }); }
+    function enableControls(on) { resetBtn.disabled = !on; }
     function fail() {
       clearTimeout(timer); enableControls(false);
       cover.hidden = false; progress.hidden = true;
@@ -2168,26 +2156,10 @@
         progress.value = pct;
         if (step !== lastPct) { lastPct = step; status.textContent = pct >= 100 ? 'Preparing the 3D scene…' : 'Loading the 3D replay… ' + step + '%'; }
       }
-      if (d.type === 'ready') {
-        loaded = true;
-        scrub.max = String(Math.max(0.001, d.duration - 0.001));
-        $('scene-duration').textContent = fmt(d.duration);
-        maybeReady();
-      }
+      if (d.type === 'ready') { loaded = true; maybeReady(); }
       if (d.type === 'studio-ready') { studioReady = true; maybeReady(); }
-      if (d.type === 'state') {
-        if (paused !== d.paused) { paused = d.paused; setPlayIcon(); }
-        if (document.activeElement !== scrub) scrub.value = d.time;
-        $('scene-time').textContent = fmt(d.time);
-      }
     });
 
-    playBtn.addEventListener('click', function () { userPaused = !paused; send(paused ? 'play' : 'pause'); });
-    scrub.addEventListener('input', function () {
-      userPaused = true;
-      send('seek', { time: Number(scrub.value) });
-      $('scene-time').textContent = fmt(Number(scrub.value));
-    });
     resetBtn.addEventListener('click', function () { send('reset-view', { instant: false }); });
     $('scene-retry').addEventListener('click', function () { if (iframe) iframe.remove(); iframe = null; loadScene(); });
 
@@ -2200,7 +2172,7 @@
       exploreBtn.setAttribute('aria-pressed', String(on));
       exploreBtn.querySelector('span').textContent = on ? 'Finish exploring' : 'Explore scene';
       exploreBtn.querySelector('i').className = on ? 'fas fa-check' : 'fas fa-cube';
-      $('hero-hint').textContent = on ? 'Drag to orbit. Scroll or pinch to zoom.' : 'Scroll to discover the research.';
+      $('hero-hint').textContent = on ? 'Drag to orbit. Scroll or pinch to zoom.' : '';
       if (iframe) { iframe.tabIndex = on ? 0 : -1; if (on) iframe.focus({ preventScroll: true }); }
     }
     exploreBtn.addEventListener('click', function () { setExploring(!exploring); });
@@ -2247,8 +2219,6 @@
     window.addEventListener('resize', onScroll);
     document.addEventListener('visibilitychange', syncScene);
 
-    // TEMP preview: ?nobar hides the playback bar (see .no-bar CSS)
-    if (new URLSearchParams(location.search).has('nobar')) stage.classList.add('no-bar');
     onScroll();
     loadScene();
   })();
