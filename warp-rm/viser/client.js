@@ -6215,7 +6215,7 @@ function q8A() {
 
   // An invisible ground plane retains contact shadows without a studio sweep.
   const floorGeometry=P.useMemo(()=>new THREE.PlaneGeometry(200,200),[]);
-  const floorMaterial=P.useMemo(()=>new THREE.ShadowMaterial({color:'#34314e',opacity:.18,depthWrite:false}),[]);
+  const floorMaterial=P.useMemo(()=>new THREE.ShadowMaterial({color:'#34314e',opacity:.34,depthWrite:false}),[]);
 
   P.useEffect(() => {
     const receive=event=>{
@@ -6232,7 +6232,7 @@ function q8A() {
     visibility();
     scene.background = studio.background;
     scene.environment = studio.environment;
-    scene.environmentIntensity = .65;
+    scene.environmentIntensity = .38;   // uynitsuj.github.io patch: less fill, deeper shadows (was .65)
     scene.fog = null;
     gl.toneMapping = THREE.ACESFilmicToneMapping;
     gl.toneMappingExposure = 1;
@@ -6377,8 +6377,8 @@ function q8A() {
     y.jsxs('group',{quaternion:[rootRotation[1],rootRotation[2],rootRotation[3],rootRotation[0]],children:[
       y.jsx('mesh',{position:[0,0,-.028],geometry:floorGeometry,material:floorMaterial,receiveShadow:true}),
       y.jsx('primitive',{object:lightTarget}),
-      y.jsx('ambientLight',{intensity:.12,color:'#e4e1f4'}),
-      y.jsx('directionalLight',{position:[-1.5,-2,4.5],target:lightTarget,intensity:1.35,color:'#fff9f1',castShadow:true,'shadow-mapSize':[2048,2048],'shadow-camera-left':-1.5,'shadow-camera-right':1.5,'shadow-camera-top':2,'shadow-camera-bottom':-1.5,'shadow-camera-near':.1,'shadow-camera-far':12,'shadow-bias':-.0003,'shadow-normalBias':.002,'shadow-radius':3.5}),
+      y.jsx('ambientLight',{intensity:.04,color:'#e4e1f4'}),
+      y.jsx('directionalLight',{position:[-1.5,-2,4.5],target:lightTarget,intensity:1.8,color:'#fff9f1',castShadow:true,'shadow-mapSize':[2048,2048],'shadow-camera-left':-1.5,'shadow-camera-right':1.5,'shadow-camera-top':2,'shadow-camera-bottom':-1.5,'shadow-camera-near':.1,'shadow-camera-far':12,'shadow-bias':-.0003,'shadow-normalBias':.002,'shadow-radius':2.5}),
       y.jsx('directionalLight',{position:[1.8,2,3.2],intensity:.55,color:'#c7cdff'}),
       y.jsx('directionalLight',{position:[-3,1,2],intensity:.24,color:'#f2f1ff'}),
       
