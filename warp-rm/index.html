@@ -3,6 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  // Start downloading the 3D hero's recording immediately, in parallel with everything else.
+  // Keep this first in <head>: an inline script waits for any stylesheet linked before it.
+  // The patched viewer in ./viser/ picks this Response up (once) instead of starting its own
+  // fetch after its ~2 MB of JS arrives; see l8A in viser/client.js.
+  (function () {
+    var url = '/recordings/tshirt_episode.viser';
+    var pending = fetch(url, { priority: 'high' });
+    window.__heroViserFetch = function (requested) {
+      if (!pending || String(requested).indexOf(url) < 0) return null;
+      var p = pending; pending = null; return p;
+    };
+  })();
+  </script>
   <meta name="description" content="WARP-RM learns progress from robot videos. Explore real-world results, 512-scene simulation comparisons, and an end-to-end reproduction release with open data, code, checkpoints, and traces.">
   <title>WARP-RM: Warp-Augmented Relative Progress Reward Modeling</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -275,13 +289,21 @@
     .scene-mount, .scene-mount iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
     .scene-mount { pointer-events: none; }
     .hero-stage.is-exploring .scene-mount { pointer-events: auto; }
+    /* sits under the hero text/buttons (z 2) and over the iframe; fades out once live */
     .scene-loading {
-      position: absolute; inset: 0; z-index: 3;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
-      background: #d8d9e9; color: #34314e; text-align: center; padding: 1rem;
+      position: absolute; inset: 0; z-index: 1; background: #d8d9e9; color: #34314e; text-align: center;
+      transition: opacity 0.6s var(--ease-out);
     }
+    .scene-loading.is-done { opacity: 0; pointer-events: none; }
     .scene-loading[hidden], .scene-loading-actions[hidden] { display: none; }
-    .scene-loading p { margin: 0; font-size: 0.9rem; }
+    .scene-poster, .scene-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .scene-loading-pill {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 0.6rem 1rem; border-radius: 14px; background: rgba(255,255,255,0.72);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+    .scene-loading p { margin: 0; font-size: 0.8rem; }
     .scene-loading progress { appearance: none; -webkit-appearance: none; width: 160px; height: 3px; border: 0; border-radius: 3px; overflow: hidden; background: #b9bad0; }
     .scene-loading progress::-webkit-progress-bar { background: #b9bad0; }
     .scene-loading progress::-webkit-progress-value { background: var(--accent); }
@@ -782,12 +804,22 @@
        feeds). It sits fixed behind the page; <main> scrolls up over it. See "3D hero" script. -->
   <figure class="hero-stage" id="hero-stage" aria-label="Interactive 3D replay of a recorded T-shirt fold">
     <div class="scene-mount" id="scene-mount"></div>
+    <!-- Poster: the replay's exact first frame at its starting camera, shown instantly and
+         crossfaded to the live scene once it has loaded. Two crops because the viewer keeps
+         the vertical FOV fixed above aspect 1.55 and the horizontal FOV fixed below it.
+         Regenerate both if the camera, recording or scene styling changes. -->
     <div class="scene-loading" id="scene-loading">
+      <picture class="scene-poster" aria-hidden="true">
+        <source media="(max-aspect-ratio: 155/100)" srcset="media/hero_poster_portrait.jpg">
+        <img src="media/hero_poster.jpg" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="scene-loading-pill">
       <p id="scene-status" role="status">Loading the 3D replay&hellip;</p>
       <progress id="scene-progress" max="100" value="0" aria-label="3D replay download progress"></progress>
       <div class="scene-loading-actions" id="scene-fallback" hidden>
         <button type="button" id="scene-retry">Try again</button>
         <button type="button" data-read-more>Skip to the research</button>
+      </div>
       </div>
     </div>
     <div class="hero-top">
@@ -894,13 +926,13 @@
 
       <div class="affil-logos">
         <a href="https://www.berkeley.edu/" target="_blank" rel="noopener" title="University of California, Berkeley">
-          <img class="affil-logo seal" src="media/logos/berkeley-seal.svg" alt="University of California, Berkeley">
+          <img loading="lazy" decoding="async" class="affil-logo seal" src="media/logos/berkeley-seal.svg" alt="University of California, Berkeley">
         </a>
         <a href="https://www.stanford.edu/" target="_blank" rel="noopener" title="Stanford University">
-          <img class="affil-logo seal" src="media/logos/stanford-seal.svg" alt="Stanford University">
+          <img loading="lazy" decoding="async" class="affil-logo seal" src="media/logos/stanford-seal.svg" alt="Stanford University">
         </a>
         <a href="https://www.xdof.ai/" target="_blank" rel="noopener" title="XDOF">
-          <img class="affil-logo wordmark" src="media/logos/xdof-wordmark.svg" alt="XDOF">
+          <img loading="lazy" decoding="async" class="affil-logo wordmark" src="media/logos/xdof-wordmark.svg" alt="XDOF">
         </a>
       </div>
 
@@ -971,9 +1003,9 @@
       </p>
 
       <div class="noise-row">
-        <figure><img src="media/noise_d1.jpg" alt="T-shirt fold halfway through a 53s demo: flattening"><figcaption><span class="noise-badge">26s of 53s</span> flattening</figcaption></figure>
-        <figure><img src="media/noise_d2.jpg" alt="T-shirt fold halfway through a 62s demo: first sleeve fold"><figcaption><span class="noise-badge">31s of 62s</span> first sleeve fold</figcaption></figure>
-        <figure><img src="media/noise_d3.jpg" alt="T-shirt fold halfway through a 54s demo: second sleeve fold"><figcaption><span class="noise-badge">27s of 54s</span> second sleeve fold</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="media/noise_d1.jpg" alt="T-shirt fold halfway through a 53s demo: flattening"><figcaption><span class="noise-badge">26s of 53s</span> flattening</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="media/noise_d2.jpg" alt="T-shirt fold halfway through a 62s demo: first sleeve fold"><figcaption><span class="noise-badge">31s of 62s</span> first sleeve fold</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="media/noise_d3.jpg" alt="T-shirt fold halfway through a 54s demo: second sleeve fold"><figcaption><span class="noise-badge">27s of 54s</span> second sleeve fold</figcaption></figure>
       </div>
       <p style="text-align:center; color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem;">
         All three frames sit at 50% of their video, yet show different stages of the task. We conjecture that supervising on normalized elapsed time injects noise into task progress estimation models, an issue exacerbated for longer horizon tasks.
@@ -1083,7 +1115,7 @@
           \(\hat{v}\)&nbsp;&lt;&nbsp;0 &rarr; regressing
         </p>
         <figure style="margin: 0.5rem 0 0 0; text-align: center;">
-          <img src="media/warp_rm_architecture.png"
+          <img loading="lazy" decoding="async" src="media/warp_rm_architecture.png"
                alt="WARP-RM architecture: frozen DINOv3 + temporal-diff + transformer + 30-bin categorical head"
                style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
           <figcaption class="method-fig-caption" style="margin-top: 0.6rem; text-align: left;">
@@ -1149,7 +1181,7 @@
       </div>
 
       <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
-        <img src="media/episode_length_histogram.png"
+        <img loading="lazy" decoding="async" src="media/episode_length_histogram.png"
              style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1rem;"
              alt="Stacked histogram of demonstration episode lengths: main dataset and annotated supplement, with tier cutoffs at 60s, 90s and 120s">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
@@ -1166,7 +1198,7 @@
       </figure>
 
       <figure style="margin: 1.5rem auto 0; max-width: 700px; text-align: center;">
-        <img src="media/training_diversity.jpg"
+        <img loading="lazy" decoding="async" src="media/training_diversity.jpg"
              style="width: 100%; max-width: 700px; border-radius: 6px; border: 1px solid var(--hairline); display: block; margin: 0 auto;"
              alt="Grid of 30 randomly sampled frames from the T-shirt-folding dataset showing varied garment colors, workspace surfaces, and arm configurations">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
@@ -1220,7 +1252,7 @@
 
     <section id="ttc-plot">
       <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
-        <img src="media/ttc_distribution.png" alt="Time-to-completion distribution for successful trials across D1, D2, D3" style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
+        <img loading="lazy" decoding="async" src="media/ttc_distribution.png" alt="Time-to-completion distribution for successful trials across D1, D2, D3" style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
           <b>Time-to-completion distribution for successful trials.</b> WARP-BC has lower mean
           completion time among successful trials on \(\mathcal{D}_{1}\) and \(\mathcal{D}_{2}\).
@@ -1424,7 +1456,7 @@
       </details>
 
       <figure style="margin: 1.5rem auto; max-width: 1000px; text-align: center;">
-        <img src="media/ttc_distribution_d4_d5.png"
+        <img loading="lazy" decoding="async" src="media/ttc_distribution_d4_d5.png"
              alt="Time-to-completion distribution for WARP-BC vs SARM, DemInf, and SCIZOR on D4 and D5"
              style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
@@ -1503,7 +1535,7 @@
       </p>
 
       <figure style="margin: 1.5rem auto 0; max-width: 1000px; text-align: center;">
-        <img src="media/bottle_tpb.png" alt="Per-bottle placement-time distribution: Vanilla BC vs WARP-BC"
+        <img loading="lazy" decoding="async" src="media/bottle_tpb.png" alt="Per-bottle placement-time distribution: Vanilla BC vs WARP-BC"
              style="width: 100%; max-width: 1000px; border-radius: 6px; border: 1px solid var(--hairline); background: #fff; padding: 1.5rem;">
         <figcaption style="margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-align: left;">
           <b>Per-bottle placement-time distribution.</b> WARP-BC (blue) places more bottles, and does
@@ -2154,14 +2186,16 @@
     }
     function maybeReady() {
       if (!loaded || !studioReady || ready) return;
-      ready = true; clearTimeout(timer); enableControls(true); cover.hidden = true; syncScene();
+      ready = true; clearTimeout(timer); enableControls(true); syncScene();
+      cover.classList.add('is-done');   // crossfade poster -> live scene
+      setTimeout(function () { cover.hidden = true; }, 700);
       window.dispatchEvent(new Event('hero-settled'));   // media gate: videos may load now
     }
     function loadScene() {
       if (iframe) return;
       loaded = studioReady = ready = false; lastPct = -1;
       enableControls(false);
-      cover.hidden = false; progress.hidden = false; progress.value = 0;
+      cover.hidden = false; cover.classList.remove('is-done'); progress.hidden = false; progress.value = 0;
       $('scene-fallback').hidden = true;
       status.textContent = 'Loading the 3D replay…';
       var aspect = stage.clientWidth / Math.max(1, stage.clientHeight);

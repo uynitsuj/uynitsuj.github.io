@@ -96,6 +96,15 @@ rebuilt cell, reconstructed cloth, in-scene camera feeds) that only fits
 it via same-origin `postMessage` (protocol documented in the teaser script). After editing
 `client.js`, bump the `?v=` in `warp-rm/viser/index.html` to bust caches.
 
+Hero load path (keep it fast): `warp-rm/index.html`'s first `<head>` script starts fetching
+`recordings/tshirt_episode.viser` immediately and the patched `l8A` in `client.js` reuses that
+Response; a poster (`warp-rm/media/hero_poster.jpg` + `_portrait.jpg`, the recording's first
+frame at the starting camera) shows instantly and crossfades to the live scene; page videos
+are held by the "media gate" script until the hero settles. **If the hero camera, recording
+or scene styling changes, re-capture both posters** (reduced-motion + pause + seek 0, hero
+UI and page hidden). The recording's wrist-camera feeds were thinned to 10 fps (top camera
+stays 20 fps: the shirt is rebuilt from it); original in `~/portfolio-media-originals/recordings/`.
+
 ### Shrinking legacy `.viser` recordings (PNG camera frames -> JPEG)
 Most of a legacy recording's bytes are usually camera-frustum frames stored as **PNG** in
 `SceneNodeUpdateMessage.updates._image_data`, not meshes. EgoMI and R2R2R were re-encoded
