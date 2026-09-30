@@ -322,7 +322,9 @@
     .scene-bar button:hover:not(:disabled) { background: rgba(255,255,255,0.3); }
     .scene-bar button:disabled { opacity: 0.45; cursor: wait; }
     .scene-loading-actions button { font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 999px; background: #fff; color: #34314e; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
-    .hero-invite { display: flex; justify-content: space-between; align-items: center; gap: 1rem; color: #34314e; font-size: 0.85rem; padding: 0 4px; }
+    /* Read more sits centered; the explore hint (only shown while exploring) hangs off the left */
+    .hero-invite { position: relative; display: flex; justify-content: center; align-items: center; color: #34314e; font-size: 0.85rem; padding: 0 4px; }
+    .hero-hint { position: absolute; left: 4px; }
     .hero-invite .fa-arrow-down { font-size: 0.75rem; }
     /* the sheet: <main> begins one screen down, on an opaque full-width backdrop */
     body > main { position: relative; z-index: 1; margin-top: calc(100svh - 58px); }
@@ -345,7 +347,8 @@
       .hero-hook { font-size: 1.6rem; }
       .scene-tag { font-size: 0.68rem; }
       .hero-bottom { left: 10px; right: 10px; bottom: 60px; }
-      .hero-invite { justify-content: flex-end; }
+      .hero-invite { flex-direction: column; gap: 6px; }
+      .hero-hint { position: static; }
     }
 
     /* Animated results charts (built by the "results charts" script from its DATA block).
@@ -809,6 +812,43 @@
     </div>
   </figure>
 
+  <script>
+  // Media gate: page videos must not compete with the 3D hero for bandwidth. The markup
+  // loads nothing on its own (preload="none"; autoplay is data-autoplay), and any script's
+  // play()/load() on a video inside <main> is held here until (a) the hero has settled
+  // (ready, failed, or scrolled past; 12 s at the latest) and (b) that video is within
+  // ~1 screen of the viewport. Then the held calls are replayed and later ones pass through.
+  (function () {
+    var P = HTMLMediaElement.prototype, oPlay = P.play, oLoad = P.load;
+    var open = false, released = new WeakSet(), pending = new Map();
+    function managed(el) { return el.tagName === 'VIDEO' && !!el.closest('main') && !released.has(el); }
+    function release(el) {
+      var p = pending.get(el) || {};
+      pending.delete(el); io.unobserve(el); released.add(el);
+      if (el.dataset.preload) el.preload = el.dataset.preload;
+      if (p.load) oLoad.call(el);
+      if (p.play || el.hasAttribute('data-autoplay')) { var r = oPlay.call(el); if (r && r.catch) r.catch(function () {}); }
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (open && e.isIntersecting && pending.has(e.target)) release(e.target); });
+    }, { rootMargin: '100% 0px' });
+    function hold(el, kind) { var p = pending.get(el) || {}; p[kind] = true; pending.set(el, p); io.observe(el); }
+    P.play = function () { if (managed(this)) { hold(this, 'play'); return Promise.resolve(); } return oPlay.apply(this, arguments); };
+    P.load = function () { if (managed(this)) { hold(this, 'load'); return; } return oLoad.apply(this, arguments); };
+    function openGate() {
+      if (open) return;
+      open = true;
+      // re-observe so videos already in range fire now
+      pending.forEach(function (p, el) { io.unobserve(el); io.observe(el); });
+    }
+    window.addEventListener('hero-settled', openGate);
+    setTimeout(openGate, 12000);
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('main video[data-autoplay]').forEach(function (v) { if (!released.has(v)) hold(v, 'play'); });
+    });
+  })();
+  </script>
+
   <nav class="sidebar">
     <ul>
       <li><a href="#overview">Overview</a></li>
@@ -887,11 +927,11 @@
       <div class="carousel" id="teaser-carousel">
         <div class="carousel-stage">
           <div class="carousel-item is-main" data-idx="0">
-            <video data-idx="0" src="media/teaser_rollout.mp4" autoplay muted loop playsinline preload="auto"></video>
+            <video data-idx="0" src="media/teaser_rollout.mp4" data-autoplay muted loop playsinline preload="none" data-preload="auto"></video>
             <div class="carousel-pip-hint">&#9658; Click to view</div>
           </div>
           <div class="carousel-item is-pip" data-idx="1">
-            <video data-idx="1" src="media/bottles_rollout.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <video data-idx="1" src="media/bottles_rollout.mp4" data-autoplay muted loop playsinline preload="none" data-preload="metadata"></video>
             <div class="carousel-pip-hint">&#9658; Click to view</div>
           </div>
         </div>
@@ -956,7 +996,7 @@
       <div class="inspector-wrap">
         <div class="inspector-box-title">Progress Velocity Signal Predicted by WARP Reward Model</div>
         <div class="inspector-video-center">
-          <video id="inspector-video" muted playsinline preload="auto"
+          <video id="inspector-video" muted playsinline preload="none" data-preload="auto"
                  src="media/inspector/ep6974.mp4#t=30"></video>
         </div>
         <div class="inspector-curve-wrap">
@@ -1148,14 +1188,14 @@
 
       <div class="compare-row">
         <div class="compare-cell">
-          <video id="vanilla-video" autoplay muted loop playsinline>
+          <video preload="none" id="vanilla-video" data-autoplay muted loop playsinline>
             <source src="media/grid_under60s_vanilla_bc.mp4" type="video/mp4">
           </video>
           <div class="compare-label vanilla">Vanilla BC</div>
           <div class="compare-metric" id="vanilla-metric">20/20 successes, 113.8s mean time-to-completion</div>
         </div>
         <div class="compare-cell">
-          <video id="warp-video" autoplay muted loop playsinline>
+          <video preload="none" id="warp-video" data-autoplay muted loop playsinline>
             <source src="media/grid_under60s_warp_bc.mp4" type="video/mp4">
           </video>
           <div class="compare-label warp">WARP-BC</div>
@@ -1409,14 +1449,14 @@
 
       <div class="compare-row">
         <div class="compare-cell">
-          <video autoplay muted loop playsinline>
+          <video preload="none" data-autoplay muted loop playsinline>
             <source src="media/bottle_grid_vanilla.mp4" type="video/mp4">
           </video>
           <div class="compare-label vanilla">Vanilla BC</div>
           <div class="compare-metric">59 / 80 bottles &middot; 15.9s per bottle</div>
         </div>
         <div class="compare-cell">
-          <video autoplay muted loop playsinline>
+          <video preload="none" data-autoplay muted loop playsinline>
             <source src="media/bottle_grid_warp.mp4" type="video/mp4">
           </video>
           <div class="compare-label warp">WARP-BC (Ours)</div>
@@ -1508,7 +1548,7 @@
       <figure style="margin: 1.5rem 0 0;">
         <video src="media/rollout_s20260906_vanilla_vs_warp.mp4"
                aria-label="Paired simulation rollout: vanilla BC places two bottles; WARP-BC clears all six"
-               width="902" height="382" autoplay muted loop playsinline preload="metadata"
+               width="902" height="382" data-autoplay muted loop playsinline preload="none" data-preload="metadata"
                style="display: block; width: 100%; height: auto;">
           <a href="media/rollout_s20260906_vanilla_vs_warp.mp4">Download the side-by-side simulation rollout.</a>
         </video>
@@ -2110,10 +2150,12 @@
       cover.hidden = false; progress.hidden = true;
       status.textContent = 'The 3D replay could not load in this browser.';
       $('scene-fallback').hidden = false;
+      window.dispatchEvent(new Event('hero-settled'));
     }
     function maybeReady() {
       if (!loaded || !studioReady || ready) return;
       ready = true; clearTimeout(timer); enableControls(true); cover.hidden = true; syncScene();
+      window.dispatchEvent(new Event('hero-settled'));   // media gate: videos may load now
     }
     function loadScene() {
       if (iframe) return;
@@ -2211,6 +2253,7 @@
       if (nowCovered !== covered) {
         covered = nowCovered;
         document.body.classList.toggle('is-covered', covered);
+        if (covered) window.dispatchEvent(new Event('hero-settled'));   // reading: load what's on screen
         stage.inert = covered;              // no tabbing into a hidden scene
         stage.setAttribute('aria-hidden', String(covered));
         syncScene();
