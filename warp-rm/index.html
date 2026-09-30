@@ -315,7 +315,9 @@
     }
     /* only real controls take the pointer; everything else lets drags reach the scene */
     .hero-top .hero-btn { pointer-events: auto; }
-    .hero-kicker { font-family: var(--title-font); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em; color: #34314e; }
+    .hero-paper { margin: 0; max-width: 34ch; color: #34314e; line-height: 1.35; }
+    .hero-kicker { display: block; font-family: var(--title-font); font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; color: #17181c; }
+    .hero-subtitle { display: block; font-family: var(--title-font); font-weight: 500; font-size: 0.9rem; margin-top: 0.1rem; }
     .hero-hook { font-family: var(--title-font); font-weight: 700; font-size: clamp(1.7rem, 3.4vw, 2.9rem); line-height: 1.08; margin: 0.3rem 0 0.7rem; color: #17181c; }
     /* matches the caption burned into the rollout videos */
     .scene-tag {
@@ -346,7 +348,20 @@
     .scene-loading-actions button { font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 999px; background: #fff; color: #34314e; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
     /* Read more sits centered; the explore hint (only shown while exploring) hangs off the left */
     .hero-invite { position: relative; display: flex; justify-content: center; align-items: center; color: #34314e; font-size: 0.85rem; padding: 0 4px; }
-    .hero-hint { position: absolute; left: 4px; }
+    /* affiliations bottom-left, on the same frosted pill as the hero buttons so they stay
+       legible over whatever the scene puts behind them (blend modes can't reach into the
+       iframe's layer, so a pill it is) */
+    .hero-logos {
+      position: absolute; left: 4px; display: flex; align-items: center; gap: 12px; pointer-events: none;
+      padding: 5px 14px 5px 6px; border-radius: 999px; border: 1px solid rgba(52,49,78,0.12);
+      background: rgba(255,255,255,0.74); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+    .hero-logos .seal { width: 32px; height: 32px; }
+    .hero-logos .wordmark { width: auto; height: 13px; }
+    /* explore instructions sit under the Explore button, only while exploring */
+    .hero-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .hero-hint { font-size: 0.78rem; color: #34314e; background: rgba(255,255,255,0.6); border-radius: 8px; padding: 0.25rem 0.55rem; }
+    .hero-hint:empty { display: none; }
     .hero-invite .fa-arrow-down { font-size: 0.75rem; }
     /* the sheet: <main> begins one screen down, on an opaque full-width backdrop */
     body > main { position: relative; z-index: 1; margin-top: calc(100svh - 58px); }
@@ -369,8 +384,11 @@
       .hero-hook { font-size: 1.6rem; }
       .scene-tag { font-size: 0.68rem; }
       .hero-bottom { left: 10px; right: 10px; bottom: 60px; }
-      .hero-invite { flex-direction: column; gap: 6px; }
-      .hero-hint { position: static; }
+      .hero-invite { flex-direction: column; gap: 10px; }
+      .hero-logos { position: static; gap: 10px; }
+      .hero-logos .seal { width: 28px; height: 28px; }
+      .hero-logos .wordmark { height: 11px; }
+      .hero-actions { align-items: flex-start; }
     }
 
     /* Animated results charts (built by the "results charts" script from its DATA block).
@@ -824,13 +842,16 @@
     </div>
     <div class="hero-top">
       <div>
-        <span class="hero-kicker">WARP-RM</span>
+        <p class="hero-paper"><span class="hero-kicker">WARP-RM</span><span class="hero-subtitle">A Warp-Augmented Relative Progress Reward Model for Data Curation</span></p>
         <p class="hero-hook">Which data is<br>worth imitating?</p>
         <span class="scene-tag">1x speed, autonomous, trained with WARP-BC</span>
       </div>
-      <button type="button" class="hero-btn" id="scene-explore" aria-pressed="false" aria-controls="scene-mount">
-        <i class="fas fa-cube"></i><span>Explore scene</span>
-      </button>
+      <div class="hero-actions">
+        <button type="button" class="hero-btn" id="scene-explore" aria-pressed="false" aria-controls="scene-mount">
+          <i class="fas fa-cube"></i><span>Explore scene</span>
+        </button>
+        <span class="hero-hint" id="hero-hint" aria-live="polite"></span>
+      </div>
     </div>
     <div class="hero-bottom">
       <div class="scene-bar" id="scene-bar">
@@ -838,7 +859,12 @@
         <button type="button" id="scene-fullscreen" aria-label="Full screen" title="Full screen"><i class="fas fa-expand"></i></button>
       </div>
       <div class="hero-invite">
-        <span class="hero-hint" id="hero-hint" aria-live="polite"></span>
+        <!-- small PNG renders of the seals: the SVGs are ~590 KB and would compete with the hero -->
+        <div class="hero-logos">
+          <img src="media/logos/berkeley-seal-120.png" alt="University of California, Berkeley" class="seal" width="40" height="40">
+          <img src="media/logos/stanford-seal-120.png" alt="Stanford University" class="seal" width="40" height="40">
+          <img src="media/logos/xdof-wordmark.svg" alt="XDOF" class="wordmark" width="80" height="16">
+        </div>
         <a href="#title-block" class="hero-btn" data-read-more>Read more <i class="fas fa-arrow-down"></i></a>
       </div>
     </div>
