@@ -88,22 +88,33 @@ legacy one does not; both support `playbackPath`, `initialCameraPosition/LookAt/
 and `logCamera`.
 
 ### `warp-rm/viser/` is a hand-patched client — do not regenerate it
-The WARP-RM teaser (`warp-rm/index.html`, `#teaser`) embeds `warp-rm/viser/`, a viser 1.0.x
-bundle copied from the XDOF WARP site with a scene-specific "studio" component (lighting,
-rebuilt cell, reconstructed cloth, in-scene camera feeds) that only fits
-`recordings/tshirt_episode.viser`. It has no source here; edits are made directly in
-`client.js` (e.g. the idle camera sway, marked "uynitsuj.github.io patch"). The page drives
-it via same-origin `postMessage` (protocol documented in the teaser script). After editing
-`client.js`, bump the `?v=` in `warp-rm/viser/index.html` to bust caches.
+The WARP-RM hero (`warp-rm/index.html`, `#hero-stage`) embeds `warp-rm/viser/`: Josephine's
+(https://www.josephines.world/) studio build of viser 1.0.x from xdof-warp-scene.vercel.app,
+fully minified, plus our patches. It only fits `recordings/tshirt_episode.viser`. Patches, all
+marked "uynitsuj.github.io patch" (grep for them):
+- `uxA` (recording fetch) reuses the page's early `window.__heroViserFetch` download;
+- `Jo.tray` (bin layout) moved 5 cm (y -.387 -> -.437) and lowered (rim .91 -> .875);
+- start of the `O4((eA,cA)=>…)` frame callback: hero camera (park far, fly home on
+  `reveal-scene` from 1.9x out with a wide ~70 deg FOV that narrows late, idle sway, recenter 4 s after input, `reset-view`).
+  Home = the page's initial camera with elevation lowered ~4 deg (`H.home.polar+=.07`).
+  State: `window.__heroCam` (its `.fov` overrides the viewer's per-frame FOV while set);
+- the viewer's per-frame FOV enforcement honours `window.__heroCam.fov`.
+Check edits with `node --input-type=module --check < client.js`: plain `node --check` misses
+errors the browser throws (it bit us with a `{block}` inside a comma expression).
+It loads `../studio/concrete-albedo.webp` (= `warp-rm/studio/`). The page talks to it over
+same-origin `postMessage` (protocol in the "3D hero" script): x-ray view on `xray-ready`, the
+page sends `reveal-scene` once `ready` + `studio-ready`, `reveal-complete` ends it. After
+editing `client.js`, bump the `?v=` in `warp-rm/viser/index.html` to bust caches.
 
 Hero load path (keep it fast): `warp-rm/index.html`'s first `<head>` script starts fetching
-`recordings/tshirt_episode.viser` immediately and the patched `l8A` in `client.js` reuses that
-Response; a poster (`warp-rm/media/hero_poster.jpg` + `_portrait.jpg`, the recording's first
-frame at the starting camera) shows instantly and crossfades to the live scene; page videos
-are held by the "media gate" script until the hero settles. **If the hero camera, recording
-or scene styling changes, re-capture both posters** (reduced-motion + pause + seek 0, hero
-UI and page hidden). The recording's wrist-camera feeds were thinned to 10 fps (top camera
-stays 20 fps: the shirt is rebuilt from it); original in `~/portfolio-media-originals/recordings/`.
+the recording immediately; a poster (`warp-rm/media/hero_poster.jpg` + `_portrait.jpg`, the
+x-ray first frame at the parked camera) shows instantly and crossfades to the live x-ray;
+page videos are held by the "media gate" script until the hero settles. **If the hero camera,
+recording or scene styling changes, re-capture both posters**: load `warp-rm/?holdReveal`
+(skips `reveal-scene`, so the x-ray frame holds), hide `.hero-top,.hero-bottom,body>main,
+.sidebar`, screenshot the iframe at 2048x1024 and at 390x844@2x (FOV breakpoint: aspect 1.1).
+The recording's wrist-camera feeds are thinned to 10 fps (top camera stays 20 fps: the shirt
+is rebuilt from it); originals in `~/portfolio-media-originals/recordings/`.
 
 ### Shrinking legacy `.viser` recordings (PNG camera frames -> JPEG)
 Most of a legacy recording's bytes are usually camera-frustum frames stored as **PNG** in
