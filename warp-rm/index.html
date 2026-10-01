@@ -298,7 +298,7 @@
     .scene-loading[hidden], .scene-loading-actions[hidden] { display: none; }
     .scene-poster, .scene-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
     .scene-loading-pill {
-      position: absolute; left: 50%; top: calc(50% + 74px); transform: translate(-50%, -50%);
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
       display: flex; flex-direction: column; align-items: center; gap: 8px;
       padding: 0.6rem 1rem; border-radius: 14px; background: rgba(255,255,255,0.72);
       -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
@@ -360,9 +360,6 @@
     }
     /* the page's global img rule adds a hairline border + radius: not on hero art */
     .hero-logos img, .scene-poster img { border: 0; border-radius: 0; max-width: none; }
-    /* intro: logos start centred (transform set by the 3D hero script), then glide home */
-    .hero-logos { transition: transform 1.4s cubic-bezier(.4,0,.16,1); transform-origin: center; }
-    .hero-stage.is-intro .hero-logos { transform: var(--logo-intro, none); transition: none; }
     .hero-credit {
       position: absolute; right: 4px; font-size: 0.72rem; color: #34314e; text-decoration: none; pointer-events: auto;
       padding: 0.3rem 0.7rem; border-radius: 999px; background: rgba(255,255,255,0.74);
@@ -839,7 +836,7 @@
   <!-- Full-screen interactive hero: a replay of a recorded T-shirt fold, played by the
        patched viser client in ./viser/ (studio lighting, reconstructed cell, in-scene camera
        feeds). It sits fixed behind the page; <main> scrolls up over it. See "3D hero" script. -->
-  <figure class="hero-stage is-intro" id="hero-stage" aria-label="Interactive 3D replay of a recorded T-shirt fold">
+  <figure class="hero-stage" id="hero-stage" aria-label="Interactive 3D replay of a recorded T-shirt fold">
     <div class="scene-mount" id="scene-mount"></div>
     <!-- Poster: the viewer's x-ray first frame at its parked (far) starting camera, shown
          instantly and crossfaded to the live scene on "xray-ready". Two crops because the
@@ -2241,22 +2238,6 @@
       cover.classList.add('is-done');
       setTimeout(function () { cover.hidden = true; }, 700);
     }
-    // logos: centred while loading, glide to their bottom-left spot on reveal
-    var logos = stage.querySelector('.hero-logos');
-    function placeIntroLogos() {
-      if (!stage.classList.contains('is-intro') || !logos) return;
-      stage.style.setProperty('--logo-intro', 'none');
-      var a = logos.getBoundingClientRect(), b = stage.getBoundingClientRect();
-      var dx = (b.left + b.width / 2) - (a.left + a.width / 2), dy = (b.top + b.height / 2 - 10) - (a.top + a.height / 2);
-      stage.style.setProperty('--logo-intro', 'translate(' + dx + 'px,' + dy + 'px) scale(1.5)');
-    }
-    placeIntroLogos();
-    window.addEventListener('resize', placeIntroLogos);
-    function endIntro() {
-      if (!stage.classList.contains('is-intro')) return;
-      void logos.offsetWidth;                  // commit the centred position before animating
-      stage.classList.remove('is-intro');
-    }
     function finishReveal() {
       if (revealed) return;
       revealed = true; clearTimeout(revealTimer); syncScene();
@@ -2267,7 +2248,6 @@
       showLive();
       // ?holdReveal (dev only): stay on the x-ray first frame, for re-capturing the posters
       if (!/[?&]holdReveal\b/.test(location.search)) send('reveal-scene', { reduced: reducedMotion });   // x-ray -> studio, camera flies in
-      endIntro();
       revealTimer = setTimeout(finishReveal, reducedMotion ? 0 : 4500);   // fallback if no reveal-complete
       syncScene();
       window.dispatchEvent(new Event('hero-settled'));   // media gate: videos may load now
