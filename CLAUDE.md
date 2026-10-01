@@ -96,7 +96,7 @@ marked "uynitsuj.github.io patch" (grep for them):
 - `Jo.tray` (bin layout) moved 5 cm (y -.387 -> -.437) and lowered (rim .91 -> .875);
 - start of the `O4((eA,cA)=>…)` frame callback: hero camera (park far, fly home on
   `reveal-scene` from 1.9x out with a wide ~70 deg FOV that narrows late, idle sway, recenter 4 s after input, `reset-view`).
-  Home = the page's initial camera with elevation lowered ~4 deg (`H.home.polar+=.07`).
+  Home = the page's initial camera with elevation set to 20 deg (`H.home.polar=…`).
   State: `window.__heroCam` (its `.fov` overrides the viewer's per-frame FOV while set);
 - the viewer's per-frame FOV enforcement honours `window.__heroCam.fov`.
 Check edits with `node --input-type=module --check < client.js`: plain `node --check` misses

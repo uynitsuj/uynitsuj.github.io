@@ -5758,7 +5758,7 @@ const now=()=>performance.now()/1e3,sm=x=>x*x*(3-2*x),TAU=2*Math.PI,SPEED=.30*TA
 const pose=()=>({az:K.azimuthAngle,polar:K.polarAngle,dist:K.distance,target:K.getTarget(new e.Vector3())});
 if(H.mode==='init'){
   H.inv=l;H.home=pose();
-  H.home.polar+=.07;   /* ~4 deg shallower than the page's initial camera (elevation ~28 -> ~24 deg) */
+  H.home.polar=Math.PI/2-20*Math.PI/180;   /* home elevation 20 deg above horizontal (page's initial camera is ~28) */
   K.minDistance=H.home.dist*.6;K.maxDistance=H.home.dist*1.5;
   K.minPolarAngle=Math.max(.1,H.home.polar-.35);
   K.minAzimuthAngle=H.home.az-Math.PI/2;K.maxAzimuthAngle=H.home.az+Math.PI/2;
