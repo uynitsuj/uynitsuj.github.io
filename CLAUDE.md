@@ -99,6 +99,12 @@ marked "uynitsuj.github.io patch" (grep for them):
   Home = the page's initial camera with elevation set to 20 deg (`H.home.polar=…`).
   State: `window.__heroCam` (its `.fov` overrides the viewer's per-frame FOV while set);
 - the viewer's per-frame FOV enforcement honours `window.__heroCam.fov`.
+- arm + gripper `MeshPhysicalMaterial` (and the wrist-finish override) made matte: low
+  metalness, roughness ~.6, no clearcoat; the cell frame keeps its sheen.
+- shadow map refreshed whenever the shirt mesh changes (`E.update(...)&&(r.shadowMap.needsUpdate=!0)`).
+  The client sets `shadowMap.autoUpdate=false` and only refreshed on new 20 fps camera frames,
+  while the shirt's shape blends every render frame, so it was self-shadowed by a stale copy of
+  itself: visible colour flicker on held/hanging cloth. Measured: flickering shirt pixels halved.
 Check edits with `node --input-type=module --check < client.js`: plain `node --check` misses
 errors the browser throws (it bit us with a `{block}` inside a comma expression).
 It loads `../studio/concrete-albedo.webp` (= `warp-rm/studio/`). The page talks to it over
