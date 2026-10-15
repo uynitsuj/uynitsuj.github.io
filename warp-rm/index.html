@@ -1020,7 +1020,7 @@
       <div class="tldr">
         <b>TL;DR.</b> WARP-RM is a self-supervised model that learns a dense, signed,
         <span style="color: var(--accent); font-weight: 700;">relative</span> progress signal from raw
-        demonstrations by training on a temporally-warped playback augmentation. For T-shirt folding, curating data with WARP-RM increased throughput from 31.6 shirts folded per hour to 56.3 per hour, a 78% increase. For placing bottles in a bin, curating data with WARP-RM increased throughput from 147.8 bottles per hour to 237.8 per hour, a 60% increase.
+        demonstrations by training on a temporally-warped playback augmentation. For T-shirt folding, curating data with WARP-RM increased throughput from 31.6 shirts folded per hour to 56.3 per hour, a 78% increase. For placing bottles in a bin, curating data with WARP-RM increased throughput from 147.8 bottles per hour to 237.8 per hour, a 60% increase. In 512 paired simulated scenes, curating data with WARP-RM increased the share of scenes with all six bottles placed from 9.4% to 25.0%, a 2.7&times; increase.
       </div>
     </section>
 
@@ -1593,9 +1593,10 @@
 
     <section id="simulation">
       <h1>Simulation: 512 Paired Scenes</h1>
-      <p>On simulated bottles-in-bin, WARP-BC increases throughput from 237 to 290 bottles/hour
-        (<b>22%</b>) while retaining 31.5% of action chunks. It places 4.533 bottles per scene
-        versus 3.885 for vanilla BC, and clears all six bottles in 25.0% of scenes versus 9.4%.</p>
+      <p>On simulated bottles-in-bin, WARP-BC clears all six bottles in <b>25.0%</b> of scenes
+        versus 9.4% for vanilla BC (<b>2.7&times;</b>) while retaining 31.5% of action chunks.
+        It also increases throughput from 237 to 290 bottles/hour (22%) and places 4.533 bottles
+        per scene versus 3.885.</p>
       <p id="sim-protocol">Each method is evaluated on the <b>same 512 scene seeds, with six bottles
         per scene and a nominal 60-second horizon</b>. Curation methods share demonstrations,
         policy architecture, training-step budget, and a 31.5% retention budget; vanilla BC uses all the data.</p>
@@ -2448,24 +2449,24 @@
       sim: {
         kicker: 'Simulated bottles-in-bin · the same 512 scenes per method',
         metrics: [
+          { label: 'All six cleared', axis: 'Scenes with all six bottles placed', fmt: function (x) { return x.toFixed(1) + '%'; }, max: 30,
+            title: '2.7× more scenes cleared completely.',
+            note: 'The share of scenes where every bottle is placed before the time limit.',
+            takeaway: 'WARP-BC clears all six bottles in 25.0% of scenes. Vanilla BC does so in 9.4%; the next best method, SARM with simulator stage labels, in 20.5%.' },
           { label: 'Throughput', axis: 'Bottles placed per hour', fmt: String, max: 320,
             title: 'More bottles placed per hour.',
             note: 'Bottles placed divided by total test time. Time spent on failed attempts counts too.',
             takeaway: 'WARP-BC: 290 bottles per hour. Vanilla BC: 237. Random selection at the same 31.5% budget: 230.' },
-          { label: 'All six cleared', axis: 'Scenes with all six bottles placed', fmt: function (x) { return x.toFixed(1) + '%'; }, max: 30,
-            title: 'More scenes cleared completely.',
-            note: 'The share of scenes where every bottle is placed before the time limit.',
-            takeaway: 'WARP-BC clears all six bottles in 25.0% of scenes. Vanilla BC does so in 9.4%.' },
           { label: 'Bottles / scene', axis: 'Mean bottles placed per scene (of 6)', fmt: function (x) { return x.toFixed(2); }, max: 6,
             title: 'More bottles placed per scene.',
             note: 'Six bottles per scene, nominal 60 s horizon.',
             takeaway: 'WARP-BC places 4.53 bottles per scene on average. Vanilla BC places 3.89.' }
         ],
         rows: [
-          row('Vanilla BC', 'All data', [237, 9.4, 3.885]), row('Random', '31.5% kept', [230, 10.9, 3.770]),
-          row('ReWiND', '31.5% kept', [231, 9.4, 3.781]), row('SARM (oracle)', '31.5% kept · simulator stage labels', [265, 20.5, 4.191]),
-          row('WARP-BC (IID)', '31.5% kept', [269, 18.9, 4.285]), row('SCIZOR', '31.5% kept', [270, 19.1, 4.299]),
-          row('DemInf', '31.5% kept', [271, 18.8, 4.332]), row('WARP-BC', '31.5% kept', [290, 25.0, 4.533], 1)
+          row('Vanilla BC', 'All data', [9.4, 237, 3.885]), row('Random', '31.5% kept', [10.9, 230, 3.770]),
+          row('ReWiND', '31.5% kept', [9.4, 231, 3.781]), row('SARM (oracle)', '31.5% kept · simulator stage labels', [20.5, 265, 4.191]),
+          row('WARP-BC (IID)', '31.5% kept', [18.9, 269, 4.285]), row('SCIZOR', '31.5% kept', [19.1, 270, 4.299]),
+          row('DemInf', '31.5% kept', [18.8, 271, 4.332]), row('WARP-BC', '31.5% kept', [25.0, 290, 4.533], 1)
         ],
         compact: [0, 1, 7], more: ['Compare all eight methods', 'Show the main comparison']
       },
