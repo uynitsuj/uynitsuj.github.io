@@ -701,10 +701,9 @@
       position: relative;
       width: 100%;
     }
-    /* y-axis labels, rendered by MathJax to match the readout. The velocity label sits
-       on the zero line (plot center = 41px in the 100px svg); the cumulative label sits
-       on the 0.5 line (71px in the 140px svg). */
-    .inspector-ylabel, .inspector-ylabel-cum {
+    /* y-axis label, rendered by MathJax to match the readout's \(\hat{v}_t\),
+       vertically centered on the zero line (plot center = 41px in the 100px svg) */
+    .inspector-ylabel {
       position: absolute;
       left: 1px;
       top: 41px;
@@ -713,9 +712,20 @@
       color: #222;
       pointer-events: none;
     }
-    .inspector-ylabel-cum { top: 71px; }
+    /* Cumulative panel: a short title inside the plot, top-left (the curve starts at 0,
+       so that corner is free). The suffix is hidden on narrow screens. */
+    .inspector-cum-title {
+      position: absolute;
+      left: 56px;
+      top: 5px;
+      font-size: 0.78rem;
+      color: #555;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .inspector-charts { display: flex; flex-direction: column; gap: 4px; }
     .inspector-cum-wrap { position: relative; width: 100%; }
-    .inspector-cum { height: 140px; }
+    .inspector-cum { height: 200px; }
     .inspector-curve {
       width: 100%;
       height: 100px;
@@ -735,6 +745,7 @@
       .inspector-video-center video { width: 100%; max-width: 380px; }
       .inspector-readout { position: static; margin-top: 0.5rem; }
       .inspector-controls { flex-direction: column-reverse; align-items: center; gap: 0.4rem; }
+      .inspector-cum-title-more { display: none; }
     }
 
     pre code { font-family: 'JetBrains Mono', Menlo, monospace; }
@@ -1071,33 +1082,35 @@
     <section id="inspector">
       <h1>The progress signal</h1>
       <p>
-        The curve under each video is WARP-RM's output: a dense, per-frame signed progress velocity,
+        The lower curve under each video is WARP-RM's output: a dense, per-frame signed progress velocity,
         \(\hat{v}_{t}\). A value near one represents the reference pace defined by the training labels;
         values near zero suggest stagnation, and negative values suggest regression.
-        The curve above the video is its running integral, \(\int_0^{t}\!\hat{v}\), normalized so
-        each episode ends at one: the cumulative progress the velocity signal implies. Regressions
-        show up as dips and stalls as flat shelves.
+        Above it, the cumulative progress the velocity signal implies: the running integral of
+        \(\hat{v}_{t}\), normalized so each episode ends at one. Regressions show up as dips and
+        stalls as flat shelves.
         <b>Click anywhere on either curve to scrub the video.</b>
       </p>
       <div class="inspector-wrap">
         <div class="inspector-box-title">Progress Signal Predicted by WARP Reward Model</div>
-        <div class="inspector-cum-wrap">
-          <span class="inspector-ylabel-cum">\(\int_0^{t}\!\hat{v}\)</span>
-          <svg class="inspector-curve inspector-cum" id="inspector-cum" preserveAspectRatio="none"></svg>
-        </div>
         <div class="inspector-video-center">
           <video id="inspector-video" muted playsinline preload="none" data-preload="auto"
                  src="media/inspector/ep6974.mp4#t=30"></video>
         </div>
-        <div class="inspector-curve-wrap">
-          <span class="inspector-ylabel">\(\hat{v}_{t}\)</span>
-          <svg class="inspector-curve" id="inspector-curve" preserveAspectRatio="none"></svg>
+        <div class="inspector-charts">
+        <div class="inspector-cum-wrap">
+          <span class="inspector-cum-title">Cumulative progress<span class="inspector-cum-title-more"> &nbsp;&middot;&nbsp; normalized to end at 1</span></span>
+          <svg class="inspector-curve inspector-cum" id="inspector-cum" preserveAspectRatio="none"></svg>
+        </div>
+          <div class="inspector-curve-wrap">
+            <span class="inspector-ylabel">\(\hat{v}_{t}\)</span>
+            <svg class="inspector-curve" id="inspector-curve" preserveAspectRatio="none"></svg>
+          </div>
         </div>
         <div class="inspector-controls">
           <div class="inspector-readout">
             <div>t = <span id="inspector-t">0.0</span>&thinsp;s &nbsp;/&nbsp; <span id="inspector-dur">&mdash;</span>&thinsp;s</div>
             <div>\(\hat{v}_{t}\) &nbsp; <span id="inspector-v-badge" class="badge zero">+0.00</span></div>
-            <div>\(\int_0^{t}\!\hat{v}\) &nbsp; <span id="inspector-int-badge" class="badge cum">0.00</span></div>
+            <div>progress &nbsp; <span id="inspector-int-badge" class="badge cum">0.00</span></div>
           </div>
           <button class="play-btn" id="inspector-play">&#9654; Play</button>
         </div>
@@ -1114,7 +1127,7 @@
         predicted signed progress magnitude \(\hat{v}_{t}\):
         <span style="color: #059669; font-weight: 600;">positive</span> for forward task progress and
         <span style="color: #cc3333; font-weight: 600;">negative</span> for regression.
-        The upper curve is the running integral of \(\hat{v}_{t}\), normalized to end at one.
+        The upper curve is cumulative progress: the running integral of \(\hat{v}_{t}\), normalized to end at one.
         <b>Click on either curve to scrub through the video.</b>
         <span id="inspector-blurb"></span>
       </p>
@@ -1859,7 +1872,7 @@
       // Per-episode default start time so the first frame the viewer sees
       // is the one with narrative interest, not the bin-extract setup.
       const START_T = { ep6974: 30, ep6974_stag: 167.6, ep6874: 0 };
-      const PAD = { l: 56, r: 12, t: 10, b: 28 };
+      const PAD = { l: 44, r: 12, t: 10, b: 28 };
       // Cumulative panel: same horizontal padding (shared x axis), its own vertical padding.
       const CPAD = { t: 10, b: 10 };
       const P_MIN = -0.06, P_MAX = 1.08;
@@ -1879,7 +1892,7 @@
       let curves = null;
       let activeEp = 'ep6974';
       let scrubberEl = null, hoverEl = null;
-      let cumScrubberEl = null, cumHoverEl = null, cumHeight = 140;
+      let cumScrubberEl = null, cumHoverEl = null, cumHeight = 200;
       let plotWidth = 0, plotHeight = 0;
       let vMinPlot = -2, vMaxPlot = 2;
 
@@ -1931,7 +1944,7 @@
         const ep = curves[activeEp];
         const ns = 'http://www.w3.org/2000/svg';
         const rect = svgCum.getBoundingClientRect();
-        cumHeight = rect.height || 140;
+        cumHeight = rect.height || 200;
         svgCum.setAttribute('viewBox', `0 0 ${plotWidth} ${cumHeight}`);
         svgCum.innerHTML = '';
         const dur = ep.duration;
