@@ -657,7 +657,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      min-height: 52px;
+      min-height: 76px;
       margin-top: 0.3rem;
     }
     .inspector-readout {
@@ -680,6 +680,7 @@
     .inspector-readout .badge.pos { background: #059669; }
     .inspector-readout .badge.neg { background: #cc3333; }
     .inspector-readout .badge.zero { background: #eab308; color: #422006; }
+    .inspector-readout .badge.cum { background: #1a1a1a; }
     .play-btn {
       display: inline-block;
       width: 160px;
@@ -700,20 +701,24 @@
       position: relative;
       width: 100%;
     }
-    /* y-axis label, rendered by MathJax to match the readout's \(\hat{v}_t\),
-       vertically centered on the zero line (plot center = 91px in the 200px svg) */
-    .inspector-ylabel {
+    /* y-axis labels, rendered by MathJax to match the readout. The velocity label sits
+       on the zero line (plot center = 41px in the 100px svg); the cumulative label sits
+       on the 0.5 line (71px in the 140px svg). */
+    .inspector-ylabel, .inspector-ylabel-cum {
       position: absolute;
       left: 1px;
-      top: 91px;
+      top: 41px;
       transform: translateY(-50%);
       font-size: 0.95rem;
       color: #222;
       pointer-events: none;
     }
+    .inspector-ylabel-cum { top: 71px; }
+    .inspector-cum-wrap { position: relative; width: 100%; }
+    .inspector-cum { height: 140px; }
     .inspector-curve {
       width: 100%;
-      height: 200px;
+      height: 100px;
       display: block;
       cursor: crosshair;
       background: #fafafa;
@@ -1069,10 +1074,17 @@
         The curve under each video is WARP-RM's output: a dense, per-frame signed progress velocity,
         \(\hat{v}_{t}\). A value near one represents the reference pace defined by the training labels;
         values near zero suggest stagnation, and negative values suggest regression.
-        <b>Click anywhere on the curve to scrub the video.</b>
+        The curve above the video is its running integral, \(\int_0^{t}\!\hat{v}\), normalized so
+        each episode ends at one: the cumulative progress the velocity signal implies. Regressions
+        show up as dips and stalls as flat shelves.
+        <b>Click anywhere on either curve to scrub the video.</b>
       </p>
       <div class="inspector-wrap">
-        <div class="inspector-box-title">Progress Velocity Signal Predicted by WARP Reward Model</div>
+        <div class="inspector-box-title">Progress Signal Predicted by WARP Reward Model</div>
+        <div class="inspector-cum-wrap">
+          <span class="inspector-ylabel-cum">\(\int_0^{t}\!\hat{v}\)</span>
+          <svg class="inspector-curve inspector-cum" id="inspector-cum" preserveAspectRatio="none"></svg>
+        </div>
         <div class="inspector-video-center">
           <video id="inspector-video" muted playsinline preload="none" data-preload="auto"
                  src="media/inspector/ep6974.mp4#t=30"></video>
@@ -1085,6 +1097,7 @@
           <div class="inspector-readout">
             <div>t = <span id="inspector-t">0.0</span>&thinsp;s &nbsp;/&nbsp; <span id="inspector-dur">&mdash;</span>&thinsp;s</div>
             <div>\(\hat{v}_{t}\) &nbsp; <span id="inspector-v-badge" class="badge zero">+0.00</span></div>
+            <div>\(\int_0^{t}\!\hat{v}\) &nbsp; <span id="inspector-int-badge" class="badge cum">0.00</span></div>
           </div>
           <button class="play-btn" id="inspector-play">&#9654; Play</button>
         </div>
@@ -1097,11 +1110,12 @@
       </div>
 
       <p class="inspector-caption-text">
-        Episodes A and B play real teleoperated episodes while the curve shows the dense per-frame
+        Episodes A and B play real teleoperated episodes while the lower curve shows the dense per-frame
         predicted signed progress magnitude \(\hat{v}_{t}\):
         <span style="color: #059669; font-weight: 600;">positive</span> for forward task progress and
         <span style="color: #cc3333; font-weight: 600;">negative</span> for regression.
-        <b>Click on the curve to scrub through the video.</b>
+        The upper curve is the running integral of \(\hat{v}_{t}\), normalized to end at one.
+        <b>Click on either curve to scrub through the video.</b>
         <span id="inspector-blurb"></span>
       </p>
     </section>
@@ -1845,11 +1859,16 @@
       // Per-episode default start time so the first frame the viewer sees
       // is the one with narrative interest, not the bin-extract setup.
       const START_T = { ep6974: 30, ep6974_stag: 167.6, ep6874: 0 };
-      const PAD = { l: 36, r: 12, t: 10, b: 28 };
+      const PAD = { l: 56, r: 12, t: 10, b: 28 };
+      // Cumulative panel: same horizontal padding (shared x axis), its own vertical padding.
+      const CPAD = { t: 10, b: 10 };
+      const P_MIN = -0.06, P_MAX = 1.08;
 
       const $ = id => document.getElementById(id);
       const video = $('inspector-video');
       const svg = $('inspector-curve');
+      const svgCum = $('inspector-cum');
+      const intBadge = $('inspector-int-badge');
       const tBadge = $('inspector-t');
       const durBadge = $('inspector-dur');
       const vBadge = $('inspector-v-badge');
@@ -1860,6 +1879,7 @@
       let curves = null;
       let activeEp = 'ep6974';
       let scrubberEl = null, hoverEl = null;
+      let cumScrubberEl = null, cumHoverEl = null, cumHeight = 140;
       let plotWidth = 0, plotHeight = 0;
       let vMinPlot = -2, vMaxPlot = 2;
 
@@ -1899,6 +1919,84 @@
       }
       function yScale(v) {
         return PAD.t + (1 - (v - vMinPlot) / (vMaxPlot - vMinPlot)) * (plotHeight - PAD.t - PAD.b);
+      }
+
+      function yScaleCum(p) {
+        return CPAD.t + (1 - (p - P_MIN) / (P_MAX - P_MIN)) * (cumHeight - CPAD.t - CPAD.b);
+      }
+
+      // Cumulative panel: the running integral of v̂_t, normalized so the episode ends at 1.
+      // Drawn after the velocity panel so it shares plotWidth (and thus the x axis).
+      function drawCum() {
+        const ep = curves[activeEp];
+        const ns = 'http://www.w3.org/2000/svg';
+        const rect = svgCum.getBoundingClientRect();
+        cumHeight = rect.height || 140;
+        svgCum.setAttribute('viewBox', `0 0 ${plotWidth} ${cumHeight}`);
+        svgCum.innerHTML = '';
+        const dur = ep.duration;
+
+        // Grid + zero line + y labels.
+        for (const p of [0, 0.25, 0.5, 0.75, 1]) {
+          const y = yScaleCum(p);
+          const line = document.createElementNS(ns, 'line');
+          line.setAttribute('x1', PAD.l); line.setAttribute('x2', plotWidth - PAD.r);
+          line.setAttribute('y1', y); line.setAttribute('y2', y);
+          line.setAttribute('stroke', p === 0 ? '#17181c' : '#ccc');
+          line.setAttribute('stroke-width', p === 0 ? 0.9 : 0.5);
+          if (p !== 0) line.setAttribute('stroke-dasharray', '2 3');
+          svgCum.appendChild(line);
+          const lbl = document.createElementNS(ns, 'text');
+          lbl.setAttribute('x', PAD.l - 6); lbl.setAttribute('y', y + 4);
+          lbl.setAttribute('text-anchor', 'end'); lbl.setAttribute('font-size', '10');
+          lbl.setAttribute('fill', '#555'); lbl.setAttribute('font-family', 'sans-serif');
+          lbl.textContent = p === 0 || p === 1 ? p : p.toFixed(2).replace(/0$/, '');
+          svgCum.appendChild(lbl);
+        }
+
+        // Fill under the curve + curve line.
+        const cp = ep.cumPoints;
+        const zeroY = yScaleCum(0).toFixed(1);
+        let d = `M${xScale(cp[0].t, dur).toFixed(1)},${zeroY}`;
+        let pathD = '';
+        for (let i = 0; i < cp.length; i++) {
+          const x = xScale(cp[i].t, dur).toFixed(1), y = yScaleCum(cp[i].v).toFixed(1);
+          d += `L${x},${y}`;
+          pathD += (i === 0 ? 'M' : 'L') + x + ',' + y;
+        }
+        d += `L${xScale(cp[cp.length - 1].t, dur).toFixed(1)},${zeroY}Z`;
+        const fillP = document.createElementNS(ns, 'path');
+        fillP.setAttribute('d', d); fillP.setAttribute('fill', '#17181c'); fillP.setAttribute('fill-opacity', 0.06);
+        svgCum.appendChild(fillP);
+        const curve = document.createElementNS(ns, 'path');
+        curve.setAttribute('d', pathD); curve.setAttribute('fill', 'none');
+        curve.setAttribute('stroke', '#222'); curve.setAttribute('stroke-width', '1.5');
+        svgCum.appendChild(curve);
+
+        // Hover line + dot, then the scrubber on top, mirroring the velocity panel.
+        const hg = document.createElementNS(ns, 'g'); hg.style.display = 'none';
+        const hl = document.createElementNS(ns, 'line');
+        hl.setAttribute('stroke', '#7c3aed'); hl.setAttribute('stroke-width', 1);
+        hl.setAttribute('stroke-dasharray', '3 3'); hl.setAttribute('opacity', 0.6);
+        hl.setAttribute('y1', CPAD.t); hl.setAttribute('y2', cumHeight - CPAD.b);
+        hg.appendChild(hl);
+        const hd = document.createElementNS(ns, 'circle');
+        hd.setAttribute('r', 3.5); hd.setAttribute('fill', '#7c3aed'); hd.setAttribute('fill-opacity', 0.6);
+        hg.appendChild(hd);
+        svgCum.appendChild(hg);
+        cumHoverEl = hg;
+
+        const sg = document.createElementNS(ns, 'g');
+        const sl = document.createElementNS(ns, 'line');
+        sl.setAttribute('stroke', '#F4D35E'); sl.setAttribute('stroke-width', 2);
+        sl.setAttribute('y1', CPAD.t); sl.setAttribute('y2', cumHeight - CPAD.b);
+        sg.appendChild(sl);
+        const sd = document.createElementNS(ns, 'circle');
+        sd.setAttribute('r', 5); sd.setAttribute('fill', '#F4D35E');
+        sd.setAttribute('stroke', '#17181c'); sd.setAttribute('stroke-width', 1.2);
+        sg.appendChild(sd);
+        svgCum.appendChild(sg);
+        cumScrubberEl = sg;
       }
 
       function drawCurve() {
@@ -2009,6 +2107,7 @@
         sg.appendChild(sd);
         svg.appendChild(sg);
         scrubberEl = sg;
+        drawCum();
         updateScrubber();
       }
 
@@ -2027,6 +2126,13 @@
         tBadge.textContent = t.toFixed(1);
         vBadge.textContent = fmtV(v);
         vBadge.className = 'badge ' + (Math.abs(v) < 0.15 ? 'zero' : (v > 0 ? 'pos' : 'neg'));
+        if (cumScrubberEl && ep.cumPoints) {
+          const p = vAtT(ep.cumPoints, t);
+          const cl = cumScrubberEl.querySelector('line'), cd = cumScrubberEl.querySelector('circle');
+          cl.setAttribute('x1', x); cl.setAttribute('x2', x);
+          cd.setAttribute('cx', x); cd.setAttribute('cy', yScaleCum(p));
+          intBadge.textContent = p.toFixed(2);
+        }
       }
 
       let rafActive = false;
@@ -2067,33 +2173,38 @@
         drawCurve();
       }
 
-      // Click on curve to seek.
-      svg.addEventListener('click', e => {
-        if (!curves) return;
-        const rect = svg.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * plotWidth;
-        if (x < PAD.l || x > plotWidth - PAD.r) return;
-        const t = Math.max(0, Math.min(curves[activeEp].duration, xInv(x, curves[activeEp].duration)));
-        video.currentTime = t;
-        updateScrubber();
+      // Click on either curve to seek; hover indicator on each. Both panels share the x axis.
+      const panels = [
+        { el: svg,    hover: () => hoverEl,    pts: ep => ep.points,    y: yScale },
+        { el: svgCum, hover: () => cumHoverEl, pts: ep => ep.cumPoints, y: yScaleCum },
+      ];
+      panels.forEach(({ el, hover, pts, y }) => {
+        el.addEventListener('click', e => {
+          if (!curves) return;
+          const rect = el.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * plotWidth;
+          if (x < PAD.l || x > plotWidth - PAD.r) return;
+          const t = Math.max(0, Math.min(curves[activeEp].duration, xInv(x, curves[activeEp].duration)));
+          video.currentTime = t;
+          updateScrubber();
+        });
+        el.addEventListener('mousemove', e => {
+          const hg = hover();
+          if (!curves || !hg) return;
+          const rect = el.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * plotWidth;
+          if (x < PAD.l || x > plotWidth - PAD.r) { hg.style.display = 'none'; return; }
+          const ep = curves[activeEp];
+          const t = xInv(x, ep.duration);
+          const xs = xScale(t, ep.duration), ys = y(vAtT(pts(ep), t));
+          hg.style.display = '';
+          hg.querySelector('line').setAttribute('x1', xs);
+          hg.querySelector('line').setAttribute('x2', xs);
+          hg.querySelector('circle').setAttribute('cx', xs);
+          hg.querySelector('circle').setAttribute('cy', ys);
+        });
+        el.addEventListener('mouseleave', () => { const hg = hover(); if (hg) hg.style.display = 'none'; });
       });
-      // Hover indicator.
-      svg.addEventListener('mousemove', e => {
-        if (!curves || !hoverEl) return;
-        const rect = svg.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * plotWidth;
-        if (x < PAD.l || x > plotWidth - PAD.r) { hoverEl.style.display = 'none'; return; }
-        const ep = curves[activeEp];
-        const t = xInv(x, ep.duration);
-        const v = vAtT(ep.points, t);
-        const xs = xScale(t, ep.duration), ys = yScale(v);
-        hoverEl.style.display = '';
-        hoverEl.querySelector('line').setAttribute('x1', xs);
-        hoverEl.querySelector('line').setAttribute('x2', xs);
-        hoverEl.querySelector('circle').setAttribute('cx', xs);
-        hoverEl.querySelector('circle').setAttribute('cy', ys);
-      });
-      svg.addEventListener('mouseleave', () => { if (hoverEl) hoverEl.style.display = 'none'; });
 
       // Spacebar binding: once the user interacts with the inspector (and hasn't
       // since clicked something else), the spacebar toggles play/pause here —
@@ -2146,6 +2257,17 @@
 
       // Bootstrap from inlined data — no network fetch required.
       curves = INSPECTOR_CURVES;
+      // Running integral of v̂_t (trapezoid rule), normalized so each episode ends at 1.
+      // The raw integral is not calibrated across episodes, so the per-episode normalization
+      // is what makes the panels comparable.
+      for (const ep of Object.values(curves)) {
+        const pts = ep.points, cum = [0];
+        for (let i = 1; i < pts.length; i++) {
+          cum.push(cum[i - 1] + 0.5 * (pts[i].v + pts[i - 1].v) * (pts[i].t - pts[i - 1].t));
+        }
+        const total = cum[cum.length - 1] || 1;
+        ep.cumPoints = pts.map((p, i) => ({ t: p.t, v: cum[i] / total }));
+      }
       // Second Episode A view: same clip and curve, opened on the stall around 167.6 s.
       curves.ep6974_stag = Object.assign({}, curves.ep6974, { blurb: 'Around 167.6 s the arms fidget and re-grip without advancing the fold, so v̂ sits near zero. The video keeps rolling, but the task is not progressing.' });
       switchEp(activeEp);
