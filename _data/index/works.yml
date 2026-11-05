@@ -19,8 +19,9 @@
       url: https://capgym.github.io/
       venue: ICML 2026
   blurb: >-
-    A benchmark of 100+ robot manipulation tasks for code-writing agents, plus RL fine-tuning that takes
-    a 7B coder from 20% to 72% success and transfers to a real Franka arm.
+    Frontier LLMs write robot control code at a third of human reliability. CaP-Agent0 closes the gap:
+    a training-free harness beats post-trained VLAs with no task-specific data, and RLVR lifts a 7B coder from
+    20% to 72% success, transferring to a real Franka robot.
   repos:
     - { owner: capgym, name: cap-x, stars: 913, forks: 138 }
 
@@ -34,7 +35,7 @@
   blurb: >-
     One smartphone scan and one human demo video become thousands of robot demos, with no
     dynamics simulation or teleoperation. Across 1,050 real-robot trials, policies trained on
-    R2R2R synthetic data match teleop-trained ones at 1/27 the collection time.
+    R2R2R data match teleop-trained ones at 1/27 the collection time.
   repos:
     - { owner: uynitsuj, name: real2render2real, stars: 379, forks: 21 }
 
