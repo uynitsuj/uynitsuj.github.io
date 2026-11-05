@@ -199,10 +199,19 @@
 // post `viser-loop` to the parent once the recording has wrapped (currentTime went backwards)
 // and honour a pending `viser-restart` from the parent by rewinding to the first message
 // (currentIndex=0 makes the client's own tick reset the scene and replay from the start).
-// Does nothing when the client is not embedded.
+// We also post `viser-progress` {t, duration} at most every 120 ms so the page can draw a
+// thin progress line. `hidePlayback` in the query hides the client's own playback bar
+// (play/pause, scrubber, speed; it has a `viser-playback-bar` class patched onto its Paper),
+// since embedded tiles take no input and a speed outside the dropdown's 0.5-8x list, e.g.
+// 3x, renders it blank anyway. Does nothing when the client is not embedded.
 (function () {
   if (window.parent === window) return;
-  var last = -1, pendingRestart = false;
+  if (new URLSearchParams(location.search).has('hidePlayback')) {
+    var css = document.createElement('style');
+    css.textContent = '.viser-playback-bar{display:none !important}';
+    document.head.appendChild(css);
+  }
+  var last = -1, pendingRestart = false, lastProgress = 0;
   window.addEventListener('message', function (e) {
     var d = e.data;
     if (d && typeof d === 'object' && d.type === 'viser-restart') pendingRestart = true;
@@ -222,5 +231,10 @@
       window.parent.postMessage({ type: 'viser-loop', duration: dur }, '*');
     }
     last = st.currentTime;
+    var now = Date.now();
+    if (now - lastProgress > 120) {
+      lastProgress = now;
+      window.parent.postMessage({ type: 'viser-progress', t: st.currentTime, duration: dur }, '*');
+    }
   };
 })();

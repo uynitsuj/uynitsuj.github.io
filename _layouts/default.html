@@ -301,6 +301,25 @@ img { display: block; max-width: 100%; }
   pointer-events: none;
 }
 
+/* thin playback progress line along the front tile's bottom edge (fed by viser-progress) */
+.demo-progress {
+  position: absolute; left: 0; bottom: 0; z-index: 2;
+  height: 2px; width: 0; pointer-events: none;
+  background: var(--accent-hi); opacity: 0.9;
+  transition: width 0.15s linear, opacity 0.6s;
+}
+.demo-card:not([data-slot="0"]) .demo-progress { opacity: 0; }
+
+/* playback-speed pill in the tile's corner (the client's own speed dropdown is hidden) */
+.demo-speed {
+  position: absolute; right: 8px; bottom: 8px; z-index: 2;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.05em; line-height: 1;
+  padding: 0.3em 0.5em; border-radius: 4px;
+  color: var(--tx-2); background: var(--bg-surf); border: 1px solid var(--border);
+  opacity: 0.85; pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
 /* per-tile captions are only the source for the stage caption below */
 .demo-caption { display: none; }
 .demo-stage-caption {

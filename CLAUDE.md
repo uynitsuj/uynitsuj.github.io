@@ -71,17 +71,19 @@ one-line patch at the top of camera-controls' `update(dt)` calling
 in their `index.html`. For `viser-client-1.0.22/` the JS lives zstd-compressed + base64 in
 the loader's `data-c` attribute (with its UTF-8 byte length in `data-cs`): decompress, patch,
 `zstd -19`, re-encode, update `data-cs`. Both clients also carry the `__viserPlaybackTick`
-playback patch (see above) and a `playbackSpeed=<k>` URL param patched onto the speed
+playback patch (see above), a `viser-playback-bar` class on the playback bar's Paper (hidden
+by `/viser-idle-sway.js` when the URL has `hidePlayback`; the page draws its own thin
+progress line from the hook's `viser-progress` messages) and a `playbackSpeed=<k>` URL param patched onto the speed
 dropdown's `useState("1x")` (set per tile with `speed:` in `demos.yml`; the WARP-RM tiles
-run at 3x). **Regenerating either client drops the patches.**
+run at 3x, shown by a `.demo-speed` pill the page draws in the tile's corner). **Regenerating either client drops the patches.**
 After editing the legacy bundle, bump the `?v=` on its `<script src="./assets/index-…js">` in
 `viser-client/index.html`: the hashed filename never changes, so browsers keep the old copy.
 
 Per-demo camera framing is a raw query fragment in `camera:`. To capture one: open the
 scene with `&logCamera`, orbit to the view you want, copy what the console prints.
 
-`kind:` sets the provenance badge under each tile — `real` (green: "Real-world · autonomous",
-with "· N× speed" inserted when `speed:` is not 1) or `synthetic` (purple: "Synthetic · rendered"). Set it on every new demo so
+`kind:` sets the provenance badge under each tile — `real` (green: "Real-world · autonomous";
+the playback speed shows as a small pill in the tile's corner, not in the badge) or `synthetic` (purple: "Synthetic · rendered"). Set it on every new demo so
 viewers can tell a robot rollout from rendered data; `tag:` overrides the badge text.
 
 ### ⚠️ `.viser` files are NOT cross-version compatible

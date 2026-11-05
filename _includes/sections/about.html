@@ -37,13 +37,14 @@
     (/viser-idle-sway.js). `pinDpr` stops the clients' adaptive resolution from going
     blocky when four tiles share the GPU. `demo.sway` scales the swing (default 1).
     `demo.scene` is a raw query fragment of scene tweaks handled by the same script
-    (e.g. clipAbove=<h>,<hex>). `demo.speed` (default 1) is passed as `playbackSpeed=<k>`,
+    (e.g. clipAbove=<h>,<hex>). `hidePlayback` hides the client's own playback bar (the page
+    draws a thin progress line from `viser-progress` messages instead). `demo.speed` (default 1) is passed as `playbackSpeed=<k>`,
     which seeds the clients' speed dropdown (a one-line patch on its useState("1x"); grep
-    the bundle for playbackSpeed), and the real-world badge states any speed other than 1x.
+    the bundle for playbackSpeed); the speed shows as a small pill in the tile's corner.
   {%- endcomment -%}
   {%- assign speed = demo.speed | default: 1 -%}
   {%- capture demo_src -%}
-    https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}&idleSway{%- if demo.sway -%}={{ demo.sway }}{%- endif -%}&pinDpr
+    https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}&idleSway{%- if demo.sway -%}={{ demo.sway }}{%- endif -%}&pinDpr&hidePlayback
     {%- if speed != 1 -%}&playbackSpeed={{ speed }}{%- endif -%}
     {%- if demo.camera -%}&{{ demo.camera }}{%- endif -%}
     {%- if demo.scene -%}&{{ demo.scene }}{%- endif -%}
@@ -52,6 +53,8 @@
     <div class="demo-wrap">
       <iframe class="demo-iframe" src="{{ demo_src | strip }}"
               loading="lazy" tabindex="-1" title="{{ demo.title | escape }}"></iframe>
+      <i class="demo-progress" aria-hidden="true"></i>
+      <span class="demo-speed">{{ speed }}&times;</span>
     </div>
     <figcaption class="demo-caption">
       {% if demo.link %}
@@ -67,11 +70,7 @@
       {%- if demo.tag -%}
         {%- assign tag_text = demo.tag -%}
       {%- elsif demo.kind == 'real' -%}
-        {%- if speed == 1 -%}
-          {%- assign tag_text = 'Real-world &middot; autonomous' -%}
-        {%- else -%}
-          {%- capture tag_text -%}Real-world &middot; {{ speed }}&times; speed &middot; autonomous{%- endcapture -%}
-        {%- endif -%}
+        {%- assign tag_text = 'Real-world &middot; autonomous' -%}
       {%- elsif demo.kind == 'synthetic' -%}
         {%- assign tag_text = 'Synthetic &middot; rendered data' -%}
       {%- endif -%}
@@ -103,8 +102,12 @@
       cap.classList.remove('is-switching');
     }, 250);
   }
+  function setProgress(i, frac) {
+    var bar = cards[i].querySelector('.demo-progress');
+    if (bar) bar.style.width = (Math.max(0, Math.min(1, frac)) * 100).toFixed(2) + '%';
+  }
   function layout() {
-    cards.forEach(function (c, i) { c.setAttribute('data-slot', String((i - cur + n) % n)); });
+    cards.forEach(function (c, i) { c.setAttribute('data-slot', String((i - cur + n) % n)); setProgress(i, 0); });
     showCaption();
     clearTimeout(fallback);
     fallback = setTimeout(advance, FALLBACK_MS);
@@ -127,10 +130,12 @@
   });
   window.addEventListener('message', function (e) {
     var d = e.data;
-    if (!d || typeof d !== 'object' || d.type !== 'viser-loop') return;
+    if (!d || typeof d !== 'object') return;
     var from = -1;
     for (var k = 0; k < n; k++) { try { if (frame(k) === e.source) from = k; } catch (err) {} }
-    if (from === cur && n > 1) advance();
+    if (from < 0) return;
+    if (d.type === 'viser-progress' && d.duration > 0) setProgress(from, d.t / d.duration);
+    else if (d.type === 'viser-loop' && from === cur && n > 1) advance();
   });
   layout();
 })();
