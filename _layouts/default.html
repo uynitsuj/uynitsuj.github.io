@@ -249,7 +249,7 @@ img { display: block; max-width: 100%; }
 .demo-stage {
   position: relative; width: 100%;
   aspect-ratio: 2 / 1;
-  margin-top: 28px;
+  margin-top: 18px;
   overflow: hidden;
   perspective: 1400px;           /* the side tiles turn slightly inward, like a fan */
   --front-w: 46%;                /* front tile width (just under the old grid tile) */
@@ -305,18 +305,20 @@ img { display: block; max-width: 100%; }
 .demo-progress {
   position: absolute; left: 0; bottom: 0; z-index: 2;
   height: 2px; width: 0; pointer-events: none;
-  background: var(--accent-hi); opacity: 0.9;
+  background: var(--accent-hi); opacity: 0.8;
   transition: width 0.15s linear, opacity 0.6s;
 }
 .demo-card:not([data-slot="0"]) .demo-progress { opacity: 0; }
 
 /* playback-speed pill in the tile's corner (the client's own speed dropdown is hidden) */
 .demo-speed {
-  position: absolute; right: 8px; bottom: 8px; z-index: 2;
-  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.05em; line-height: 1;
-  padding: 0.3em 0.5em; border-radius: 4px;
-  color: var(--tx-2); background: var(--bg-surf); border: 1px solid var(--border);
-  opacity: 0.85; pointer-events: none;
+  position: absolute; right: 10px; bottom: 12px; z-index: 2;
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1;
+  padding: 0.35em 0.55em; border-radius: 5px;
+  color: #fff; background: rgba(20, 20, 28, 0.72); border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
   font-variant-numeric: tabular-nums;
 }
 
@@ -325,7 +327,7 @@ img { display: block; max-width: 100%; }
 .demo-stage-caption {
   font-size: 0.74rem; color: var(--tx-muted);
   text-align: center; line-height: 1.55;
-  padding-top: 12px; min-height: 3.6em;
+  padding-top: 8px; min-height: 3.1em;
   transition: opacity 0.25s;
 }
 .demo-stage-caption.is-switching { opacity: 0; }

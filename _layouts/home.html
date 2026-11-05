@@ -165,14 +165,14 @@ img { display: block; max-width: 100%; }
 .section-shell {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px clamp(1.25rem, 5vw, 2.5rem);
+  padding: 56px clamp(1.25rem, 5vw, 2.5rem);
 }
 
 .section-eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem;
   font-size: 0.92rem; font-weight: 800;
   letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 2rem;
+  color: var(--accent); margin-bottom: 1.4rem;
 }
 .section-eyebrow::before {
   content: '';
@@ -192,7 +192,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 
 .hero-inner {
   max-width: 900px; margin: 0 auto;
-  padding: 3.5rem clamp(1.25rem, 5vw, 2.5rem) 3.25rem;
+  padding: 2.75rem clamp(1.25rem, 5vw, 2.5rem) 2.5rem;
   display: flex; align-items: center; gap: 44px; flex-wrap: wrap;
 }
 
@@ -282,7 +282,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .demo-stage {
   position: relative; width: 100%;
   aspect-ratio: 2 / 1;
-  margin-top: 28px;
+  margin-top: 18px;
   overflow: hidden;
   perspective: 1400px;           /* the side tiles turn slightly inward, like a fan */
   --front-w: 46%;                /* front tile width (just under the old grid tile) */
@@ -338,18 +338,20 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .demo-progress {
   position: absolute; left: 0; bottom: 0; z-index: 2;
   height: 2px; width: 0; pointer-events: none;
-  background: var(--accent-hi); opacity: 0.9;
+  background: var(--accent-hi); opacity: 0.8;
   transition: width 0.15s linear, opacity 0.6s;
 }
 .demo-card:not([data-slot="0"]) .demo-progress { opacity: 0; }
 
 /* playback-speed pill in the tile's corner (the client's own speed dropdown is hidden) */
 .demo-speed {
-  position: absolute; right: 8px; bottom: 8px; z-index: 2;
-  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.05em; line-height: 1;
-  padding: 0.3em 0.5em; border-radius: 4px;
-  color: var(--tx-2); background: var(--bg-surf); border: 1px solid var(--border);
-  opacity: 0.85; pointer-events: none;
+  position: absolute; right: 10px; bottom: 12px; z-index: 2;
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1;
+  padding: 0.35em 0.55em; border-radius: 5px;
+  color: #fff; background: rgba(20, 20, 28, 0.72); border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
   font-variant-numeric: tabular-nums;
 }
 
@@ -358,7 +360,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 .demo-stage-caption {
   font-size: 0.74rem; color: var(--tx-muted);
   text-align: center; line-height: 1.55;
-  padding-top: 12px; min-height: 3.6em;
+  padding-top: 8px; min-height: 3.1em;
   transition: opacity 0.25s;
 }
 .demo-stage-caption.is-switching { opacity: 0; }
@@ -437,7 +439,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   align-items: center; column-gap: 24px;
 }
 #research .section-eyebrow,
-#research .pub-toggle { margin-bottom: 28px; }
+#research .pub-toggle { margin-bottom: 22px; }
 
 .pub-list {
   display: flex; flex-direction: column; gap: 0;
@@ -635,7 +637,6 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
    (repo chips carry live star/fork counts, see the repo-stats script)
    ============================================================================= */
 /* Trim the shell's default 80px vertical padding for this compact section */
-#works .section-shell { padding-top: 40px; padding-bottom: 40px; }
 #works .section-eyebrow { margin-bottom: 0.9rem; }
 
 .works-list { list-style: none; }
@@ -737,7 +738,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 }
 
 @media (max-width: 480px) {
-  .section-shell  { padding: 56px 1.1rem; }
+  .section-shell  { padding: 44px 1.1rem; }
   .hero-inner     { padding: 40px 1.1rem; }
 }
 
