@@ -1,7 +1,9 @@
 # Interactive 3D viser demos (rendered by _includes/sections/about.html)
 #
-# Each entry becomes one tile in the 2x2 .demo-grid. The iframes load directly
-# (lazily on scroll), so the four scenes are ~65 MB of page weight.
+# Each entry becomes one tile in the .demo-stage carousel (one scene in front, the
+# rest receding behind it; it advances when the front recording finishes). Entries
+# rotate in file order, starting with the first. The iframes load directly (lazily
+# on scroll), so the four scenes are ~65 MB of page weight.
 #
 #   title    tile label + iframe title (required)
 #   file     path under /recordings/ (required)

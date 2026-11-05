@@ -242,28 +242,89 @@ img { display: block; max-width: 100%; }
 .tl-role { font-size: 0.78rem; color: var(--tx-2); line-height: 1.45; margin-top: 1px; }
 
 /* Demo iframes — 2x2 square grid (see _includes/sections/about.html) */
-.demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 0.9rem; }
-.demo-card { margin: 0; min-width: 0; }
-.demo-wrap {
-  position: relative; border-radius: 10px; overflow: hidden;
-  border: 1px solid var(--border); background: var(--bg-surf);
-  aspect-ratio: 1/1; margin-bottom: 0.45rem;
-  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+/* 3-D scene carousel: one scene front and centre, the other three receding behind it.
+   Tiles are absolutely positioned and moved between slots by the data-slot attribute
+   (set by the script at the end of _includes/sections/about.html). The stage is 2:1, i.e.
+   the height of one row of the old 2x2 grid, so the front tile is exactly that tile's size. */
+.demo-stage {
+  position: relative; width: 100%;
+  aspect-ratio: 2 / 1;
+  margin-top: 28px;
+  overflow: hidden;
+  --front-w: calc(50% - 10px);   /* front tile width (the old grid tile) */
+  --side-x: 30%;                 /* how far the side tiles sit from centre */
 }
-.demo-wrap:hover { border-color: var(--border-hi); box-shadow: var(--shadow-sm); }
-.demo-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-.demo-caption { font-size: 0.74rem; color: var(--tx-muted); text-align: center; padding-bottom: 0.25rem; line-height: 1.4; }
-.demo-caption a { color: var(--green); font-weight: 600; }
+.demo-card {
+  position: absolute; top: 50%; left: 50%; margin: 0;
+  width: var(--front-w); aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.demo-card[data-slot="0"] { z-index: 4; }
+.demo-card[data-slot="1"] { z-index: 3; transform: translate(calc(-50% + var(--side-x)), -50%) scale(0.72); opacity: 0.55; }
+.demo-card[data-slot="3"] { z-index: 3; transform: translate(calc(-50% - var(--side-x)), -50%) scale(0.72); opacity: 0.55; }
+.demo-card[data-slot="2"] { z-index: 1; transform: translate(-50%, -50%) scale(0.5); opacity: 0.3; }
+
+.demo-wrap {
+  position: absolute; inset: 0; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-surf);
+  transition: box-shadow 1.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 1.3s;
+}
+.demo-card[data-slot="0"] .demo-wrap { box-shadow: var(--shadow-lg); border-color: var(--border-hi); }
+/* dim the receding tiles with the page background so they read as "behind" */
+.demo-wrap::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: var(--bg); opacity: 0.45;
+  transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.demo-card[data-slot="0"] .demo-wrap::after { opacity: 0; }
+
+/* scenes are replays, not interactive: no orbit, no focus, no cursor change */
+.demo-iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: none;
+  pointer-events: none;
+}
+
+/* per-tile captions are only the source for the stage caption below */
+.demo-caption { display: none; }
+.demo-stage-caption {
+  font-size: 0.74rem; color: var(--tx-muted);
+  text-align: center; line-height: 1.55;
+  padding-top: 12px; min-height: 3.6em;
+  transition: opacity 0.25s;
+}
+.demo-stage-caption.is-switching { opacity: 0; }
+.demo-stage-caption a { color: var(--green); font-weight: 600; }
+
 /* Provenance badge: real-robot rollout vs. rendered/synthetic data. */
 .demo-tag {
-  display: block; width: fit-content; margin: 0.3rem auto 0;
-  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
-  padding: 0.15em 0.55em; border-radius: 4px; white-space: nowrap;
+  display: block; width: fit-content; margin: 6px auto 0;
+  font-size: 0.6rem; font-weight: 800;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.15em 0.55em; border-radius: 4px;
+  white-space: nowrap;
 }
-.demo-tag-real { color: var(--green); background: rgba(66,185,131,0.12); border: 1px solid rgba(66,185,131,0.25); }
-.demo-tag-synthetic { color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(141,126,220,0.25); }
-.demos-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tx-muted); margin: 2rem 0 0.9rem; }
-@media (max-width: 560px) { .demo-grid { grid-template-columns: 1fr; } }
+.demo-tag-real {
+  color: var(--green); background: rgba(66, 185, 131, 0.12);
+  border: 1px solid rgba(66, 185, 131, 0.25);
+}
+.demo-tag-synthetic {
+  color: var(--accent); background: var(--accent-dim);
+  border: 1px solid rgba(141, 126, 220, 0.25);
+}
+
+/* Narrow screens: a taller stage with a bigger front tile so the scene stays legible. */
+@media (max-width: 560px) {
+  .demo-stage { aspect-ratio: 3 / 2; --front-w: 66%; --side-x: 26%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-card, .demo-wrap, .demo-wrap::after { transition: none; }
+}
+
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--border); padding: 2.5rem; text-align: center; color: var(--tx-muted); font-size: 0.8rem; }

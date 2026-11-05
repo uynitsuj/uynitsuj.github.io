@@ -36,13 +36,26 @@ After encoding, verify: `ffprobe out.mp4` (expect h264, capped width, no audio) 
 ### Don't ship a broken deploy
 When you delete/rename a media file or convert a GIF, `git add` the **new** files (e.g. `git add img/robots/*.mp4`). `git commit -am` stages tracked deletions/edits but **not** untracked new assets — committing without adding them ships a site that 404s on the new media.
 
-## Interactive viser demos
-Four scenes in a 2×2 `.demo-grid`, driven by `_data/index/demos.yml` and rendered by
-`_includes/sections/about.html` (shared by `_layouts/home.html` and `_layouts/about.html`;
-the CSS is duplicated in both those layouts). To add a scene: drop the `.viser` in
-`recordings/`, add a YAML entry with its real `size:`, done.
+## 3D scene carousel (viser demos)
+Four scenes in a `.demo-stage` carousel: one scene front and centre, the other three
+receding behind it (scaled, dimmed toward the page background), all **non-interactive**
+(`pointer-events: none`; the idle camera sway supplies the motion). Driven by
+`_data/index/demos.yml`, rendered by `_includes/sections/about.html` (shared by
+`_layouts/home.html` and `_layouts/about.html`; the CSS is duplicated in `home.html` and
+`default.html`). The stage is 2:1, so the front tile is the size of one old 2×2-grid tile.
+Tile i sits in slot `(i - current) mod n` via `data-slot` (0 front, 1 right-back, n-1
+left-back, others hidden behind the front tile); the script at the end of the include
+moves them. **It rotates when the front recording finishes**, not on a timer: the client
+posts `viser-loop` to the page when its playback wraps, and the page posts `viser-restart`
+to the incoming tile so every scene plays from its first frame while in front (60 s
+fallback if the front tile never reports, e.g. a failed load). Both hooks live in
+`/viser-idle-sway.js`, backed by a one-line patch at the top of each client's
+file-playback tick calling `window.__viserPlaybackTick(state, recording)` (grep the
+bundle for it), alongside the idle-sway patch described below. Rotation order = file order.
+To add a scene: drop the `.viser` in `recordings/`, add a YAML entry with its real
+`size:`, done.
 
-Tiles embed the client **directly** in `<iframe loading="lazy">`. Because a 2×2 grid puts
+Tiles embed the client **directly** in `<iframe loading="lazy">`. Because the stage puts
 all four in the viewport at once, they load together: **~65 MB of `.viser` on scroll**
 (was ~147 MB before the EgoMI/R2R2R camera frames were re-encoded PNG -> JPEG, see below),
 far and away the heaviest thing on the site. This is a deliberate choice (click-to-load was
@@ -50,13 +63,14 @@ tried and removed); if page weight becomes a problem again, click-to-load is the
 swap the iframe for a button and create the iframe in a click handler.
 
 Tiles drift on a slow, per-tile randomized idle camera sway (pauses on input, glides back
-and resumes after 4 s idle). It is opt-in via `&idleSway`, which `about.html` appends to
+and resumes after 4 s idle; the tiles take no input any more, so in practice it never pauses). It is opt-in via `&idleSway`, which `about.html` appends to
 every tile URL, and implemented in `/viser-idle-sway.js`. Both hosted clients carry a
 one-line patch at the top of camera-controls' `update(dt)` calling
 `window.__viserIdleSway` (grep the bundle for it) plus a `<script src="/viser-idle-sway.js">`
 in their `index.html`. For `viser-client-1.0.22/` the JS lives zstd-compressed + base64 in
-the loader's `data-c` attribute (with its byte length in `data-cs`): decompress, patch,
-`zstd -19`, re-encode, update `data-cs`. **Regenerating either client drops the patch.**
+the loader's `data-c` attribute (with its UTF-8 byte length in `data-cs`): decompress, patch,
+`zstd -19`, re-encode, update `data-cs`. Both clients also carry the `__viserPlaybackTick`
+playback patch (see above). **Regenerating either client drops the patches.**
 After editing the legacy bundle, bump the `?v=` on its `<script src="./assets/index-…js">` in
 `viser-client/index.html`: the hashed filename never changes, so browsers keep the old copy.
 

@@ -15,9 +15,16 @@
   </p>
 </div>
 
-<div class="demos-label">Interactive 3D Scenes &mdash; click &amp; drag to orbit</div>
-
-<div class="demo-grid">
+{%- comment -%}
+  3D-scene carousel: one scene front and centre, the other three receding behind it,
+  all non-interactive. It advances when the front recording finishes (the client posts
+  `viser-loop`, see the playback hooks in /viser-idle-sway.js) and tells the incoming
+  scene to restart from its first frame (`viser-restart`), so every scene plays through
+  from the beginning while it is in front. Tile i sits in slot (i - current) mod n:
+  slot 0 = front, 1 = right-back, n-1 = left-back, the rest hidden behind the front tile.
+  Layout + rotation live in the script at the end of this file; CSS in the layouts.
+{%- endcomment -%}
+<div class="demo-stage" aria-label="3D scene replays">
   {% for demo in site.data.index.demos %}
   {%- comment -%}
     `demo.camera` is a raw query fragment (no leading &) so a demo can pass any
@@ -26,20 +33,20 @@
     `demo.client` matters: .viser files are not cross-version compatible
     (legacy gzip vs zstd), so each recording plays in the client that wrote it.
     `idleSway` turns on the slow, per-tile randomized idle camera drift
-    (/viser-idle-sway.js); it pauses on input and resumes after 4 s idle.
-    `pinDpr` stops the clients' adaptive resolution from going blocky when four tiles
-    share the GPU. `demo.sway` scales its swing (default 1). `demo.scene` is a raw query fragment of
-    scene tweaks handled by the same script (e.g. clipAbove=<h>,<hex>).
+    (/viser-idle-sway.js). `pinDpr` stops the clients' adaptive resolution from going
+    blocky when four tiles share the GPU. `demo.sway` scales the swing (default 1).
+    `demo.scene` is a raw query fragment of scene tweaks handled by the same script
+    (e.g. clipAbove=<h>,<hex>).
   {%- endcomment -%}
   {%- capture demo_src -%}
     https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}&idleSway{%- if demo.sway -%}={{ demo.sway }}{%- endif -%}&pinDpr
     {%- if demo.camera -%}&{{ demo.camera }}{%- endif -%}
     {%- if demo.scene -%}&{{ demo.scene }}{%- endif -%}
   {%- endcapture -%}
-  <figure class="demo-card">
+  <figure class="demo-card" data-slot="{{ forloop.index0 }}">
     <div class="demo-wrap">
       <iframe class="demo-iframe" src="{{ demo_src | strip }}"
-              loading="lazy" allowfullscreen title="{{ demo.title | escape }}"></iframe>
+              loading="lazy" tabindex="-1" title="{{ demo.title | escape }}"></iframe>
     </div>
     <figcaption class="demo-caption">
       {% if demo.link %}
@@ -66,3 +73,45 @@
   </figure>
   {% endfor %}
 </div>
+<div class="demo-stage-caption" aria-live="polite"></div>
+
+<script>
+/* 3D-scene carousel (see the comment above .demo-stage). */
+(function () {
+  var stage = document.querySelector('.demo-stage');
+  if (!stage) return;
+  var cards = Array.prototype.slice.call(stage.querySelectorAll('.demo-card'));
+  var cap = document.querySelector('.demo-stage-caption');
+  var n = cards.length, cur = 0, fallback = null;
+  var FALLBACK_MS = 60000;   // advance anyway if the front scene never reports a loop (e.g. failed load)
+  function frame(i) { return cards[i].querySelector('iframe').contentWindow; }
+  function showCaption() {
+    if (!cap) return;
+    var src = cards[cur].querySelector('.demo-caption');
+    cap.classList.add('is-switching');
+    setTimeout(function () {
+      cap.innerHTML = src ? src.innerHTML : '';
+      cap.classList.remove('is-switching');
+    }, 250);
+  }
+  function layout() {
+    cards.forEach(function (c, i) { c.setAttribute('data-slot', String((i - cur + n) % n)); });
+    showCaption();
+    clearTimeout(fallback);
+    fallback = setTimeout(advance, FALLBACK_MS);
+  }
+  function advance() {
+    cur = (cur + 1) % n;
+    layout();
+    try { frame(cur).postMessage({ type: 'viser-restart' }, '*'); } catch (e) { /* not loaded yet */ }
+  }
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (!d || typeof d !== 'object' || d.type !== 'viser-loop') return;
+    var from = -1;
+    for (var k = 0; k < n; k++) { try { if (frame(k) === e.source) from = k; } catch (err) {} }
+    if (from === cur && n > 1) advance();
+  });
+  layout();
+})();
+</script>

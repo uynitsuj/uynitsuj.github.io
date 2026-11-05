@@ -190,3 +190,37 @@
     }
   };
 })();
+
+// Playback hooks for the 3D-scene carousel (_includes/sections/about.html). Both clients
+// carry a one-line patch at the top of their file-playback tick:
+//   window.__viserPlaybackTick&&window.__viserPlaybackTick(<state>,<recording>);
+// (search the bundle for __viserPlaybackTick). <state> is the client's playback ref
+// ({currentTime, currentIndex}); <recording> has {messages, durationSeconds}. Each tick we
+// post `viser-loop` to the parent once the recording has wrapped (currentTime went backwards)
+// and honour a pending `viser-restart` from the parent by rewinding to the first message
+// (currentIndex=0 makes the client's own tick reset the scene and replay from the start).
+// Does nothing when the client is not embedded.
+(function () {
+  if (window.parent === window) return;
+  var last = -1, pendingRestart = false;
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (d && typeof d === 'object' && d.type === 'viser-restart') pendingRestart = true;
+  });
+  window.__viserPlaybackTick = function (st, rec) {
+    if (!st || !rec || !rec.messages || !rec.messages.length) return;
+    var dur = rec.durationSeconds || 0;
+    if (pendingRestart) {
+      pendingRestart = false;
+      st.currentIndex = 0;
+      st.currentTime = rec.messages[0][0];
+      last = st.currentTime;
+      window.parent.postMessage({ type: 'viser-restarted', duration: dur }, '*');
+      return;
+    }
+    if (last >= 0 && st.currentTime < last) {
+      window.parent.postMessage({ type: 'viser-loop', duration: dur }, '*');
+    }
+    last = st.currentTime;
+  };
+})();
