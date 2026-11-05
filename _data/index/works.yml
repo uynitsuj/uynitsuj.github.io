@@ -1,0 +1,61 @@
+# "Selected Works" list on the home page (#works section, rendered in _layouts/home.html).
+# A hybrid of a selected-works list and the old GitHub repo cards: each entry is one
+# research theme with its paper(s) and a one-sentence "why it matters", plus the
+# open-source repo(s) behind it shown as chips with live star/fork counts.
+#
+# Fields per entry:
+#   theme   - short bold lead-in ("Coding agents for robot manipulation")
+#   works   - list of { title, url, venue, oral (bool), note } rendered inline after the theme.
+#             `note` is small muted text appended after the badges (e.g. oral selectivity).
+#   blurb   - one or two sentences; HTML allowed. Keep numbers verbatim from the paper/site.
+#   repos   - list of { owner, name, stars, forks }. `stars`/`forks` are fallback values baked
+#             into the HTML; live counts are fetched client-side from the GitHub API on load and
+#             overwrite them (see the "Live GitHub repo stats" script). Keep them roughly
+#             current so the chips look right if the fetch fails or is rate-limited.
+
+- theme: Coding agents for robot manipulation
+  works:
+    - title: CaP-X
+      url: https://capgym.github.io/
+      venue: ICML 2026
+  blurb: >-
+    A benchmark of 100+ robot manipulation tasks for code-writing agents, plus RL fine-tuning that takes
+    a 7B coder from 20% to 72% success and transfers to a real Franka arm.
+  repos:
+    - { owner: capgym, name: cap-x, stars: 913, forks: 138 }
+
+- theme: Scaling robot data without robot hardware
+  works:
+    - title: Real2Render2Real
+      url: https://real2render2real.com/
+      venue: CoRL 2025
+      oral: true
+      note: 42 of 263 accepted papers
+  blurb: >-
+    One smartphone scan and one human demo video become thousands of robot demos, with no
+    dynamics simulation or teleoperation. Across 1,050 real-robot trials, policies trained on
+    R2R2R synthetic data match teleop-trained ones at 1/27 the collection time.
+  repos:
+    - { owner: uynitsuj, name: real2render2real, stars: 379, forks: 21 }
+
+- theme: Progress reward models for robot data curation
+  works:
+    - title: WARP-RM
+      url: /warp-rm/
+      venue: CoRL 2026
+  blurb: >-
+    Self-supervised reward model that filters robot training data. +78% T-shirt folding and
+    +60% bottle-in-bin throughput on real robots; sim evals <a href="https://github.com/uynitsuj/WARP-RM/blob/main/docs/reproduce_sim.md" target="_blank" rel="noopener">reproducible end to end</a>
+    from public code and checkpoints.
+  repos:
+    - { owner: uynitsuj, name: WARP-RM, stars: 67, forks: 3 }
+
+# - theme: Real-time robot control stack
+#   works:
+#     - title: robots_realtime
+#       url: https://github.com/uynitsuj/robots_realtime
+#   blurb: >-
+#     High-frequency control interfaces for bimanual I2RT YAM and Franka arms, with teleoperation and
+#     autonomous policy rollouts. The stack behind the robot demos on this page.
+#   repos:
+#     - { owner: uynitsuj, name: robots_realtime, stars: 78, forks: 27 }
