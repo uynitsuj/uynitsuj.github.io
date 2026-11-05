@@ -31,7 +31,7 @@
       url: https://real2render2real.com/
       venue: CoRL 2025
       oral: true
-      note: 42 of 263 accepted papers
+      note: top 5.7% of submissions
   blurb: >-
     One smartphone scan and one human demo video become thousands of robot demos, with no
     dynamics simulation or teleoperation. Across 1,050 real-robot trials, policies trained on
