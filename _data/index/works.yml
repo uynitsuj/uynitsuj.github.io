@@ -19,7 +19,7 @@
       url: https://capgym.github.io/
       venue: ICML 2026
   blurb: >-
-    Frontier LLMs write robot control code at a third of human reliability. CaP-Agent0 closes the gap:
+    Frontier LLMs write robot control code at a third of human domain-expert reliability. CaP-Agent0 closes the gap:
     a training-free harness beats post-trained VLAs with no task-specific data, and RLVR lifts a 7B coder from
     20% to 72% success, transferring to a real Franka robot.
   repos:
