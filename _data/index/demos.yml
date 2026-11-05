@@ -26,6 +26,9 @@
 #   sway     optional idle camera-sway scale (default 1 = +/-10-17 deg azimuth). Use a small
 #            value for tight, close-in framings (e.g. a camera inside the robot cell), or the
 #            sway swings the view onto the cell walls.
+#   speed    optional playback speed multiplier (default 1 = real time). Passed to the
+#            client as `playbackSpeed=<k>` (both clients are patched to read it) and
+#            stated in the real-world badge ("Real-world · 3× speed · autonomous").
 #   scene    optional raw query fragment (NO leading &) of scene tweaks from
 #            /viser-idle-sway.js. `clipAbove=<h>,<hex>` cuts meshes of material colour <hex>
 #            above height <h> m; the YAM cell tiles use it to drop the top 8020 rails
@@ -60,6 +63,7 @@
   kind: real
   client: viser-client-1.0.22
   sway: 0.35
+  speed: 3
   scene: "clipAbove=1.62,999ead&hideLines=all"   # drop top 8020 rails + frustum wireframes
   size: 21 MB
   caption: WARP-RM
@@ -71,6 +75,7 @@
   kind: real
   client: viser-client-1.0.22
   sway: 0.35
+  speed: 3
   scene: "clipAbove=1.62,999ead&hideLines=all"   # drop top 8020 rails + frustum wireframes
   size: 15 MB
   caption: WARP-RM

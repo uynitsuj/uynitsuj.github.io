@@ -16,8 +16,9 @@
 </div>
 
 {%- comment -%}
-  3D-scene carousel: one scene front and centre, the other three receding behind it,
-  all non-interactive. It advances when the front recording finishes (the client posts
+  3D-scene carousel: one scene front and centre, the other three receding behind it.
+  The scenes themselves take no pointer input; clicking a receding tile brings it to
+  the front. It advances when the front recording finishes (the client posts
   `viser-loop`, see the playback hooks in /viser-idle-sway.js) and tells the incoming
   scene to restart from its first frame (`viser-restart`), so every scene plays through
   from the beginning while it is in front. Tile i sits in slot (i - current) mod n:
@@ -36,10 +37,14 @@
     (/viser-idle-sway.js). `pinDpr` stops the clients' adaptive resolution from going
     blocky when four tiles share the GPU. `demo.sway` scales the swing (default 1).
     `demo.scene` is a raw query fragment of scene tweaks handled by the same script
-    (e.g. clipAbove=<h>,<hex>).
+    (e.g. clipAbove=<h>,<hex>). `demo.speed` (default 1) is passed as `playbackSpeed=<k>`,
+    which seeds the clients' speed dropdown (a one-line patch on its useState("1x"); grep
+    the bundle for playbackSpeed), and the real-world badge states any speed other than 1x.
   {%- endcomment -%}
+  {%- assign speed = demo.speed | default: 1 -%}
   {%- capture demo_src -%}
     https://uynitsuj.github.io/{{ demo.client | default: 'viser-client' }}/?playbackPath=https://uynitsuj.github.io/recordings/{{ demo.file }}&idleSway{%- if demo.sway -%}={{ demo.sway }}{%- endif -%}&pinDpr
+    {%- if speed != 1 -%}&playbackSpeed={{ speed }}{%- endif -%}
     {%- if demo.camera -%}&{{ demo.camera }}{%- endif -%}
     {%- if demo.scene -%}&{{ demo.scene }}{%- endif -%}
   {%- endcapture -%}
@@ -62,7 +67,11 @@
       {%- if demo.tag -%}
         {%- assign tag_text = demo.tag -%}
       {%- elsif demo.kind == 'real' -%}
-        {%- assign tag_text = 'Real-world &middot; autonomous' -%}
+        {%- if speed == 1 -%}
+          {%- assign tag_text = 'Real-world &middot; autonomous' -%}
+        {%- else -%}
+          {%- capture tag_text -%}Real-world &middot; {{ speed }}&times; speed &middot; autonomous{%- endcapture -%}
+        {%- endif -%}
       {%- elsif demo.kind == 'synthetic' -%}
         {%- assign tag_text = 'Synthetic &middot; rendered data' -%}
       {%- endif -%}
@@ -100,11 +109,22 @@
     clearTimeout(fallback);
     fallback = setTimeout(advance, FALLBACK_MS);
   }
-  function advance() {
-    cur = (cur + 1) % n;
+  function goTo(i) {
+    cur = (i + n) % n;
     layout();
     try { frame(cur).postMessage({ type: 'viser-restart' }, '*'); } catch (e) { /* not loaded yet */ }
   }
+  function advance() { goTo(cur + 1); }
+  // clicking a receding tile brings it to the front (the iframes ignore pointer input)
+  cards.forEach(function (c, i) {
+    c.setAttribute('role', 'button');
+    c.setAttribute('tabindex', '0');
+    function pick() { if (i !== cur) goTo(i); }
+    c.addEventListener('click', pick);
+    c.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); }
+    });
+  });
   window.addEventListener('message', function (e) {
     var d = e.data;
     if (!d || typeof d !== 'object' || d.type !== 'viser-loop') return;

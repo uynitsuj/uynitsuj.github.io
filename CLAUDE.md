@@ -38,8 +38,9 @@ When you delete/rename a media file or convert a GIF, `git add` the **new** file
 
 ## 3D scene carousel (viser demos)
 Four scenes in a `.demo-stage` carousel: one scene front and centre, the other three
-receding behind it (scaled, dimmed toward the page background), all **non-interactive**
-(`pointer-events: none`; the idle camera sway supplies the motion). Driven by
+receding behind it (scaled, dimmed toward the page background). The scenes take no
+pointer input (`pointer-events: none` on the iframes; the idle camera sway supplies the
+motion); clicking a receding tile brings it to the front. Driven by
 `_data/index/demos.yml`, rendered by `_includes/sections/about.html` (shared by
 `_layouts/home.html` and `_layouts/about.html`; the CSS is duplicated in `home.html` and
 `default.html`). The stage is 2:1, so the front tile is the size of one old 2×2-grid tile.
@@ -70,15 +71,17 @@ one-line patch at the top of camera-controls' `update(dt)` calling
 in their `index.html`. For `viser-client-1.0.22/` the JS lives zstd-compressed + base64 in
 the loader's `data-c` attribute (with its UTF-8 byte length in `data-cs`): decompress, patch,
 `zstd -19`, re-encode, update `data-cs`. Both clients also carry the `__viserPlaybackTick`
-playback patch (see above). **Regenerating either client drops the patches.**
+playback patch (see above) and a `playbackSpeed=<k>` URL param patched onto the speed
+dropdown's `useState("1x")` (set per tile with `speed:` in `demos.yml`; the WARP-RM tiles
+run at 3x). **Regenerating either client drops the patches.**
 After editing the legacy bundle, bump the `?v=` on its `<script src="./assets/index-…js">` in
 `viser-client/index.html`: the hashed filename never changes, so browsers keep the old copy.
 
 Per-demo camera framing is a raw query fragment in `camera:`. To capture one: open the
 scene with `&logCamera`, orbit to the view you want, copy what the console prints.
 
-`kind:` sets the provenance badge under each tile — `real` (green: "Real-world · 1× speed ·
-autonomous") or `synthetic` (purple: "Synthetic · rendered"). Set it on every new demo so
+`kind:` sets the provenance badge under each tile — `real` (green: "Real-world · autonomous",
+with "· N× speed" inserted when `speed:` is not 1) or `synthetic` (purple: "Synthetic · rendered"). Set it on every new demo so
 viewers can tell a robot rollout from rendered data; `tag:` overrides the badge text.
 
 ### ⚠️ `.viser` files are NOT cross-version compatible

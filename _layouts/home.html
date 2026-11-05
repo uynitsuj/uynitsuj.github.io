@@ -284,29 +284,41 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
   aspect-ratio: 2 / 1;
   margin-top: 28px;
   overflow: hidden;
-  --front-w: calc(50% - 10px);   /* front tile width (the old grid tile) */
-  --side-x: 30%;                 /* how far the side tiles sit from centre */
+  perspective: 1400px;           /* the side tiles turn slightly inward, like a fan */
+  --front-w: 46%;                /* front tile width (just under the old grid tile) */
+  --side-x: 34%;                 /* side tile centre offset from the stage centre (stage %) */
+  --side-s: 0.68;                /* side tile scale */
+  --side-r: 12deg;               /* side tile inward turn */
 }
 .demo-card {
   position: absolute; top: 50%; left: 50%; margin: 0;
   width: var(--front-w); aspect-ratio: 1 / 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1) rotateY(0deg);
   opacity: 1;
-  transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  /* `left` (stage-relative) carries the lateral spread: percentages inside translate() would
+     be relative to the tile's own width, not the stage */
+  transition: left 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 .demo-card[data-slot="0"] { z-index: 4; }
-.demo-card[data-slot="1"] { z-index: 3; transform: translate(calc(-50% + var(--side-x)), -50%) scale(0.72); opacity: 0.55; }
-.demo-card[data-slot="3"] { z-index: 3; transform: translate(calc(-50% - var(--side-x)), -50%) scale(0.72); opacity: 0.55; }
-.demo-card[data-slot="2"] { z-index: 1; transform: translate(-50%, -50%) scale(0.5); opacity: 0.3; }
+.demo-card[data-slot="1"] { z-index: 3; left: calc(50% + var(--side-x)); transform: translate(-50%, -50%) scale(var(--side-s)) rotateY(calc(-1 * var(--side-r))); opacity: 0.6; }
+.demo-card[data-slot="3"] { z-index: 3; left: calc(50% - var(--side-x)); transform: translate(-50%, -50%) scale(var(--side-s)) rotateY(var(--side-r)); opacity: 0.6; }
+.demo-card[data-slot="2"] { z-index: 1; transform: translate(-50%, -50%) scale(0.5) rotateY(0deg); opacity: 0.3; }
 
 .demo-wrap {
   position: absolute; inset: 0; border-radius: 8px; overflow: hidden;
   border: 1px solid var(--border);
   background: var(--bg-surf);
-  transition: box-shadow 1.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 1.3s;
+  transition: box-shadow 1.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
 }
 .demo-card[data-slot="0"] .demo-wrap { box-shadow: var(--shadow-lg); border-color: var(--border-hi); }
+/* receding tiles are clickable: bring one to the front */
+.demo-card:not([data-slot="0"]) { cursor: pointer; }
+.demo-card:not([data-slot="0"]):hover { opacity: 0.8; }
+.demo-card:not([data-slot="0"]):hover .demo-wrap { border-color: var(--border-hi); }
+.demo-card:not([data-slot="0"]):hover .demo-wrap::after { opacity: 0.2; }
+.demo-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+.demo-card[data-slot="0"]:focus-visible { outline: none; }
 /* dim the receding tiles with the page background so they read as "behind" */
 .demo-wrap::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -315,7 +327,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 }
 .demo-card[data-slot="0"] .demo-wrap::after { opacity: 0; }
 
-/* scenes are replays, not interactive: no orbit, no focus, no cursor change */
+/* the scenes themselves are replays: no orbit; the tile (not the iframe) takes the click */
 .demo-iframe {
   position: absolute; inset: 0;
   width: 100%; height: 100%; border: none;
@@ -352,7 +364,7 @@ hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0; 
 
 /* Narrow screens: a taller stage with a bigger front tile so the scene stays legible. */
 @media (max-width: 560px) {
-  .demo-stage { aspect-ratio: 3 / 2; --front-w: 66%; --side-x: 26%; }
+  .demo-stage { aspect-ratio: 3 / 2; --front-w: 62%; --side-x: 30%; --side-s: 0.62; }
 }
 @media (prefers-reduced-motion: reduce) {
   .demo-card, .demo-wrap, .demo-wrap::after { transition: none; }
