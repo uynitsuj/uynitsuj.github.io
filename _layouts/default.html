@@ -274,6 +274,9 @@ img { display: block; max-width: 100%; }
 
 .demo-wrap {
   position: absolute; inset: 0; border-radius: 8px; overflow: hidden;
+  /* overflow:hidden stops clipping the iframe once the tile is 3D-transformed (the receding
+     tiles), so the corners went square there; clip-path clips regardless of transforms */
+  clip-path: inset(0 round 8px);
   border: 1px solid var(--border);
   background: var(--bg-surf);
   transition: box-shadow 1.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
